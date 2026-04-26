@@ -1,0 +1,72 @@
+name: Run State News Scraper
+
+on:
+  schedule:
+    # Runs daily at 02:00 UTC (12:00 AEST / 13:00 AEDT)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  scrape:
+    name: Scrape Migration News → Firestore
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # -----------------------------------------------------------------------
+      # 1. Check out the repository
+      # -----------------------------------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # -----------------------------------------------------------------------
+      # 2. Set up Python
+      # -----------------------------------------------------------------------
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      # -----------------------------------------------------------------------
+      # 3. Install Python dependencies
+      # -----------------------------------------------------------------------
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      # -----------------------------------------------------------------------
+      # 4. Write Firebase service account key from secret
+      #    (Store the entire JSON as the secret FIREBASE_SERVICE_ACCOUNT_JSON)
+      # -----------------------------------------------------------------------
+      - name: Write Firebase service account key
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}' > scripts/service_account.json
+
+      # -----------------------------------------------------------------------
+      # 5. Run the scraper
+      # -----------------------------------------------------------------------
+      - name: Run scraper
+        env:
+          FIREBASE_SERVICE_ACCOUNT_PATH: scripts/service_account.json
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+          FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
+        run: python scripts/state_news_scraper.py
+
+      # -----------------------------------------------------------------------
+      # 6. Remove sensitive file before artifact upload
+      # -----------------------------------------------------------------------
+      - name: Clean up service account key
+        if: always()
+        run: rm -f scripts/service_account.json
+
+      # -----------------------------------------------------------------------
+      # 7. Upload scraper log as artifact (kept for 7 days)
+      # -----------------------------------------------------------------------
+      - name: Upload scraper log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-log-${{ github.run_id }}
+          path: scripts/scraper.log
+          retention-days: 7

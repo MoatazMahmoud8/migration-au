@@ -1,0 +1,71 @@
+name: migration_au
+description: "Australia Skilled Migration App — Points Calculator, State News, AI Consultant"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
+
+  # Firebase
+  firebase_core: ^3.1.0
+  cloud_firestore: ^5.0.0
+  firebase_auth: ^5.1.0
+  firebase_messaging: ^15.0.0
+
+  # Navigation
+  go_router: ^14.0.0
+
+  # AI
+  google_generative_ai: ^0.4.3
+
+  # Monetization
+  purchases_flutter: ^7.3.0
+
+  # HTTP
+  dio: ^5.4.3
+  http: ^1.2.1
+
+  # Utilities
+  shared_preferences: ^2.2.3
+  intl: ^0.19.0
+  flutter_svg: ^2.0.10+1
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+  url_launcher: ^6.2.5
+
+  # UI
+  flutter_markdown: ^0.7.3
+  lottie: ^3.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  mockito: ^5.4.4
+  build_runner: ^2.4.9
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
