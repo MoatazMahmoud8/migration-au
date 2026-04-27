@@ -45,12 +45,13 @@ jobs:
 
       # -----------------------------------------------------------------------
       # 5. Run the scraper
+      # FCM is handled by a Firebase Cloud Function (fcm_triggers collection)
+      # — no legacy server key required.
       # -----------------------------------------------------------------------
       - name: Run scraper
         env:
-          FIREBASE_SERVICE_ACCOUNT_PATH: scripts/service_account.json
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
           FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
-          FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
         run: python scripts/state_news_scraper.py
 
       # -----------------------------------------------------------------------

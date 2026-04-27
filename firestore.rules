@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // News articles — public read, only Cloud Functions / Admin SDK can write
+    match /news/{docId} {
+      allow read: if true;
+      allow write: if false; // Admin SDK bypasses these rules
+    }
+
+    // FCM triggers — only backend writes, no client access
+    match /fcm_triggers/{triggerId} {
+      allow read, write: if false;
+    }
+
+    // User profiles — authenticated owner only
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
