@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/config/app_config.dart';
 import '../services/ai_consultant_service.dart';
 
 part 'ai_state.dart';
@@ -8,13 +9,7 @@ part 'ai_state.dart';
 class AiCubit extends Cubit<AiState> {
   AiCubit() : super(const AiState());
 
-  // Replace with your actual Gemini API key or load from env/config
-  final _service = AiConsultantService(
-    apiKey: const String.fromEnvironment(
-      'GEMINI_API_KEY',
-      defaultValue: 'YOUR_GEMINI_API_KEY',
-    ),
-  );
+  final _service = AiConsultantService(apiKey: AppConfig.geminiApiKey);
 
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
