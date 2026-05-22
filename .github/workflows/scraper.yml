@@ -55,14 +55,50 @@ jobs:
         run: python scripts/state_news_scraper.py
 
       # -----------------------------------------------------------------------
-      # 6. Remove sensitive file before artifact upload
+      # 6. Run the state occupation requirements scraper
+      # Outputs public/state-occupation-requirements.json for Firebase Hosting
+      # -----------------------------------------------------------------------
+      - name: Run state occupation requirements scraper
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+        run: python scripts/state_requirements_scraper.py
+
+      # -----------------------------------------------------------------------
+      # 7. Run the SkillSelect invitation rounds scraper
+      # Outputs repo/public/invitation-rounds.json for Firebase Hosting
+      # -----------------------------------------------------------------------
+      - name: Run SkillSelect rounds scraper
+        run: python scripts/rounds_scraper.py
+
+      # -----------------------------------------------------------------------
+      # 7b. Run the JSA salaries scraper
+      # Outputs public/salaries.json (median weekly/annual earnings per ANZSCO,
+      # sourced from jobsandskills.gov.au).
+      # -----------------------------------------------------------------------
+      - name: Run salaries scraper
+        run: python scripts/salaries_scraper.py
+
+      # -----------------------------------------------------------------------
+      # 8. Deploy updated JSON files to Firebase Hosting
+      # -----------------------------------------------------------------------
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+          projectId: ${{ secrets.FIREBASE_PROJECT_ID }}
+          channelId: live
+
+      # -----------------------------------------------------------------------
+      # 8. Remove sensitive file before artifact upload
       # -----------------------------------------------------------------------
       - name: Clean up service account key
         if: always()
         run: rm -f scripts/service_account.json
 
       # -----------------------------------------------------------------------
-      # 7. Upload scraper log as artifact (kept for 7 days)
+      # 9. Upload scraper log as artifact (kept for 7 days)
       # -----------------------------------------------------------------------
       - name: Upload scraper log
         if: always()

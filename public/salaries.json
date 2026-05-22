@@ -1,0 +1,2136 @@
+{
+  "snapshotDate": "2026-05-22",
+  "lastUpdated": "2026-05-22T13:13:53+00:00",
+  "source": "Jobs and Skills Australia",
+  "sourceUrl": "https://www.jobsandskills.gov.au/sitemap-default.xml",
+  "salaries": {
+    "131112": {
+      "weeklyEarnings": 2677,
+      "annualSalary": 139204,
+      "currency": "AUD",
+      "occupationName": "Advertising Public Relations And Sales Manager",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1311-advertising-public-relations-and-sales-manager",
+      "sourceLevel": "4-digit"
+    },
+    "131113": {
+      "weeklyEarnings": 2677,
+      "annualSalary": 139204,
+      "currency": "AUD",
+      "occupationName": "Advertising Public Relations And Sales Manager",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1311-advertising-public-relations-and-sales-manager",
+      "sourceLevel": "4-digit"
+    },
+    "133111": {
+      "weeklyEarnings": 3751,
+      "annualSalary": 195052,
+      "currency": "AUD",
+      "occupationName": "Construction Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1331-construction-managers",
+      "sourceLevel": "4-digit"
+    },
+    "133311": {
+      "weeklyEarnings": 1846,
+      "annualSalary": 95992,
+      "currency": "AUD",
+      "occupationName": "Importers Exporters And Wholesalers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1333-importers-exporters-and-wholesalers",
+      "sourceLevel": "4-digit"
+    },
+    "133512": {
+      "weeklyEarnings": 2298,
+      "annualSalary": 119496,
+      "currency": "AUD",
+      "occupationName": "Production Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1335-production-managers",
+      "sourceLevel": "4-digit"
+    },
+    "133513": {
+      "weeklyEarnings": 2298,
+      "annualSalary": 119496,
+      "currency": "AUD",
+      "occupationName": "Production Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1335-production-managers",
+      "sourceLevel": "4-digit"
+    },
+    "133611": {
+      "weeklyEarnings": 2834,
+      "annualSalary": 147368,
+      "currency": "AUD",
+      "occupationName": "Supply Distribution And Procurement Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1336-supply-distribution-and-procurement-managers",
+      "sourceLevel": "4-digit"
+    },
+    "134212": {
+      "weeklyEarnings": 2720,
+      "annualSalary": 141440,
+      "currency": "AUD",
+      "occupationName": "Health And Welfare Services Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1342-health-and-welfare-services-managers",
+      "sourceLevel": "4-digit"
+    },
+    "134213": {
+      "weeklyEarnings": 2720,
+      "annualSalary": 141440,
+      "currency": "AUD",
+      "occupationName": "Health And Welfare Services Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1342-health-and-welfare-services-managers",
+      "sourceLevel": "4-digit"
+    },
+    "134214": {
+      "weeklyEarnings": 2720,
+      "annualSalary": 141440,
+      "currency": "AUD",
+      "occupationName": "Health And Welfare Services Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1342-health-and-welfare-services-managers",
+      "sourceLevel": "4-digit"
+    },
+    "135111": {
+      "weeklyEarnings": 3310,
+      "annualSalary": 172120,
+      "currency": "AUD",
+      "occupationName": "Ict Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1351-ict-managers",
+      "sourceLevel": "4-digit"
+    },
+    "135112": {
+      "weeklyEarnings": 3310,
+      "annualSalary": 172120,
+      "currency": "AUD",
+      "occupationName": "Ict Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1351-ict-managers",
+      "sourceLevel": "4-digit"
+    },
+    "135199": {
+      "weeklyEarnings": 3310,
+      "annualSalary": 172120,
+      "currency": "AUD",
+      "occupationName": "Ict Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1351-ict-managers",
+      "sourceLevel": "4-digit"
+    },
+    "139914": {
+      "weeklyEarnings": 2845,
+      "annualSalary": 147940,
+      "currency": "AUD",
+      "occupationName": "Other Specialist Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1399-other-specialist-managers",
+      "sourceLevel": "4-digit"
+    },
+    "142111": {
+      "weeklyEarnings": 1620,
+      "annualSalary": 84240,
+      "currency": "AUD",
+      "occupationName": "Retail Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/1421-retail-managers",
+      "sourceLevel": "4-digit"
+    },
+    "221111": {
+      "weeklyEarnings": 2003,
+      "annualSalary": 104156,
+      "currency": "AUD",
+      "occupationName": "Accountants",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2211-accountants",
+      "sourceLevel": "4-digit"
+    },
+    "221112": {
+      "weeklyEarnings": 2003,
+      "annualSalary": 104156,
+      "currency": "AUD",
+      "occupationName": "Accountants",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2211-accountants",
+      "sourceLevel": "4-digit"
+    },
+    "221113": {
+      "weeklyEarnings": 2003,
+      "annualSalary": 104156,
+      "currency": "AUD",
+      "occupationName": "Accountants",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2211-accountants",
+      "sourceLevel": "4-digit"
+    },
+    "221211": {
+      "weeklyEarnings": 2104,
+      "annualSalary": 109408,
+      "currency": "AUD",
+      "occupationName": "Auditors Company Secretaries And Corporate Treasurers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2212-auditors-company-secretaries-and-corporate-treasurers",
+      "sourceLevel": "4-digit"
+    },
+    "221213": {
+      "weeklyEarnings": 2104,
+      "annualSalary": 109408,
+      "currency": "AUD",
+      "occupationName": "Auditors Company Secretaries And Corporate Treasurers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2212-auditors-company-secretaries-and-corporate-treasurers",
+      "sourceLevel": "4-digit"
+    },
+    "221214": {
+      "weeklyEarnings": 2104,
+      "annualSalary": 109408,
+      "currency": "AUD",
+      "occupationName": "Auditors Company Secretaries And Corporate Treasurers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2212-auditors-company-secretaries-and-corporate-treasurers",
+      "sourceLevel": "4-digit"
+    },
+    "222111": {
+      "weeklyEarnings": 2576,
+      "annualSalary": 133952,
+      "currency": "AUD",
+      "occupationName": "Financial Brokers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2221-financial-brokers",
+      "sourceLevel": "4-digit"
+    },
+    "222112": {
+      "weeklyEarnings": 2576,
+      "annualSalary": 133952,
+      "currency": "AUD",
+      "occupationName": "Financial Brokers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2221-financial-brokers",
+      "sourceLevel": "4-digit"
+    },
+    "222113": {
+      "weeklyEarnings": 2576,
+      "annualSalary": 133952,
+      "currency": "AUD",
+      "occupationName": "Financial Brokers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2221-financial-brokers",
+      "sourceLevel": "4-digit"
+    },
+    "222211": {
+      "weeklyEarnings": 2651,
+      "annualSalary": 137852,
+      "currency": "AUD",
+      "occupationName": "Financial Dealers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2222-financial-dealers",
+      "sourceLevel": "4-digit"
+    },
+    "222299": {
+      "weeklyEarnings": 2651,
+      "annualSalary": 137852,
+      "currency": "AUD",
+      "occupationName": "Financial Dealers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2222-financial-dealers",
+      "sourceLevel": "4-digit"
+    },
+    "222311": {
+      "weeklyEarnings": 2582,
+      "annualSalary": 134264,
+      "currency": "AUD",
+      "occupationName": "Financial Investment Advisers And Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2223-financial-investment-advisers-and-managers",
+      "sourceLevel": "4-digit"
+    },
+    "222312": {
+      "weeklyEarnings": 2582,
+      "annualSalary": 134264,
+      "currency": "AUD",
+      "occupationName": "Financial Investment Advisers And Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2223-financial-investment-advisers-and-managers",
+      "sourceLevel": "4-digit"
+    },
+    "223111": {
+      "weeklyEarnings": 1970,
+      "annualSalary": 102440,
+      "currency": "AUD",
+      "occupationName": "Human Resource Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2231-human-resource-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "224111": {
+      "weeklyEarnings": 2072,
+      "annualSalary": 107744,
+      "currency": "AUD",
+      "occupationName": "Actuaries Mathematicians And Statisticians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2241-actuaries-mathematicians-and-statisticians",
+      "sourceLevel": "4-digit"
+    },
+    "224211": {
+      "weeklyEarnings": 2279,
+      "annualSalary": 118508,
+      "currency": "AUD",
+      "occupationName": "Archivists Curators And Records Managers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2242-archivists-curators-and-records-managers",
+      "sourceLevel": "4-digit"
+    },
+    "224411": {
+      "weeklyEarnings": 2173,
+      "annualSalary": 112996,
+      "currency": "AUD",
+      "occupationName": "Intelligence And Policy Analysts",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2244-intelligence-and-policy-analysts",
+      "sourceLevel": "4-digit"
+    },
+    "224711": {
+      "weeklyEarnings": 2444,
+      "annualSalary": 127088,
+      "currency": "AUD",
+      "occupationName": "Management And Organisation Analysts",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2247-management-and-organisation-analysts",
+      "sourceLevel": "4-digit"
+    },
+    "224912": {
+      "weeklyEarnings": 2189,
+      "annualSalary": 113828,
+      "currency": "AUD",
+      "occupationName": "Other Information And Organisation Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2249-other-information-and-organisation-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "224913": {
+      "weeklyEarnings": 2189,
+      "annualSalary": 113828,
+      "currency": "AUD",
+      "occupationName": "Other Information And Organisation Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2249-other-information-and-organisation-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "225111": {
+      "weeklyEarnings": 1957,
+      "annualSalary": 101764,
+      "currency": "AUD",
+      "occupationName": "Advertising And Marketing Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2251-advertising-and-marketing-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "225113": {
+      "weeklyEarnings": 1957,
+      "annualSalary": 101764,
+      "currency": "AUD",
+      "occupationName": "Advertising And Marketing Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2251-advertising-and-marketing-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "225211": {
+      "weeklyEarnings": 2003,
+      "annualSalary": 104156,
+      "currency": "AUD",
+      "occupationName": "Ict Sales Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2252-ict-sales-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "225411": {
+      "weeklyEarnings": 2596,
+      "annualSalary": 134992,
+      "currency": "AUD",
+      "occupationName": "Technical Sales Representatives",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2254-technical-sales-representatives",
+      "sourceLevel": "4-digit"
+    },
+    "225499": {
+      "weeklyEarnings": 2596,
+      "annualSalary": 134992,
+      "currency": "AUD",
+      "occupationName": "Technical Sales Representatives",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2254-technical-sales-representatives",
+      "sourceLevel": "4-digit"
+    },
+    "232111": {
+      "weeklyEarnings": 2308,
+      "annualSalary": 120016,
+      "currency": "AUD",
+      "occupationName": "Architects And Landscape Architects",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2321-architects-and-landscape-architects",
+      "sourceLevel": "4-digit"
+    },
+    "232112": {
+      "weeklyEarnings": 2308,
+      "annualSalary": 120016,
+      "currency": "AUD",
+      "occupationName": "Architects And Landscape Architects",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2321-architects-and-landscape-architects",
+      "sourceLevel": "4-digit"
+    },
+    "232212": {
+      "weeklyEarnings": 2300,
+      "annualSalary": 119600,
+      "currency": "AUD",
+      "occupationName": "Surveyors And Spatial Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2322-surveyors-and-spatial-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "232213": {
+      "weeklyEarnings": 2300,
+      "annualSalary": 119600,
+      "currency": "AUD",
+      "occupationName": "Surveyors And Spatial Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2322-surveyors-and-spatial-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "233111": {
+      "weeklyEarnings": 2849,
+      "annualSalary": 148148,
+      "currency": "AUD",
+      "occupationName": "Chemical And Materials Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2331-chemical-and-materials-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "233211": {
+      "weeklyEarnings": 2217,
+      "annualSalary": 115284,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2332-civil-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233212": {
+      "weeklyEarnings": 2217,
+      "annualSalary": 115284,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2332-civil-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233213": {
+      "weeklyEarnings": 2217,
+      "annualSalary": 115284,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2332-civil-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233214": {
+      "weeklyEarnings": 2217,
+      "annualSalary": 115284,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2332-civil-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233215": {
+      "weeklyEarnings": 2217,
+      "annualSalary": 115284,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2332-civil-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233511": {
+      "weeklyEarnings": 2614,
+      "annualSalary": 135928,
+      "currency": "AUD",
+      "occupationName": "Industrial Mechanical And Production Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2335-industrial-mechanical-and-production-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "233512": {
+      "weeklyEarnings": 2614,
+      "annualSalary": 135928,
+      "currency": "AUD",
+      "occupationName": "Industrial Mechanical And Production Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2335-industrial-mechanical-and-production-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "233513": {
+      "weeklyEarnings": 2614,
+      "annualSalary": 135928,
+      "currency": "AUD",
+      "occupationName": "Industrial Mechanical And Production Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2335-industrial-mechanical-and-production-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "233611": {
+      "weeklyEarnings": 3518,
+      "annualSalary": 182936,
+      "currency": "AUD",
+      "occupationName": "Mining Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2336-mining-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "233612": {
+      "weeklyEarnings": 3518,
+      "annualSalary": 182936,
+      "currency": "AUD",
+      "occupationName": "Mining Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2336-mining-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "233911": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233912": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233913": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233914": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233915": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233916": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "233999": {
+      "weeklyEarnings": 2649,
+      "annualSalary": 137748,
+      "currency": "AUD",
+      "occupationName": "Other Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2339-other-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "234111": {
+      "weeklyEarnings": 2074,
+      "annualSalary": 107848,
+      "currency": "AUD",
+      "occupationName": "Agricultural And Forestry Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2341-agricultural-and-forestry-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234112": {
+      "weeklyEarnings": 2074,
+      "annualSalary": 107848,
+      "currency": "AUD",
+      "occupationName": "Agricultural And Forestry Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2341-agricultural-and-forestry-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234211": {
+      "weeklyEarnings": 2194,
+      "annualSalary": 114088,
+      "currency": "AUD",
+      "occupationName": "Chemists And Food And Wine Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2342-chemists-and-food-and-wine-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234212": {
+      "weeklyEarnings": 2194,
+      "annualSalary": 114088,
+      "currency": "AUD",
+      "occupationName": "Chemists And Food And Wine Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2342-chemists-and-food-and-wine-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234311": {
+      "weeklyEarnings": 1953,
+      "annualSalary": 101556,
+      "currency": "AUD",
+      "occupationName": "Environmental Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2343-environmental-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234312": {
+      "weeklyEarnings": 1953,
+      "annualSalary": 101556,
+      "currency": "AUD",
+      "occupationName": "Environmental Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2343-environmental-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234411": {
+      "weeklyEarnings": 2914,
+      "annualSalary": 151528,
+      "currency": "AUD",
+      "occupationName": "Geologists Geophysicists And Hydrogeologists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2344-geologists-geophysicists-and-hydrogeologists",
+      "sourceLevel": "4-digit"
+    },
+    "234412": {
+      "weeklyEarnings": 2914,
+      "annualSalary": 151528,
+      "currency": "AUD",
+      "occupationName": "Geologists Geophysicists And Hydrogeologists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2344-geologists-geophysicists-and-hydrogeologists",
+      "sourceLevel": "4-digit"
+    },
+    "234413": {
+      "weeklyEarnings": 2914,
+      "annualSalary": 151528,
+      "currency": "AUD",
+      "occupationName": "Geologists Geophysicists And Hydrogeologists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2344-geologists-geophysicists-and-hydrogeologists",
+      "sourceLevel": "4-digit"
+    },
+    "234511": {
+      "weeklyEarnings": 1544,
+      "annualSalary": 80288,
+      "currency": "AUD",
+      "occupationName": "Life Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2345-life-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234513": {
+      "weeklyEarnings": 1544,
+      "annualSalary": 80288,
+      "currency": "AUD",
+      "occupationName": "Life Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2345-life-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234514": {
+      "weeklyEarnings": 1544,
+      "annualSalary": 80288,
+      "currency": "AUD",
+      "occupationName": "Life Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2345-life-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234515": {
+      "weeklyEarnings": 1544,
+      "annualSalary": 80288,
+      "currency": "AUD",
+      "occupationName": "Life Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2345-life-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234516": {
+      "weeklyEarnings": 1544,
+      "annualSalary": 80288,
+      "currency": "AUD",
+      "occupationName": "Life Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2345-life-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234517": {
+      "weeklyEarnings": 1544,
+      "annualSalary": 80288,
+      "currency": "AUD",
+      "occupationName": "Life Scientists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2345-life-scientists",
+      "sourceLevel": "4-digit"
+    },
+    "234911": {
+      "weeklyEarnings": 1848,
+      "annualSalary": 96096,
+      "currency": "AUD",
+      "occupationName": "Other Natural And Physical Science Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2349-other-natural-and-physical-science-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "234912": {
+      "weeklyEarnings": 1848,
+      "annualSalary": 96096,
+      "currency": "AUD",
+      "occupationName": "Other Natural And Physical Science Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2349-other-natural-and-physical-science-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "234913": {
+      "weeklyEarnings": 1848,
+      "annualSalary": 96096,
+      "currency": "AUD",
+      "occupationName": "Other Natural And Physical Science Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2349-other-natural-and-physical-science-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "234914": {
+      "weeklyEarnings": 1848,
+      "annualSalary": 96096,
+      "currency": "AUD",
+      "occupationName": "Other Natural And Physical Science Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2349-other-natural-and-physical-science-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "234999": {
+      "weeklyEarnings": 1848,
+      "annualSalary": 96096,
+      "currency": "AUD",
+      "occupationName": "Other Natural And Physical Science Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2349-other-natural-and-physical-science-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "241511": {
+      "weeklyEarnings": 2160,
+      "annualSalary": 112320,
+      "currency": "AUD",
+      "occupationName": "Special Education Teachers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2415-special-education-teachers",
+      "sourceLevel": "4-digit"
+    },
+    "242111": {
+      "weeklyEarnings": 2924,
+      "annualSalary": 152048,
+      "currency": "AUD",
+      "occupationName": "University Lecturers And Tutors",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2421-university-lecturers-and-tutors",
+      "sourceLevel": "4-digit"
+    },
+    "249111": {
+      "weeklyEarnings": 2524,
+      "annualSalary": 131248,
+      "currency": "AUD",
+      "occupationName": "Education Advisers And Reviewers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2491-education-advisers-and-reviewers",
+      "sourceLevel": "4-digit"
+    },
+    "249211": {
+      "weeklyEarnings": 2518,
+      "annualSalary": 130936,
+      "currency": "AUD",
+      "occupationName": "Private Tutors And Teachers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2492-private-tutors-and-teachers",
+      "sourceLevel": "4-digit"
+    },
+    "251211": {
+      "weeklyEarnings": 2360,
+      "annualSalary": 122720,
+      "currency": "AUD",
+      "occupationName": "Medical Imaging Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2512-medical-imaging-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "251212": {
+      "weeklyEarnings": 2360,
+      "annualSalary": 122720,
+      "currency": "AUD",
+      "occupationName": "Medical Imaging Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2512-medical-imaging-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "251213": {
+      "weeklyEarnings": 2360,
+      "annualSalary": 122720,
+      "currency": "AUD",
+      "occupationName": "Medical Imaging Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2512-medical-imaging-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "251214": {
+      "weeklyEarnings": 2360,
+      "annualSalary": 122720,
+      "currency": "AUD",
+      "occupationName": "Medical Imaging Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2512-medical-imaging-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "251311": {
+      "weeklyEarnings": 2284,
+      "annualSalary": 118768,
+      "currency": "AUD",
+      "occupationName": "Occupational And Environmental Health Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2513-occupational-and-environmental-health-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "251312": {
+      "weeklyEarnings": 2284,
+      "annualSalary": 118768,
+      "currency": "AUD",
+      "occupationName": "Occupational And Environmental Health Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2513-occupational-and-environmental-health-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "251511": {
+      "weeklyEarnings": 1956,
+      "annualSalary": 101712,
+      "currency": "AUD",
+      "occupationName": "Pharmacists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2515-pharmacists",
+      "sourceLevel": "4-digit"
+    },
+    "251512": {
+      "weeklyEarnings": 1956,
+      "annualSalary": 101712,
+      "currency": "AUD",
+      "occupationName": "Pharmacists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2515-pharmacists",
+      "sourceLevel": "4-digit"
+    },
+    "251513": {
+      "weeklyEarnings": 1956,
+      "annualSalary": 101712,
+      "currency": "AUD",
+      "occupationName": "Pharmacists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2515-pharmacists",
+      "sourceLevel": "4-digit"
+    },
+    "251999": {
+      "weeklyEarnings": 2024,
+      "annualSalary": 105248,
+      "currency": "AUD",
+      "occupationName": "Other Health Diagnostic And Promotion Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2519-other-health-diagnostic-and-promotion-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "252311": {
+      "weeklyEarnings": 3232,
+      "annualSalary": 168064,
+      "currency": "AUD",
+      "occupationName": "Dental Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2523-dental-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "252312": {
+      "weeklyEarnings": 3232,
+      "annualSalary": 168064,
+      "currency": "AUD",
+      "occupationName": "Dental Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2523-dental-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "252711": {
+      "weeklyEarnings": 2003,
+      "annualSalary": 104156,
+      "currency": "AUD",
+      "occupationName": "Audiologists And Speech Pathologists Therapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2527-audiologists-and-speech-pathologists-therapists",
+      "sourceLevel": "4-digit"
+    },
+    "252712": {
+      "weeklyEarnings": 2003,
+      "annualSalary": 104156,
+      "currency": "AUD",
+      "occupationName": "Audiologists And Speech Pathologists Therapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2527-audiologists-and-speech-pathologists-therapists",
+      "sourceLevel": "4-digit"
+    },
+    "253111": {
+      "weeklyEarnings": 2446,
+      "annualSalary": 127192,
+      "currency": "AUD",
+      "occupationName": "General Practitioners And Resident Medical Officers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2531-general-practitioners-and-resident-medical-officers",
+      "sourceLevel": "4-digit"
+    },
+    "253112": {
+      "weeklyEarnings": 2446,
+      "annualSalary": 127192,
+      "currency": "AUD",
+      "occupationName": "General Practitioners And Resident Medical Officers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2531-general-practitioners-and-resident-medical-officers",
+      "sourceLevel": "4-digit"
+    },
+    "253311": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253312": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253313": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253314": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253315": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253316": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253317": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253318": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253321": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253322": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253323": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253324": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253399": {
+      "weeklyEarnings": 3620,
+      "annualSalary": 188240,
+      "currency": "AUD",
+      "occupationName": "Specialist Physicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2533-specialist-physicians",
+      "sourceLevel": "4-digit"
+    },
+    "253511": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253512": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253513": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253514": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253515": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253516": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253517": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253518": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253521": {
+      "weeklyEarnings": 3905,
+      "annualSalary": 203060,
+      "currency": "AUD",
+      "occupationName": "Surgeons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2535-surgeons",
+      "sourceLevel": "4-digit"
+    },
+    "253911": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253912": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253913": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253914": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253915": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253917": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253918": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "253999": {
+      "weeklyEarnings": 5013,
+      "annualSalary": 260676,
+      "currency": "AUD",
+      "occupationName": "Other Medical Practitioners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2539-other-medical-practitioners",
+      "sourceLevel": "4-digit"
+    },
+    "254411": {
+      "weeklyEarnings": 2192,
+      "annualSalary": 113984,
+      "currency": "AUD",
+      "occupationName": "Registered Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2544-registered-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "254412": {
+      "weeklyEarnings": 2192,
+      "annualSalary": 113984,
+      "currency": "AUD",
+      "occupationName": "Registered Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2544-registered-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "254418": {
+      "weeklyEarnings": 2192,
+      "annualSalary": 113984,
+      "currency": "AUD",
+      "occupationName": "Registered Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2544-registered-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "254421": {
+      "weeklyEarnings": 2192,
+      "annualSalary": 113984,
+      "currency": "AUD",
+      "occupationName": "Registered Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2544-registered-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "254423": {
+      "weeklyEarnings": 2192,
+      "annualSalary": 113984,
+      "currency": "AUD",
+      "occupationName": "Registered Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2544-registered-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "254499": {
+      "weeklyEarnings": 2192,
+      "annualSalary": 113984,
+      "currency": "AUD",
+      "occupationName": "Registered Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2544-registered-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "261111": {
+      "weeklyEarnings": 2697,
+      "annualSalary": 140244,
+      "currency": "AUD",
+      "occupationName": "Ict Business And Systems Analysts",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2611-ict-business-and-systems-analysts",
+      "sourceLevel": "4-digit"
+    },
+    "261112": {
+      "weeklyEarnings": 2697,
+      "annualSalary": 140244,
+      "currency": "AUD",
+      "occupationName": "Ict Business And Systems Analysts",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2611-ict-business-and-systems-analysts",
+      "sourceLevel": "4-digit"
+    },
+    "261211": {
+      "weeklyEarnings": 2476,
+      "annualSalary": 128752,
+      "currency": "AUD",
+      "occupationName": "Multimedia Specialists And Web Developers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2612-multimedia-specialists-and-web-developers",
+      "sourceLevel": "4-digit"
+    },
+    "261212": {
+      "weeklyEarnings": 2476,
+      "annualSalary": 128752,
+      "currency": "AUD",
+      "occupationName": "Multimedia Specialists And Web Developers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2612-multimedia-specialists-and-web-developers",
+      "sourceLevel": "4-digit"
+    },
+    "261311": {
+      "weeklyEarnings": 2537,
+      "annualSalary": 131924,
+      "currency": "AUD",
+      "occupationName": "Software And Applications Programmers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2613-software-and-applications-programmers",
+      "sourceLevel": "4-digit"
+    },
+    "261312": {
+      "weeklyEarnings": 2537,
+      "annualSalary": 131924,
+      "currency": "AUD",
+      "occupationName": "Software And Applications Programmers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2613-software-and-applications-programmers",
+      "sourceLevel": "4-digit"
+    },
+    "261313": {
+      "weeklyEarnings": 2537,
+      "annualSalary": 131924,
+      "currency": "AUD",
+      "occupationName": "Software And Applications Programmers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2613-software-and-applications-programmers",
+      "sourceLevel": "4-digit"
+    },
+    "261314": {
+      "weeklyEarnings": 2537,
+      "annualSalary": 131924,
+      "currency": "AUD",
+      "occupationName": "Software And Applications Programmers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2613-software-and-applications-programmers",
+      "sourceLevel": "4-digit"
+    },
+    "261399": {
+      "weeklyEarnings": 2537,
+      "annualSalary": 131924,
+      "currency": "AUD",
+      "occupationName": "Software And Applications Programmers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2613-software-and-applications-programmers",
+      "sourceLevel": "4-digit"
+    },
+    "262111": {
+      "weeklyEarnings": 2461,
+      "annualSalary": 127972,
+      "currency": "AUD",
+      "occupationName": "Database And Systems Administrators And Ict Security Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2621-database-and-systems-administrators-and-ict-security-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "262112": {
+      "weeklyEarnings": 2461,
+      "annualSalary": 127972,
+      "currency": "AUD",
+      "occupationName": "Database And Systems Administrators And Ict Security Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2621-database-and-systems-administrators-and-ict-security-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "262113": {
+      "weeklyEarnings": 2461,
+      "annualSalary": 127972,
+      "currency": "AUD",
+      "occupationName": "Database And Systems Administrators And Ict Security Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2621-database-and-systems-administrators-and-ict-security-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "263111": {
+      "weeklyEarnings": 2309,
+      "annualSalary": 120068,
+      "currency": "AUD",
+      "occupationName": "Computer Network Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2631-computer-network-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "263112": {
+      "weeklyEarnings": 2309,
+      "annualSalary": 120068,
+      "currency": "AUD",
+      "occupationName": "Computer Network Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2631-computer-network-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "263113": {
+      "weeklyEarnings": 2309,
+      "annualSalary": 120068,
+      "currency": "AUD",
+      "occupationName": "Computer Network Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2631-computer-network-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "263211": {
+      "weeklyEarnings": 2115,
+      "annualSalary": 109980,
+      "currency": "AUD",
+      "occupationName": "Ict Support And Test Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2632-ict-support-and-test-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "263212": {
+      "weeklyEarnings": 2115,
+      "annualSalary": 109980,
+      "currency": "AUD",
+      "occupationName": "Ict Support And Test Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2632-ict-support-and-test-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "263213": {
+      "weeklyEarnings": 2115,
+      "annualSalary": 109980,
+      "currency": "AUD",
+      "occupationName": "Ict Support And Test Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2632-ict-support-and-test-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "263299": {
+      "weeklyEarnings": 2115,
+      "annualSalary": 109980,
+      "currency": "AUD",
+      "occupationName": "Ict Support And Test Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2632-ict-support-and-test-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "263311": {
+      "weeklyEarnings": 2797,
+      "annualSalary": 145444,
+      "currency": "AUD",
+      "occupationName": "Telecommunications Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2633-telecommunications-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "263312": {
+      "weeklyEarnings": 2797,
+      "annualSalary": 145444,
+      "currency": "AUD",
+      "occupationName": "Telecommunications Engineering Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2633-telecommunications-engineering-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "271299": {
+      "weeklyEarnings": 2803,
+      "annualSalary": 145756,
+      "currency": "AUD",
+      "occupationName": "Judicial And Other Legal Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2712-judicial-and-other-legal-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "272199": {
+      "weeklyEarnings": 2154,
+      "annualSalary": 112008,
+      "currency": "AUD",
+      "occupationName": "Counsellors",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2721-counsellors",
+      "sourceLevel": "4-digit"
+    },
+    "272311": {
+      "weeklyEarnings": 2204,
+      "annualSalary": 114608,
+      "currency": "AUD",
+      "occupationName": "Psychologists And Psychotherapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2723-psychologists-and-psychotherapists",
+      "sourceLevel": "4-digit"
+    },
+    "272312": {
+      "weeklyEarnings": 2204,
+      "annualSalary": 114608,
+      "currency": "AUD",
+      "occupationName": "Psychologists And Psychotherapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2723-psychologists-and-psychotherapists",
+      "sourceLevel": "4-digit"
+    },
+    "272313": {
+      "weeklyEarnings": 2204,
+      "annualSalary": 114608,
+      "currency": "AUD",
+      "occupationName": "Psychologists And Psychotherapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2723-psychologists-and-psychotherapists",
+      "sourceLevel": "4-digit"
+    },
+    "272314": {
+      "weeklyEarnings": 2204,
+      "annualSalary": 114608,
+      "currency": "AUD",
+      "occupationName": "Psychologists And Psychotherapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2723-psychologists-and-psychotherapists",
+      "sourceLevel": "4-digit"
+    },
+    "272399": {
+      "weeklyEarnings": 2204,
+      "annualSalary": 114608,
+      "currency": "AUD",
+      "occupationName": "Psychologists And Psychotherapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2723-psychologists-and-psychotherapists",
+      "sourceLevel": "4-digit"
+    },
+    "272411": {
+      "weeklyEarnings": 2113,
+      "annualSalary": 109876,
+      "currency": "AUD",
+      "occupationName": "Social Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2724-social-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "272412": {
+      "weeklyEarnings": 2113,
+      "annualSalary": 109876,
+      "currency": "AUD",
+      "occupationName": "Social Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2724-social-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "272413": {
+      "weeklyEarnings": 2113,
+      "annualSalary": 109876,
+      "currency": "AUD",
+      "occupationName": "Social Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2724-social-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "272499": {
+      "weeklyEarnings": 2113,
+      "annualSalary": 109876,
+      "currency": "AUD",
+      "occupationName": "Social Professionals",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/2724-social-professionals",
+      "sourceLevel": "4-digit"
+    },
+    "311211": {
+      "weeklyEarnings": 1539,
+      "annualSalary": 80028,
+      "currency": "AUD",
+      "occupationName": "Medical Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3112-medical-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "311212": {
+      "weeklyEarnings": 1539,
+      "annualSalary": 80028,
+      "currency": "AUD",
+      "occupationName": "Medical Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3112-medical-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "311299": {
+      "weeklyEarnings": 1539,
+      "annualSalary": 80028,
+      "currency": "AUD",
+      "occupationName": "Medical Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3112-medical-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "311411": {
+      "weeklyEarnings": 1794,
+      "annualSalary": 93288,
+      "currency": "AUD",
+      "occupationName": "Science Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3114-science-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "311412": {
+      "weeklyEarnings": 1794,
+      "annualSalary": 93288,
+      "currency": "AUD",
+      "occupationName": "Science Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3114-science-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "311413": {
+      "weeklyEarnings": 1794,
+      "annualSalary": 93288,
+      "currency": "AUD",
+      "occupationName": "Science Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3114-science-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "311499": {
+      "weeklyEarnings": 1794,
+      "annualSalary": 93288,
+      "currency": "AUD",
+      "occupationName": "Science Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3114-science-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312111": {
+      "weeklyEarnings": 2280,
+      "annualSalary": 118560,
+      "currency": "AUD",
+      "occupationName": "Architectural Building And Surveying Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3121-architectural-building-and-surveying-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312112": {
+      "weeklyEarnings": 2280,
+      "annualSalary": 118560,
+      "currency": "AUD",
+      "occupationName": "Architectural Building And Surveying Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3121-architectural-building-and-surveying-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312199": {
+      "weeklyEarnings": 2280,
+      "annualSalary": 118560,
+      "currency": "AUD",
+      "occupationName": "Architectural Building And Surveying Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3121-architectural-building-and-surveying-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312211": {
+      "weeklyEarnings": 1730,
+      "annualSalary": 89960,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Draftspersons And Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3122-civil-engineering-draftspersons-and-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312212": {
+      "weeklyEarnings": 1730,
+      "annualSalary": 89960,
+      "currency": "AUD",
+      "occupationName": "Civil Engineering Draftspersons And Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3122-civil-engineering-draftspersons-and-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312311": {
+      "weeklyEarnings": 2854,
+      "annualSalary": 148408,
+      "currency": "AUD",
+      "occupationName": "Electrical Engineering Draftspersons Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3123-electrical-engineering-draftspersons-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312312": {
+      "weeklyEarnings": 2854,
+      "annualSalary": 148408,
+      "currency": "AUD",
+      "occupationName": "Electrical Engineering Draftspersons Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3123-electrical-engineering-draftspersons-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312411": {
+      "weeklyEarnings": 2142,
+      "annualSalary": 111384,
+      "currency": "AUD",
+      "occupationName": "Electronic Engineering Draftspersons Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3124-electronic-engineering-draftspersons-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312412": {
+      "weeklyEarnings": 2142,
+      "annualSalary": 111384,
+      "currency": "AUD",
+      "occupationName": "Electronic Engineering Draftspersons Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3124-electronic-engineering-draftspersons-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312511": {
+      "weeklyEarnings": 2589,
+      "annualSalary": 134628,
+      "currency": "AUD",
+      "occupationName": "Mechanical Engineering Draftspersons Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3125-mechanical-engineering-draftspersons-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312512": {
+      "weeklyEarnings": 2589,
+      "annualSalary": 134628,
+      "currency": "AUD",
+      "occupationName": "Mechanical Engineering Draftspersons Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3125-mechanical-engineering-draftspersons-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "312912": {
+      "weeklyEarnings": 2954,
+      "annualSalary": 153608,
+      "currency": "AUD",
+      "occupationName": "Other Building And Engineering Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3129-other-building-and-engineering-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "313111": {
+      "weeklyEarnings": 1687,
+      "annualSalary": 87724,
+      "currency": "AUD",
+      "occupationName": "Ict Support Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3131-ict-support-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "313112": {
+      "weeklyEarnings": 1687,
+      "annualSalary": 87724,
+      "currency": "AUD",
+      "occupationName": "Ict Support Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3131-ict-support-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "313199": {
+      "weeklyEarnings": 1687,
+      "annualSalary": 87724,
+      "currency": "AUD",
+      "occupationName": "Ict Support Technicians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3131-ict-support-technicians",
+      "sourceLevel": "4-digit"
+    },
+    "313211": {
+      "weeklyEarnings": 2286,
+      "annualSalary": 118872,
+      "currency": "AUD",
+      "occupationName": "Telecommunications Technical Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3132-telecommunications-technical-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "313212": {
+      "weeklyEarnings": 2286,
+      "annualSalary": 118872,
+      "currency": "AUD",
+      "occupationName": "Telecommunications Technical Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3132-telecommunications-technical-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "313213": {
+      "weeklyEarnings": 2286,
+      "annualSalary": 118872,
+      "currency": "AUD",
+      "occupationName": "Telecommunications Technical Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3132-telecommunications-technical-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "313214": {
+      "weeklyEarnings": 2286,
+      "annualSalary": 118872,
+      "currency": "AUD",
+      "occupationName": "Telecommunications Technical Specialists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3132-telecommunications-technical-specialists",
+      "sourceLevel": "4-digit"
+    },
+    "321211": {
+      "weeklyEarnings": 1622,
+      "annualSalary": 84344,
+      "currency": "AUD",
+      "occupationName": "Motor Mechanics",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3212-motor-mechanics",
+      "sourceLevel": "4-digit"
+    },
+    "321212": {
+      "weeklyEarnings": 1622,
+      "annualSalary": 84344,
+      "currency": "AUD",
+      "occupationName": "Motor Mechanics",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3212-motor-mechanics",
+      "sourceLevel": "4-digit"
+    },
+    "321213": {
+      "weeklyEarnings": 1622,
+      "annualSalary": 84344,
+      "currency": "AUD",
+      "occupationName": "Motor Mechanics",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3212-motor-mechanics",
+      "sourceLevel": "4-digit"
+    },
+    "321214": {
+      "weeklyEarnings": 1622,
+      "annualSalary": 84344,
+      "currency": "AUD",
+      "occupationName": "Motor Mechanics",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3212-motor-mechanics",
+      "sourceLevel": "4-digit"
+    },
+    "322311": {
+      "weeklyEarnings": 1688,
+      "annualSalary": 87776,
+      "currency": "AUD",
+      "occupationName": "Structural Steel And Welding Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3223-structural-steel-and-welding-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "322312": {
+      "weeklyEarnings": 1688,
+      "annualSalary": 87776,
+      "currency": "AUD",
+      "occupationName": "Structural Steel And Welding Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3223-structural-steel-and-welding-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "322313": {
+      "weeklyEarnings": 1688,
+      "annualSalary": 87776,
+      "currency": "AUD",
+      "occupationName": "Structural Steel And Welding Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3223-structural-steel-and-welding-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "323112": {
+      "weeklyEarnings": 1980,
+      "annualSalary": 102960,
+      "currency": "AUD",
+      "occupationName": "Aircraft Maintenance Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3231-aircraft-maintenance-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "323113": {
+      "weeklyEarnings": 1980,
+      "annualSalary": 102960,
+      "currency": "AUD",
+      "occupationName": "Aircraft Maintenance Engineers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3231-aircraft-maintenance-engineers",
+      "sourceLevel": "4-digit"
+    },
+    "323211": {
+      "weeklyEarnings": 2606,
+      "annualSalary": 135512,
+      "currency": "AUD",
+      "occupationName": "Metal Fitters And Machinists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3232-metal-fitters-and-machinists",
+      "sourceLevel": "4-digit"
+    },
+    "323212": {
+      "weeklyEarnings": 2606,
+      "annualSalary": 135512,
+      "currency": "AUD",
+      "occupationName": "Metal Fitters And Machinists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3232-metal-fitters-and-machinists",
+      "sourceLevel": "4-digit"
+    },
+    "323214": {
+      "weeklyEarnings": 2606,
+      "annualSalary": 135512,
+      "currency": "AUD",
+      "occupationName": "Metal Fitters And Machinists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3232-metal-fitters-and-machinists",
+      "sourceLevel": "4-digit"
+    },
+    "323311": {
+      "weeklyEarnings": 1537,
+      "annualSalary": 79924,
+      "currency": "AUD",
+      "occupationName": "Precision Metal Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3233-precision-metal-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "323312": {
+      "weeklyEarnings": 1537,
+      "annualSalary": 79924,
+      "currency": "AUD",
+      "occupationName": "Precision Metal Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3233-precision-metal-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "331111": {
+      "weeklyEarnings": 2317,
+      "annualSalary": 120484,
+      "currency": "AUD",
+      "occupationName": "Bricklayers And Stonemasons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3311-bricklayers-and-stonemasons",
+      "sourceLevel": "4-digit"
+    },
+    "331112": {
+      "weeklyEarnings": 2317,
+      "annualSalary": 120484,
+      "currency": "AUD",
+      "occupationName": "Bricklayers And Stonemasons",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3311-bricklayers-and-stonemasons",
+      "sourceLevel": "4-digit"
+    },
+    "331212": {
+      "weeklyEarnings": 1760,
+      "annualSalary": 91520,
+      "currency": "AUD",
+      "occupationName": "Carpenters And Joiners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3312-carpenters-and-joiners",
+      "sourceLevel": "4-digit"
+    },
+    "331213": {
+      "weeklyEarnings": 1760,
+      "annualSalary": 91520,
+      "currency": "AUD",
+      "occupationName": "Carpenters And Joiners",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3312-carpenters-and-joiners",
+      "sourceLevel": "4-digit"
+    },
+    "333211": {
+      "weeklyEarnings": 1841,
+      "annualSalary": 95732,
+      "currency": "AUD",
+      "occupationName": "Plasterers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3332-plasterers",
+      "sourceLevel": "4-digit"
+    },
+    "334111": {
+      "weeklyEarnings": 1990,
+      "annualSalary": 103480,
+      "currency": "AUD",
+      "occupationName": "Plumbers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3341-plumbers",
+      "sourceLevel": "4-digit"
+    },
+    "334112": {
+      "weeklyEarnings": 1990,
+      "annualSalary": 103480,
+      "currency": "AUD",
+      "occupationName": "Plumbers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3341-plumbers",
+      "sourceLevel": "4-digit"
+    },
+    "334113": {
+      "weeklyEarnings": 1990,
+      "annualSalary": 103480,
+      "currency": "AUD",
+      "occupationName": "Plumbers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3341-plumbers",
+      "sourceLevel": "4-digit"
+    },
+    "334114": {
+      "weeklyEarnings": 1990,
+      "annualSalary": 103480,
+      "currency": "AUD",
+      "occupationName": "Plumbers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3341-plumbers",
+      "sourceLevel": "4-digit"
+    },
+    "334115": {
+      "weeklyEarnings": 1990,
+      "annualSalary": 103480,
+      "currency": "AUD",
+      "occupationName": "Plumbers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3341-plumbers",
+      "sourceLevel": "4-digit"
+    },
+    "341111": {
+      "weeklyEarnings": 2191,
+      "annualSalary": 113932,
+      "currency": "AUD",
+      "occupationName": "Electricians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3411-electricians",
+      "sourceLevel": "4-digit"
+    },
+    "341112": {
+      "weeklyEarnings": 2191,
+      "annualSalary": 113932,
+      "currency": "AUD",
+      "occupationName": "Electricians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3411-electricians",
+      "sourceLevel": "4-digit"
+    },
+    "341113": {
+      "weeklyEarnings": 2191,
+      "annualSalary": 113932,
+      "currency": "AUD",
+      "occupationName": "Electricians",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3411-electricians",
+      "sourceLevel": "4-digit"
+    },
+    "342211": {
+      "weeklyEarnings": 2731,
+      "annualSalary": 142012,
+      "currency": "AUD",
+      "occupationName": "Electrical Distribution Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3422-electrical-distribution-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "342311": {
+      "weeklyEarnings": 1882,
+      "annualSalary": 97864,
+      "currency": "AUD",
+      "occupationName": "Electronics Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3423-electronics-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "342312": {
+      "weeklyEarnings": 1882,
+      "annualSalary": 97864,
+      "currency": "AUD",
+      "occupationName": "Electronics Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3423-electronics-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "342313": {
+      "weeklyEarnings": 1882,
+      "annualSalary": 97864,
+      "currency": "AUD",
+      "occupationName": "Electronics Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3423-electronics-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "342314": {
+      "weeklyEarnings": 1882,
+      "annualSalary": 97864,
+      "currency": "AUD",
+      "occupationName": "Electronics Trades Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3423-electronics-trades-workers",
+      "sourceLevel": "4-digit"
+    },
+    "351111": {
+      "weeklyEarnings": 1417,
+      "annualSalary": 73684,
+      "currency": "AUD",
+      "occupationName": "Bakers And Pastrycooks",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3511-bakers-and-pastrycooks",
+      "sourceLevel": "4-digit"
+    },
+    "351112": {
+      "weeklyEarnings": 1417,
+      "annualSalary": 73684,
+      "currency": "AUD",
+      "occupationName": "Bakers And Pastrycooks",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3511-bakers-and-pastrycooks",
+      "sourceLevel": "4-digit"
+    },
+    "361111": {
+      "weeklyEarnings": 1276,
+      "annualSalary": 66352,
+      "currency": "AUD",
+      "occupationName": "Animal Attendants And Trainers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/3611-animal-attendants-and-trainers",
+      "sourceLevel": "4-digit"
+    },
+    "411111": {
+      "weeklyEarnings": 2852,
+      "annualSalary": 148304,
+      "currency": "AUD",
+      "occupationName": "Ambulance Officers And Paramedics",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4111-ambulance-officers-and-paramedics",
+      "sourceLevel": "4-digit"
+    },
+    "411112": {
+      "weeklyEarnings": 2852,
+      "annualSalary": 148304,
+      "currency": "AUD",
+      "occupationName": "Ambulance Officers And Paramedics",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4111-ambulance-officers-and-paramedics",
+      "sourceLevel": "4-digit"
+    },
+    "411211": {
+      "weeklyEarnings": 2210,
+      "annualSalary": 114920,
+      "currency": "AUD",
+      "occupationName": "Dental Hygienists Technicians And Therapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4112-dental-hygienists-technicians-and-therapists",
+      "sourceLevel": "4-digit"
+    },
+    "411212": {
+      "weeklyEarnings": 2210,
+      "annualSalary": 114920,
+      "currency": "AUD",
+      "occupationName": "Dental Hygienists Technicians And Therapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4112-dental-hygienists-technicians-and-therapists",
+      "sourceLevel": "4-digit"
+    },
+    "411213": {
+      "weeklyEarnings": 2210,
+      "annualSalary": 114920,
+      "currency": "AUD",
+      "occupationName": "Dental Hygienists Technicians And Therapists",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4112-dental-hygienists-technicians-and-therapists",
+      "sourceLevel": "4-digit"
+    },
+    "411411": {
+      "weeklyEarnings": 1777,
+      "annualSalary": 92404,
+      "currency": "AUD",
+      "occupationName": "Enrolled And Mothercraft Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4114-enrolled-and-mothercraft-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "411412": {
+      "weeklyEarnings": 1777,
+      "annualSalary": 92404,
+      "currency": "AUD",
+      "occupationName": "Enrolled And Mothercraft Nurses",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4114-enrolled-and-mothercraft-nurses",
+      "sourceLevel": "4-digit"
+    },
+    "411711": {
+      "weeklyEarnings": 1844,
+      "annualSalary": 95888,
+      "currency": "AUD",
+      "occupationName": "Welfare Support Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4117-welfare-support-workers",
+      "sourceLevel": "4-digit"
+    },
+    "421111": {
+      "weeklyEarnings": 1341,
+      "annualSalary": 69732,
+      "currency": "AUD",
+      "occupationName": "Child Carers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4211-child-carers",
+      "sourceLevel": "4-digit"
+    },
+    "422111": {
+      "weeklyEarnings": 1342,
+      "annualSalary": 69784,
+      "currency": "AUD",
+      "occupationName": "Education Aides",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4221-education-aides",
+      "sourceLevel": "4-digit"
+    },
+    "422116": {
+      "weeklyEarnings": 1342,
+      "annualSalary": 69784,
+      "currency": "AUD",
+      "occupationName": "Education Aides",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4221-education-aides",
+      "sourceLevel": "4-digit"
+    },
+    "423312": {
+      "weeklyEarnings": 1612,
+      "annualSalary": 83824,
+      "currency": "AUD",
+      "occupationName": "Nursing Support And Personal Care Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4233-nursing-support-and-personal-care-workers",
+      "sourceLevel": "4-digit"
+    },
+    "423313": {
+      "weeklyEarnings": 1612,
+      "annualSalary": 83824,
+      "currency": "AUD",
+      "occupationName": "Nursing Support And Personal Care Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4233-nursing-support-and-personal-care-workers",
+      "sourceLevel": "4-digit"
+    },
+    "431111": {
+      "weeklyEarnings": 1500,
+      "annualSalary": 78000,
+      "currency": "AUD",
+      "occupationName": "Bar Attendants And Baristas",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4311-bar-attendants-and-baristas",
+      "sourceLevel": "4-digit"
+    },
+    "431911": {
+      "weeklyEarnings": 1574,
+      "annualSalary": 81848,
+      "currency": "AUD",
+      "occupationName": "Other Hospitality Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4319-other-hospitality-workers",
+      "sourceLevel": "4-digit"
+    },
+    "451411": {
+      "weeklyEarnings": 1432,
+      "annualSalary": 74464,
+      "currency": "AUD",
+      "occupationName": "Gallery Museum And Tour Guides",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4514-gallery-museum-and-tour-guides",
+      "sourceLevel": "4-digit"
+    },
+    "451611": {
+      "weeklyEarnings": 1330,
+      "annualSalary": 69160,
+      "currency": "AUD",
+      "occupationName": "Tourism And Travel Advisers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4516-tourism-and-travel-advisers",
+      "sourceLevel": "4-digit"
+    },
+    "451711": {
+      "weeklyEarnings": 1504,
+      "annualSalary": 78208,
+      "currency": "AUD",
+      "occupationName": "Travel Attendants",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/4517-travel-attendants",
+      "sourceLevel": "4-digit"
+    },
+    "511111": {
+      "weeklyEarnings": 2130,
+      "annualSalary": 110760,
+      "currency": "AUD",
+      "occupationName": "Contract Program And Project Administrators",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5111-contract-program-and-project-administrators",
+      "sourceLevel": "4-digit"
+    },
+    "511112": {
+      "weeklyEarnings": 2130,
+      "annualSalary": 110760,
+      "currency": "AUD",
+      "occupationName": "Contract Program And Project Administrators",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5111-contract-program-and-project-administrators",
+      "sourceLevel": "4-digit"
+    },
+    "521211": {
+      "weeklyEarnings": 1626,
+      "annualSalary": 84552,
+      "currency": "AUD",
+      "occupationName": "Secretaries",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5212-secretaries",
+      "sourceLevel": "4-digit"
+    },
+    "521212": {
+      "weeklyEarnings": 1626,
+      "annualSalary": 84552,
+      "currency": "AUD",
+      "occupationName": "Secretaries",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5212-secretaries",
+      "sourceLevel": "4-digit"
+    },
+    "532111": {
+      "weeklyEarnings": 1371,
+      "annualSalary": 71292,
+      "currency": "AUD",
+      "occupationName": "Keyboard Operators",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5321-keyboard-operators",
+      "sourceLevel": "4-digit"
+    },
+    "541111": {
+      "weeklyEarnings": 1414,
+      "annualSalary": 73528,
+      "currency": "AUD",
+      "occupationName": "Call Or Contact Centre Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5411-call-or-contact-centre-workers",
+      "sourceLevel": "4-digit"
+    },
+    "591112": {
+      "weeklyEarnings": 1553,
+      "annualSalary": 80756,
+      "currency": "AUD",
+      "occupationName": "Purchasing And Supply Logistics Clerks",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/5911-purchasing-and-supply-logistics-clerks",
+      "sourceLevel": "4-digit"
+    },
+    "712211": {
+      "weeklyEarnings": 2908,
+      "annualSalary": 151216,
+      "currency": "AUD",
+      "occupationName": "Drillers Miners And Shot Firers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7122-drillers-miners-and-shot-firers",
+      "sourceLevel": "4-digit"
+    },
+    "712212": {
+      "weeklyEarnings": 2908,
+      "annualSalary": 151216,
+      "currency": "AUD",
+      "occupationName": "Drillers Miners And Shot Firers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7122-drillers-miners-and-shot-firers",
+      "sourceLevel": "4-digit"
+    },
+    "712213": {
+      "weeklyEarnings": 2908,
+      "annualSalary": 151216,
+      "currency": "AUD",
+      "occupationName": "Drillers Miners And Shot Firers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7122-drillers-miners-and-shot-firers",
+      "sourceLevel": "4-digit"
+    },
+    "721112": {
+      "weeklyEarnings": 1403,
+      "annualSalary": 72956,
+      "currency": "AUD",
+      "occupationName": "Agricultural Forestry And Horticultural Plant Operators",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7211-agricultural-forestry-and-horticultural-plant-operators",
+      "sourceLevel": "4-digit"
+    },
+    "721211": {
+      "weeklyEarnings": 1900,
+      "annualSalary": 98800,
+      "currency": "AUD",
+      "occupationName": "Earthmoving Plant Operators",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7212-earthmoving-plant-operators",
+      "sourceLevel": "4-digit"
+    },
+    "731211": {
+      "weeklyEarnings": 1795,
+      "annualSalary": 93340,
+      "currency": "AUD",
+      "occupationName": "Bus And Coach Drivers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7312-bus-and-coach-drivers",
+      "sourceLevel": "4-digit"
+    },
+    "733111": {
+      "weeklyEarnings": 1960,
+      "annualSalary": 101920,
+      "currency": "AUD",
+      "occupationName": "Truck Drivers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/7331-truck-drivers",
+      "sourceLevel": "4-digit"
+    },
+    "821111": {
+      "weeklyEarnings": 1827,
+      "annualSalary": 95004,
+      "currency": "AUD",
+      "occupationName": "Building And Plumbing Labourers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/8211-building-and-plumbing-labourers",
+      "sourceLevel": "4-digit"
+    },
+    "821112": {
+      "weeklyEarnings": 1827,
+      "annualSalary": 95004,
+      "currency": "AUD",
+      "occupationName": "Building And Plumbing Labourers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/8211-building-and-plumbing-labourers",
+      "sourceLevel": "4-digit"
+    },
+    "831111": {
+      "weeklyEarnings": 1647,
+      "annualSalary": 85644,
+      "currency": "AUD",
+      "occupationName": "Food And Drink Factory Workers",
+      "sourceUrl": "https://www.jobsandskills.gov.au/data/occupation-and-industry-profiles/occupations/8311-food-and-drink-factory-workers",
+      "sourceLevel": "4-digit"
+    }
+  }
+}
