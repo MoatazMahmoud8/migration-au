@@ -317,7 +317,7 @@ print(f"  Occupations w/o salary data: {no_salary_count}/{len(all_occupations)} 
 
 out_path = PUBLIC / 'state-occupation-requirements.json'
 with open(out_path, 'w') as f:
-    json.dump(output, f, indent=2)
+    json.dump(output, f, separators=(',', ':'))
 print(f"\nWrote {out_path.name} ({out_path.stat().st_size / (1024*1024):.1f} MB)")
 
 print("\nSample (261312 Developer Programmer):")
