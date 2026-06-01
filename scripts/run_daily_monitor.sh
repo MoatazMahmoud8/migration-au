@@ -17,6 +17,8 @@ cd "$REPO_DIR"
   python3 scripts/daily_monitor.py
   echo "--- Refreshing official occupation lists ---"
   python3 scripts/official_lists_scraper.py
+  echo "--- Extracting app seed (hardcoded legacy ANZSCO codes) ---"
+  python3 scripts/extract_app_seed.py
   echo "--- Regenerating state-occupation-requirements ---"
   python3 scripts/generate_visa_specific_requirements.py
   echo "--- Deploying to Firebase ---"

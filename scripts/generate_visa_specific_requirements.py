@@ -26,6 +26,19 @@ with open(PUBLIC / 'all-anzsco-occupations.json') as f:
     all_occ_data = json.load(f)
     all_occupations = {o['anzsco']: o for o in all_occ_data.get('items', [])}
 
+# Merge in app-seed (hardcoded ANZSCO-2013 codes the app UI still references)
+seed_path = PUBLIC / 'app-seed-occupations.json'
+if seed_path.exists():
+    with open(seed_path) as f:
+        seed_data = json.load(f)
+    added = 0
+    for o in seed_data.get('items', []):
+        code = o.get('anzsco')
+        if code and code not in all_occupations:
+            all_occupations[code] = o
+            added += 1
+    print(f"  Merged app-seed: +{added} occupations (total {len(all_occupations)})")
+
 with open(PUBLIC / 'salaries.json') as f:
     salaries_data = json.load(f)
     salaries = salaries_data.get('salaries', {})
@@ -35,6 +48,7 @@ if OFFICIAL_LISTS_FILE.exists():
     with open(OFFICIAL_LISTS_FILE) as f:
         official_lists = json.load(f)
     federal_csol = set(official_lists.get('federal', {}).get('CSOL_anzscos', []))
+    federal_csol_unit_groups = set(official_lists.get('federal', {}).get('CSOL_unit_groups', []))
     state_lists = {
         s: {
             '190': set(info.get('190', [])),
@@ -44,10 +58,11 @@ if OFFICIAL_LISTS_FILE.exists():
         }
         for s, info in official_lists.get('states', {}).items()
     }
-    print(f"  Loaded official lists: federal CSOL = {len(federal_csol)} codes")
+    print(f"  Loaded official lists: federal CSOL = {len(federal_csol)} codes ({len(federal_csol_unit_groups)} unit groups)")
 else:
     print("  WARN: official-occupation-lists.json missing — everything will be 'not_sponsored'")
     federal_csol = set()
+    federal_csol_unit_groups = set()
     state_lists = {}
 
 STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']
@@ -94,15 +109,31 @@ def get_salary(anzsco):
     return None
 
 
-def is_on_list(anzsco, state, visa):
-    if anzsco not in federal_csol:
-        return False
-    if visa == '482':
-        return True  # SC 482 uses federal CSOL only — no state-specific list
+def is_on_federal_csol(anzsco):
+    """Direct 6-digit match, or 4-digit unit group match (handles ANZSCO 2013 vs 2022 drift)."""
+    if anzsco in federal_csol:
+        return True
+    return anzsco[:4] in federal_csol_unit_groups
+
+
+def is_on_state_list(anzsco, state, visa):
     info = state_lists.get(state)
     if not info:
         return False
-    return anzsco in info.get(visa, set())
+    codes = info.get(visa, set())
+    if anzsco in codes:
+        return True
+    # Fall back to 4-digit unit group match (legacy ANZSCO 2013 codes)
+    ug = anzsco[:4]
+    return any(c.startswith(ug) for c in codes)
+
+
+def is_on_list(anzsco, state, visa):
+    if not is_on_federal_csol(anzsco):
+        return False
+    if visa == '482':
+        return True  # SC 482 uses federal CSOL only — no state-specific list
+    return is_on_state_list(anzsco, state, visa)
 
 
 VISA_LABEL = {
@@ -268,7 +299,7 @@ for anzsco, occ in all_occupations.items():
                 per_visa[visa] = sponsored(visa, anzsco, name, cfg, state, src, scraped)
                 sponsored_count += 1
             else:
-                if anzsco not in federal_csol:
+                if not is_on_federal_csol(anzsco):
                     reason = 'Not on federal Combined Skilled Occupation List (CSOL)'
                     s_url = 'https://immi.homeaffairs.gov.au/visas/working-in-australia/skill-occupation-list'
                 else:
