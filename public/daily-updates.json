@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-06-01T10:43:22.110265+00:00",
+  "date": "2026-06-01",
+  "currentRound": {
+    "date": "2025-11-13",
+    "sc189Total": 10000,
+    "sc189TieBreak": "2025-11",
+    "sc491FamilyTotal": 300,
+    "sc491FamilyTieBreak": "2025-10",
+    "source": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
+    "fetchedAt": "2026-06-01T10:43:08.989394+00:00"
+  },
+  "nextRound": {
+    "subclass": "189",
+    "date": "2026-06-04",
+    "raw": "Next invitation Round for Subclass 189 is on 4 June 2026"
+  },
+  "communityFeed": {
+    "source": "smartvisaguide.com",
+    "dailyReportDate": null,
+    "recentGrants": [
+      "190 GRANTED (WA ) (MOTOR MECHANIC)❤️❤️ Finally Its my Turn 😍 Family Of 3...→",
+      "190 grant : 01 June 2026 Occupation; Accountant ONSHORE Applied : 31...→",
+      "491 granted directly. Occupation: ICT Support Engineer Onshore State: SA...→",
+      "491 Granted - Civil Engineer - 90 Points - WA- onshore 🎉🎉🎉🎉🎉...→",
+      "491 Granted 🎉 Finally my golden news has arrived. Occupation-...→",
+      "189 grant, got email at 2:45pm today invited 21st August 2025 ECT lodged...→",
+      "491 Granted just this morning Lodged October 2025 S56 received end of...→",
+      "190 Granted 28/5/26, Civil draftsperson,...→",
+      "190 Granted Welfare Worker WA 90 Points - WASMOL schedule 2 Moved to WA 3...→",
+      "189 grant, got email at 2:45pm invited 21st August ECT lodged date 4th...→"
+    ]
+  },
+  "visaSummary": [
+    {
+      "code": "189",
+      "cost": "AUD $4,885",
+      "processingCutoffLabel": null,
+      "stayDuration": null
+    },
+    {
+      "code": "190",
+      "cost": "AUD $4,885",
+      "processingCutoffLabel": "February 2025",
+      "stayDuration": null
+    },
+    {
+      "code": "491",
+      "cost": "AUD $4,910",
+      "processingCutoffLabel": "January 2025",
+      "stayDuration": null
+    },
+    {
+      "code": "482",
+      "cost": "AUD $3,210",
+      "processingCutoffLabel": null,
+      "stayDuration": null
+    }
+  ],
+  "verification": {
+    "dhaReachable": true,
+    "smartVisaGuideReachable": true,
+    "datesAgree": true
+  }
+}

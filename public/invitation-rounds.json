@@ -2,17 +2,21 @@
   "lastUpdated": "2025-11-13",
   "sourceUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
   "previousRoundsUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/previous-rounds",
-  "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by state governments independently \u2014 no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Department of Home Affairs.",
+  "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by state governments independently — no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Department of Home Affairs.",
   "currentRound": {
     "date": "2025-11-13",
-    "label": "13 November 2025",
-    "sc189Total": 10000,
-    "sc189TieBreak": "2025-11",
-    "sc491FamilyTotal": 300,
-    "sc491FamilyTieBreak": "2025-10"
+    "sc189": {
+      "total": 10000,
+      "tieBreak": "2025-11"
+    },
+    "sc491Family": {
+      "total": 300,
+      "tieBreak": "2025-10"
+    },
+    "source": "dha"
   },
   "stateNominations": {
-    "period": "2025-26 (Jul 2025 \u2013 Apr 2026)",
+    "period": "2025-26 (Jul 2025 – Apr 2026)",
     "sc190": {
       "NSW": 604,
       "VIC": 1894,
@@ -801,5 +805,11 @@
       "sc189Total": 1500,
       "sc491FamilyTotal": 0
     }
-  ]
+  ],
+  "scrapedAt": "2026-06-01T10:43:22.108163+00:00",
+  "nextRound": {
+    "subclass": "189",
+    "date": "2026-06-04",
+    "raw": "Next invitation Round for Subclass 189 is on 4 June 2026"
+  }
 }

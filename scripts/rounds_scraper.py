@@ -27,13 +27,15 @@ from bs4 import BeautifulSoup
 
 CURRENT_URL   = "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds"
 PREVIOUS_URL  = "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/previous-rounds"
-OUTPUT_PATH   = Path(__file__).parent.parent / "repo" / "public" / "invitation-rounds.json"
-TIMEOUT       = 20
+OUTPUT_PATH   = Path(__file__).parent.parent / "public" / "invitation-rounds.json"
+TIMEOUT       = 30
 HEADERS       = {
     "User-Agent": (
-        "Mozilla/5.0 (compatible; MigraTeauBot/1.0; "
-        "+https://migrateau.jsmglobal.xyz)"
-    )
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-AU,en;q=0.9",
 }
 
 logging.basicConfig(
