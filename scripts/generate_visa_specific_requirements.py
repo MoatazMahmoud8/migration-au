@@ -81,22 +81,22 @@ def generate_visa_requirements(anzsco, occupation_name, config, state):
     
     visa_reqs = {}
     
-    # SC 190: Permanent, independent, higher requirements
+    # SC 190: Permanent, state-nominated, higher requirements
     visa_reqs['190'] = {
-        'visa': 'SC 190 Skilled Independent',
+        'visa': 'SC 190 Skilled Nominated',
         'type': 'Permanent',
-        'stream': 'Points-based + State nomination',
+        'stream': 'Points-based + State nomination (mandatory)',
         'minSalary': int(base_min * mult),
         'minExperienceYears': config['exp'],
         'minPoints': 65,  # Higher points threshold
         'skillsAssessmentRequired': True,
         'jobOfferRequired': False,
         'residencyRequired': False,
-        'stateSponsorship': 'Yes',
+        'stateSponsorship': 'Required (mandatory)',
         'notes': [
+            f"State nomination is REQUIRED — you cannot apply without it",
             f"Requires {config['exp']}+ years relevant experience",
-            f"Minimum {65} points on points test",
-            f"State sponsorship increases priority",
+            f"Minimum {65} points on points test (state nomination adds 5 pts)",
             f"Family can accompany on permanent visa",
             f"Pathway to Australian citizenship (4 years residency)",
         ],
@@ -104,18 +104,19 @@ def generate_visa_requirements(anzsco, occupation_name, config, state):
     
     # SC 491: Provisional, regional areas, lower requirements
     visa_reqs['491'] = {
-        'visa': 'SC 491 Skilled Regional',
+        'visa': 'SC 491 Skilled Work Regional',
         'type': 'Provisional (5 years)',
-        'stream': 'Regional + Points-based',
+        'stream': 'Regional + Points-based + State nomination (mandatory)',
         'minSalary': int(base_min * mult * 0.85),  # Lower salary for regional
         'minExperienceYears': max(1, config['exp'] - 1),  # May be 1 year less
         'minPoints': 55,  # Lower points threshold
         'skillsAssessmentRequired': True,
         'jobOfferRequired': False,
         'residencyRequired': True,  # Must live/work in regional area
-        'stateSponsorship': 'Yes (regional)',
+        'stateSponsorship': 'Required (state or family sponsor)',
         'regionalRequirement': True,
         'notes': [
+            f"State nomination OR eligible family sponsor is REQUIRED",
             f"For regional areas of {state}",
             f"5-year provisional visa (can lead to permanence)",
             f"Must live/work in designated regional area",
@@ -126,23 +127,23 @@ def generate_visa_requirements(anzsco, occupation_name, config, state):
     
     # SC 482: Employer-sponsored, temporary, different criteria
     visa_reqs['482'] = {
-        'visa': 'SC 482 Temporary Skill Shortage',
-        'type': 'Temporary (2-4 years)',
-        'stream': 'Employer-sponsored',
-        'minSalary': max(base_min * mult * 0.8, 45000),  # Lower salary, employer-sponsored
+        'visa': 'SC 482 Skills in Demand',
+        'type': 'Temporary (1-4 years)',
+        'stream': 'Employer-sponsored (mandatory)',
+        'minSalary': max(base_min * mult * 0.8, 73150),  # TSMIT floor 2025
         'minExperienceYears': max(0, config['exp'] - 2),  # Employer can sponsor less experienced
         'minPoints': None,  # Points test not required for 482
         'skillsAssessmentRequired': False,  # Depends on occupation
         'jobOfferRequired': True,  # MUST have job offer
         'residencyRequired': False,
-        'stateSponsorship': 'Employer-based',
+        'stateSponsorship': 'Not applicable (employer-sponsored instead)',
         'employerRequired': True,
         'notes': [
-            f"Must have confirmed job offer in Australia",
-            f"Employer sponsors the visa application",
-            f"Temporary visa (2-4 years, extendable)",
-            f"No points test required for some occupations",
-            f"Can apply for permanence pathway after 2 years",
+            f"Job offer from an approved sponsoring employer is REQUIRED",
+            f"Employer must be a Standard Business Sponsor or equivalent",
+            f"Minimum salary must meet TSMIT (~AUD $73,150 from 1 Jul 2024)",
+            f"Temporary visa (1-4 years, extendable in some streams)",
+            f"PR pathway via SC 186 ENS after 2 years (varies by stream)",
         ],
     }
     
