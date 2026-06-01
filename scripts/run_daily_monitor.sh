@@ -15,6 +15,10 @@ cd "$REPO_DIR"
 {
   echo "=== $(date -u +%Y-%m-%dT%H:%M:%SZ) Daily monitor run ==="
   python3 scripts/daily_monitor.py
+  echo "--- Refreshing official occupation lists ---"
+  python3 scripts/official_lists_scraper.py
+  echo "--- Regenerating state-occupation-requirements ---"
+  python3 scripts/generate_visa_specific_requirements.py
   echo "--- Deploying to Firebase ---"
   firebase deploy --only hosting --project swift-shore-238707 --non-interactive
   echo "=== Done ==="

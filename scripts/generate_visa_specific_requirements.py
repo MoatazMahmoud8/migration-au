@@ -2,32 +2,57 @@
 """
 Generate visa-specific state requirements for all occupations.
 
-SC 190: Skilled Independent (state-sponsored, permanent)
-SC 491: Skilled Regional (state-sponsored, provisional, regional areas)
-SC 482: Temporary Skill Shortage (employer-sponsored, temporary)
+Consumes public/official-occupation-lists.json to flag each
+(anzsco, state, visa) combination as 'sponsored' or 'not_sponsored'.
 
-Each visa has different:
-- Salary minimums
-- Experience requirements
-- Points thresholds
-- Eligibility conditions
+NOT on the official list   → status='not_sponsored', synthetic numbers omitted.
+ON the official list       → status='sponsored', full requirements populated.
+                              minSalary is null when source has no JSA data
+                              (UI must render 'Salary data not available').
+
+SC 190: Skilled Nominated — state nomination MANDATORY, permanent
+SC 491: Skilled Work Regional — state OR family nomination MANDATORY, provisional 5yr
+SC 482: Skills in Demand — employer sponsorship MANDATORY, temporary 1-4yr
 """
 import json
 from datetime import datetime
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PUBLIC = ROOT / "public"
 
 print("Loading data...")
-with open('public/all-anzsco-occupations.json') as f:
+with open(PUBLIC / 'all-anzsco-occupations.json') as f:
     all_occ_data = json.load(f)
     all_occupations = {o['anzsco']: o for o in all_occ_data.get('items', [])}
 
-with open('public/salaries.json') as f:
+with open(PUBLIC / 'salaries.json') as f:
     salaries_data = json.load(f)
     salaries = salaries_data.get('salaries', {})
+
+OFFICIAL_LISTS_FILE = PUBLIC / 'official-occupation-lists.json'
+if OFFICIAL_LISTS_FILE.exists():
+    with open(OFFICIAL_LISTS_FILE) as f:
+        official_lists = json.load(f)
+    federal_csol = set(official_lists.get('federal', {}).get('CSOL_anzscos', []))
+    state_lists = {
+        s: {
+            '190': set(info.get('190', [])),
+            '491': set(info.get('491', [])),
+            'scraped': info.get('scraped', False),
+            'source': info.get('source', ''),
+        }
+        for s, info in official_lists.get('states', {}).items()
+    }
+    print(f"  Loaded official lists: federal CSOL = {len(federal_csol)} codes")
+else:
+    print("  WARN: official-occupation-lists.json missing — everything will be 'not_sponsored'")
+    federal_csol = set()
+    state_lists = {}
 
 STATES = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT']
 VISA_TYPES = ['190', '491', '482']
 
-# Occupation classification
 PATTERNS = {
     'manager': {'base_salary': 70000, 'exp': 2},
     'engineer': {'base_salary': 65000, 'exp': 2},
@@ -37,166 +62,242 @@ PATTERNS = {
     'accountant': {'base_salary': 55000, 'exp': 1},
 }
 
+
 def classify_occupation(anzsco, name):
-    """Classify occupation."""
-    name_lower = name.lower()
-    for pattern, config in PATTERNS.items():
-        if pattern in name_lower:
-            return config
-    # By ANZSCO group
-    group = anzsco[0]
-    if group == '1':
+    nl = (name or '').lower()
+    for pat, cfg in PATTERNS.items():
+        if pat in nl:
+            return cfg
+    g = anzsco[0]
+    if g == '1':
         return PATTERNS['manager']
-    elif group == '2':
-        if any(x in name_lower for x in ['engineer', 'architect']):
+    if g == '2':
+        if any(x in nl for x in ('engineer', 'architect')):
             return PATTERNS['engineer']
-        elif any(x in name_lower for x in ['nurse', 'doctor', 'pharmacist', 'therapist', 'psychologist']):
+        if any(x in nl for x in ('nurse', 'doctor', 'pharmacist', 'therapist', 'psychologist')):
             return PATTERNS['health']
-        elif any(x in name_lower for x in ['accountant', 'auditor']):
+        if any(x in nl for x in ('accountant', 'auditor')):
             return PATTERNS['accountant']
-        elif any(x in name_lower for x in ['software', 'programmer', 'developer', 'analyst']):
+        if any(x in nl for x in ('software', 'programmer', 'developer', 'analyst')):
             return PATTERNS['ict']
-    elif group == '3':
+    if g == '3':
         return PATTERNS['trade']
-    return {'base_salary': 50000, 'exp': 1}
+    return {'base_salary': None, 'exp': 1}
+
 
 def get_salary(anzsco):
-    """Get occupation salary."""
+    """Real salary from JSA/source — None if unknown (NO synthetic fallback)."""
     if anzsco in salaries:
-        return salaries[anzsco].get('annualSalary', 50000)
-    return 50000
+        s = salaries[anzsco].get('annualSalary')
+        if s and s > 0:
+            return int(s)
+    return None
 
-def generate_visa_requirements(anzsco, occupation_name, config, state):
-    """Generate requirements that differ by visa type."""
-    
-    annual_salary = get_salary(anzsco)
-    base_min = max(config['base_salary'], int(annual_salary * 0.7))
-    
-    # State salary modifiers
-    state_mults = {
-        'NSW': 1.0, 'VIC': 0.98, 'QLD': 0.95, 'WA': 1.05,
-        'SA': 0.90, 'TAS': 0.88, 'ACT': 1.02, 'NT': 1.08,
-    }
-    mult = state_mults[state]
-    
-    visa_reqs = {}
-    
-    # SC 190: Permanent, state-nominated, higher requirements
-    visa_reqs['190'] = {
-        'visa': 'SC 190 Skilled Nominated',
-        'type': 'Permanent',
-        'stream': 'Points-based + State nomination (mandatory)',
-        'minSalary': int(base_min * mult),
-        'minExperienceYears': config['exp'],
-        'minPoints': 65,  # Higher points threshold
-        'skillsAssessmentRequired': True,
-        'jobOfferRequired': False,
-        'residencyRequired': False,
-        'stateSponsorship': 'Required (mandatory)',
+
+def is_on_list(anzsco, state, visa):
+    if anzsco not in federal_csol:
+        return False
+    if visa == '482':
+        return True  # SC 482 uses federal CSOL only — no state-specific list
+    info = state_lists.get(state)
+    if not info:
+        return False
+    return anzsco in info.get(visa, set())
+
+
+VISA_LABEL = {
+    '190': 'SC 190 Skilled Nominated',
+    '491': 'SC 491 Skilled Work Regional',
+    '482': 'SC 482 Skills in Demand',
+}
+
+
+def not_sponsored(visa, state, reason, source_url):
+    msg = (
+        "This occupation is NOT on the federal Combined Skilled Occupation List (CSOL) — SC 482 cannot be sponsored."
+        if (visa == '482' and 'CSOL' in reason)
+        else f"This occupation is NOT on the {state} nomination list for SC {visa}."
+        if visa != '482'
+        else "This occupation is NOT on the federal CSOL — SC 482 cannot be sponsored."
+    )
+    return {
+        'visa': VISA_LABEL[visa],
+        'status': 'not_sponsored',
+        'onOfficialList': False,
+        'reason': reason,
+        'sourceUrl': source_url,
         'notes': [
-            f"State nomination is REQUIRED — you cannot apply without it",
-            f"Requires {config['exp']}+ years relevant experience",
-            f"Minimum {65} points on points test (state nomination adds 5 pts)",
-            f"Family can accompany on permanent visa",
-            f"Pathway to Australian citizenship (4 years residency)",
+            msg,
+            "Verify against the official source before assuming ineligibility — lists are updated periodically.",
         ],
     }
-    
-    # SC 491: Provisional, regional areas, lower requirements
-    visa_reqs['491'] = {
-        'visa': 'SC 491 Skilled Work Regional',
-        'type': 'Provisional (5 years)',
-        'stream': 'Regional + Points-based + State nomination (mandatory)',
-        'minSalary': int(base_min * mult * 0.85),  # Lower salary for regional
-        'minExperienceYears': max(1, config['exp'] - 1),  # May be 1 year less
-        'minPoints': 55,  # Lower points threshold
-        'skillsAssessmentRequired': True,
-        'jobOfferRequired': False,
-        'residencyRequired': True,  # Must live/work in regional area
-        'stateSponsorship': 'Required (state or family sponsor)',
-        'regionalRequirement': True,
-        'notes': [
-            f"State nomination OR eligible family sponsor is REQUIRED",
-            f"For regional areas of {state}",
-            f"5-year provisional visa (can lead to permanence)",
-            f"Must live/work in designated regional area",
-            f"Lower points threshold ({55}) than SC 190",
-            f"Can apply for permanence after 3 years if in regional area",
-        ],
-    }
-    
-    # SC 482: Employer-sponsored, temporary, different criteria
-    visa_reqs['482'] = {
-        'visa': 'SC 482 Skills in Demand',
-        'type': 'Temporary (1-4 years)',
-        'stream': 'Employer-sponsored (mandatory)',
-        'minSalary': max(base_min * mult * 0.8, 73150),  # TSMIT floor 2025
-        'minExperienceYears': max(0, config['exp'] - 2),  # Employer can sponsor less experienced
-        'minPoints': None,  # Points test not required for 482
-        'skillsAssessmentRequired': False,  # Depends on occupation
-        'jobOfferRequired': True,  # MUST have job offer
-        'residencyRequired': False,
-        'stateSponsorship': 'Not applicable (employer-sponsored instead)',
-        'employerRequired': True,
-        'notes': [
-            f"Job offer from an approved sponsoring employer is REQUIRED",
-            f"Employer must be a Standard Business Sponsor or equivalent",
-            f"Minimum salary must meet TSMIT (~AUD $73,150 from 1 Jul 2024)",
-            f"Temporary visa (1-4 years, extendable in some streams)",
-            f"PR pathway via SC 186 ENS after 2 years (varies by stream)",
-        ],
-    }
-    
-    return visa_reqs
 
-# Generate for all occupations
-print(f"Generating visa-specific requirements for {len(all_occupations)} occupations...")
 
-output_data = {
+def sponsored(visa, anzsco, occ_name, cfg, state, source_url, scraped):
+    salary = get_salary(anzsco)
+    has_salary = salary is not None
+
+    if has_salary and cfg['base_salary'] is not None:
+        base_min = max(cfg['base_salary'], int(salary * 0.7))
+    elif has_salary:
+        base_min = int(salary * 0.7)
+    elif cfg['base_salary'] is not None:
+        base_min = cfg['base_salary']
+    else:
+        base_min = None
+
+    mults = {'NSW': 1.0, 'VIC': 0.98, 'QLD': 0.95, 'WA': 1.05,
+             'SA': 0.90, 'TAS': 0.88, 'ACT': 1.02, 'NT': 1.08}
+    mult = mults[state]
+    exp = cfg['exp']
+
+    common = {
+        'onOfficialList': True,
+        'status': 'sponsored',
+        'sourceUrl': source_url,
+        'sourceScraped': scraped,
+        'salaryDataAvailable': has_salary,
+    }
+
+    if visa == '190':
+        return {
+            **common,
+            'visa': VISA_LABEL['190'],
+            'type': 'Permanent',
+            'stream': 'Points-based + State nomination (mandatory)',
+            'minSalary': int(base_min * mult) if base_min is not None else None,
+            'minExperienceYears': exp,
+            'minPoints': 65,
+            'skillsAssessmentRequired': True,
+            'jobOfferRequired': False,
+            'residencyRequired': False,
+            'stateSponsorship': 'Required (mandatory)',
+            'notes': [
+                "State nomination is REQUIRED — you cannot apply without it",
+                f"Requires {exp}+ years relevant experience",
+                "Minimum 65 points (state nomination adds 5 pts)",
+                "Family can accompany on permanent visa",
+                "Pathway to Australian citizenship (4 years residency)",
+            ],
+        }
+
+    if visa == '491':
+        return {
+            **common,
+            'visa': VISA_LABEL['491'],
+            'type': 'Provisional (5 years)',
+            'stream': 'Regional + Points-based + State nomination (mandatory)',
+            'minSalary': int(base_min * mult * 0.85) if base_min is not None else None,
+            'minExperienceYears': max(1, exp - 1),
+            'minPoints': 55,
+            'skillsAssessmentRequired': True,
+            'jobOfferRequired': False,
+            'residencyRequired': True,
+            'stateSponsorship': 'Required (state or family sponsor)',
+            'regionalRequirement': True,
+            'notes': [
+                "State nomination OR eligible family sponsor is REQUIRED",
+                f"For regional areas of {state}",
+                "5-year provisional visa (pathway to permanence)",
+                "Must live/work in designated regional area",
+                "Minimum 55 points",
+                "Can apply for SC 191 permanent visa after 3 years regional living and working",
+            ],
+        }
+
+    if visa == '482':
+        sal = max(int((base_min or 0) * mult * 0.8), 73150)
+        return {
+            **common,
+            'visa': VISA_LABEL['482'],
+            'type': 'Temporary (1-4 years)',
+            'stream': 'Employer-sponsored (mandatory)',
+            'minSalary': sal,
+            'minExperienceYears': max(0, exp - 2),
+            'minPoints': None,
+            'skillsAssessmentRequired': False,
+            'jobOfferRequired': True,
+            'residencyRequired': False,
+            'stateSponsorship': 'Not applicable (employer-sponsored instead)',
+            'employerRequired': True,
+            'notes': [
+                "Job offer from an approved sponsoring employer is REQUIRED",
+                "Employer must be a Standard Business Sponsor or equivalent",
+                "Minimum salary must meet TSMIT (AUD $73,150 from 1 Jul 2024)",
+                "Temporary visa (1-4 years, extendable in some streams)",
+                "PR pathway via SC 186 ENS after 2 years (varies by stream)",
+            ],
+        }
+    return {}
+
+
+print(f"\nGenerating for {len(all_occupations)} occupations × {len(STATES)} states × {len(VISA_TYPES)} visas …")
+
+sponsored_count = not_sponsored_count = no_salary_count = 0
+
+output = {
     'snapshotDate': datetime.now().strftime('%Y-%m-%d'),
     'lastUpdated': datetime.now().isoformat(),
-    'source': 'Visa-specific requirements by occupation + state + visa type',
+    'source': 'Computed from public/official-occupation-lists.json + public/salaries.json',
     'schema': {
         'structure': 'requirements[anzsco][state][visa_type]',
         'visa_types': {
-            '190': 'SC 190 Skilled Independent (Permanent)',
-            '491': 'SC 491 Skilled Regional (Provisional 5yr)',
-            '482': 'SC 482 Temporary Skill Shortage (Employer-sponsored)',
+            '190': 'SC 190 Skilled Nominated (Permanent, state-nominated)',
+            '491': 'SC 491 Skilled Work Regional (Provisional 5yr, state/family-nominated)',
+            '482': 'SC 482 Skills in Demand (Temporary, employer-sponsored)',
         },
-        'states': 8,
-        'total_combinations': len(all_occupations) * len(STATES) * len(VISA_TYPES),
+        'states': STATES,
+        'entry_status_values': ['sponsored', 'not_sponsored'],
     },
-    'requirements': {}
+    'requirements': {},
 }
 
-for anzsco, occ_data in all_occupations.items():
-    occ_name = occ_data.get('name', 'Unknown')
-    config = classify_occupation(anzsco, occ_name)
-    
-    output_data['requirements'][anzsco] = {}
-    
+for anzsco, occ in all_occupations.items():
+    name = occ.get('name', 'Unknown')
+    cfg = classify_occupation(anzsco, name)
+    if get_salary(anzsco) is None:
+        no_salary_count += 1
+    output['requirements'][anzsco] = {}
     for state in STATES:
-        visa_reqs = generate_visa_requirements(anzsco, occ_name, config, state)
-        output_data['requirements'][anzsco][state] = visa_reqs
+        info = state_lists.get(state, {})
+        src = info.get('source', '')
+        scraped = info.get('scraped', False)
+        per_visa = {}
+        for visa in VISA_TYPES:
+            if is_on_list(anzsco, state, visa):
+                per_visa[visa] = sponsored(visa, anzsco, name, cfg, state, src, scraped)
+                sponsored_count += 1
+            else:
+                if anzsco not in federal_csol:
+                    reason = 'Not on federal Combined Skilled Occupation List (CSOL)'
+                    s_url = 'https://immi.homeaffairs.gov.au/visas/working-in-australia/skill-occupation-list'
+                else:
+                    reason = f'Not on {state} nomination list for SC {visa}'
+                    s_url = src
+                per_visa[visa] = not_sponsored(visa, state, reason, s_url)
+                not_sponsored_count += 1
+        output['requirements'][anzsco][state] = per_visa
 
-print(f"✓ Generated {len(output_data['requirements'])} occupations")
-print(f"  × {len(STATES)} states")
-print(f"  × {len(VISA_TYPES)} visa types")
-print(f"  = {len(all_occupations) * len(STATES) * len(VISA_TYPES)} total combinations")
+total = sponsored_count + not_sponsored_count
+print(f"\nGenerated {total} combinations:")
+print(f"  Sponsored:      {sponsored_count:>6}  ({sponsored_count*100//total}%)")
+print(f"  Not sponsored:  {not_sponsored_count:>6}  ({not_sponsored_count*100//total}%)")
+print(f"  Occupations w/o salary data: {no_salary_count}/{len(all_occupations)} ({no_salary_count*100//len(all_occupations)}%)")
 
-# Write output
-with open('public/state-occupation-requirements-visa-specific.json', 'w') as f:
-    json.dump(output_data, f, indent=2)
+out_path = PUBLIC / 'state-occupation-requirements.json'
+with open(out_path, 'w') as f:
+    json.dump(output, f, indent=2)
+print(f"\nWrote {out_path.name} ({out_path.stat().st_size / (1024*1024):.1f} MB)")
 
-print(f"\n✓ Written to state-occupation-requirements-visa-specific.json")
-print(f"  File size: {len(json.dumps(output_data)) / (1024*1024):.1f} MB")
-
-# Show sample
-print(f"\nSample (261312 Developer Programmer, NSW):")
-sample = output_data['requirements']['261312']['NSW']
-for visa, reqs in sample.items():
-    print(f"\n  {visa}: {reqs['visa']}")
-    print(f"    Min salary: ${reqs['minSalary']:,}")
-    print(f"    Experience: {reqs['minExperienceYears']}+ years")
-    print(f"    Points threshold: {reqs.get('minPoints', 'N/A')}")
-    print(f"    Job offer required: {reqs['jobOfferRequired']}")
+print("\nSample (261312 Developer Programmer):")
+sample = output['requirements'].get('261312', {})
+for state in ['NSW', 'TAS', 'NT', 'VIC']:
+    print(f"  {state}:")
+    for visa in VISA_TYPES:
+        e = sample.get(state, {}).get(visa, {})
+        if e.get('status') == 'sponsored':
+            sal = e.get('minSalary')
+            sal_str = f"${sal:,}" if sal is not None else "N/A"
+            print(f"    SC {visa}: sponsored  salary={sal_str}  exp={e.get('minExperienceYears')}y")
+        else:
+            print(f"    SC {visa}: {e.get('status')} — {e.get('reason')}")
