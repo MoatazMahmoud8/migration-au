@@ -21,7 +21,7 @@ android {
 
     defaultConfig {
         applicationId "com.migrateau.app"
-        minSdk 21
+        minSdkVersion flutter.minSdkVersion
         targetSdk flutter.targetSdkVersion
         versionCode flutter.versionCode
         versionName flutter.versionName

@@ -1,7 +1,7 @@
 {
   "snapshotDate": "2026-06-01",
   "lastUpdated": "2026-06-01T19:19:26.556187",
-  "source": "Visa-specific requirements: SC 190 (permanent) | SC 491 (regional) | SC 482 (employer)",
+  "source": "Visa-specific requirements by occupation + state + visa type",
   "schema": {
     "structure": "requirements[anzsco][state][visa_type]",
     "visa_types": {

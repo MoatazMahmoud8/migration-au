@@ -1,0 +1,7030 @@
+{
+  "snapshotDate": "2026-06-01",
+  "lastUpdated": "2026-06-01T15:24:11.299521",
+  "items": [
+    {
+      "anzsco": "111211",
+      "name": "Corporate General Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "111212",
+      "name": "Defence Force Senior Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "111311",
+      "name": "Local Government Legislators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "111312",
+      "name": "Members of Parliament",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "111399",
+      "name": "Other Legislators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121211",
+      "name": "Cotton Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121212",
+      "name": "Flower Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121213",
+      "name": "Fruit and Nut Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121214",
+      "name": "Grain, Oilseed and Pasture Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121215",
+      "name": "Grape Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121216",
+      "name": "Mixed Crop Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121217",
+      "name": "Sugar Cane Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121218",
+      "name": "Turf Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121221",
+      "name": "Vegetable Growers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121299",
+      "name": "Other Crop Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121311",
+      "name": "Beekeepers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121312",
+      "name": "Beef Cattle Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121313",
+      "name": "Dairy Cattle Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121314",
+      "name": "Deer Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121315",
+      "name": "Goat Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121316",
+      "name": "Horse Breeders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121317",
+      "name": "Mixed Livestock Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121318",
+      "name": "Pig Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121321",
+      "name": "Poultry Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121322",
+      "name": "Sheep Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "121399",
+      "name": "Other Livestock Farmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "131112",
+      "name": "Sales and Marketing Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "131113",
+      "name": "Advertising Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "131114",
+      "name": "Public Relations Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133111",
+      "name": "Construction Project Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133112",
+      "name": "Project Builders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133311",
+      "name": "Importers and Exporters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133312",
+      "name": "Wholesalers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133511",
+      "name": "Forest Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133512",
+      "name": "Manufacturing Production Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133513",
+      "name": "Mine Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133611",
+      "name": "Supply and Distribution Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "133612",
+      "name": "Procurement Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134211",
+      "name": "Medical Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134212",
+      "name": "Nursing Clinical Directors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134213",
+      "name": "Primary Health Organisation Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134214",
+      "name": "Welfare Centre Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134299",
+      "name": "Other Health and Welfare Services Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134411",
+      "name": "Faculty Heads",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134412",
+      "name": "Regional Education Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "134499",
+      "name": "Education Managers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "135111",
+      "name": "Chief Information Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "135112",
+      "name": "ICT Project Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "135199",
+      "name": "Other ICT Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139111",
+      "name": "Commissioned Defence Force Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139112",
+      "name": "Commissioned Fire Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139113",
+      "name": "Commissioned Police Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139911",
+      "name": "Arts Administrators and Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139912",
+      "name": "Environmental Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139913",
+      "name": "Laboratory Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139914",
+      "name": "Quality Assurance Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139915",
+      "name": "Sports Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "139999",
+      "name": "Specialist Managers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "141911",
+      "name": "Bed and Breakfast Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "141912",
+      "name": "Retirement Village Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "141999",
+      "name": "Accommodation and Hospitality Managers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "142111",
+      "name": "Retail Managers (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "142112",
+      "name": "Antique Dealers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "142113",
+      "name": "Betting Agency Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "142114",
+      "name": "Hair and Beauty Salon Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "142115",
+      "name": "Post Office Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "142116",
+      "name": "Travel Agency Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149111",
+      "name": "Amusement Centre Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149112",
+      "name": "Fitness Centre Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149113",
+      "name": "Sports Centre Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149211",
+      "name": "Call Centre or Contact Centre Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149212",
+      "name": "Customer Service Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149411",
+      "name": "Fleet Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149412",
+      "name": "Railway Station Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149413",
+      "name": "Transport Company Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149911",
+      "name": "Boarding Kennel and Cattery Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149912",
+      "name": "Cinema and Theatre Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149913",
+      "name": "Facilities Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149914",
+      "name": "Bank Managers and Branch Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149915",
+      "name": "Equipment Hire Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "149999",
+      "name": "Hospitality, Retail and Service Managers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211111",
+      "name": "Actors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211112",
+      "name": "Dancers and Choreographers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211113",
+      "name": "Entertainers and Variety Artists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211199",
+      "name": "Other Actors, Dancers and Entertainers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211211",
+      "name": "Composers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211212",
+      "name": "Music Directors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211213",
+      "name": "Musicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211214",
+      "name": "Singers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211299",
+      "name": "Other Music Professionals",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211411",
+      "name": "Painters (Visual Arts)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211412",
+      "name": "Potters and Ceramic Artists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211413",
+      "name": "Sculptors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "211499",
+      "name": "Other Visual Arts or Crafts Professionals",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212111",
+      "name": "Artistic Directors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212112",
+      "name": "Media Producers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212113",
+      "name": "Radio Presenters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212114",
+      "name": "Television Presenters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212211",
+      "name": "Authors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212212",
+      "name": "Book and Script Editors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212311",
+      "name": "Art Directors (Film, Television or Stage)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212312",
+      "name": "Directors (Film, Television, Radio or Stage)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212313",
+      "name": "Cinematographers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212314",
+      "name": "Film and Video Editors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212315",
+      "name": "Program Directors (Television or Radio)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212316",
+      "name": "Stage Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212317",
+      "name": "Technical Directors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212318",
+      "name": "Video Producers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212399",
+      "name": "Other Film, Television, Radio and Stage Directors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212411",
+      "name": "Copywriters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212412",
+      "name": "Newspaper and Periodical Editors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212413",
+      "name": "Print Journalists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212414",
+      "name": "Radio Journalists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212415",
+      "name": "Technical Writers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212416",
+      "name": "Television Journalists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "212499",
+      "name": "Bloggers, Critics, Sports and Other Writers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221111",
+      "name": "Accountants (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221112",
+      "name": "Management Accountants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221113",
+      "name": "Taxation Accountants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221211",
+      "name": "Company Secretaries",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221212",
+      "name": "Corporate Treasurers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221213",
+      "name": "External Auditors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "221214",
+      "name": "Internal Auditors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222111",
+      "name": "Commodities Traders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222112",
+      "name": "Finance Brokers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222113",
+      "name": "Insurance Brokers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222199",
+      "name": "Other Financial Brokers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222211",
+      "name": "Financial Market Dealers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222212",
+      "name": "Futures Traders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222213",
+      "name": "Stockbrokers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222299",
+      "name": "Other Financial Dealers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222311",
+      "name": "Financial Investment Advisers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "222312",
+      "name": "Financial Investment Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "223111",
+      "name": "Human Resource Advisers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "223112",
+      "name": "Recruitment Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "223113",
+      "name": "Workplace Relations Advisers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224111",
+      "name": "Actuaries",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224112",
+      "name": "Mathematicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224113",
+      "name": "Statisticians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224211",
+      "name": "Archivists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224212",
+      "name": "Gallery and Museum Curators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224213",
+      "name": "Health Information Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224214",
+      "name": "Records Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224411",
+      "name": "Intelligence Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224412",
+      "name": "Policy Analysts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224511",
+      "name": "Land Economists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224512",
+      "name": "Valuers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224711",
+      "name": "Management Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224712",
+      "name": "Organisation and Methods Analysts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224911",
+      "name": "Electorate Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224912",
+      "name": "Liaison Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224913",
+      "name": "Migration Agents",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224914",
+      "name": "Patents Examiners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "224999",
+      "name": "Information and Organisation Professionals (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225111",
+      "name": "Advertising Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225112",
+      "name": "Market Research Analysts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225113",
+      "name": "Marketing Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225211",
+      "name": "ICT Account Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225212",
+      "name": "ICT Business Development Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225213",
+      "name": "ICT Sales Representatives",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225411",
+      "name": "Sales Representatives (Industrial Products)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225412",
+      "name": "Sales Representatives (Medical and Pharmaceutical Products)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "225499",
+      "name": "Other Technical Sales Representatives",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231111",
+      "name": "Aeroplane Pilots",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231112",
+      "name": "Air Traffic Controllers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231113",
+      "name": "Flying Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231114",
+      "name": "Helicopter Pilots",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231199",
+      "name": "Other Air Transport Professionals",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231211",
+      "name": "Master Fishers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231212",
+      "name": "Marine Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231213",
+      "name": "Ship&#039;s Masters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231214",
+      "name": "Ship&#039;s Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231215",
+      "name": "Marine Surveyors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "231299",
+      "name": "Other Marine Transport Professionals",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232111",
+      "name": "Architects",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232112",
+      "name": "Landscape Architects",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232212",
+      "name": "Surveyors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232213",
+      "name": "Cartographers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232214",
+      "name": "Other Spatial Scientists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232311",
+      "name": "Fashion Designers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232312",
+      "name": "Industrial Designers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232313",
+      "name": "Jewellery Designers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232411",
+      "name": "Graphic Designers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232412",
+      "name": "Illustrators (including Animators)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232413",
+      "name": "Multimedia Designers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "232414",
+      "name": "Web Designers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233111",
+      "name": "Chemical Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233112",
+      "name": "Materials Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233211",
+      "name": "Civil Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233212",
+      "name": "Geotechnical Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233213",
+      "name": "Quantity Surveyors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233214",
+      "name": "Structural Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233215",
+      "name": "Transport Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233511",
+      "name": "Industrial Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233512",
+      "name": "Mechanical Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233513",
+      "name": "Production and Plant Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233611",
+      "name": "Mining Engineers (excluding Petroleum)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233612",
+      "name": "Petroleum Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233911",
+      "name": "Aeronautical Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233912",
+      "name": "Agricultural Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233913",
+      "name": "Biomedical Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233914",
+      "name": "Engineering Technologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233915",
+      "name": "Environmental Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233916",
+      "name": "Naval Architects",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "233999",
+      "name": "Engineering Professionals (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234111",
+      "name": "Agricultural Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234112",
+      "name": "Agricultural Scientists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234113",
+      "name": "Foresters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234211",
+      "name": "Chemists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234212",
+      "name": "Food Technologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234213",
+      "name": "Wine Makers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234311",
+      "name": "Conservation Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234312",
+      "name": "Environmental Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234313",
+      "name": "Environmental Research Scientists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234314",
+      "name": "Park Rangers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234399",
+      "name": "Other Environmental Scientists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234411",
+      "name": "Geologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234412",
+      "name": "Geophysicists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234413",
+      "name": "Hydrogeologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234511",
+      "name": "Biologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234513",
+      "name": "Biochemists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234514",
+      "name": "Biotechnologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234515",
+      "name": "Botanists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234516",
+      "name": "Marine Biologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234517",
+      "name": "Microbiologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234518",
+      "name": "Zoologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234599",
+      "name": "Other Life Scientists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234911",
+      "name": "Conservators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234912",
+      "name": "Metallurgists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234913",
+      "name": "Meteorologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234914",
+      "name": "Physicists (including Astronomers)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234915",
+      "name": "Exercise Physiologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "234999",
+      "name": "Natural and Physical Science Professionals (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "241511",
+      "name": "Special Needs Teachers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "241512",
+      "name": "Teachers of the Hearing Impaired",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "241513",
+      "name": "Teachers of the Sight Impaired",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "241599",
+      "name": "Other Special Education Teachers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "242111",
+      "name": "University Lecturers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "242112",
+      "name": "University Tutors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249111",
+      "name": "Education Advisers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249112",
+      "name": "Education Reviewers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249211",
+      "name": "Art Teachers (Private Tuition)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249212",
+      "name": "Dance Teachers (Private Tuition)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249213",
+      "name": "Drama Teachers (Private Tuition)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249214",
+      "name": "Music Teachers (Private Tuition)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "249299",
+      "name": "Other Private Tutors and Teachers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251111",
+      "name": "Dietitians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251112",
+      "name": "Nutritionists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251211",
+      "name": "Medical Diagnostic Radiographers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251212",
+      "name": "Medical Radiation Therapists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251213",
+      "name": "Nuclear Medicine Technologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251214",
+      "name": "Sonographers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251311",
+      "name": "Environmental Health Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251312",
+      "name": "Occupational Health and Safety Advisers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251411",
+      "name": "Optometrists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251412",
+      "name": "Orthoptists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251511",
+      "name": "Hospital Pharmacists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251512",
+      "name": "Industrial Pharmacists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251513",
+      "name": "Retail Pharmacists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251911",
+      "name": "Health Promotion Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251912",
+      "name": "Orthotists and Prosthetists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "251999",
+      "name": "Genetic Counsellors (and Other Health Professionals not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252111",
+      "name": "Chiropractors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252112",
+      "name": "Osteopaths",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252211",
+      "name": "Acupuncturists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252212",
+      "name": "Homoeopaths",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252213",
+      "name": "Naturopaths",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252214",
+      "name": "Chinese Medicine Practitioners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252299",
+      "name": "Music, Dance, Drama, Play, Hypnotic, and Related Therapists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252311",
+      "name": "Dental Specialists (including Orthodontists)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252312",
+      "name": "Dentists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252711",
+      "name": "Audiologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "252712",
+      "name": "Speech Pathologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253111",
+      "name": "General Practitioners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253112",
+      "name": "Resident Medical Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253311",
+      "name": "Specialist Physicians (General Medicine)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253312",
+      "name": "Cardiologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253313",
+      "name": "Clinical Haematologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253314",
+      "name": "Medical Oncologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253315",
+      "name": "Endocrinologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253316",
+      "name": "Gastroenterologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253317",
+      "name": "Intensive Care Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253318",
+      "name": "Neurologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253321",
+      "name": "Paediatricians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253322",
+      "name": "Renal Medicine Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253323",
+      "name": "Rheumatologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253324",
+      "name": "Thoracic Medicine Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253399",
+      "name": "Other Specialist Physicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253511",
+      "name": "Surgeons (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253512",
+      "name": "Cardiothoracic Surgeons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253513",
+      "name": "Neurosurgeons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253514",
+      "name": "Orthopaedic Surgeons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253515",
+      "name": "Ear, Nose and Throat Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253516",
+      "name": "Paediatric Surgeons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253517",
+      "name": "Plastic and Reconstructive Surgeons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253518",
+      "name": "Urologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253521",
+      "name": "Vascular Surgeons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253911",
+      "name": "Dermatologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253912",
+      "name": "Emergency Medicine Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253913",
+      "name": "Obstetricians and Gynaecologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253914",
+      "name": "Eye Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253915",
+      "name": "Pathologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253917",
+      "name": "Diagnostic and Interventional Radiologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253918",
+      "name": "Radiation Oncologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "253999",
+      "name": "Medical Practitioners (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254211",
+      "name": "Nurse Educators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254212",
+      "name": "Nurse Researchers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254411",
+      "name": "Nurse Practitioners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254412",
+      "name": "Registered Nurses (Aged Care)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254413",
+      "name": "Registered Nurses (Child and Family Health)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254414",
+      "name": "Registered Nurses (Community Health)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254415",
+      "name": "Registered Nurses (Critical Care and Emergency)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254416",
+      "name": "Registered Nurses (Developmental Disability)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254417",
+      "name": "Registered Nurses (Disability and Rehabilitation)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254418",
+      "name": "Registered Nurses (Medical)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254421",
+      "name": "Registered Nurses (Medical Practice)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254422",
+      "name": "Registered Nurses (Mental Health)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254423",
+      "name": "Registered Nurses (Perioperative)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254424",
+      "name": "Registered Nurses (Surgical)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254425",
+      "name": "Registered Nurses (Paediatrics)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "254499",
+      "name": "Registered Nurses (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261111",
+      "name": "ICT Business Analysts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261112",
+      "name": "Systems Analysts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261211",
+      "name": "Game and Multimedia Developers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261212",
+      "name": "Web Developers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261311",
+      "name": "Analyst Programmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261312",
+      "name": "Developer Programmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261313",
+      "name": "Software Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261314",
+      "name": "Software Testers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "261399",
+      "name": "Other Software and Applications Programmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "262111",
+      "name": "Database Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "262112",
+      "name": "ICT Security Specialists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "262113",
+      "name": "Systems Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263111",
+      "name": "Computer Network and Systems Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263112",
+      "name": "Network Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263113",
+      "name": "Network Analysts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263211",
+      "name": "ICT Quality Assurance Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263212",
+      "name": "ICT Support Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263213",
+      "name": "ICT Systems Test Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263299",
+      "name": "Other ICT Support and Test Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263311",
+      "name": "Telecommunications Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "263312",
+      "name": "Telecommunications Network Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "271211",
+      "name": "Judges",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "271212",
+      "name": "Magistrates",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "271213",
+      "name": "Tribunal Members",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "271214",
+      "name": "Intellectual Property Lawyers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "271299",
+      "name": "Judicial and Other Legal Professionals (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272111",
+      "name": "Careers Counsellors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272112",
+      "name": "Drug and Alcohol Counsellors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272113",
+      "name": "Family and Marriage Counsellors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272114",
+      "name": "Rehabilitation Counsellors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272115",
+      "name": "Student Counsellors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272199",
+      "name": "Other Counsellors and Life Coaches",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272311",
+      "name": "Clinical Psychologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272312",
+      "name": "Educational Psychologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272313",
+      "name": "Organisational Psychologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272314",
+      "name": "Psychotherapists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272399",
+      "name": "Other Psychologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272411",
+      "name": "Historians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272412",
+      "name": "Interpreters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272413",
+      "name": "Translators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272414",
+      "name": "Archaeologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272499",
+      "name": "Other Social Professionals",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272611",
+      "name": "Community Arts Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272612",
+      "name": "Recreation Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "272613",
+      "name": "Welfare Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311211",
+      "name": "Anaesthetic Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311212",
+      "name": "Cardiac Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311213",
+      "name": "Medical Laboratory Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311214",
+      "name": "Operating Theatre Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311215",
+      "name": "Pharmacy Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311216",
+      "name": "Pathology Collectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311299",
+      "name": "Other Medical Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311311",
+      "name": "Fisheries Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311312",
+      "name": "Meat Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311313",
+      "name": "Quarantine Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311399",
+      "name": "Other Primary Products Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311411",
+      "name": "Chemistry Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311412",
+      "name": "Earth Science Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311413",
+      "name": "Life Science Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311414",
+      "name": "School Laboratory Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311415",
+      "name": "Hydrographers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "311499",
+      "name": "Other Science Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312111",
+      "name": "Architectural Draftspersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312112",
+      "name": "Building Associates",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312113",
+      "name": "Building Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312114",
+      "name": "Construction Estimators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312115",
+      "name": "Plumbing Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312116",
+      "name": "Surveying and Spatial Science Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312199",
+      "name": "Other Architectural, Building and Surveying Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312211",
+      "name": "Civil Engineering Draftspersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312212",
+      "name": "Civil Engineering Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312311",
+      "name": "Electrical Engineering Draftspersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312312",
+      "name": "Electrical Engineering Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312411",
+      "name": "Electronic Engineering Draftspersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312412",
+      "name": "Electronic Engineering Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312511",
+      "name": "Mechanical Engineering Draftspersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312512",
+      "name": "Mechanical Engineering Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312911",
+      "name": "Maintenance Planners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312912",
+      "name": "Metallurgical and Materials Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312913",
+      "name": "Mine Deputies",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "312999",
+      "name": "Building and Engineering Technicians (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313111",
+      "name": "Hardware Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313112",
+      "name": "ICT Customer Support Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313113",
+      "name": "Web Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313199",
+      "name": "Other ICT Support Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313211",
+      "name": "Radiocommunications Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313212",
+      "name": "Telecommunications Field Engineers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313213",
+      "name": "Telecommunications Network Planners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "313214",
+      "name": "Telecommunications Technical Officers and Technologists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "321211",
+      "name": "Motor Mechanics (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "321212",
+      "name": "Diesel Motor Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "321213",
+      "name": "Motorcycle Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "321214",
+      "name": "Small Engine Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322111",
+      "name": "Blacksmiths",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322112",
+      "name": "Electroplaters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322113",
+      "name": "Farriers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322114",
+      "name": "Metal Casting Trades Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322115",
+      "name": "Metal Polishers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322311",
+      "name": "Metal Fabricators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322312",
+      "name": "Pressure Welders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "322313",
+      "name": "Welders (First Class)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323111",
+      "name": "Aircraft Maintenance Engineers (Avionics)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323112",
+      "name": "Aircraft Maintenance Engineers (Mechanical)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323113",
+      "name": "Aircraft Maintenance Engineers (Structures)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323211",
+      "name": "Fitters (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323212",
+      "name": "Fitter and Turners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323213",
+      "name": "Fitter-Welders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323214",
+      "name": "Metal Machinists (First Class)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323215",
+      "name": "Textile, Clothing and Footwear Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323299",
+      "name": "Other Metal Fitters and Machinists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323311",
+      "name": "Engravers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323312",
+      "name": "Gunsmiths",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323313",
+      "name": "Locksmiths",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323314",
+      "name": "Precision Instrument Makers and Repairers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323315",
+      "name": "Saw Doctors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323316",
+      "name": "Watch and Clock Makers and Repairers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323411",
+      "name": "Engineering Patternmakers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "323412",
+      "name": "Toolmakers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "324211",
+      "name": "Vehicle Body Builders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "324212",
+      "name": "Vehicle Trimmers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "331111",
+      "name": "Bricklayers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "331112",
+      "name": "Stonemasons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "331212",
+      "name": "Carpenters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "331213",
+      "name": "Joiners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "333211",
+      "name": "Fibrous Plasterers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "333212",
+      "name": "Solid Plasterers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "334111",
+      "name": "Plumbers (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "334112",
+      "name": "Airconditioning and Mechanical Services Plumbers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "334113",
+      "name": "Drainers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "334114",
+      "name": "Gasfitters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "334115",
+      "name": "Roof Plumbers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "341111",
+      "name": "Electricians (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "341112",
+      "name": "Electricians (Special Class)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "341113",
+      "name": "Lift Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342211",
+      "name": "Electrical Linesworkers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342212",
+      "name": "Technical Cable Jointers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342311",
+      "name": "Business Machine Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342312",
+      "name": "Communications Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342313",
+      "name": "Electronic Equipment Trades Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342314",
+      "name": "Electronic Instrument Trades Workers (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342315",
+      "name": "Electronic Instrument Trades Workers (Special Class)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342411",
+      "name": "Cablers (Data and Telecommunications)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342412",
+      "name": "Telecommunications Cable Jointers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342413",
+      "name": "Telecommunications Linesworkers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "342414",
+      "name": "Telecommunications Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "351111",
+      "name": "Bakers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "351112",
+      "name": "Pastrycooks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "361111",
+      "name": "Dog Handlers and Trainers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "361112",
+      "name": "Horse Trainers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "361113",
+      "name": "Pet Groomers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "361114",
+      "name": "Zookeepers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "361115",
+      "name": "Kennel Hands",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "361199",
+      "name": "Other Animal Attendants and Trainers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "362211",
+      "name": "Gardeners (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "362212",
+      "name": "Arborists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "362213",
+      "name": "Landscape Gardeners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "392111",
+      "name": "Print Finishers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "392112",
+      "name": "Screen Printers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "392311",
+      "name": "Printing Machinists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "392312",
+      "name": "Small Offset Printers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393111",
+      "name": "Canvas Goods Fabricators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393112",
+      "name": "Leather Goods Makers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393113",
+      "name": "Sail Makers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393114",
+      "name": "Shoemakers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393211",
+      "name": "Apparel Cutters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393212",
+      "name": "Clothing Patternmakers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393213",
+      "name": "Dressmakers and Tailors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "393299",
+      "name": "Other Clothing Trades Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "394211",
+      "name": "Furniture Finishers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "394212",
+      "name": "Picture Framers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "394213",
+      "name": "Wood Machinists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "394214",
+      "name": "Wood Turners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "394299",
+      "name": "Other Wood Machinists and Wood Trades Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399111",
+      "name": "Boat Builders and Repairers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399112",
+      "name": "Shipwrights",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399211",
+      "name": "Chemical Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399212",
+      "name": "Gas and Petroleum Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399213",
+      "name": "Power Generation Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399311",
+      "name": "Gallery and Museum Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399312",
+      "name": "Library Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399511",
+      "name": "Broadcast Transmitter Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399512",
+      "name": "Camera Operators (Film, Television or Video)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399513",
+      "name": "Light Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399514",
+      "name": "Make Up Artists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399515",
+      "name": "Musical Instrument Makers and Repairers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399516",
+      "name": "Sound Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399517",
+      "name": "Television Equipment Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399599",
+      "name": "Other Performing Arts Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399911",
+      "name": "Divers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399912",
+      "name": "Interior Decorators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399913",
+      "name": "Optical Dispensers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399914",
+      "name": "Optical Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399915",
+      "name": "Photographer&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399916",
+      "name": "Plastics Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399917",
+      "name": "Wool Classers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399918",
+      "name": "Fire Protection Equipment Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "399999",
+      "name": "Technicians and Trades Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411111",
+      "name": "Ambulance Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411112",
+      "name": "Intensive Care Ambulance Paramedics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411211",
+      "name": "Dental Hygienists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411212",
+      "name": "Dental Prosthetists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411213",
+      "name": "Dental Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411214",
+      "name": "Dental Therapists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411411",
+      "name": "Enrolled Nurses",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411412",
+      "name": "Mothercraft Nurses",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411711",
+      "name": "Community Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411712",
+      "name": "Disabilities Services Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411713",
+      "name": "Family Support Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411714",
+      "name": "Parole and Probation Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411715",
+      "name": "Residential Care Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "411716",
+      "name": "Youth Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "421111",
+      "name": "Child Care Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "421112",
+      "name": "Family Day Care Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "421113",
+      "name": "Nannies",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "421114",
+      "name": "Out of School Hours Care Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "422111",
+      "name": "Aboriginal and Torres Strait Islander Education Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "422112",
+      "name": "Integration Aides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "422115",
+      "name": "Preschool Aides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "422116",
+      "name": "Teachers&#039; Aides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423311",
+      "name": "Hospital orderlies",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423312",
+      "name": "Nursing Support Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423313",
+      "name": "Personal Care Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423314",
+      "name": "Therapy Aides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423411",
+      "name": "Child and Youth Residential Care Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423412",
+      "name": "Hostel Parents",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "423413",
+      "name": "Refuge Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "431111",
+      "name": "Bar Attendants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "431112",
+      "name": "Baristas",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "431911",
+      "name": "Bar Usefuls and Bussers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "431912",
+      "name": "Doorpersons and Luggage Porters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "431999",
+      "name": "Hospitality Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "441211",
+      "name": "Emergency Service Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "441212",
+      "name": "Fire Fighters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "441311",
+      "name": "Detectives",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "441312",
+      "name": "Police Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442211",
+      "name": "Alarm, Security and Surveillance Monitors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442212",
+      "name": "Armoured Car Escorts",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442213",
+      "name": "Crowd Controllers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442214",
+      "name": "Private Investigators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442215",
+      "name": "Retail Loss Prevention Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442216",
+      "name": "Security Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442217",
+      "name": "Security Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "442299",
+      "name": "Other Security Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451311",
+      "name": "Funeral Directors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451399",
+      "name": "Funeral Workers (Other)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451411",
+      "name": "Gallery and Museum Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451412",
+      "name": "Tour Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451511",
+      "name": "Natural Remedy Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451512",
+      "name": "Weight Loss Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451513",
+      "name": "Herbalists (Western)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451611",
+      "name": "Tourist Information Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451612",
+      "name": "Travel Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451711",
+      "name": "Flight Attendants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451799",
+      "name": "Other Travel Attendants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451811",
+      "name": "Civil Celebrants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451812",
+      "name": "Hair and Beauty Salon Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451814",
+      "name": "Body Artists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451815",
+      "name": "First Aid Trainers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451816",
+      "name": "Religious Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "451899",
+      "name": "Personal Service Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452211",
+      "name": "Bungy Jump Masters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452212",
+      "name": "Fishing Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452213",
+      "name": "Hunting Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452214",
+      "name": "Mountain and Glacier Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452215",
+      "name": "Outdoor Adventure Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452216",
+      "name": "Trekking Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452217",
+      "name": "Whitewater Rafting Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452299",
+      "name": "Other Outdoor Adventure Guides",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452311",
+      "name": "Scuba, Snorkelling and Dive instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452312",
+      "name": "Gymnastics Coaches and Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452313",
+      "name": "Horse Riding Coaches and Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452314",
+      "name": "Snowsport Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452315",
+      "name": "Swimming Coaches and Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452316",
+      "name": "Tennis Coaches",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452317",
+      "name": "Other Sports Coaches and Instructors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452318",
+      "name": "Dog and Horse Racing Officials",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452321",
+      "name": "Sports Development Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452322",
+      "name": "Sports Umpires",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452323",
+      "name": "Other Sports Officials",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452411",
+      "name": "Footballers (Soccer, Rugby and AFL)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452412",
+      "name": "Golfers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452413",
+      "name": "Jockeys",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452414",
+      "name": "Lifeguards",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "452499",
+      "name": "Other Sportspersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "511111",
+      "name": "Contract Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "511112",
+      "name": "Program and Project Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "512211",
+      "name": "Health Practice Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "512299",
+      "name": "Other Practice Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "521211",
+      "name": "Secretaries (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "521212",
+      "name": "Legal Secretaries",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "532111",
+      "name": "Data Entry Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "532112",
+      "name": "Machine Shorthand Reporters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "532113",
+      "name": "Typists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "541111",
+      "name": "Call Centre or Contact Centre Team Leaders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "541112",
+      "name": "Call Centre or Contact Centre Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "542111",
+      "name": "Receptionists (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "542112",
+      "name": "Admissions Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "542113",
+      "name": "Hotel and Motel Receptionists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "542114",
+      "name": "Medical Receptionists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "551111",
+      "name": "Accounts Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "551112",
+      "name": "Cost Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "552311",
+      "name": "Bookmakers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "552312",
+      "name": "Insurance Consultants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "552313",
+      "name": "Money Market Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "552314",
+      "name": "Statistical Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561111",
+      "name": "Betting Agency Counter Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561112",
+      "name": "Bookmaker&#039;s Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561113",
+      "name": "Telephone Betting Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561199",
+      "name": "Other Betting Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561211",
+      "name": "Couriers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561212",
+      "name": "Postal Delivery Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561411",
+      "name": "Mail Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561412",
+      "name": "Postal Sorting Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561911",
+      "name": "Classified Advertising Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561912",
+      "name": "Meter Readers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561913",
+      "name": "Parking Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "561999",
+      "name": "Clerical and Office Support Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591112",
+      "name": "Production Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591113",
+      "name": "Purchasing Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591115",
+      "name": "Stock Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591116",
+      "name": "Warehouse Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591117",
+      "name": "Order Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591211",
+      "name": "Despatching and Receiving Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "591212",
+      "name": "Import-Export Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599111",
+      "name": "Conveyancers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599112",
+      "name": "Legal Executives",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599211",
+      "name": "Clerks of Court",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599212",
+      "name": "Court Bailiffs and Sheriffs",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599213",
+      "name": "Court Orderlies",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599214",
+      "name": "Law Clerks",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599215",
+      "name": "Trust Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599511",
+      "name": "Customs Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599512",
+      "name": "Immigration Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599513",
+      "name": "Motor Vehicle Licence Examiners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599514",
+      "name": "Noxious Weeds and Pest Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599515",
+      "name": "Social Security Assessors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599516",
+      "name": "Taxation Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599517",
+      "name": "Train Examiners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599518",
+      "name": "Transport Operations Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599521",
+      "name": "Water Inspectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599599",
+      "name": "Other Inspectors and Regulatory Officers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599611",
+      "name": "Insurance Investigators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599612",
+      "name": "Insurance Loss Adjusters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599613",
+      "name": "Insurance Risk Surveyors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599912",
+      "name": "Production Assistants (Film, Television, Radio or Stage)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599913",
+      "name": "Proof Readers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599914",
+      "name": "Radio Despatchers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599915",
+      "name": "Clinical Coders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599916",
+      "name": "Facilities Administrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "599999",
+      "name": "Clerical and Administrative Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611111",
+      "name": "Auctioneers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611112",
+      "name": "Stock and Station Agents",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611311",
+      "name": "Sales Representatives (Building and Plumbing Supplies)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611312",
+      "name": "Sales Representatives (Business Services)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611313",
+      "name": "Sales Representatives (Motor Vehicle Parts and Accessories)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611314",
+      "name": "Sales Representatives (Personal and Household Goods)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "611399",
+      "name": "Other Sales Representatives",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "612111",
+      "name": "Business Brokers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "612112",
+      "name": "Property Managers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "612113",
+      "name": "Real Estate Agency Principals",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "612114",
+      "name": "Real Estate Agents",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "612115",
+      "name": "Real Estate Representatives",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621311",
+      "name": "Motor Vehicle and Caravan Salespersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621312",
+      "name": "Motor Vehicle Parts Interpreters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621711",
+      "name": "Cash Van Salespersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621712",
+      "name": "Door-to-door Salespersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621713",
+      "name": "Street Vendors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621911",
+      "name": "Materials Recyclers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621912",
+      "name": "Rental Salespersons",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "621999",
+      "name": "Sales Assistants and Salespersons (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "631111",
+      "name": "Checkout Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "631112",
+      "name": "Cashiers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "639111",
+      "name": "Models",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "639112",
+      "name": "Sales Demonstrators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "639211",
+      "name": "Retail Buyers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "639212",
+      "name": "Wool Buyers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "639411",
+      "name": "Ticket Sellers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "639412",
+      "name": "Transport Conductors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711111",
+      "name": "Clay Products Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711112",
+      "name": "Concrete Products Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711113",
+      "name": "Glass Production Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711114",
+      "name": "Stone Processing Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711199",
+      "name": "Other Clay, Concrete, Glass and Stone Processing Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711311",
+      "name": "Paper Products Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711313",
+      "name": "Sawmilling Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711314",
+      "name": "Other Wood Processing Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711511",
+      "name": "Plastic Cablemaking Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711512",
+      "name": "Plastic Compounding and Reclamation Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711513",
+      "name": "Plastics Fabricators and Welders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711514",
+      "name": "Plastics Production Machine Operators (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711515",
+      "name": "Reinforced Plastic and Composite Production Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711516",
+      "name": "Rubber Production Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711599",
+      "name": "Other Plastics and Rubber Production Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711711",
+      "name": "Footwear Production Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711712",
+      "name": "Hide and Skin Processing Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711713",
+      "name": "Knitting Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711714",
+      "name": "Textile Dyeing and Finishing Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711715",
+      "name": "Weaving Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711716",
+      "name": "Yarn Carding and Spinning Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711799",
+      "name": "Other Textile and Footwear Production Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711911",
+      "name": "Chemical Production Machine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711912",
+      "name": "Motion Picture Projectionists",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711913",
+      "name": "Sand Blasters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711914",
+      "name": "Sterilisation Technicians",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "711999",
+      "name": "Machine Operators (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712211",
+      "name": "Drillers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712212",
+      "name": "Miners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712213",
+      "name": "Shot Firers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712911",
+      "name": "Boiler and Engine Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712912",
+      "name": "Bulk Materials Handling Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712913",
+      "name": "Cement Production Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712914",
+      "name": "Concrete Batching Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712915",
+      "name": "Concrete Pump Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712916",
+      "name": "Paper and Pulp Mill Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712917",
+      "name": "Railway Signal Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712918",
+      "name": "Train Controllers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712921",
+      "name": "Waste Water and Water Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712922",
+      "name": "Weighbridge Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "712999",
+      "name": "Stationary Plant Operators (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721111",
+      "name": "Agricultural and Horticultural Mobile Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721112",
+      "name": "Logging Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721211",
+      "name": "Earthmoving Plant Operators (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721212",
+      "name": "Backhoe Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721213",
+      "name": "Bulldozer Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721214",
+      "name": "Excavator Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721215",
+      "name": "Grader Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721216",
+      "name": "Loader Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721911",
+      "name": "Aircraft Baggage Handlers and Airline Ground Crews",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721912",
+      "name": "Linemarkers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721913",
+      "name": "Paving Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721914",
+      "name": "Railway Track Plant Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721915",
+      "name": "Road Roller Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721916",
+      "name": "Streetsweeper Operators",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "721999",
+      "name": "Mobile Plant Operators (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731111",
+      "name": "Chauffeurs",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731112",
+      "name": "Taxi Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731199",
+      "name": "Other Automobile Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731211",
+      "name": "Bus Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731212",
+      "name": "Charter and Tour Bus Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731213",
+      "name": "Passenger Coach Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731311",
+      "name": "Train Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "731312",
+      "name": "Tram Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "733111",
+      "name": "Truck Drivers (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "733112",
+      "name": "Aircraft Refuellers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "733113",
+      "name": "Furniture Removalist Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "733114",
+      "name": "Tanker Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "733115",
+      "name": "Tow Truck Drivers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811411",
+      "name": "Commercial Housekeepers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811412",
+      "name": "Domestic Housekeepers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811511",
+      "name": "Laundry Workers (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811512",
+      "name": "Drycleaners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811513",
+      "name": "Ironers and Pressers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811611",
+      "name": "Carpet Cleaners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811612",
+      "name": "Window Cleaners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "811699",
+      "name": "Cleaners (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821111",
+      "name": "Builder&#039;s Labourers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821112",
+      "name": "Drainage, Sewerage and Stormwater Labourers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821113",
+      "name": "Earthmoving Labourers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821114",
+      "name": "Plumber&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821411",
+      "name": "Building Insulation Installers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821412",
+      "name": "Home Improvement Installers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821711",
+      "name": "Construction Riggers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821712",
+      "name": "Scaffolders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821713",
+      "name": "Steel Fixers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821714",
+      "name": "Structural Steel Erectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821911",
+      "name": "Crane Chasers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821912",
+      "name": "Driller&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821913",
+      "name": "Laggers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821914",
+      "name": "Mining Support Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "821915",
+      "name": "Surveyor&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831111",
+      "name": "Baking Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831112",
+      "name": "Brewery Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831113",
+      "name": "Confectionery Makers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831114",
+      "name": "Dairy Products Makers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831115",
+      "name": "Fruit and Vegetable Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831116",
+      "name": "Grain Mill Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831117",
+      "name": "Sugar Mill Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831118",
+      "name": "Winery Cellar Hands",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831199",
+      "name": "Other Food and Drink Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831211",
+      "name": "Meat Boners and Slicers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831212",
+      "name": "Slaughterers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831311",
+      "name": "Meat Process Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831312",
+      "name": "Poultry Process Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "831313",
+      "name": "Seafood Process Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "832111",
+      "name": "Chocolate Packers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "832112",
+      "name": "Container Fillers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "832113",
+      "name": "Fruit and Vegetable Packers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "832114",
+      "name": "Meat Packers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "832115",
+      "name": "Seafood Packers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "832199",
+      "name": "Other Packers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839211",
+      "name": "Plastics Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839212",
+      "name": "Rubber Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839311",
+      "name": "Product Examiners",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839312",
+      "name": "Product Graders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839313",
+      "name": "Product Testers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839411",
+      "name": "Paper and Pulp Mill Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839412",
+      "name": "Sawmill and Timber Yard Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839413",
+      "name": "Wood and Wood Products Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839911",
+      "name": "Cement and Concrete Plant Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839912",
+      "name": "Chemical Plant Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839913",
+      "name": "Clay Processing Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839914",
+      "name": "Fabric and Textile Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839915",
+      "name": "Footwear Factory Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839916",
+      "name": "Glass Processing Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839917",
+      "name": "Hide and Skin Processing Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839918",
+      "name": "Recycling Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "839999",
+      "name": "Factory Process Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841211",
+      "name": "Fruit and Nut Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841212",
+      "name": "Fruit and Nut Pickers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841213",
+      "name": "Grain, Oilseed and Pasture Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841214",
+      "name": "Vegetable Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841215",
+      "name": "Vegetable Pickers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841216",
+      "name": "Vineyard Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841217",
+      "name": "Mushroom Pickers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841299",
+      "name": "Other Crop Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841311",
+      "name": "Forestry Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841312",
+      "name": "Logging Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841313",
+      "name": "Tree Fallers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841411",
+      "name": "Garden Labourers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841412",
+      "name": "Nursery Hands (Horticulture)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841511",
+      "name": "Beef Cattle Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841512",
+      "name": "Dairy Cattle Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841513",
+      "name": "Mixed Livestock Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841514",
+      "name": "Poultry Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841515",
+      "name": "Sheep Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841516",
+      "name": "Stablehands",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841517",
+      "name": "Wool Handlers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841599",
+      "name": "Other Livestock Farm Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841911",
+      "name": "Hunter-Trappers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841913",
+      "name": "Pest Controllers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "841999",
+      "name": "Farm, Forestry and Garden Workers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "851211",
+      "name": "Pastrycook&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "851299",
+      "name": "Other Food Trades Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "891111",
+      "name": "Freight Handlers (Rail or Road)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "891112",
+      "name": "Truck Driver&#039;s Offsiders",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "891113",
+      "name": "Waterside Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899211",
+      "name": "Deck Hands",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899212",
+      "name": "Fishing Hands",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899411",
+      "name": "Motor Vehicle Parts and Accessories Fitters (General)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899412",
+      "name": "Autoglaziers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899413",
+      "name": "Exhaust and Muffler Repairers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899414",
+      "name": "Radiator Repairers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899415",
+      "name": "Tyre Fitters",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899511",
+      "name": "Printer&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899512",
+      "name": "Printing Table Workers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899911",
+      "name": "Bicycle Mechanics",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899912",
+      "name": "Car Park Attendants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899913",
+      "name": "Crossing Supervisors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899914",
+      "name": "Electrical and Telecommunications Trades Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899915",
+      "name": "Leaflet and Newspaper Deliverers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899916",
+      "name": "Mechanic&#039;s Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899917",
+      "name": "Railways Assistants",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899918",
+      "name": "Sign Erectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899921",
+      "name": "Ticket Collectors and Ushers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899922",
+      "name": "Trolley Collectors",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899923",
+      "name": "Road Traffic Controllers",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    },
+    {
+      "anzsco": "899999",
+      "name": "Labourers (not covered elsewhere)",
+      "lists": [],
+      "visas": [],
+      "assessingAuthority": null,
+      "group": "Various"
+    }
+  ]
+}
