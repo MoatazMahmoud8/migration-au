@@ -81,14 +81,16 @@ jobs:
 
       # -----------------------------------------------------------------------
       # 8. Deploy updated JSON files to Firebase Hosting
+      #    Secret is base64-encoded; decode it to a temp file for firebase CLI
       # -----------------------------------------------------------------------
       - name: Deploy to Firebase Hosting
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
-          projectId: swift-shore-238707
-          channelId: live
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}' | base64 -d > /tmp/firebase_sa.json
+          npx firebase-tools@latest deploy --only hosting \
+            --project swift-shore-238707 \
+            --non-interactive
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/firebase_sa.json
 
       # -----------------------------------------------------------------------
       # 8. Remove sensitive file before artifact upload
