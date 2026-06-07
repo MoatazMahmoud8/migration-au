@@ -65,7 +65,9 @@ HEADERS = {
     "Accept-Language": "en-AU,en;q=0.9",
 }
 
-REQUEST_TIMEOUT = 20
+REQUEST_TIMEOUT = 60  # Increased from 20s for slow JSA endpoints in GitHub Actions
+REQUEST_RETRIES = 3
+REQUEST_BACKOFF = 2  # exponential backoff multiplier
 MAX_WORKERS = 6
 INTER_REQUEST_SLEEP = 0.15  # extra politeness between submissions
 
@@ -115,8 +117,19 @@ def _build_index(session: requests.Session) -> dict[str, tuple[str, str]]:
     which gives us both the canonical URL and a clean fallback name.
     """
     log.info("Fetching JSA sitemap …")
-    resp = session.get(INDEX_URL, timeout=REQUEST_TIMEOUT)
-    resp.raise_for_status()
+    for attempt in range(REQUEST_RETRIES):
+        try:
+            resp = session.get(INDEX_URL, timeout=REQUEST_TIMEOUT)
+            resp.raise_for_status()
+            break
+        except requests.RequestException as exc:
+            if attempt < REQUEST_RETRIES - 1:
+                wait_time = REQUEST_BACKOFF ** attempt
+                log.warning("Attempt %d failed: %s. Retrying in %ds...", attempt + 1, exc, wait_time)
+                time.sleep(wait_time)
+            else:
+                log.error("Could not fetch JSA sitemap after %d attempts: %s", REQUEST_RETRIES, exc)
+                raise
 
     mapping: dict[str, tuple[str, str]] = {}
     pat = re.compile(
@@ -218,6 +231,16 @@ def main() -> int:
         index = _build_index(session)
     except requests.RequestException as exc:
         log.error("Could not fetch JSA index: %s", exc)
+        log.info("Falling back to existing salary data (no updates this run).")
+        # Use existing data as fallback - don't crash the workflow
+        if OUTPUT_FILE.exists():
+            try:
+                existing_payload = json.loads(OUTPUT_FILE.read_text())
+                log.info("Using existing data with %d salaries.", len(existing_payload.get("salaries", {})))
+                return 0  # Exit successfully with existing data
+            except (json.JSONDecodeError, OSError):
+                pass
+        log.error("No existing salary data to fall back to.")
         return 1
 
     # Preserve previous results so a transient failure doesn't blow away data.
