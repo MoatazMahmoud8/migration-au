@@ -8,6 +8,12 @@ service cloud.firestore {
       allow write: if false; // Admin SDK bypasses these rules
     }
 
+    // In-app notifications feed — public read, only Admin SDK can write
+    match /notifications/{notificationId} {
+      allow read: if true;
+      allow write: if false; // Only Admin SDK / backend can write
+    }
+
     // FCM triggers — only backend writes, no client access
     match /fcm_triggers/{triggerId} {
       allow read, write: if false;
