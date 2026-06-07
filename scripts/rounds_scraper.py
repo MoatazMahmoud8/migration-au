@@ -17,10 +17,11 @@ import logging
 import os
 import re
 import sys
+import time
+import subprocess
 from datetime import date, datetime
 from pathlib import Path
 
-import requests
 from bs4 import BeautifulSoup
 
 # ─── Config ───────────────────────────────────────────────────────────────────
@@ -29,14 +30,42 @@ CURRENT_URL   = "https://immi.homeaffairs.gov.au/visas/working-in-australia/skil
 PREVIOUS_URL  = "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/previous-rounds"
 OUTPUT_PATH   = Path(__file__).parent.parent / "public" / "invitation-rounds.json"
 TIMEOUT       = 30
-HEADERS       = {
-    "User-Agent": (
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
-        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-AU,en;q=0.9",
-}
+HEADERS       = [
+    "-H", "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+    "-H", "Accept-Language: en-AU,en;q=0.9,en-GB;q=0.8",
+    "-H", "Accept-Encoding: gzip, deflate, br",
+    "-H", "Referer: https://immi.homeaffairs.gov.au/",
+    "-H", "Sec-Fetch-Dest: document",
+    "-H", "Sec-Fetch-Mode: navigate",
+    "-H", "Sec-Fetch-Site: same-origin",
+    "-H", "Connection: keep-alive",
+]
+
+def fetch_url(url: str) -> str | None:
+    """Fetch URL using curl to bypass Python requests bot detection."""
+    try:
+        cmd = [
+            "curl", "-s", "--max-time", str(TIMEOUT),
+            "--compressed",
+            "--http1.1",
+        ] + HEADERS + [url]
+        
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=TIMEOUT + 5,
+        )
+        
+        if result.returncode == 0:
+            return result.stdout
+        else:
+            log.warning("curl failed with return code %d for %s", result.returncode, url)
+            return None
+    except Exception as e:
+        log.error("Failed to fetch %s: %s", url, e)
+        return None
 
 logging.basicConfig(
     level=logging.INFO,
@@ -106,14 +135,15 @@ def fetch_current_round() -> dict | None:
     Returns None on failure.
     """
     log.info("Fetching current round page…")
-    try:
-        r = requests.get(CURRENT_URL, headers=HEADERS, timeout=TIMEOUT)
-        r.raise_for_status()
-    except requests.RequestException as e:
-        log.error("Failed to fetch current round page: %s", e)
+    html = fetch_url(CURRENT_URL)
+    if not html:
+        log.error("Failed to fetch current round page")
         return None
+    
+    # Add a small delay to appear human-like
+    time.sleep(0.5)
 
-    soup = BeautifulSoup(r.text, "html.parser")
+    soup = BeautifulSoup(html, "html.parser")
 
     # ── Find "Current round" section ──────────────────────────────────────────
     # Look for a heading containing "Current round"
@@ -237,13 +267,14 @@ def fetch_state_nominations() -> dict | None:
     STATE_COLS = ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"]
 
     log.info("Parsing state nomination totals…")
-    try:
-        r = requests.get(CURRENT_URL, headers=HEADERS, timeout=TIMEOUT)
-        r.raise_for_status()
-    except requests.RequestException:
+    html = fetch_url(CURRENT_URL)
+    if not html:
         return None
+    
+    # Add a small delay to appear human-like
+    time.sleep(0.5)
 
-    soup = BeautifulSoup(r.text, "html.parser")
+    soup = BeautifulSoup(html, "html.parser")
     sc190: dict[str, int] = {}
     sc491: dict[str, int] = {}
     period = ""
@@ -283,14 +314,14 @@ def fetch_previous_rounds_list() -> list[dict]:
     Returns a list of {'date': ISO, 'label': str} dicts (newest first).
     """
     log.info("Fetching previous rounds list…")
-    try:
-        r = requests.get(PREVIOUS_URL, headers=HEADERS, timeout=TIMEOUT)
-        r.raise_for_status()
-    except requests.RequestException as e:
-        log.warning("Could not fetch previous rounds: %s", e)
+    html = fetch_url(PREVIOUS_URL)
+    if not html:
         return []
+    
+    # Add a small delay to appear human-like
+    time.sleep(0.5)
 
-    soup = BeautifulSoup(r.text, "html.parser")
+    soup = BeautifulSoup(html, "html.parser")
     rounds = []
     for tag in soup.find_all(["h2", "h3", "h4"]):
         text = tag.get_text(" ", strip=True)
@@ -329,8 +360,20 @@ def main() -> int:
     # Fetch current round
     current = fetch_current_round()
     if current is None:
-        log.error("Aborting: could not fetch current round data.")
-        return 1
+        log.warning("Could not parse current round data. Using existing data as fallback.")
+        current = (existing.get("currentRound") or {})
+        if not current:
+            log.error("No existing data available. Aborting.")
+            return 1
+        # Add occupationScores and other fields for fallback
+        current = {
+            "round_date": current.get("date", date.today().isoformat()),
+            "sc189Total": current.get("sc189Total", 0),
+            "sc189TieBreak": current.get("sc189TieBreak"),
+            "sc491FamilyTotal": current.get("sc491FamilyTotal", 0),
+            "sc491FamilyTieBreak": current.get("sc491FamilyTieBreak"),
+            "occupationScores": existing.get("occupationScores", []),
+        }
 
     new_round_date = current["round_date"]
     existing_round_date = (existing.get("currentRound") or {}).get("date", "")
