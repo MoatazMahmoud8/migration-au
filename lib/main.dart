@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'core/config/app_config.dart';
 import 'core/router/app_router.dart';
@@ -32,7 +33,21 @@ void main() async {
     PurchasesConfiguration(AppConfig.revenueCatPublicKey),
   );
 
-  runApp(const MigrationAuApp());
+  // Initialize Sentry for error tracking
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = 'https://YOUR_SENTRY_DSN@sentry.io/YOUR_PROJECT_ID';
+      options.tracesSampleRate = 1.0;
+      options.enableAutoSessionTracking = true;
+      options.attachScreenshot = true;
+      options.attachViewHierarchy = true;
+      // Set environment
+      options.environment = const bool.fromEnvironment('dart.vm.product')
+          ? 'production'
+          : 'development';
+    },
+    appRunner: () => runApp(const MigrationAuApp()),
+  );
 }
 
 class MigrationAuApp extends StatelessWidget {

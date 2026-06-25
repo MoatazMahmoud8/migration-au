@@ -30,6 +30,10 @@ scripts/service_account.json
 scripts/scraper.log
 .env
 
+# Firebase Service Account (NEVER commit credentials)
+firebase-service-account.json
+*/firebase-service-account.json
+
 # IDE
 .idea/
 .vscode/

@@ -46,7 +46,7 @@ exports.processFcmTrigger = onDocumentCreated(
     }
 
     const data = snap.data();
-    const { title, body, topics, articleUrl, sent } = data;
+    const { title, body, topics, articleUrl, sent, route } = data;
 
     // Guard — skip if already processed (e.g. function retry)
     if (sent === true) {
@@ -72,6 +72,7 @@ exports.processFcmTrigger = onDocumentCreated(
           body: body ?? "New migration news available.",
         },
         data: {
+          route: route ?? "/(tabs)/notifications",
           url: articleUrl ?? "",
           click_action: "FLUTTER_NOTIFICATION_CLICK",
         },
@@ -116,13 +117,28 @@ exports.processFcmTrigger = onDocumentCreated(
 
 /**
  * Verify admin role from custom claims
+ * In development (emulator), allows any authenticated user or bypasses if no auth context
  */
 async function verifyAdmin(uid) {
+  // Production: require valid UID
+  if (!uid) {
+    logger.warn(`Admin verification: No UID provided`);
+    return false;
+  }
+  
   try {
     const user = await getAuth().getUser(uid);
-    return user.customClaims?.admin === true;
+    const isAdmin = user.customClaims?.admin === true;
+    
+    if (!isAdmin) {
+      logger.warn(`Admin verification failed for ${uid}: user does not have admin claim`);
+      return false;
+    }
+    
+    logger.info(`✅ Admin verified for ${uid}`);
+    return true;
   } catch (err) {
-    logger.warn(`Admin verification failed for ${uid}:`, err);
+    logger.error(`Admin verification error for ${uid}:`, err);
     return false;
   }
 }
@@ -133,24 +149,42 @@ async function verifyAdmin(uid) {
  * Request: { notificationId, editedTitle?, editedBody? }
  * Returns: { success, message, notificationId }
  */
-exports.approveNotification = https.onCall(async (data, context) => {
-  // Auth check
-  if (!context.auth) {
-    throw new https.HttpsError(
-      "unauthenticated",
-      "User must be authenticated"
-    );
+exports.approveNotification = https.onCall({ cors: true }, async (data, context) => {
+  logger.info(`📥 [approveNotification] Called`);
+  logger.info(`📥 Raw data keys: ${Object.keys(data || {}).join(', ')}`);
+  
+  // The httpsCallable wraps user data in a nested 'data' field
+  // data structure: { rawRequest, auth, data: { userFields... }, acceptsStreaming }
+  let userPayload = data?.data || data;
+  
+  if (userPayload && typeof userPayload === 'object') {
+    const userKeys = Object.keys(userPayload);
+    logger.info(`📥 User payload keys: ${userKeys.join(', ')}`);
   }
-
-  // Admin check
-  const isAdmin = await verifyAdmin(context.auth.uid);
+  
+  // For development/emulator with live auth, context.auth might be null
+  const uid = context.auth?.uid;
+  if (!uid) {
+    throw new https.HttpsError("unauthenticated", "User must be authenticated");
+  }
+  
+  logger.info(`🔐 UID: ${uid}`);
+  
+  // Admin check - requires admin custom claim
+  const isAdmin = await verifyAdmin(uid);
   if (!isAdmin) {
     throw new https.HttpsError("permission-denied", "Admin access required");
   }
 
-  const { notificationId, editedTitle, editedBody } = data;
+  // Extract fields from userPayload
+  const notificationId = userPayload?.notificationId;
+  const editedTitle = userPayload?.editedTitle;
+  const editedBody = userPayload?.editedBody;
+  
+  logger.info(`✅ Extracted: notificationId=${notificationId}`);
+  
   if (!notificationId) {
-    throw new https.HttpsError("invalid-argument", "notificationId required");
+    throw new https.HttpsError("invalid-argument", "notificationId is required but was not found in request data");
   }
 
   const db = getFirestore();
@@ -173,7 +207,7 @@ exports.approveNotification = https.onCall(async (data, context) => {
       body: editedBody || draftData.body,
       status: "published",
       approvedAt: new Date().toISOString(),
-      approvedBy: context.auth.uid,
+      approvedBy: uid,
     };
 
     // Save to published collection
@@ -204,7 +238,7 @@ exports.approveNotification = https.onCall(async (data, context) => {
     await db.collection("notification_reviews").add({
       notificationId,
       action: "approved",
-      approver: context.auth.uid,
+      approver: uid,
       timestamp: new Date().toISOString(),
       editedTitle: editedTitle || null,
       editedBody: editedBody || null,
@@ -232,20 +266,29 @@ exports.approveNotification = https.onCall(async (data, context) => {
  * Request: { notificationId, reason }
  * Returns: { success, message }
  */
-exports.rejectNotification = https.onCall(async (data, context) => {
-  if (!context.auth) {
-    throw new https.HttpsError(
-      "unauthenticated",
-      "User must be authenticated"
-    );
+exports.rejectNotification = https.onCall({ cors: true }, async (data, context) => {
+  const uid = context.auth?.uid;
+  if (!uid) {
+    throw new https.HttpsError("unauthenticated", "User must be authenticated");
   }
-
-  const isAdmin = await verifyAdmin(context.auth.uid);
+  
+  logger.info(`📥 rejectNotification called with uid=${uid}`);
+  
+  // The httpsCallable wraps user data in a nested 'data' field
+  let userPayload = data?.data || data;
+  
+  if (userPayload && typeof userPayload === 'object') {
+    const userKeys = Object.keys(userPayload);
+    logger.info(`📥 User payload keys: ${userKeys.join(', ')}`);
+  }
+  
+  // Admin check - requires admin custom claim
+  const isAdmin = await verifyAdmin(uid);
   if (!isAdmin) {
     throw new https.HttpsError("permission-denied", "Admin access required");
   }
 
-  const { notificationId, reason } = data;
+  const { notificationId, reason } = userPayload;
   if (!notificationId) {
     throw new https.HttpsError("invalid-argument", "notificationId required");
   }
@@ -291,22 +334,34 @@ exports.rejectNotification = https.onCall(async (data, context) => {
  * Request: { notificationId, title?, body?, category? }
  * Returns: { success, message, notification }
  */
-exports.editDraftNotification = https.onCall(async (data, context) => {
-  if (!context.auth) {
-    throw new https.HttpsError(
-      "unauthenticated",
-      "User must be authenticated"
-    );
+exports.editDraftNotification = https.onCall({ cors: true }, async (data, context) => {
+  const uid = context.auth?.uid;
+  if (!uid) {
+    throw new https.HttpsError("unauthenticated", "User must be authenticated");
   }
-
-  const isAdmin = await verifyAdmin(context.auth.uid);
+  
+  logger.info(`📥 [editDraftNotification] Called`);
+  logger.info(`📥 Raw data keys: ${Object.keys(data || {}).join(', ')}`);
+  
+  // The httpsCallable wraps user data in a nested 'data' field
+  let userPayload = data?.data || data;
+  
+  if (userPayload && typeof userPayload === 'object') {
+    const userKeys = Object.keys(userPayload);
+    logger.info(`📥 User payload keys: ${userKeys.join(', ')}`);
+  }
+  
+  // Admin check - requires admin custom claim
+  const isAdmin = await verifyAdmin(uid);
   if (!isAdmin) {
     throw new https.HttpsError("permission-denied", "Admin access required");
   }
 
-  const { notificationId, title, body, category } = data;
+  const { notificationId, title, body, category } = userPayload;
+  logger.info(`✅ Extracted: notificationId=${notificationId}`);
+  
   if (!notificationId) {
-    throw new https.HttpsError("invalid-argument", "notificationId required");
+    throw new https.HttpsError("invalid-argument", "notificationId is required but was not found in request data");
   }
 
   const db = getFirestore();
@@ -342,4 +397,250 @@ exports.editDraftNotification = https.onCall(async (data, context) => {
     throw new https.HttpsError("internal", err.message || "Edit failed");
   }
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCRAPER UPDATE HANDLER - Auto-create notifications when scraper finds articles
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * onScraperUpdate - Triggers when scraper metadata updates
+ * 
+ * Automatically creates notifications for new migration news articles found by the scraper
+ * and sends them via FCM to subscribed users.
+ * 
+ * Firestore Path: _scraper_meta/{state}
+ * 
+ * Flow:
+ * 1. Detects new articles from scraper
+ * 2. Creates notification in notifications collection
+ * 3. Creates FCM trigger for delivery
+ * 4. Sends FCM message to State topic
+ */
+const { onDocumentWritten } = require("firebase-functions/v2/firestore");
+
+exports.onScraperUpdate = onDocumentWritten(
+  {
+    document: "_scraper_meta/{state}",
+    region: "us-central1",
+  },
+  async (event) => {
+    const state = event.params.state;
+    const snap = event.data;
+    
+    if (!snap) {
+      logger.warn(`[Scraper Update] No snap data for state: ${state}`);
+      return { status: "no_snap", state };
+    }
+
+    try {
+      logger.info(`📡 [Scraper Update] Detected update for state: ${state}`, {
+        state,
+        timestamp: new Date().toISOString(),
+      });
+
+      // Get the new data from scraper
+      const data = snap.after?.data?.() || snap.data?.();
+      if (!data) {
+        logger.warn(`⚠️ [Scraper Update] No data for state: ${state}`);
+        return { status: "no_data", state };
+      }
+
+      // Extract article information
+      const newArticles = data.articles || [];
+      const beforeData = snap.before?.data?.() || {};
+      const lastArticleCount = (beforeData.articles?.length) || 0;
+      
+      if (newArticles.length === lastArticleCount) {
+        logger.info(
+          `ℹ️ [Scraper Update] No new articles for state ${state} ` +
+          `(still ${newArticles.length})`
+        );
+        return { status: "no_new_articles", state, count: newArticles.length };
+      }
+
+      // Get recent articles (assume scraper adds newest first)
+      const newCount = Math.max(0, newArticles.length - lastArticleCount);
+      let recentArticles = newArticles.slice(0, newCount);
+      
+      // Filter for today's articles and visa-related content
+      const today = new Date().toDateString();
+      const visaKeywords = ['visa', 'migration', 'skilled', 'skilled migration', 'nomination', 'pr', 'permanent resident', 'work permit', 'sponsorship', 'SkillSelect', 'points', 'ANZSCO', 'occupation', 'subclass'];
+      
+      recentArticles = recentArticles.filter(article => {
+        // Check if article is from today
+        const articleDate = article.date ? new Date(article.date).toDateString() : null;
+        if (!articleDate || articleDate !== today) {
+          logger.debug(`[Scraper] Skipping article - not from today: ${article.title}`);
+          return false;
+        }
+        
+        // Check if article is visa-related
+        const titleBody = `${(article.title || '').toLowerCase()} ${(article.summary || '').toLowerCase()} ${(article.description || '').toLowerCase()}`;
+        const isVisaRelated = visaKeywords.some(keyword => titleBody.includes(keyword.toLowerCase()));
+        if (!isVisaRelated) {
+          logger.debug(`[Scraper] Skipping article - not visa-related: ${article.title}`);
+          return false;
+        }
+        
+        return true;
+      });
+      
+      logger.info(
+        `🔍 [Scraper Update] Found ${recentArticles.length} new visa-related articles for ${state} (from today)`,
+        { state, totalNew: newCount, filteredCount: recentArticles.length }
+      );
+
+      const db = getFirestore();
+      const messaging = getMessaging();
+      const notifications = [];
+      const errors = [];
+
+      // Create notifications for each new article
+      for (const article of recentArticles) {
+        try {
+          const notificationId = `scraper-${state}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+          
+          // Ensure we have a valid link - use the article link or fall back to None
+          const articleLink = (article.link && article.link.trim()) ? article.link.trim() : null;
+
+          const notification = {
+            title: article.title || `New ${state} Migration Update`,
+            body: article.summary || article.description || "New migration news available",
+            category: "migration_news",
+            source: article.source || "scraper",
+            sourceUrl: articleLink || "", // Will be empty if no link available
+            url: articleLink || `https://swift-shore-238707.web.app/notifications`, // Fallback to Notifications page
+            state: state,
+            status: "published",
+            articleDate: article.date || new Date().toISOString(),
+            createdAt: new Date(),
+            publishedAt: new Date(),
+            createdBy: "scraper_automation",
+            hasValidSourceUrl: !!articleLink, // Flag to indicate if link is real
+          };
+
+          // Write to notifications collection (published directly)
+          await db.collection("notifications").doc(notificationId).set(notification);
+          logger.info(
+            `✅ [Scraper Update] Created notification: ${notificationId}`,
+            { title: notification.title }
+          );
+
+          // Create FCM trigger document
+          const fcmTriggerId = `fcm-${notificationId}`;
+          const topics = [
+            `state_${state}`,
+            "au_migration",
+          ];
+
+          await db.collection("fcm_triggers").doc(fcmTriggerId).set({
+            notificationId,
+            title: notification.title,
+            body: notification.body,
+            topics,
+            url: notification.url,
+            route: "/(tabs)/notifications",
+            sent: false,
+            sentAt: null,
+            createdAt: new Date(),
+            error: null,
+          });
+
+          logger.info(
+            `📨 [Scraper Update] Created FCM trigger for topics: ${topics.join(", ")}`,
+            { fcmTriggerId }
+          );
+
+          notifications.push({
+            notificationId,
+            fcmTriggerId,
+            title: notification.title,
+          });
+
+        } catch (articleError) {
+          logger.error(
+            `❌ [Scraper Update] Error processing article for ${state}`,
+            { error: articleError }
+          );
+          errors.push(articleError.message);
+        }
+      }
+
+      // Send FCM messages for each notification
+      for (const notif of notifications) {
+        try {
+          const response = await messaging.send({
+            notification: {
+              title: notif.title,
+              body: "📰 New migration update available",
+            },
+            data: {
+              route: "/(tabs)/notifications",
+              notificationId: notif.notificationId,
+              url: "app://notifications",
+            },
+            topic: `state_${state}`,
+          });
+
+          // Mark FCM trigger as sent
+          await db.collection("fcm_triggers").doc(notif.fcmTriggerId).update({
+            sent: true,
+            sentAt: new Date(),
+            route: "/(tabs)/notifications",
+          });
+
+          logger.info(
+            `✅ [Scraper Update] FCM sent to state_${state}`,
+            { messageId: response, notificationId: notif.notificationId }
+          );
+
+        } catch (fcmError) {
+          logger.error(
+            `❌ [Scraper Update] FCM send failed for ${notif.notificationId}`,
+            { error: fcmError }
+          );
+
+          // Log error to FCM trigger
+          await db.collection("fcm_triggers").doc(notif.fcmTriggerId).update({
+            sent: false,
+            error: fcmError.message,
+            sentAt: new Date(),
+          });
+          
+          errors.push(fcmError.message);
+        }
+      }
+
+      logger.info(
+        `🎉 [Scraper Update] Complete for ${state}`,
+        { 
+          state,
+          notificationsCreated: notifications.length,
+          errors: errors.length > 0 ? errors : null,
+          timestamp: new Date().toISOString(),
+        }
+      );
+
+      return {
+        status: "success",
+        state,
+        notificationsCreated: notifications.length,
+        notifications,
+        errors: errors.length > 0 ? errors : null,
+      };
+
+    } catch (error) {
+      logger.error(
+        `❌ [Scraper Update] Fatal error for state ${state}`,
+        { error, state }
+      );
+      
+      return {
+        status: "error",
+        state,
+        error: error.message,
+      };
+    }
+  }
+);
 

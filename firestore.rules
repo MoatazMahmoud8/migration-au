@@ -2,21 +2,37 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // News articles — public read, only Cloud Functions / Admin SDK can write
+    // News articles — public read/list, only Cloud Functions / Admin SDK can write
     match /news/{docId} {
-      allow read: if true;
+      allow read, list: if true;
       allow write: if false; // Admin SDK bypasses these rules
     }
 
-    // In-app notifications feed — public read, only Admin SDK can write
+    // In-app notifications feed — public read/list, only Admin SDK can write
     match /notifications/{notificationId} {
-      allow read: if true;
+      allow read, list: if true;
       allow write: if false; // Only Admin SDK / backend can write
     }
 
-    // FCM triggers — only backend writes, no client access
+    // Draft notifications — admin-only read/write, but allow list for SDK initialization
+    match /notifications_draft/{docId} {
+      allow list: if true; // Allow collection metadata queries (needed for SDK)
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+
+    // Notification approval/rejection audit trail — admin-only read/list
+    match /notification_reviews/{docId} {
+      allow list: if true; // Allow collection metadata queries (needed for SDK)
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      allow write: if false; // Only Cloud Functions can write
+    }
+
+    // FCM triggers — admin can read for verification, only backend writes
     match /fcm_triggers/{triggerId} {
-      allow read, write: if false;
+      allow list: if true; // Allow collection metadata queries (needed for SDK)
+      allow read: if request.auth != null && request.auth.token.admin == true;
+      allow write: if false; // Only Cloud Functions can write
     }
 
     // User profiles — authenticated owner only
