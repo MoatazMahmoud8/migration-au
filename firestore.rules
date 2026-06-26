@@ -8,10 +8,11 @@ service cloud.firestore {
       allow write: if false; // Admin SDK bypasses these rules
     }
 
-    // In-app notifications feed — public read/list, only Admin SDK can write
+    // In-app notifications feed — public read/list, admin can write
     match /notifications/{notificationId} {
       allow read, list: if true;
-      allow write: if false; // Only Admin SDK / backend can write
+      allow create: if true; // Allow admin dashboard to create notifications
+      allow update, delete: if false; // Only Admin SDK / backend can modify
     }
 
     // Draft notifications — admin-only read/write, but allow list for SDK initialization

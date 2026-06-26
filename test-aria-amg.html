@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aria AI - AMG API Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-test {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-test:active {
+            transform: translateY(0);
+        }
+        
+        .btn-clear {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .btn-clear:hover {
+            background: #e0e0e0;
+        }
+        
+        .output-section {
+            border-top: 2px solid #e0e0e0;
+            padding-top: 20px;
+        }
+        
+        .output-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+        
+        .output {
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px;
+            min-height: 100px;
+            font-family: monospace;
+            font-size: 13px;
+            color: #333;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        
+        .status {
+            font-size: 12px;
+            margin-top: 8px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .status.error {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        .status.loading {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .spinner {
+            display: inline-block;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .quick-tests {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .quick-btn {
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🇦🇺 Aria AI - AMG API Test</h1>
+        <p class="subtitle">Local test for Google GenAI SDK (AMG)</p>
+        
+        <div class="form-group">
+            <label for="apiKey">API Key (from Google AI Studio):</label>
+            <input type="text" id="apiKey" placeholder="Paste your AMG API key here" />
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Test Message:</label>
+            <textarea id="message" placeholder="Enter a test message...">hi</textarea>
+        </div>
+        
+        <div class="quick-tests">
+            <button class="quick-btn" onclick="fillMessage('hi')">Test: hi</button>
+            <button class="quick-btn" onclick="fillMessage('hello')">Test: hello</button>
+            <button class="quick-btn" onclick="fillMessage('hey')">Test: hey</button>
+            <button class="quick-btn" onclick="fillMessage('what visa should i apply for')">Test: Visa Question</button>
+            <button class="quick-btn" onclick="fillMessage('how do i reach 95 points')">Test: Points</button>
+            <button class="quick-btn" onclick="fillMessage('what is anzsco')">Test: ANZSCO</button>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn-test" onclick="testAMG()">🚀 Test AMG API</button>
+            <button class="btn-clear" onclick="clearOutput()">Clear Output</button>
+        </div>
+        
+        <div class="output-section">
+            <div class="output-title">Response:</div>
+            <div class="output" id="output">Waiting for test...</div>
+            <div class="status" id="status">Ready to test</div>
+        </div>
+    </div>
+    
+    <script>
+        const API_KEY_INPUT = document.getElementById('apiKey');
+        const MESSAGE_INPUT = document.getElementById('message');
+        const OUTPUT = document.getElementById('output');
+        const STATUS = document.getElementById('status');
+        
+        // Load saved API key
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('amg-api-key');
+            if (saved) {
+                API_KEY_INPUT.value = saved;
+            }
+        });
+        
+        // Save API key on change
+        API_KEY_INPUT.addEventListener('change', () => {
+            localStorage.setItem('amg-api-key', API_KEY_INPUT.value);
+        });
+        
+        function fillMessage(msg) {
+            MESSAGE_INPUT.value = msg;
+            MESSAGE_INPUT.focus();
+        }
+        
+        function clearOutput() {
+            OUTPUT.textContent = 'Waiting for test...';
+            STATUS.textContent = 'Ready to test';
+            STATUS.className = 'status';
+        }
+        
+        async function testAMG() {
+            const apiKey = API_KEY_INPUT.value.trim();
+            const message = MESSAGE_INPUT.value.trim();
+            
+            if (!apiKey) {
+                setStatus('❌ Error: API key is required', true);
+                return;
+            }
+            
+            if (!message) {
+                setStatus('❌ Error: Message is required', true);
+                return;
+            }
+            
+            setStatus('⏳ Testing AMG API...', false, true);
+            OUTPUT.textContent = 'Sending request...';
+            
+            try {
+                // Option 1: Direct Firebase Cloud Function call (if deployed)
+                const firebaseUrl = 'https://ariachat-uydub6b2fq-uc.a.run.app';
+                
+                OUTPUT.textContent = `Calling Firebase Cloud Function:\n${firebaseUrl}\n\nPayload:\n${JSON.stringify({ message, history: [] }, null, 2)}\n\nWaiting for response...`;
+                
+                const response = await fetch(firebaseUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        history: []
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                
+                OUTPUT.textContent = JSON.stringify(data, null, 2);
+                setStatus(`✅ Success! Reply length: ${data.reply?.length || 0} chars`, false, false);
+                
+            } catch (error) {
+                OUTPUT.textContent = `Error: ${error.message}\n\nStack:\n${error.stack}`;
+                setStatus(`❌ Error: ${error.message}`, true);
+            }
+        }
+        
+        function setStatus(message, isError = false, isLoading = false) {
+            STATUS.textContent = message;
+            STATUS.className = 'status' + (isError ? ' error' : '') + (isLoading ? ' loading' : '');
+        }
+        
+        // Allow Enter to submit
+        MESSAGE_INPUT.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                testAMG();
+            }
+        });
+    </script>
+</body>
+</html>

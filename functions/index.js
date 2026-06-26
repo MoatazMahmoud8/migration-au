@@ -796,15 +796,6 @@ exports.ariaChat = onRequest(
         return res.status(200).json({ reply: cachedReply });
       }
 
-      const apiKey = GEMINI_API_KEY.value();
-      if (!apiKey) {
-        logger.error("[ariaChat] CRITICAL: GEMINI_API_KEY secret is not set!");
-        res.status(500).json({
-          error: "Aria API key not configured. Contact system administrator.",
-        });
-        return;
-      }
-
       logger.info("[ariaChat] API request (not in cache)");
 
       // Sanitize history
@@ -817,7 +808,11 @@ exports.ariaChat = onRequest(
         }));
 
       try {
-        logger.info("[ariaChat] Initializing GoogleGenerativeAI...");
+        logger.info("[ariaChat] Initializing GoogleGenerativeAI with secret API key...");
+        const apiKey = GEMINI_API_KEY.value();
+        if (!apiKey) {
+          throw new Error("GEMINI_API_KEY secret not set");
+        }
         const genAI = new GoogleGenerativeAI(apiKey);
 
         logger.info("[ariaChat] Creating model: gemini-2.5-flash");
