@@ -659,13 +659,15 @@ const responseCache = new Map();
 
 // Pre-populate cache with common questions (key optimization)
 const COMMON_RESPONSES = {
-  "how do i reach 95 points": "📍 Stage 2: Expression - You need 65+ points minimum for 189. Key areas: English (IELTS 8+), work experience (8+ years), state sponsorship (adds 5-10 points). Visit skillselect.gov.au to check invitation cutoffs.",
-  "what is anzsco": "ANZSCO is the Australian & New Zealand Standard Classification of Occupations. It's used to identify your occupation for visa purposes. Example: 261313 = Software Developer. You need a positive skills assessment in your ANZSCO code.",
-  "what visa should i apply for": "Main skilled visas: 189 (65+ points, fastest), 190 (60+ points, state-sponsored), 491 (45+ points, regional). Check your points first at skillselect.gov.au",
-  "how do i get pr": "5-stage process: 1) Preparation (skills assessment, English) 2) Expression (EOI on SkillSelect) 3) Invitation & Application 4) Decision 5) Citizenship (4+ years after grant). Total: 3-5 years.",
-  "hi": "G'day! 🇦🇺 I'm Aria, your Australian migration consultant. Ask me about visas (189/190/491), points calculation, ANZSCO codes, English tests, or state sponsorship. What can I help you with?",
-  "hello": "G'day! 🇦🇺 I'm Aria, your Australian migration consultant. Ask me about visas (189/190/491), points calculation, ANZSCO codes, English tests, or state sponsorship. What can I help you with?",
-  "hey": "G'day! 🇦🇺 I'm Aria, your Australian migration consultant. Ask me about visas (189/190/491), points calculation, ANZSCO codes, English tests, or state sponsorship. What can I help you with?",
+  "how do i reach 95 points": "🏆 **Reaching 95+ Points for SC 189**\n\n| Factor | Max Points |\n|--------|------------|\n| Age (25-32) | 30 |\n| English (PTE 79+/IELTS 8+) | 20 |\n| Work Experience (8+ yrs overseas) | 15 |\n| Australian Work Exp (3+ yrs) | 10 |\n| Education (PhD) | 20 |\n| Specialist Education | 10 |\n| NAATI/CCL | 5 |\n| Partner Skills | 10 |\n| State Nomination (190) | 5 |\n\n🚀 **Strategy:**\n1. Max English score (PTE Academic is fastest)\n2. Get NAATI/CCL credential (+5 easy points)\n3. Consider 190 state nomination (+5)\n4. Professional Year if eligible (+5)\n\n📍 Stage 2: Expression — Submit EOI with highest possible points\n\n⚖️ Consult MARA for formal advice.",
+  "how many points do i need": "🏆 **Points Required for Skilled Visas:**\n\n| Visa | Min Points | Competitive |\n|------|-----------|-------------|\n| SC 189 | 65 | 80-95+ |\n| SC 190 | 65 (incl. 5 state) | 70-85 |\n| SC 491 | 65 (incl. 15 regional) | 65-75 |\n\n📊 Recent 189 rounds: minimum 65-80 points depending on occupation.\n\n🚀 Next Step: Use the Points Calculator in the app to estimate your score.\n\n⚖️ Consult MARA for formal advice.",
+  "what is skills assessment": "📋 **Skills Assessment** is a mandatory evaluation proving your qualifications match your nominated ANZSCO occupation.\n\n**Key Bodies:**\n- ACS (IT occupations)\n- Engineers Australia (Engineering)\n- VETASSESS (General professional)\n- TRA (Trades)\n- AHPRA (Health/Medical)\n\n**Process:** Submit qualifications + work references → 6-12 weeks → Outcome letter\n\n📍 Stage 1: Preparation\n🚀 Next Step: Identify your assessing authority in the Skill Assessment tab.\n\n⚖️ Consult MARA for formal advice.",
+  "what is anzsco": "ANZSCO is the Australian & New Zealand Standard Classification of Occupations. It's used to identify your occupation for visa purposes. Example: 261313 = Software Developer. You need a positive skills assessment in your ANZSCO code.\n\n🚀 Next Step: Search your occupation in the Occupations tab.\n\n⚖️ Consult MARA for formal advice.",
+  "what visa should i apply for": "Main skilled visas:\n- **189** (65+ points, independent, fastest to PR)\n- **190** (60+ points, state-sponsored, +5 points)\n- **491** (45+ points, regional, provisional 5yr)\n\nCheck your points first, then choose based on your score and location preference.\n\n📍 Stage 2: Expression\n🚀 Next Step: Use the Points Calculator to see where you stand.\n\n⚖️ Consult MARA for formal advice.",
+  "how do i get pr": "🇦🇺 **5-Stage Path to PR:**\n\n1. **Preparation** — Skills assessment + English test\n2. **Expression** — Submit EOI on SkillSelect\n3. **Invitation** — Receive ITA (Invitation to Apply)\n4. **Lodgement** — Submit visa application + docs\n5. **Grant** — PR visa granted!\n\n⏱️ Timeline: 12-24 months typical\n\n📍 Stage 1: Preparation\n🚀 Next Step: Get your skills assessed and take an English test.\n\n⚖️ Consult MARA for formal advice.",
+  "hi": "G'day! 🇦🇺 I'm Aria, your Australian migration consultant. Ask me about:\n\n• Visa options (189/190/491)\n• Points calculation\n• ANZSCO codes & skills assessment\n• English tests (IELTS, PTE)\n• State nominations\n\nWhat can I help you with?",
+  "hello": "G'day! 🇦🇺 I'm Aria, your Australian migration consultant. Ask me about:\n\n• Visa options (189/190/491)\n• Points calculation\n• ANZSCO codes & skills assessment\n• English tests (IELTS, PTE)\n• State nominations\n\nWhat can I help you with?",
+  "hey": "G'day! 🇦🇺 I'm Aria, your Australian migration consultant. Ask me about:\n\n• Visa options (189/190/491)\n• Points calculation\n• ANZSCO codes & skills assessment\n• English tests (IELTS, PTE)\n• State nominations\n\nWhat can I help you with?",
 };
 
 // Pre-populate cache on function initialization
@@ -704,7 +706,7 @@ function getCacheKey(message) {
   return message
     .trim()
     .toLowerCase()
-    .replace(/[?!.,"']/g, '') // Remove punctuation
+    .replace(/[?!.,"'+\-()\[\]{}:;]/g, '') // Remove punctuation including +
     .replace(/\s+/g, " ")
     .substring(0, 100);
 }
