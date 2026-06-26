@@ -644,3 +644,238 @@ exports.onScraperUpdate = onDocumentWritten(
   }
 );
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ARIA CHAT — AI-Powered Visa Consultant with Response Caching
+// ─────────────────────────────────────────────────────────────────────────────
+
+const { onRequest } = require("firebase-functions/v2/https");
+const { defineSecret } = require("firebase-functions/params");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
+
+// Response cache (memory + Firestore)
+const responseCache = new Map();
+
+// Pre-populate cache with common questions and answers
+const COMMON_RESPONSES = {
+  "how do i reach 95 points": `📍 **Stage 2: Expression**\n\n## Getting to 95 Points\n\n✅ **Points Breakdown (Max 100):**\n- **Age:** 45 years = 30 points (max)\n- **English:** Superior = 20 points (max)\n- **Skills Assessment:** Positive = 20 points (essential)\n- **Australian Qualifications:** Postgrad = 15 points\n- **Work Experience:** 8+ years = 15 points\n- **State Sponsorship/190 visa:** 5 or 10 points (depending on visa)\n- **Partner Skills:** 5 points\n- **Professional Year in Aus:** 5 points\n\n🎯 **Strategy to 95+:**\n1. ✅ Get English to Superior (IELTS 8+ or PTE 79+)\n2. ✅ Maximise work experience (8+ years in ANZSCO role)\n3. ✅ Get state sponsorship (190 adds 5, 491 adds 10)\n4. ✅ Consider partner skills assessment\n5. ✅ Australian qualification (if possible)\n\n🚀 **Next Step:** Check your current points score with your assessment body\n\n⚖️ Consult MARA for formal advice.`,
+  "what is anzsco": `📍 **Stage 1: Preparation**\n\n## ANZSCO - Australian and New Zealand Standard Classification of Occupations\n\n🏢 **What It Is:**\nANZSCO is the official occupational classification system used by the Department of Home Affairs for visa assessment. It categorizes all occupations into hierarchical levels.\n\n📋 **Hierarchy:**\n- **1-digit:** Major group (e.g., 1 = Managers)\n- **2-digit:** Sub-major group (e.g., 11 = Chief Executives)\n- **4-digit:** Minor group (e.g., 1111 = Chief Executive)\n- **6-digit:** Unit group (e.g., 111101 = Chief Executive)\n\n✅ **Why It Matters:**\n- Your occupation must be on the Skilled Occupation List (SOL)\n- Points allocation depends on ANZSCO match\n- Skills assessment body determines your ANZSCO code\n\n🔍 **Example:** Software Developer\n- ANZSCO Code: 261313\n- Category: Skilled Migration\n- Assessment by: ACS (Australian Computer Society)\n\n🚀 **Next Step:** Find your occupation on the SOL and identify the correct ANZSCO code\n\n⚖️ Consult MARA for formal advice.`,
+  "what visa should i apply for": `📍 **Stage 1: Preparation**\n\n## Australian Skilled Migration Visas\n\n🎯 **Main Pathways:**\n\n| Visa | Points | Sponsor | Comment |\n|------|--------|---------|----------|\n| **189** | 65+ | None | Fastest processing |\n| **190** | 60+ | State | State-sponsored, stay 2+ years |\n| **491** | 45+ | State | Points-tested, regional work |\n| **482** | N/A | Employer | Employer-sponsored |\n| **186** | N/A | Employer | Direct entry, no points |\n\n🤔 **How to Choose:**\n1. Check your occupation is on SOL\n2. Calculate points (age, English, experience, qualifications)\n3. If 65+ points → Apply for **189** (quickest)\n4. If 60-65 points → Apply for **190** (choose your state)\n5. If under 60 points → Work experience or English improvement\n6. Employer pathway → Check if sponsored\n\n⏱️ **Processing Times:**\n- 189: ~12-15 months\n- 190: ~10-12 months (state-dependent)\n- 491: ~12-15 months\n\n🚀 **Next Step:** Calculate your points, decide on pathway, prepare EOI\n\n⚖️ Consult MARA for formal advice.`,
+  "how do i get pr": `📍 **5-Stage Australian PR Journey**\n\n## The Complete Path\n\n### Stage 1: Preparation (Months 1-6)\n- ✅ Identify occupation on SOL\n- ✅ Get skills assessment\n- ✅ Improve English (target IELTS 8 or PTE 79+)\n- ✅ Document work experience (5+ years)\n- ✅ Gather qualifications\n\n### Stage 2: Expression (Months 7-12)\n- ✅ Calculate points (target 65+)\n- ✅ Create EOI on SkillSelect\n- ✅ Apply for state sponsorship (if needed)\n- ✅ Wait for invitation (typically 6-18 months)\n\n### Stage 3: Lodgement (Month 13+)\n- ✅ Receive invitation from DHA\n- ✅ Prepare visa application documents\n- ✅ Complete health check (medical)\n- ✅ Security clearance\n- ✅ Submit visa application\n\n### Stage 4: Settlement (Months 18-24)\n- ✅ Visa grant notification\n- ✅ Arrange flights to Australia\n- ✅ Settle in chosen state/city\n- ✅ Register with local authorities\n- ✅ Set up employment\n\n### Stage 5: Citizenship (Years 3-5)\n- ✅ Meet residency requirements (4+ years)\n- ✅ Pass citizenship test\n- ✅ Apply for citizenship\n- ✅ Take oath and become Australian citizen 🇦🇺\n\n⏱️ **Total Timeline:** 3-5 years\n\n🚀 **Next Step:** Start with Stage 1 preparation\n\n⚖️ Consult MARA for formal advice.`,
+};\n\n// Pre-populate cache on function initialization
+for (const [key, response] of Object.entries(COMMON_RESPONSES)) {
+  responseCache.set(key, response);\n}
+
+
+const ARIA_SYSTEM_PROMPT = `You are Aria 🇦🇺 — Senior Australian Migration Consultant AI.
+
+## SCOPE: Australian Migration Only
+- Skilled visas: 189, 190, 491, 482, 186, 485, 494
+- Family visas: 820/801, 309/100, 143
+- Student visa 500, Visitor visa 600
+- Points system, ANZSCO codes, Skills assessments
+- English tests (IELTS, PTE, TOEFL, CAE, OET)
+- State nominations & invitation trends
+- EOI strategy, document validity, age-bracket points
+
+Off-topic: "I'm focused on Australian migration."
+
+## GOLDEN PATH (5 Stages)
+1. **PREPARATION** — Skills assessment, English test, docs
+2. **EXPRESSION** — EOI, points optimisation
+3. **LODGEMENT** — Visa application
+4. **SETTLEMENT** — Arrival, PR obligations
+5. **CITIZENSHIP** — Eligibility, test, passport
+
+Always tell user: "📍 Stage X: [Name]" and "🚀 Next Step: [action]"
+
+Use Markdown, tables, bullet points.
+End with: "⚖️ Consult MARA for formal advice."`;
+
+// Generate cache key (more aggressive normalization)
+function getCacheKey(message) {
+  return message
+    .trim()
+    .toLowerCase()
+    .replace(/[?!.,"']/g, '') // Remove punctuation
+    .replace(/\s+/g, " ")
+    .substring(0, 100);
+}
+
+// Check cache
+async function getCachedResponse(cacheKey) {
+  if (responseCache.has(cacheKey)) {
+    logger.info("[ariaChat] Cache HIT (memory): " + cacheKey);
+    return responseCache.get(cacheKey);
+  }
+
+  try {
+    const db = getFirestore();
+    const doc = await db.collection("aria_cache").doc(cacheKey).get();
+    if (doc.exists && doc.data()?.reply) {
+      const cached = doc.data().reply;
+      responseCache.set(cacheKey, cached);
+      logger.info("[ariaChat] Cache HIT (firestore): " + cacheKey);
+      return cached;
+    }
+  } catch (err) {
+    logger.warn("[ariaChat] Firestore cache lookup failed:", err.message);
+  }
+
+  return null;
+}
+
+// Save response to cache (fire-and-forget)
+async function cacheResponse(cacheKey, reply) {
+  // Save to memory immediately
+  responseCache.set(cacheKey, reply);
+
+  // Save to Firestore asynchronously (don't await)
+  try {
+    const db = getFirestore();
+    // Fire and forget - don't await, just start the write
+    db.collection("aria_cache")
+      .doc(cacheKey)
+      .set(
+        {
+          reply,
+          createdAt: new Date(),
+          ttl: Math.floor(Date.now() / 1000) + 86400 * 30,
+        },
+        { merge: true }
+      )
+      .catch(err =>
+        logger.warn("[ariaChat] Firestore cache save failed:", err.message)
+      );
+  } catch (err) {
+    logger.warn("[ariaChat] Failed to initialize Firestore cache:", err.message);
+  }
+}
+
+// Aria Chat endpoint
+exports.ariaChat = onRequest(
+  {
+    region: "us-central1",
+    secrets: [GEMINI_API_KEY],
+    cors: true,
+    timeoutSeconds: 60,
+    memory: "512MiB",
+  },
+  async (req, res) => {
+    if (req.method === "OPTIONS") {
+      res.status(200).send("");
+      return;
+    }
+
+    if (req.method !== "POST") {
+      res.status(405).json({ error: "Method not allowed" });
+      return;
+    }
+
+    try {
+      const { message, history } = req.body || {};
+
+      if (!message || typeof message !== "string" || !message.trim()) {
+        res.status(400).json({ error: "message required" });
+        return;
+      }
+
+      const cacheKey = getCacheKey(message);
+
+      // Try cache first
+      logger.info("[ariaChat] Checking cache for: " + cacheKey);
+      let cachedReply = await getCachedResponse(cacheKey);
+      if (cachedReply) {
+        return res.status(200).json({ reply: cachedReply });
+      }
+
+      const apiKey = GEMINI_API_KEY.value();
+      if (!apiKey) {
+        logger.error("[ariaChat] CRITICAL: GEMINI_API_KEY secret is not set!");
+        res.status(500).json({
+          error: "Aria API key not configured. Contact system administrator.",
+        });
+        return;
+      }
+
+      logger.info("[ariaChat] API request (not in cache)");
+
+      // Sanitize history
+      const chatHistory = (Array.isArray(history) ? history : [])
+        .filter(m => m && (m.role === "user" || m.role === "model"))
+        .slice(-20)
+        .map(m => ({
+          role: m.role,
+          parts: [{ text: m.text }],
+        }));
+
+      try {
+        logger.info("[ariaChat] Initializing GoogleGenerativeAI...");
+        const genAI = new GoogleGenerativeAI(apiKey);
+
+        logger.info("[ariaChat] Creating model: gemini-2.5-flash");
+        const model = genAI.getGenerativeModel({
+          model: "gemini-2.5-flash",
+          systemInstruction: ARIA_SYSTEM_PROMPT,
+        });
+
+        logger.info(
+          "[ariaChat] Starting chat with " + chatHistory.length + " history messages"
+        );
+
+        const chat = model.startChat({ history: chatHistory });
+        logger.info("[ariaChat] Calling sendMessage...");
+
+        const result = await chat.sendMessage(message);
+        const reply = result.response.text();
+
+        logger.info("[ariaChat] SUCCESS! Reply length: " + reply.length);
+
+        // Cache the response
+        await cacheResponse(cacheKey, reply);
+
+        res.status(200).json({ reply });
+      } catch (geminiErr) {
+        const errorInfo = {
+          name: geminiErr?.name || "Unknown",
+          message: geminiErr?.message || "No message",
+          code: geminiErr?.code || "N/A",
+          status: geminiErr?.status || "N/A",
+        };
+
+        logger.error("[ariaChat] Gemini API Error:", JSON.stringify(errorInfo));
+
+        // Intelligent fallback
+        let fallbackReply;
+        const rateLimitError =
+          geminiErr?.message?.includes("429") ||
+          geminiErr?.message?.includes("depleted");
+
+        if (rateLimitError) {
+          fallbackReply = `⚠️ **Aria Thinking...**\n\nOur AI service is processing many questions right now. Here's guidance for:\n\n**"${message}"**\n\n✅ **Immediate Resources:**\n- **Official Portal:** [immi.homeaffairs.gov.au](https://immi.homeaffairs.gov.au)\n- **MARA Agent:** Consult a Registered Migration Agent for personalized advice\n- **Visa Checker:** Use the Department's visa finder tool\n- **SkillSelect:** [skillselect.gov.au](https://skillselect.gov.au) for invitation status\n\n🔄 **Try Again:** Reload in 10-15 seconds for instant AI response\n\n⚖️ For legal visa guidance, always consult a registered migration agent.`;
+        } else if (
+          geminiErr?.message?.includes("authentication") ||
+          geminiErr?.message?.includes("401")
+        ) {
+          fallbackReply = `⚠️ **Aria Configuration Issue**\n\nThe AI service is experiencing authentication issues. This is a temporary system problem.\n\n✅ **What You Can Do:**\n- Contact support if this persists\n- Use the official [immi.homeaffairs.gov.au](https://immi.homeaffairs.gov.au) portal\n- Consult a MARA for visa advice`;
+        } else {
+          fallbackReply = `📍 **Aria Assistant**\n\nI'm experiencing technical difficulties. Here's what I can help with:\n\n**Your Question:** ${message}\n\n✅ **Recommended Next Steps:**\n- Visit [immi.homeaffairs.gov.au](https://immi.homeaffairs.gov.au)\n- Contact a MARA (Registered Migration Agent)\n- Review the latest Skilled Migration Plan\n- Check state nomination requirements\n\n⚖️ For formal visa advice, always consult a registered migration agent.`;
+        }
+
+        res.status(200).json({ reply: fallbackReply });
+      }
+    } catch (err) {
+      logger.error("[ariaChat] CRITICAL ERROR:", {
+        message: err?.message,
+        code: err?.code,
+        status: err?.status,
+        stack: err?.stack?.substring(0, 200),
+      });
+      res.status(500).json({
+        error: "Aria service error. Please try again later.",
+      });
+    }
+  }
+);
+
