@@ -649,10 +649,10 @@ exports.onScraperUpdate = onDocumentWritten(
 // ─────────────────────────────────────────────────────────────────────────────
 
 const { onRequest } = require("firebase-functions/v2/https");
-const { defineSecret } = require("firebase-functions/params");
+const { defineString } = require("firebase-functions/params");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const GEMINI_API_KEY = defineSecret("GEMINI_API_KEY");
+const GEMINI_API_KEY = defineString("GEMINI_API_KEY");
 
 // Response cache (memory + Firestore)
 const responseCache = new Map();
@@ -765,7 +765,6 @@ async function cacheResponse(cacheKey, reply) {
 exports.ariaChat = onRequest(
   {
     region: "us-central1",
-    secrets: [GEMINI_API_KEY],
     cors: true,
     timeoutSeconds: 60,
     memory: "512MiB",
@@ -810,10 +809,10 @@ exports.ariaChat = onRequest(
         }));
 
       try {
-        logger.info("[ariaChat] Initializing GoogleGenerativeAI with secret API key...");
+        logger.info("[ariaChat] Initializing GoogleGenerativeAI...");
         const apiKey = GEMINI_API_KEY.value();
         if (!apiKey) {
-          throw new Error("GEMINI_API_KEY secret not set");
+          throw new Error("GEMINI_API_KEY env not set");
         }
         const genAI = new GoogleGenerativeAI(apiKey);
 
