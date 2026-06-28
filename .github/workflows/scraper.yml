@@ -37,6 +37,12 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       # -----------------------------------------------------------------------
+      # 3b. Install Playwright browsers (for JS-rendered DHA pages)
+      # -----------------------------------------------------------------------
+      - name: Install Playwright browsers
+        run: python -m playwright install chromium --with-deps
+
+      # -----------------------------------------------------------------------
       # 4. Write Firebase service account key from secret
       #    (Store the entire JSON as the secret FIREBASE_SERVICE_ACCOUNT_JSON)
       # -----------------------------------------------------------------------

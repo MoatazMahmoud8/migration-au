@@ -43,7 +43,7 @@ HEADERS       = [
 ]
 
 def fetch_url(url: str) -> str | None:
-    """Fetch URL using curl to bypass Python requests bot detection."""
+    """Fetch URL using curl first, fall back to Playwright for JS-rendered pages."""
     try:
         cmd = [
             "curl", "-s", "--max-time", str(TIMEOUT),
@@ -59,12 +59,43 @@ def fetch_url(url: str) -> str | None:
         )
         
         if result.returncode == 0:
-            return result.stdout
-        else:
-            log.warning("curl failed with return code %d for %s", result.returncode, url)
-            return None
+            html = result.stdout
+            # Check if the page has actual content (tables) or is JS-rendered shell
+            if '<table' in html.lower():
+                return html
+            log.info("curl returned no table content — trying Playwright for JS rendering")
     except Exception as e:
-        log.error("Failed to fetch %s: %s", url, e)
+        log.warning("curl failed for %s: %s — trying Playwright", url, e)
+
+    # Fallback: use Playwright to render JS-heavy pages
+    return fetch_url_playwright(url)
+
+
+def fetch_url_playwright(url: str) -> str | None:
+    """Render a page with Playwright headless browser to get JS-rendered content."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        log.error("Playwright not installed. Run: pip install playwright && playwright install chromium")
+        return None
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            page = browser.new_page(
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+            )
+            page.goto(url, wait_until="networkidle", timeout=45000)
+            # Wait for tables to appear (round data)
+            try:
+                page.wait_for_selector("table", timeout=15000)
+            except Exception:
+                log.warning("No tables appeared within 15s on %s", url)
+            html = page.content()
+            browser.close()
+            return html
+    except Exception as e:
+        log.error("Playwright failed for %s: %s", url, e)
         return None
 
 logging.basicConfig(

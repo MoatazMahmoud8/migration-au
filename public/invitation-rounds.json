@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-06-05",
+  "lastUpdated": "2026-06-28",
   "sourceUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
   "previousRoundsUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/previous-rounds",
   "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by state governments independently — no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Department of Home Affairs.",
   "currentRound": {
-    "date": "2026-05-28",
+    "date": "2026-06-04",
     "sc189": {
-      "total": 3500,
-      "tieBreak": "2026-05"
+      "total": 10000,
+      "tieBreak": "2026-06"
     },
     "sc491Family": {
       "total": 400,
@@ -761,6 +761,18 @@
     }
   ],
   "rounds": [
+    {
+      "date": "2026-05-28",
+      "label": "28 May 2026",
+      "sc189": {
+        "total": 3500,
+        "tieBreak": "2026-05"
+      },
+      "sc491Family": {
+        "total": 400,
+        "tieBreak": "2026-04"
+      }
+    },
     {
       "date": "2026-05-28",
       "label": "28 May 2026",
