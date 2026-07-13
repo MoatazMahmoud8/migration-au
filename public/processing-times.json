@@ -1,5 +1,5 @@
 {
-  "snapshotDate": "2026-07-13",
+  "snapshotDate": "2026-07-14",
   "items": [
     {
       "subclass": "189",
@@ -49,7 +49,7 @@
       "p90": "16 months",
       "icon": "home-outline",
       "color": "#00C2FF",
-      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/permanent-residence-skilled-regional-191"
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-191"
     },
     {
       "subclass": "482",
@@ -109,7 +109,7 @@
       "p90": "60 days",
       "icon": "people-outline",
       "color": "#2196F3",
-      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-guardian-590"
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-590"
     },
     {
       "subclass": "600",
@@ -149,7 +149,7 @@
       "p90": "22 months",
       "icon": "heart-outline",
       "color": "#E91E63",
-      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore-820-801"
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore"
     },
     {
       "subclass": "309",
@@ -159,7 +159,7 @@
       "p90": "24 months",
       "icon": "heart-outline",
       "color": "#E91E63",
-      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore-309-100"
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore"
     },
     {
       "subclass": "143",
@@ -209,7 +209,7 @@
       "p90": "44 days",
       "icon": "walk-outline",
       "color": "#4CAF50",
-      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-and-holiday-462"
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462"
     },
     {
       "subclass": "407",

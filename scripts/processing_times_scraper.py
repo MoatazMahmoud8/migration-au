@@ -47,11 +47,112 @@ log = logging.getLogger(__name__)
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
 OUTPUT = PUBLIC / "processing-times.json"
+VISA_TYPES_FILE = PUBLIC / "visa-types.json"
 
 DHA_URL = "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-processing-times/global-visa-processing-times"
 
+# Fallback landing page used only when a subclass has no verified URL.
+VISA_LISTING_URL = "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing"
+
+
+def load_verified_urls() -> dict[str, str]:
+    """
+    Build a {subclass -> canonical DHA url} map from visa-types.json, which is
+    scraped directly from the DHA visa-listing page. This keeps processing-time
+    links correct automatically on every build, even when DHA changes a slug.
+    """
+    urls: dict[str, str] = {}
+    if VISA_TYPES_FILE.exists():
+        try:
+            data = json.loads(VISA_TYPES_FILE.read_text(encoding="utf-8"))
+            for v in data.get("visas", []):
+                code = str(v.get("code", "")).strip()
+                url = v.get("url")
+                if code and url and url.startswith("https://"):
+                    urls[code] = url
+            log.info("Loaded %d verified visa URLs from visa-types.json", len(urls))
+        except (json.JSONDecodeError, OSError) as e:
+            log.warning("Could not load visa-types.json: %s", e)
+    return urls
+
+
+# Cache HEAD-check results within a run to avoid duplicate network calls.
+_url_status_cache: dict[str, int | None] = {}
+
+
+def url_is_live(url: str) -> bool | None:
+    """
+    HEAD-check a URL. Returns:
+      True  → 200 (definitely good)
+      False → 404/410 (definitely broken)
+      None  → inconclusive (network error / other status) — caller should not
+              downgrade based on this.
+    """
+    if url in _url_status_cache:
+        code = _url_status_cache[url]
+    else:
+        code = None
+        try:
+            import urllib.request
+            req = urllib.request.Request(
+                url, method="HEAD",
+                headers={"User-Agent": "Mozilla/5.0 (compatible; MigrateAU-Bot/1.0)"},
+            )
+            code = urllib.request.urlopen(req, timeout=15).getcode()
+        except Exception as e:  # noqa: BLE001 — includes HTTPError
+            code = getattr(e, "code", None)
+        _url_status_cache[url] = code
+
+    if code == 200:
+        return True
+    if code in (404, 410):
+        return False
+    return None
+
+
+def resolve_url(subclass: str, current_url: str | None, verified_urls: dict[str, str]) -> str:
+    """
+    Pick the best URL for a subclass by validating candidates in priority order:
+      1. VISA_META hardcoded URL (manually verified)
+      2. verified_urls (from visa-types.json)
+      3. the entry's current URL
+    Returns the first candidate that HEAD-checks as live (200). If none are
+    confirmed live but some are only inconclusive (network issues), keep the
+    top candidate. Only if a candidate is confirmed broken (404) and no live
+    candidate exists do we fall back to the visa-listing landing page.
+    """
+    candidates: list[str] = []
+    for c in (
+        (VISA_META.get(subclass) or {}).get("url"),
+        verified_urls.get(subclass),
+        current_url,
+    ):
+        if c and c.startswith("https://") and c not in candidates:
+            candidates.append(c)
+
+    if not candidates:
+        return VISA_LISTING_URL
+
+    any_broken = False
+    for c in candidates:
+        status = url_is_live(c)
+        if status is True:
+            return c
+        if status is False:
+            any_broken = True
+
+    # No candidate confirmed live.
+    if any_broken:
+        # Top candidate is broken and nothing else works → safe landing page.
+        return VISA_LISTING_URL
+    # All inconclusive (e.g. CI can't reach DHA) → trust the top candidate.
+    return candidates[0]
+
+
 # ─── Category / icon / color mapping ─────────────────────────────────────────
 # Based on the app's bundled constants/processingTimes.ts
+# NOTE: the "url" values below are only fallbacks — the canonical URL is pulled
+# from visa-types.json at runtime via load_verified_urls().
 
 VISA_META = {
     "189": {"category": "Skilled", "icon": "globe-outline", "color": "#00C2FF",
@@ -63,7 +164,7 @@ VISA_META = {
     "887": {"category": "Skilled", "icon": "home-outline", "color": "#00C2FF",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-887"},
     "191": {"category": "Skilled", "icon": "home-outline", "color": "#00C2FF",
-            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/permanent-residence-skilled-regional-191"},
+            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-191"},
     "482": {"category": "Employer", "icon": "briefcase-outline", "color": "#FF9800",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482"},
     "494": {"category": "Employer", "icon": "business-outline", "color": "#FF9800",
@@ -75,7 +176,7 @@ VISA_META = {
     "500": {"category": "Student", "icon": "book-outline", "color": "#2196F3",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"},
     "590": {"category": "Student", "icon": "people-outline", "color": "#2196F3",
-            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-guardian-590"},
+            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-590"},
     "600": {"category": "Visitor", "icon": "airplane-outline", "color": "#4CAF50",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"},
     "601": {"category": "Visitor", "icon": "airplane-outline", "color": "#4CAF50",
@@ -83,9 +184,9 @@ VISA_META = {
     "651": {"category": "Visitor", "icon": "airplane-outline", "color": "#4CAF50",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651"},
     "820": {"category": "Family", "icon": "heart-outline", "color": "#E91E63",
-            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore-820-801"},
+            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore"},
     "309": {"category": "Family", "icon": "heart-outline", "color": "#E91E63",
-            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore-309-100"},
+            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore"},
     "143": {"category": "Family", "icon": "people-outline", "color": "#E91E63",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-parent-143"},
     "103": {"category": "Family", "icon": "people-outline", "color": "#E91E63",
@@ -95,7 +196,7 @@ VISA_META = {
     "417": {"category": "Visitor", "icon": "walk-outline", "color": "#4CAF50",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417"},
     "462": {"category": "Visitor", "icon": "walk-outline", "color": "#4CAF50",
-            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-and-holiday-462"},
+            "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462"},
     "407": {"category": "Employer", "icon": "school-outline", "color": "#FF9800",
             "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/training-407"},
 }
@@ -270,7 +371,7 @@ def get_seed_data() -> list[dict]:
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-887"},
         {"subclass": "191", "name": "Permanent Residence (Skilled Regional)", "category": "Skilled",
          "p50": "8 months", "p90": "16 months", "icon": "home-outline", "color": "#00C2FF",
-         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/permanent-residence-skilled-regional-191"},
+         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-191"},
         {"subclass": "482", "name": "Skills in Demand (Temporary)", "category": "Employer",
          "p50": "3 months", "p90": "7 months", "icon": "briefcase-outline", "color": "#FF9800",
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482"},
@@ -288,7 +389,7 @@ def get_seed_data() -> list[dict]:
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"},
         {"subclass": "590", "name": "Student Guardian", "category": "Student",
          "p50": "30 days", "p90": "60 days", "icon": "people-outline", "color": "#2196F3",
-         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-guardian-590"},
+         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-590"},
         {"subclass": "600", "name": "Visitor", "category": "Visitor",
          "p50": "20 days", "p90": "33 days", "icon": "airplane-outline", "color": "#4CAF50",
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"},
@@ -300,10 +401,10 @@ def get_seed_data() -> list[dict]:
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651"},
         {"subclass": "820", "name": "Partner (Onshore Temporary)", "category": "Family",
          "p50": "10 months", "p90": "22 months", "icon": "heart-outline", "color": "#E91E63",
-         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore-820-801"},
+         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore"},
         {"subclass": "309", "name": "Partner (Offshore Temporary)", "category": "Family",
          "p50": "14 months", "p90": "24 months", "icon": "heart-outline", "color": "#E91E63",
-         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore-309-100"},
+         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore"},
         {"subclass": "143", "name": "Contributory Parent", "category": "Family",
          "p50": "12 months", "p90": "14 months", "icon": "people-outline", "color": "#E91E63",
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-parent-143"},
@@ -318,7 +419,7 @@ def get_seed_data() -> list[dict]:
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417"},
         {"subclass": "462", "name": "Work and Holiday", "category": "Visitor",
          "p50": "15 days", "p90": "44 days", "icon": "walk-outline", "color": "#4CAF50",
-         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-and-holiday-462"},
+         "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462"},
         {"subclass": "407", "name": "Training", "category": "Employer",
          "p50": "2 months", "p90": "4 months", "icon": "school-outline", "color": "#FF9800",
          "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/training-407"},
@@ -327,6 +428,20 @@ def get_seed_data() -> list[dict]:
 
 def main() -> int:
     today = date.today().isoformat()
+
+    # Load DHA-verified URLs so every entry links to the correct visa page.
+    verified_urls = load_verified_urls()
+
+    def apply_verified_urls(entries: list[dict]) -> int:
+        """Resolve each entry to a validated, live DHA url."""
+        fixed = 0
+        for e in entries:
+            sc = str(e.get("subclass", ""))
+            best = resolve_url(sc, e.get("url"), verified_urls)
+            if best != e.get("url"):
+                e["url"] = best
+                fixed += 1
+        return fixed
 
     # Try Playwright scraping first
     items: list[dict] = []
@@ -344,8 +459,9 @@ def main() -> int:
         if existing.get("items") and existing.get("snapshotDate", "") >= "2026-01-01":
             log.info("Using existing data (%d items from %s) as live scrape failed.",
                      len(existing["items"]), existing["snapshotDate"])
-            # Just update the snapshot date to show the script ran
             existing["snapshotDate"] = today
+            fixed = apply_verified_urls(existing["items"])
+            log.info("Applied %d verified URLs to existing data.", fixed)
             OUTPUT.write_text(
                 json.dumps(existing, indent=2, ensure_ascii=False) + "\n",
                 encoding="utf-8",
@@ -354,6 +470,10 @@ def main() -> int:
 
         log.info("No existing data or too stale — using seed data.")
         items = get_seed_data()
+
+    # Ensure every entry links to the correct, DHA-verified URL.
+    fixed = apply_verified_urls(items)
+    log.info("Applied %d verified URLs from visa-types.json.", fixed)
 
     # Build output
     output = {
