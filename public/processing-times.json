@@ -1,0 +1,225 @@
+{
+  "snapshotDate": "2026-07-13",
+  "items": [
+    {
+      "subclass": "189",
+      "name": "Skilled Independent",
+      "category": "Skilled",
+      "p50": "9 months",
+      "p90": "17 months",
+      "icon": "globe-outline",
+      "color": "#00C2FF",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-independent-189"
+    },
+    {
+      "subclass": "190",
+      "name": "Skilled Nominated",
+      "category": "Skilled",
+      "p50": "5 months",
+      "p90": "11 months",
+      "icon": "location-outline",
+      "color": "#00C2FF",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-nominated-190"
+    },
+    {
+      "subclass": "491",
+      "name": "Skilled Work Regional (Provisional)",
+      "category": "Skilled",
+      "p50": "7 months",
+      "p90": "15 months",
+      "icon": "map-outline",
+      "color": "#00C2FF",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-work-regional-provisional-491"
+    },
+    {
+      "subclass": "887",
+      "name": "Skilled Regional (Residence)",
+      "category": "Skilled",
+      "p50": "6 months",
+      "p90": "12 months",
+      "icon": "home-outline",
+      "color": "#00C2FF",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-regional-887"
+    },
+    {
+      "subclass": "191",
+      "name": "Permanent Residence (Skilled Regional)",
+      "category": "Skilled",
+      "p50": "8 months",
+      "p90": "16 months",
+      "icon": "home-outline",
+      "color": "#00C2FF",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/permanent-residence-skilled-regional-191"
+    },
+    {
+      "subclass": "482",
+      "name": "Skills in Demand (Temporary)",
+      "category": "Employer",
+      "p50": "3 months",
+      "p90": "7 months",
+      "icon": "briefcase-outline",
+      "color": "#FF9800",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482"
+    },
+    {
+      "subclass": "494",
+      "name": "Skilled Employer Sponsored Regional",
+      "category": "Employer",
+      "p50": "5 months",
+      "p90": "11 months",
+      "icon": "business-outline",
+      "color": "#FF9800",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-employer-sponsored-regional-494"
+    },
+    {
+      "subclass": "186",
+      "name": "Employer Nomination Scheme",
+      "category": "Employer",
+      "p50": "6 months",
+      "p90": "14 months",
+      "icon": "briefcase-outline",
+      "color": "#FF9800",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186"
+    },
+    {
+      "subclass": "485",
+      "name": "Temporary Graduate",
+      "category": "Graduate",
+      "p50": "4 months",
+      "p90": "8 months",
+      "icon": "school-outline",
+      "color": "#9C27B0",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/temporary-graduate-485"
+    },
+    {
+      "subclass": "500",
+      "name": "Student Visa",
+      "category": "Student",
+      "p50": "29 days",
+      "p90": "42 days",
+      "icon": "book-outline",
+      "color": "#2196F3",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500"
+    },
+    {
+      "subclass": "590",
+      "name": "Student Guardian",
+      "category": "Student",
+      "p50": "30 days",
+      "p90": "60 days",
+      "icon": "people-outline",
+      "color": "#2196F3",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-guardian-590"
+    },
+    {
+      "subclass": "600",
+      "name": "Visitor",
+      "category": "Visitor",
+      "p50": "20 days",
+      "p90": "33 days",
+      "icon": "airplane-outline",
+      "color": "#4CAF50",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/visitor-600"
+    },
+    {
+      "subclass": "601",
+      "name": "Electronic Travel Authority",
+      "category": "Visitor",
+      "p50": "1 day",
+      "p90": "2 days",
+      "icon": "airplane-outline",
+      "color": "#4CAF50",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601"
+    },
+    {
+      "subclass": "651",
+      "name": "eVisitor",
+      "category": "Visitor",
+      "p50": "1 day",
+      "p90": "15 days",
+      "icon": "airplane-outline",
+      "color": "#4CAF50",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/evisitor-651"
+    },
+    {
+      "subclass": "820",
+      "name": "Partner (Onshore Temporary)",
+      "category": "Family",
+      "p50": "10 months",
+      "p90": "22 months",
+      "icon": "heart-outline",
+      "color": "#E91E63",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-onshore-820-801"
+    },
+    {
+      "subclass": "309",
+      "name": "Partner (Offshore Temporary)",
+      "category": "Family",
+      "p50": "14 months",
+      "p90": "24 months",
+      "icon": "heart-outline",
+      "color": "#E91E63",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/partner-offshore-309-100"
+    },
+    {
+      "subclass": "143",
+      "name": "Contributory Parent",
+      "category": "Family",
+      "p50": "12 months",
+      "p90": "14 months",
+      "icon": "people-outline",
+      "color": "#E91E63",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/contributory-parent-143"
+    },
+    {
+      "subclass": "103",
+      "name": "Parent",
+      "category": "Family",
+      "p50": "52+ months",
+      "p90": "52+ months",
+      "icon": "people-outline",
+      "color": "#E91E63",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/parent-103"
+    },
+    {
+      "subclass": "101",
+      "name": "Child",
+      "category": "Family",
+      "p50": "16 months",
+      "p90": "22 months",
+      "icon": "people-outline",
+      "color": "#E91E63",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/child-101"
+    },
+    {
+      "subclass": "417",
+      "name": "Working Holiday",
+      "category": "Visitor",
+      "p50": "14 days",
+      "p90": "27 days",
+      "icon": "walk-outline",
+      "color": "#4CAF50",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417"
+    },
+    {
+      "subclass": "462",
+      "name": "Work and Holiday",
+      "category": "Visitor",
+      "p50": "15 days",
+      "p90": "44 days",
+      "icon": "walk-outline",
+      "color": "#4CAF50",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-and-holiday-462"
+    },
+    {
+      "subclass": "407",
+      "name": "Training",
+      "category": "Employer",
+      "p50": "2 months",
+      "p90": "4 months",
+      "icon": "school-outline",
+      "color": "#FF9800",
+      "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/training-407"
+    }
+  ]
+}

@@ -1,26 +1,26 @@
 {
-  "generatedAt": "2026-06-12T13:00:16.694777+00:00",
-  "date": "2026-06-12",
+  "generatedAt": "2026-07-13T15:41:50.720571+00:00",
+  "date": "2026-07-13",
   "currentRound": {
-    "date": "2025-11-13",
+    "date": "2026-06-04",
     "sc189Total": 10000,
-    "sc189TieBreak": "2025-11",
-    "sc491FamilyTotal": 300,
-    "sc491FamilyTieBreak": "2025-10",
+    "sc189TieBreak": "2026-04",
+    "sc491FamilyTotal": 0,
+    "sc491FamilyTieBreak": null,
     "source": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
-    "fetchedAt": "2026-06-12T13:00:08.326787+00:00"
+    "fetchedAt": "2026-07-13T15:41:48.811345+00:00"
   },
   "nextRound": null,
   "communityFeed": {
     "source": "smartvisaguide.com",
     "dailyReportDate": null,
     "recentGrants": [
-      "189 grant on here since late May - really do guess that they've...→",
-      "190 grant today- 4th June 2026. Date of application: 17...→",
-      "190 grant today ONSHORE ICT BA WA at 95 points Applied on 3rd April 2025 No s56→",
-      "190 grant today ICT BA WA at 95 points Applied on 3rd April 2025 No 56→",
-      "190 Granted after 14 months wait As a chef (65 points) from Tasmania Lodged...→",
-      "190 Granted This group was a great help. Sharing my timeline here....→"
+      "491 granted today 15/12/2025 - Invitation for nomination 29/01/2026 -...→",
+      "190 Grant today Applied on 4 March 2026 RN nec Onshore TAS→",
+      "189 grant! 90 points Invited: August ‘25 Documents Submitted: 1st Oct ‘25...→",
+      "190 GRANTED! Occupation - CHEF DOL: March 2025 s56 request: May 29,...→",
+      "190 Granted - 10 July 2026 Lodged - 25/11/2025 S56 on 08/07/2026 : for...→",
+      "190 Granted - 10 July 2026 Lodged - 5 March 2026 Enrolled Nurse Tasmania...→"
     ]
   },
   "visaSummary": [

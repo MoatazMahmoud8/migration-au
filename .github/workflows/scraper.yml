@@ -2,8 +2,8 @@ name: Run State News Scraper
 
 on:
   schedule:
-    # Runs daily at 02:00 UTC (12:00 AEST / 13:00 AEDT)
-    - cron: '0 2 * * *'
+    # Runs every 3 hours (matches app notification scraper cadence)
+    - cron: '0 */3 * * *'
   workflow_dispatch:
     # Allow manual trigger from GitHub Actions UI
 
@@ -84,6 +84,27 @@ jobs:
       # -----------------------------------------------------------------------
       - name: Run salaries scraper
         run: python scripts/salaries_scraper.py
+
+      # -----------------------------------------------------------------------
+      # 7c. Run the processing times scraper
+      # Outputs public/processing-times.json (DHA global processing times)
+      # -----------------------------------------------------------------------
+      - name: Run processing times scraper
+        run: python scripts/processing_times_scraper.py
+
+      # -----------------------------------------------------------------------
+      # 7d. Generate skilled-occupations.json
+      # Merges all-anzsco + official-occupation-lists → skilled-occupations.json
+      # -----------------------------------------------------------------------
+      - name: Generate skilled occupations JSON
+        run: python scripts/skilled_occupations_generator.py
+
+      # -----------------------------------------------------------------------
+      # 7e. Run the daily monitor
+      # Updates daily-updates.json, invitation-rounds.json, visa-types.json
+      # -----------------------------------------------------------------------
+      - name: Run daily monitor
+        run: python scripts/daily_monitor.py
 
       # -----------------------------------------------------------------------
       # 8. Deploy updated JSON files to Firebase Hosting
