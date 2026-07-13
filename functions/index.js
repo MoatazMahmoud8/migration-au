@@ -29,6 +29,27 @@ const { logger } = require("firebase-functions");
 initializeApp();
 
 /**
+ * Map a notification category to the in-app screen it should open.
+ * Falls back to the notifications tab for anything unmapped.
+ */
+function routeForCategory(category) {
+  switch ((category || "").toLowerCase()) {
+    case "processing time":
+    case "processing times":
+      return "/processing-times";
+    case "visa change":
+    case "policy update":
+      return "/visas";
+    case "skillselect":
+    case "invitation round":
+    case "rounds":
+      return "/(tabs)/rounds";
+    default:
+      return "/(tabs)/notifications";
+  }
+}
+
+/**
  * Triggered whenever a new document lands in `fcm_triggers`.
  * Sends one FCM multicast per topic listed in the document,
  * then marks the trigger document as sent.
@@ -227,6 +248,7 @@ exports.approveNotification = https.onCall({ cors: true }, async (data, context)
         body: publishedData.body,
         topics,
         articleUrl: publishedData.url,
+        route: routeForCategory(publishedData.category),
         createdAt: new Date(),
         sent: false,
       };
