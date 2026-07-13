@@ -328,6 +328,23 @@ def update_invitation_rounds(dha: dict | None, svg: dict) -> None:
     if dha and dha.get("date"):
         current["lastUpdated"] = dha["date"]
         current["sourceUrl"] = DHA_ROUNDS_URL
+
+        # Preserve existing 491 data when the scraper returns 0
+        # (DHA page may not show 491 table, so 0 usually means parse failure)
+        existing_cr = current.get("currentRound", {})
+        existing_491_total = (
+            existing_cr.get("sc491FamilyTotal")
+            or (existing_cr.get("sc491Family") or {}).get("total")
+            or 0
+        )
+        existing_491_tb = (
+            existing_cr.get("sc491FamilyTieBreak")
+            or (existing_cr.get("sc491Family") or {}).get("tieBreak")
+        )
+
+        sc491_total = dha["sc491FamilyTotal"] or existing_491_total
+        sc491_tb = dha["sc491FamilyTieBreak"] or existing_491_tb
+
         current["currentRound"] = {
             "date": dha["date"],
             "sc189": {
@@ -335,8 +352,8 @@ def update_invitation_rounds(dha: dict | None, svg: dict) -> None:
                 "tieBreak": dha["sc189TieBreak"],
             },
             "sc491Family": {
-                "total": dha["sc491FamilyTotal"],
-                "tieBreak": dha["sc491FamilyTieBreak"],
+                "total": sc491_total,
+                "tieBreak": sc491_tb,
             },
             "source": "dha",
         }
@@ -348,8 +365,8 @@ def update_invitation_rounds(dha: dict | None, svg: dict) -> None:
                 "date": dha["date"],
                 "sc189Total": dha["sc189Total"],
                 "sc189TieBreak": dha["sc189TieBreak"],
-                "sc491FamilyTotal": dha["sc491FamilyTotal"],
-                "sc491FamilyTieBreak": dha["sc491FamilyTieBreak"],
+                "sc491FamilyTotal": sc491_total,
+                "sc491FamilyTieBreak": sc491_tb,
             })
 
     if svg.get("nextRound"):
