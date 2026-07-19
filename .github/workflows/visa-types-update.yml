@@ -69,8 +69,10 @@ jobs:
       - name: Run DHA visa scraper
         id: scrape
         run: |
+          set +e
           python scripts/dha_visa_scraper.py
           EXIT_CODE=$?
+          set -e
           echo "exit_code=$EXIT_CODE" >> "$GITHUB_OUTPUT"
           # Don't fail the job on exit code 2 (changes detected — that's good!)
           if [ "$EXIT_CODE" -eq 1 ]; then

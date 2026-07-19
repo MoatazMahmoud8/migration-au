@@ -139,6 +139,14 @@ def _extract_codes(text: str) -> str:
     return f"{nums[0]}–{nums[-1]}"
 
 
+def _extract_code_tokens(text: str) -> list[str]:
+    """Return every subclass number mentioned in a visa listing link."""
+    m = re.search(r'subclass\s+([\d ,/–\-and\s]+)', text, re.IGNORECASE)
+    if not m:
+        return []
+    return re.findall(r'\d+', m.group(1))
+
+
 def _clean_name(text: str) -> str:
     """Strip the '(subclass NNN)' suffix from a visa name."""
     return re.sub(r'\s*\(subclass[\s\d,/–\-and]+\)', '', text, flags=re.IGNORECASE).strip()
@@ -146,6 +154,48 @@ def _clean_name(text: str) -> str:
 
 def _today() -> str:
     return date.today().isoformat()
+
+
+def _record_from_link(
+    link_text: str,
+    href: str,
+    category: str,
+    is_repealed: bool,
+    today: str,
+) -> list[VisaRecord]:
+    if "/visas/getting-a-visa/visa-listing/" not in href:
+        return []
+
+    codes = _extract_code_tokens(link_text)
+    if not codes:
+        return []
+
+    link_is_repealed = is_repealed or "/repealed-visas/" in href
+    full_url = (
+        href if href.startswith("http")
+        else f"https://immi.homeaffairs.gov.au{href}"
+    )
+    records: list[VisaRecord] = []
+
+    for code in codes:
+        resolved_cat = category
+        if category in ("Skilled",):
+            for sub_code, override in SUBCODE_CATEGORY_OVERRIDE.items():
+                if sub_code == code:
+                    resolved_cat = override
+                    break
+
+        records.append(VisaRecord(
+            code=code,
+            name=_clean_name(link_text),
+            category=resolved_cat,
+            status="repealed" if link_is_repealed else "active",
+            url=full_url,
+            first_seen=today,
+            last_seen=today,
+        ))
+
+    return records
 
 
 # ---------------------------------------------------------------------------
@@ -161,11 +211,44 @@ def fetch_page(url: str) -> BeautifulSoup:
 
 def parse_visas(soup: BeautifulSoup) -> list[VisaRecord]:
     """
-    Walk every <h2> section on the DHA visa listing page and collect all
-    visa links under each section.
+    Collect visa links from the DHA visa listing page.
+
+    DHA currently stores the listing in a hidden PageSchema JSON field. Keep the
+    older visible <h2> section parser as a fallback in case the page changes
+    back to server-rendered markup.
     """
     records: list[VisaRecord] = []
     today = _today()
+
+    schema_input = soup.find(
+        "input",
+        id=lambda value: value and "PageSchemaHiddenField_Input" in value,
+    )
+    if schema_input and schema_input.get("value"):
+        try:
+            schema = json.loads(schema_input["value"])
+            for section in schema.get("content", []):
+                heading_text = section.get("text", "").strip().lower()
+                category = None
+                for key, cat in SECTION_CATEGORY_MAP.items():
+                    if key in heading_text:
+                        category = cat
+                        break
+                if category is None:
+                    continue
+
+                block = BeautifulSoup(section.get("block", ""), "html.parser")
+                is_repealed = "repealed" in heading_text
+                for a in block.find_all("a", href=True):
+                    records.extend(_record_from_link(
+                        a.get_text(strip=True),
+                        a["href"],
+                        category,
+                        is_repealed,
+                        today,
+                    ))
+        except (json.JSONDecodeError, TypeError) as exc:
+            logger.warning("Could not parse DHA PageSchemaHiddenField data: %s", exc)
 
     # Find all h2 elements — each is a section header
     for h2 in soup.find_all("h2"):
@@ -184,40 +267,12 @@ def parse_visas(soup: BeautifulSoup) -> list[VisaRecord]:
         node = h2.find_next_sibling()
         while node and node.name != "h2":
             for a in node.find_all("a", href=True):
-                href = a["href"]
-                # Only DHA visa listing links
-                if "/visas/getting-a-visa/visa-listing/" not in href:
-                    node = node.find_next_sibling()
-                    continue
-
-                text = a.get_text(strip=True)
-                code = _extract_codes(text)
-                if not code:
-                    node = node.find_next_sibling()
-                    continue
-
-                name = _clean_name(text)
-                full_url = (
-                    href if href.startswith("http")
-                    else f"https://immi.homeaffairs.gov.au{href}"
-                )
-
-                # Determine finer category
-                resolved_cat = category
-                if category in ("Skilled",):   # apply sub-overrides
-                    for sub_code, override in SUBCODE_CATEGORY_OVERRIDE.items():
-                        if sub_code in code:
-                            resolved_cat = override
-                            break
-
-                records.append(VisaRecord(
-                    code=code,
-                    name=name,
-                    category=resolved_cat,
-                    status="repealed" if is_repealed else "active",
-                    url=full_url,
-                    first_seen=today,
-                    last_seen=today,
+                records.extend(_record_from_link(
+                    a.get_text(strip=True),
+                    a["href"],
+                    category,
+                    is_repealed,
+                    today,
                 ))
             node = node.find_next_sibling()
 
@@ -253,7 +308,11 @@ def diff_snapshots(
     if not existing:
         return [r.code for r in new_records], [], []
 
-    old_by_code = {v["code"]: v for v in existing.get("visas", [])}
+    old_by_code = {
+        v["code"]: v
+        for v in existing.get("visas", [])
+        if not v.get("_scrape_missing")
+    }
     new_by_code = {r.code: r for r in new_records}
 
     added   = [c for c in new_by_code if c not in old_by_code]
