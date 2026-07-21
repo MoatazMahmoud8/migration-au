@@ -49,6 +49,9 @@ from bs4 import BeautifulSoup
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC_DIR = ROOT / "public"
 OUTPUT_FILE = PUBLIC_DIR / "salaries.json"
+# Cached JSA index so CI can still fetch salary pages even when the live
+# sitemap times out (a known issue from GitHub Actions IP ranges).
+INDEX_CACHE_FILE = ROOT / "scripts" / "jsa_index_cache.json"
 
 INDEX_URL = "https://www.jobsandskills.gov.au/sitemap-default.xml"
 PROFILE_BASE = (
@@ -110,13 +113,42 @@ def _load_anzsco_codes() -> list[str]:
     return sorted(codes)
 
 
+def _load_index_cache() -> dict[str, tuple[str, str]]:
+    """Return the committed JSA index cache, or an empty dict if missing."""
+    if not INDEX_CACHE_FILE.exists():
+        return {}
+    try:
+        raw: dict[str, list[str]] = json.loads(INDEX_CACHE_FILE.read_text())
+        mapping = {code: (entry[0], entry[1]) for code, entry in raw.items()}
+        log.info("Loaded %d entries from local JSA index cache.", len(mapping))
+        return mapping
+    except Exception as exc:
+        log.warning("Could not read JSA index cache: %s", exc)
+        return {}
+
+
+def _save_index_cache(mapping: dict[str, tuple[str, str]]) -> None:
+    """Persist the freshly-fetched index for future CI runs."""
+    try:
+        serialisable = {code: list(entry) for code, entry in mapping.items()}
+        INDEX_CACHE_FILE.write_text(json.dumps(serialisable, indent=2) + "\n")
+        log.info("Saved %d entries to JSA index cache.", len(mapping))
+    except Exception as exc:
+        log.warning("Could not write JSA index cache: %s", exc)
+
+
 def _build_index(session: requests.Session) -> dict[str, tuple[str, str]]:
     """Map ANZSCO code -> (url, occupation name) using JSA's XML sitemap.
 
     The sitemap lists every occupation profile URL as ``<code>-<kebab-slug>``,
     which gives us both the canonical URL and a clean fallback name.
+
+    On success the resulting index is persisted to ``scripts/jsa_index_cache.json``
+    so that subsequent CI runs can use it even when the live sitemap is unreachable
+    (GitHub Actions IP ranges are intermittently blocked by JSA).
     """
     log.info("Fetching JSA sitemap …")
+    resp = None
     for attempt in range(REQUEST_RETRIES):
         try:
             resp = session.get(INDEX_URL, timeout=REQUEST_TIMEOUT)
@@ -128,8 +160,15 @@ def _build_index(session: requests.Session) -> dict[str, tuple[str, str]]:
                 log.warning("Attempt %d failed: %s. Retrying in %ds...", attempt + 1, exc, wait_time)
                 time.sleep(wait_time)
             else:
-                log.error("Could not fetch JSA sitemap after %d attempts: %s", REQUEST_RETRIES, exc)
-                raise
+                log.warning(
+                    "Could not fetch JSA sitemap after %d attempts: %s — using local cache.",
+                    REQUEST_RETRIES,
+                    exc,
+                )
+                cached = _load_index_cache()
+                if cached:
+                    return cached
+                raise  # nothing to fall back to
 
     mapping: dict[str, tuple[str, str]] = {}
     pat = re.compile(
@@ -145,6 +184,7 @@ def _build_index(session: requests.Session) -> dict[str, tuple[str, str]]:
         mapping[code] = (url, name)
 
     log.info("Indexed %d occupation pages.", len(mapping))
+    _save_index_cache(mapping)
     return mapping
 
 
