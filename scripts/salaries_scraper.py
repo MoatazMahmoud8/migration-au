@@ -210,6 +210,18 @@ def _fetch_one(
     return None
 
 
+def _fetch_salary_for_code(
+    session: requests.Session,
+    code: str,
+    index: dict[str, tuple[str, str]],
+) -> Optional[dict]:
+    entry = index.get(code)
+    if not entry:
+        return None
+    url, name = entry
+    return _fetch_one(session, code, url, name, index)
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -219,7 +231,9 @@ def main() -> int:
     PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
 
     codes = _load_anzsco_codes()
+    lookup_codes = sorted(set(codes) | {code[:4] for code in codes if len(code) == 6})
     log.info("Will look up salaries for %d ANZSCO codes.", len(codes))
+    log.info("Including %d parent unit-group codes for salary fallback.", len(lookup_codes) - len(codes))
     if not codes:
         log.error("No ANZSCO codes found — aborting.")
         return 1
@@ -259,7 +273,7 @@ def main() -> int:
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
         futures = {}
-        for code in codes:
+        for code in lookup_codes:
             entry = index.get(code)
             if not entry:
                 missing.append(code)
