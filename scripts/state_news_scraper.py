@@ -250,15 +250,15 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
 def write_to_firestore(
     db: firestore.Client,
     articles: list[NewsArticle],
-) -> tuple[int, int]:
+) -> tuple[list[NewsArticle], int]:
     """
     Write articles to Firestore 'news' collection.
     Uses doc_id (MD5 of URL) to avoid duplicates.
 
-    Returns: (written_count, skipped_count)
+    Returns: (new_articles, skipped_count)
     """
     collection = db.collection("news")
-    written = 0
+    new_articles: list[NewsArticle] = []
     skipped = 0
 
     for article in articles:
@@ -286,9 +286,9 @@ def write_to_firestore(
             doc_ref.set(doc_data)
             logger.info(f"Written: [{article.state}] {article.title[:60]}")
 
-        written += 1
+        new_articles.append(article)
 
-    return written, skipped
+    return new_articles, skipped
 
 
 # ---------------------------------------------------------------------------
@@ -354,12 +354,12 @@ def main() -> int:
         logger.warning("No articles found. Exiting.")
         return 0
 
-    # Write to Firestore
+    # Write to Firestore — returns only the newly written articles
     written, skipped = write_to_firestore(db, all_articles)
-    logger.info(f"Firestore: {written} written, {skipped} skipped (already exist)")
+    logger.info(f"Firestore: {len(written)} written, {skipped} skipped (already exist)")
 
-    # Trigger FCM for new articles
-    new_articles = [a for a in all_articles]  # all are "new" (write_to_firestore filters)
+    # Trigger FCM only for articles that were NEW (not already in Firestore)
+    new_articles = written
     trigger_fcm_notifications(db, new_articles)
 
     logger.info("=== Scraper complete ===")

@@ -11,7 +11,7 @@ jobs:
   scrape:
     name: Scrape Migration News → Firestore
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
 
     steps:
       # -----------------------------------------------------------------------
@@ -35,12 +35,6 @@ jobs:
       # -----------------------------------------------------------------------
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
-
-      # -----------------------------------------------------------------------
-      # 3b. Install Playwright browsers (for JS-rendered DHA pages)
-      # -----------------------------------------------------------------------
-      - name: Install Playwright browsers
-        run: python -m playwright install chromium --with-deps
 
       # -----------------------------------------------------------------------
       # 4. Write Firebase service account key from secret
@@ -76,14 +70,6 @@ jobs:
       # -----------------------------------------------------------------------
       - name: Run SkillSelect rounds scraper
         run: python scripts/rounds_scraper.py
-
-      # -----------------------------------------------------------------------
-      # 7b. Run the JSA salaries scraper
-      # Outputs public/salaries.json (median weekly/annual earnings per ANZSCO,
-      # sourced from jobsandskills.gov.au).
-      # -----------------------------------------------------------------------
-      - name: Run salaries scraper
-        run: python scripts/salaries_scraper.py
 
       # -----------------------------------------------------------------------
       # 7c. Run the processing times scraper
