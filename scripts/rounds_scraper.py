@@ -443,7 +443,7 @@ def main() -> int:
     round_history: list[dict] = []
     seen_dates: set[str] = set()
 
-    # Current round goes first
+    # Current round goes first — include occupation scores so history is complete
     new_round_entry = {
         "date": new_round_date,
         "label": _iso_to_label(new_round_date),
@@ -451,14 +451,14 @@ def main() -> int:
         "sc189TieBreak": current["sc189TieBreak"],
         "sc491FamilyTotal": current["sc491FamilyTotal"],
         "sc491FamilyTieBreak": current["sc491FamilyTieBreak"],
+        "occupationScores": current["occupationScores"],
     }
     round_history.append(new_round_entry)
     seen_dates.add(new_round_date)
 
-    # Then any previous rounds from the index (dates only, no per-occ data)
+    # Then any previous rounds — preserve occupation scores if already stored
     for pr in prev_rounds:
         if pr["date"] not in seen_dates and pr["date"] != new_round_date:
-            # Try to find existing totals for this date
             existing_entry = next(
                 (r for r in existing.get("rounds", []) if r["date"] == pr["date"]),
                 None
