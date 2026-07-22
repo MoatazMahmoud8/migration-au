@@ -2,7 +2,7 @@
   "lastUpdated": "2026-06-04",
   "sourceUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
   "previousRoundsUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/previous-rounds",
-  "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by state governments independently — no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Department of Home Affairs.",
+  "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by state governments independently \u2014 no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Department of Home Affairs.",
   "currentRound": {
     "date": "2026-06-04",
     "sc189": {
@@ -16,7 +16,7 @@
     "source": "dha"
   },
   "stateNominations": {
-    "period": "2026-27 (Jul 2025 – Apr 2026)",
+    "period": "2026-27 (Jul 2025 \u2013 Apr 2026)",
     "sc190": {
       "NSW": 604,
       "VIC": 1894,
@@ -1493,18 +1493,6 @@
     {
       "date": "2026-05-28",
       "label": "28 May 2026",
-      "sc189": {
-        "total": 3500,
-        "tieBreak": "2026-05"
-      },
-      "sc491Family": {
-        "total": 400,
-        "tieBreak": "2026-04"
-      }
-    },
-    {
-      "date": "2026-05-28",
-      "label": "28 May 2026",
       "sc189Total": 3500,
       "sc189TieBreak": "2026-05",
       "sc491FamilyTotal": 400,
@@ -1516,43 +1504,4222 @@
       "sc189Total": 10000,
       "sc189TieBreak": "2025-11",
       "sc491FamilyTotal": 300,
-      "sc491FamilyTieBreak": "2025-10"
+      "sc491FamilyTieBreak": "2025-10",
+      "occupationScores": [
+        {
+          "name": "Actuary",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Consultant",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Scientist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Airconditioning and Mechanical Services Plumber",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Architect",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Artistic Director",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Arts Administrator or Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Audiologist",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Automotive Electrician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Barrister",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Biochemist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Biotechnologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Boat Builder and Repairer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Botanist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Bricklayer",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Cabinetmaker",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Cardiologist",
+          "sc189": 80,
+          "sc491Family": 80
+        },
+        {
+          "name": "Carpenter",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Carpenter and Joiner",
+          "sc189": 65,
+          "sc491Family": 95
+        },
+        {
+          "name": "Cartographer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Chiropractor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Draftsperson",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Technician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Construction Project Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Dermatologist",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Drainer",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 85,
+          "sc491Family": 90
+        },
+        {
+          "name": "Economist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineering Draftsperson",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineering Technician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (General)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Electrician (Special Class)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronic Equipment Trades Worker",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronic Instrument Trades Worker (General)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronic Instrument Trades Worker (Special Class)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Consultant",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Research Scientist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Scientists nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Fibrous Plasterer",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Fitter (General)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Food Technologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Forester",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Gasfitter",
+          "sc189": 65,
+          "sc491Family": 80
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 75,
+          "sc491Family": 85
+        },
+        {
+          "name": "Geophysicist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Glazier",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Hydrogeologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Intensive Care Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Land Economist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Landscape Architect",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientist (General)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientists nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Consultant",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Marine Biologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Materials Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 75,
+          "sc491Family": 85
+        },
+        {
+          "name": "Medical Laboratory Scientist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Oncologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Practitioners nec",
+          "sc189": 75,
+          "sc491Family": 90
+        },
+        {
+          "name": "Medical Radiation Therapist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Fabricator",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Machinist (First Class)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Metallurgist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Microbiologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Midwife",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Mining Engineer (excluding Petroleum)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Motorcycle Mechanic",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Multimedia Specialist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Musician (Instrumental)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Natural and Physical Science Professionals nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Neurologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nurse Practitioner",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Ophthalmologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Optometrist",
+          "sc189": 75,
+          "sc491Family": 85
+        },
+        {
+          "name": "Organisational Psychologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthopaedic Surgeon",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Osteopath",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Other Spatial Scientist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Paediatrician",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Painting Trades Worker",
+          "sc189": 70,
+          "sc491Family": 70
+        },
+        {
+          "name": "Pathologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Petroleum Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Physicist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Plumber (General)",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Podiatrist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Primary Health Organisation Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Radiation Oncologist",
+          "sc189": null,
+          "sc491Family": 85
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Registered Nurse (Developmental Disability)",
+          "sc189": 80,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurse (Disability and Rehabilitation)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical Practice)",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 75,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 75,
+          "sc491Family": 75
+        },
+        {
+          "name": "Roof Plumber",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 75,
+          "sc491Family": 85
+        },
+        {
+          "name": "Social Worker",
+          "sc189": 75,
+          "sc491Family": 85
+        },
+        {
+          "name": "Solicitor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Solid Plasterer",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Sonographer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Education Teachers nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 75,
+          "sc491Family": 90
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physicians nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 75,
+          "sc491Family": 85
+        },
+        {
+          "name": "Statistician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Stonemason",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Surgeon (General)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Surveyor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Field Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Planner",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Technical Officer or Technologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Tennis Coach",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Thoracic Medicine Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Urologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Valuer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Vascular Surgeon",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Veterinarian",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Wall and Floor Tiler",
+          "sc189": 65,
+          "sc491Family": 75
+        },
+        {
+          "name": "Welder (First Class)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Welfare Centre Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Zoologist",
+          "sc189": 85,
+          "sc491Family": null
+        }
+      ]
     },
     {
       "date": "2025-08-21",
       "label": "21 August 2025",
       "sc189Total": 6887,
-      "sc491FamilyTotal": 150
+      "sc491FamilyTotal": 150,
+      "occupationScores": [
+        {
+          "name": "Actuary",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Consultant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Airconditioning and Mechanical Services Plumber",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Architect",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Arts Administrator or Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Audiologist",
+          "sc189": 80,
+          "sc491Family": 65
+        },
+        {
+          "name": "Barrister",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Biochemist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Biotechnologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Boat Builder and Repairer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Bricklayer",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Cardiologist",
+          "sc189": 80,
+          "sc491Family": 80
+        },
+        {
+          "name": "Carpenter",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter and Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Cartographer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Draftsperson",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Technician",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Conservator",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Construction Project Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Dermatologist",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Drainer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 85,
+          "sc491Family": 80
+        },
+        {
+          "name": "Economist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Educational Psychologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineering Draftsperson",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrial Engineering Technician",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (General)",
+          "sc189": 65,
+          "sc491Family": 75
+        },
+        {
+          "name": "Electrician (Special Class)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronic Equipment Trades Worker",
+          "sc189": 110,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronic Instrument Trades Worker (Special Class)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronics Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Enviromental Consultant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Enviromental Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Enviromental Research Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Enviromental Scientists nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Fibrous Plasterer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Food Technologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Forester",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Gasfitter",
+          "sc189": 65,
+          "sc491Family": 80
+        },
+        {
+          "name": "Gastroenterologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Geophysicist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Glazier",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Hydrogeologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Intensive Care Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Land Economist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Landscape Architect",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientist (General)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientists nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Consultant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Marine Biologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Materials Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 80,
+          "sc491Family": 90
+        },
+        {
+          "name": "Medical Labratory Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Practioners nec",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Radiation Therapist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Fabricator",
+          "sc189": 105,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Machinist (First Class)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Metallurgist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Meterologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Microbiologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Midwife",
+          "sc189": 80,
+          "sc491Family": 75
+        },
+        {
+          "name": "Mining Engineer (excluding Petroleum)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Musician (Instrumental)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Natural and Physical Science Professionals nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Neurologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nuclear Medicine Technologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nurse Practitioner",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Ophthamologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Optometrist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthopaedic Surgeon",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Osteopath",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Other Spatial Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Paediatric Surgeon",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Paeditrician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Painting Trades Worker",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Panelbeater",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Petroleum Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Physicist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 80,
+          "sc491Family": 80
+        },
+        {
+          "name": "Plumber (General)",
+          "sc189": 65,
+          "sc491Family": 80
+        },
+        {
+          "name": "Podiatrist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Primary Health Organisation Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 80,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 80,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Developmental Disability)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Disability and Rehabilitation)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registed Nurse (Medical Practice)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 80,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 80,
+          "sc491Family": 90
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 80,
+          "sc491Family": 85
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 80,
+          "sc491Family": 85
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 80,
+          "sc491Family": 80
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 80,
+          "sc491Family": 5
+        },
+        {
+          "name": "Roof Plumber",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 85,
+          "sc491Family": 80
+        },
+        {
+          "name": "Solicitor",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Solid Plasterer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Sonographer",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 85,
+          "sc491Family": 80
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physicians nec",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 80,
+          "sc491Family": 65
+        },
+        {
+          "name": "Statistician",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Stonemason",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Surveyor",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Tennis Coach",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Thoracic Medicine Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "University Lecturer",
+          "sc189": 85,
+          "sc491Family": 80
+        },
+        {
+          "name": "Urologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Valuer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Veterinarian",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Wall and Floor Tiler",
+          "sc189": 65,
+          "sc491Family": 75
+        },
+        {
+          "name": "Welder (First Class)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Zoologist",
+          "sc189": 90,
+          "sc491Family": null
+        }
+      ]
     },
     {
       "date": "2024-11-07",
       "label": "7 November 2024",
       "sc189Total": 5000,
-      "sc491FamilyTotal": 100
+      "sc491FamilyTotal": 100,
+      "occupationScores": [
+        {
+          "name": "Accountant (General)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Actuary",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Aeronautical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Consultant",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Airconditioning and Mechanical Services Plumber",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Analyst Programmer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Architect",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Arts Administrator or Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Audiologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Biochemist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Biomedical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Biotechnologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Boat Builder and Repairer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Bricklayer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Cabinetmaker",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Cardiothoracic Surgeon",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter and Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Chef",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Chiropractor",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Draftsperson",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Technician",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Computer Network and Systems Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Construction Project Manager",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Dancer or Choreographer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Dermatologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Developer Programmer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Diesel Motor Mechanic",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Economist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Educational psychologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineering Draftsperson",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineering Technician",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (General)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronic Instrument Trades Worker (Special Class)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronics Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Professionals nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Technologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Consultant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Manager",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Research Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Scientists nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "External Auditor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Fibrous Plasterer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Food Technologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Forester",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Geophysicist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Geotechnical Engineer",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Hydrogeologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "ICT Business Analyst",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "ICT Security Specialist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Industrial Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Intensive Care Specialist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Internal Auditor",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Landscape Architect",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientist (General)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientists nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Lift Mechanic",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Accountant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Consultant",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Marine Biologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Materials Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Mechanical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Laboratory Scientist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Practitioners nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Radiation Therapist+",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Fabricator",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Machinist (First Class)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Metallurgist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Meteorologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Microbiologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Midwife",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Mining Engineer (excluding Petroleum)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Motor Mechanic (General)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Multimedia Specialist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Music Director",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Musician (Instrumental)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Natural and Physical Science Professionals nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Naval Architect",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Neurologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Nuclear Medicine Technologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Nurse Practitioner",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nursing Clinical Director",
+          "sc189": 115,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Optometrist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthopaedic Surgeon",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthotist or Prosthetist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Osteopath",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Other Spatial Scientist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Paediatrician",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Painting Trades Worker",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Pathologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Petroleum Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Physicist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Plumber (General)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Podiatrist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Primary Health Organisation Manager",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Production or Plant Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Quantity Surveyor",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Developmental Disability)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Disability and Rehabilitation)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical Practice)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Sheetmetal Trades Worker",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Social Worker",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Software and Applications Programmers nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Software Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Solicitor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Solid Plasterer",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Sonographer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Education Teachers nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physicians nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Statistician",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Structural Engineer",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Surveyor",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Systems Analyst",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Taxation Accountant",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Field Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Planner",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Technical Officer or Technologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Thoracic Medicine Specialist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Transport Engineer",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "University Lecturer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Valuer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Veterinarian",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Wall and Floor Tiler",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Welder (First Class)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Zoologist",
+          "sc189": 90,
+          "sc491Family": null
+        }
+      ]
     },
     {
       "date": "2024-09-05",
       "label": "5 September 2024",
       "sc189Total": 4500,
-      "sc491FamilyTotal": 100
+      "sc491FamilyTotal": 100,
+      "occupationScores": [
+        {
+          "name": "Accountant (General)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Actuary",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Aeronautical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Consultant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Scientist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Airconditioning and Mechanical Services Plumber",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Analyst Programmer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Architect",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Audiologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Biochemist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Biomedical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Biotechnologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Bricklayer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Cabinetmaker",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Cardiologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Cardiothoracic Surgeon",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter and Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Chef",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Chiropractor",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Draftsperson",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Technician",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Computer Network and Systems Engineer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Construction Project Manager",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Developer Programmer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Diesel Motor Mechanic",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Drainer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Economist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (General)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (Special Class)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronics Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Manager",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Professionals nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Technologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Consultant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Manager",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Research Scientist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "External Auditor",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Fibrous Plasterer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Food Technologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Gasfitter",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Gastroenterologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Geophysicist",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Geotechnical Engineer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Glazier",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "ICT Business Analyst",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "ICT Security Specialist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Industrial Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Intensive Care Specialist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Internal Auditor",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Landscape Architect",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientist (General)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientists nec",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Lift Mechanic",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Accountant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Consultant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Marine Biologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Materials Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Mechanical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Laboratory Scientist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Practitioners nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Fabricator",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Microbiologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Midwife",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Mining Engineer (excluding Petroleum)",
+          "sc189": 105,
+          "sc491Family": null
+        },
+        {
+          "name": "Motor Mechanic (General)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Multimedia Specialist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Naval Architect",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Nuclear Medicine Technologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nurse Practitioner",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Nursing Clinical Director",
+          "sc189": 115,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Ophthalmologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Optometrist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthotist or Prosthetist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Other Spatial Scientist",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Paediatrician",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Painting Trades Worker",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Pathologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Petroleum Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Physicist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Plumber (General)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Podiatrist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Primary Health Organisation Manager",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Production or Plant Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Quantity Surveyor",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Disability and Rehabilitation)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical Practice)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Roof Plumber",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Sheetmetal Trades Worker",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Shipwright",
+          "sc189": 105,
+          "sc491Family": null
+        },
+        {
+          "name": "Social Worker",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Software and Applications Programmers nec",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Software Engineer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Solicitor",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Solid Plasterer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Sonographer",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Education Teachers nec",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physicians nec",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Statistician",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Stonemason",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Structural Engineer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Surgeon (General)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Surveyor",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Systems Analyst",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Taxation Accountant",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Field Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Transport Engineer",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "University Lecturer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Urologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Valuer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Veterinarian",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Wall and Floor Tiler",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Welder (First Class)",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Zoologist",
+          "sc189": 90,
+          "sc491Family": null
+        }
+      ]
     },
     {
       "date": "2024-06-13",
       "label": "13 June 2024",
       "sc189Total": 3000,
-      "sc491FamilyTotal": 0
+      "sc491FamilyTotal": 0,
+      "occupationScores": [
+        {
+          "name": "Accountant (General)",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Actuary",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Aeronautical Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Consultant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Agricultural Scientist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Airconditioning and Mechanical Services Plumber",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Analyst Programmer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Architect",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Audiologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Biomedical Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Biotechnologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Bricklayer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Cabinetmaker",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Carpenter and Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Chef",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemical Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Chemist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Chiropractor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Draftsperson",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Civil Engineering Technician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Computer Network and Systems Engineer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Construction Project Manager",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Dancer or Choreographer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Developer Programmer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Drainer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Economist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (General)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Electrician (Special Class)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronics Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Endocrinologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Manager",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Professionals nec)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Engineering Technologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Consultant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Environmental Research Scientist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "External Auditor",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Fibrous Plasterer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Food Technologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Forester",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Gasfitter",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Geophysicist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Geotechnical Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Glazier",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "ICT Business Analyst",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "ICT Security Specialist",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Industrial Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Internal Auditor",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Joiner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Land Economist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Landscape Architect",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientist (General)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Life Scientists nec",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Lift Mechanic",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Accountant",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Management Consultant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Marine Biologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Materials Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Mechanical Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Laboratory Scientist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Practitioners nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Metal Fabricator",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Metallurgist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Microbiologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Midwife",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Mining Engineer (excluding Petroleum)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Motor Mechanic (General)",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Multimedia Specialist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Naval Architect",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Other Spatial Scientist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Paediatrician",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Painting Trades Worker",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Pathologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Petroleum Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Physicist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Plumber (General)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Production or Plant Engineer",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Quantity Surveyor",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical Practice)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Roof Plumber",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Sheetmetal Trades Worker",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Shipwright",
+          "sc189": 105,
+          "sc491Family": null
+        },
+        {
+          "name": "Social Worker",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Software and Applications Programmers nec",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Software Engineer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Solicitor",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Solid Plasterer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Statistician",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Stonemason",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Structural Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Surveyor",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Systems Analyst",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Taxation Accountant",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Field Engineer",
+          "sc189": 100,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Engineer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Telecommunications Network Planner",
+          "sc189": 90,
+          "sc491Family": null
+        },
+        {
+          "name": "Transport Engineer",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "University Lecturer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Valuer",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Veterinarian",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Wall and Floor Tiler",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Welder (First Class)",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Zoologist",
+          "sc189": 95,
+          "sc491Family": null
+        }
+      ]
     },
     {
       "date": "2023-12-18",
       "label": "18 December 2023",
       "sc189Total": 2000,
-      "sc491FamilyTotal": 0
+      "sc491FamilyTotal": 0,
+      "occupationScores": [
+        {
+          "name": "Audiologist",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Chiropractor",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Haematologist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 70,
+          "sc491Family": 90
+        },
+        {
+          "name": "Dermatologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Educational Psychologist",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Endocrinologist",
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Intensive Care Specialist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Medical Laboratory Scientist",
+          "sc189": 65,
+          "sc491Family": 75
+        },
+        {
+          "name": "Medical Oncologist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Medical Practitioners nec",
+          "sc189": 65,
+          "sc491Family": 75
+        },
+        {
+          "name": "Medical Radiation Therapist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Midwife",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Neurosurgeon",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nuclear Medicine Technologist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Nurse Practitioner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Ophthalmologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Optometrist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthopaedic Surgeon",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Orthotist or Prosthetist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Osteopath",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Paediatrician",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Pathologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Plastic and Reconstructive Surgeon",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Podiatrist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Developmental Disability)",
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Disability and Rehabilitation)",
+          "sc189": 65,
+          "sc491Family": 90
+        },
+        {
+          "name": "Registered Nurse (Medical Practice)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 65,
+          "sc491Family": 85
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Social Worker",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Sonographer",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Education Teachers nec",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Specialist Physicians nec",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 65,
+          "sc491Family": 85
+        },
+        {
+          "name": "Surgeon (General)",
+          "sc189": 80,
+          "sc491Family": null
+        }
+      ]
     },
     {
       "date": "2023-05-25",
       "label": "25 May 2023",
       "sc189Total": 1500,
-      "sc491FamilyTotal": 0
+      "sc491FamilyTotal": 0,
+      "occupationScores": [
+        {
+          "name": "Audiologist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Cardiothoracic Surgeon",
+          "sc189": null,
+          "sc491Family": 75
+        },
+        {
+          "name": "Child Care Centre Manager",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Chiropractor",
+          "sc189": 70,
+          "sc491Family": 65
+        },
+        {
+          "name": "Clinical Psychologist",
+          "sc189": 65,
+          "sc491Family": 80
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Early Childhood (Pre-primary School) Teacher",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Educational Psychologist",
+          "sc189": null,
+          "sc491Family": 70
+        },
+        {
+          "name": "Emergency Medicine Specialist",
+          "sc189": 75,
+          "sc491Family": 65
+        },
+        {
+          "name": "Gastroenterologist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "General Practitioner",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Intensive Care Specialist",
+          "sc189": 70,
+          "sc491Family": 70
+        },
+        {
+          "name": "Medical Diagnostic Radiographer",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Medical Laboratory Scientist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Medical Practitioners nec",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Medical Radiation Therapist",
+          "sc189": 85,
+          "sc491Family": 80
+        },
+        {
+          "name": "Midwife",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Neurosurgeon",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Nuclear Medicine Technologist",
+          "sc189": 65,
+          "sc491Family": 80
+        },
+        {
+          "name": "Nurse Practitioner",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Obstetrician and Gynaecologist",
+          "sc189": null,
+          "sc491Family": 65
+        },
+        {
+          "name": "Occupational Therapist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Optometrist",
+          "sc189": 70,
+          "sc491Family": 70
+        },
+        {
+          "name": "Organisational Psychologist",
+          "sc189": null,
+          "sc491Family": 90
+        },
+        {
+          "name": "Orthotist or Prosthetist",
+          "sc189": null,
+          "sc491Family": 65
+        },
+        {
+          "name": "Osteopath",
+          "sc189": null,
+          "sc491Family": 75
+        },
+        {
+          "name": "Paediatrician",
+          "sc189": 75,
+          "sc491Family": 70
+        },
+        {
+          "name": "Patho",
+          "sc189": null,
+          "sc491Family": 65
+        },
+        {
+          "name": "Physiotherapist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Podiatrist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Psychiatrist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Psychologists nec",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Radiation Oncologist",
+          "sc189": 85,
+          "sc491Family": 85
+        },
+        {
+          "name": "Registered Nurse (Aged Care)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Child and Family Health)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Community Health)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Critical Care and Emergency)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Developmental Disability)",
+          "sc189": null,
+          "sc491Family": 85
+        },
+        {
+          "name": "Registered Nurse (Disability and Rehabilitation)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Medical Practice)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Medical)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Mental Health)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Paediatrics)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Perioperative)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurse (Surgical)",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Registered Nurses nec",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Rheumatologist",
+          "sc189": 75,
+          "sc491Family": null
+        },
+        {
+          "name": "Secondary School Teacher",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Sonographer",
+          "sc189": 65,
+          "sc491Family": 70
+        },
+        {
+          "name": "Special Needs Teacher",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Specialist Physician (General Medicine)",
+          "sc189": 90,
+          "sc491Family": 70
+        },
+        {
+          "name": "Specialist Physicians nec",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Speech Pathologist",
+          "sc189": 65,
+          "sc491Family": 65
+        },
+        {
+          "name": "Surgeon (General)",
+          "sc189": 90,
+          "sc491Family": 65
+        },
+        {
+          "name": "Teacher of the Hearing Impaired",
+          "sc189": 65,
+          "sc491Family": null
+        },
+        {
+          "name": "Thoracic Medicine Specialist",
+          "sc189": null,
+          "sc491Family": 75
+        },
+        {
+          "name": "Vascular Surgeon",
+          "sc189": null,
+          "sc491Family": 65
+        }
+      ]
     }
   ],
   "scrapedAt": "2026-07-13T16:46:54.864173+00:00",
