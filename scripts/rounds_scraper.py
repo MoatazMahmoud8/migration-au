@@ -435,15 +435,14 @@ def main() -> int:
             "sc491": {},
         })
 
-    # Fetch previous rounds list for history
-    prev_rounds = fetch_previous_rounds_list()
-
-    # Build full rounds history
-    # Start with the new current round, then the history list
+    # Build full rounds history.
+    # Always start from the existing rounds so hardcoded historical data is
+    # never lost, even when DHA's "previous rounds" page only shows a limited
+    # window.  We then overlay / prepend the new round on top.
     round_history: list[dict] = []
     seen_dates: set[str] = set()
 
-    # Current round goes first — include occupation scores so history is complete
+    # New current round goes first — include occupation scores
     new_round_entry = {
         "date": new_round_date,
         "label": _iso_to_label(new_round_date),
@@ -456,17 +455,20 @@ def main() -> int:
     round_history.append(new_round_entry)
     seen_dates.add(new_round_date)
 
-    # Then any previous rounds — preserve occupation scores if already stored
+    # Preserve ALL existing rounds (historical data must never be dropped)
+    for existing_entry in existing.get("rounds", []):
+        d = existing_entry.get("date")
+        if d and d not in seen_dates:
+            round_history.append(existing_entry)
+            seen_dates.add(d)
+
+    # Also pull in any rounds listed on DHA's previous-rounds page that we
+    # don't already have (date + label only — no occupation scores available
+    # from that page, but they'll be filled in by a future scrape run).
+    prev_rounds = fetch_previous_rounds_list()
     for pr in prev_rounds:
-        if pr["date"] not in seen_dates and pr["date"] != new_round_date:
-            existing_entry = next(
-                (r for r in existing.get("rounds", []) if r["date"] == pr["date"]),
-                None
-            )
-            entry: dict = {"date": pr["date"], "label": pr["label"]}
-            if existing_entry:
-                entry.update({k: v for k, v in existing_entry.items() if k not in entry})
-            round_history.append(entry)
+        if pr["date"] not in seen_dates:
+            round_history.append({"date": pr["date"], "label": pr["label"]})
             seen_dates.add(pr["date"])
 
     # Sort history newest-first
