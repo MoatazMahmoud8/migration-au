@@ -996,14 +996,11 @@ exports.ariaChat = onRequest(
 const { getStorage } = require("firebase-admin/storage");
 
 exports.updateVisaFees = https.onCall({ cors: true }, async (request) => {
-  // Auth check
-  if (!request.auth) throw new Error("Unauthenticated");
-  const token = request.auth.token;
-  if (!token.admin) throw new Error("Admin access required");
+  const uid = requireAdmin(request);
 
   const { fees, snapshotDate } = request.data;
   if (!Array.isArray(fees) || fees.length === 0) {
-    throw new Error("fees must be a non-empty array");
+    throw new https.HttpsError("invalid-argument", "fees must be a non-empty array");
   }
 
   // Validate each entry
@@ -1050,11 +1047,11 @@ exports.updateVisaFees = https.onCall({ cors: true }, async (request) => {
   // 3. Log the update
   await db.collection("fee_update_history").add({
     updatedAt: now,
-    updatedBy: request.auth.uid,
+    updatedBy: uid,
     snapshotDate: date,
     count: fees.length,
   });
 
-  logger.info(`[updateVisaFees] ${fees.length} fees updated by ${request.auth.uid}`);
+  logger.info(`[updateVisaFees] ${fees.length} fees updated by ${uid}`);
   return { success: true, count: fees.length, snapshotDate: date };
 });
