@@ -22,9 +22,9 @@ const { onDocumentCreated } = require("firebase-functions/v2/firestore");
 const { https } = require("firebase-functions/v2");
 const { getMessaging } = require("firebase-admin/messaging");
 const { getFirestore } = require("firebase-admin/firestore");
-const { getAuth } = require("firebase-admin/auth");
 const { initializeApp } = require("firebase-admin/app");
 const { logger } = require("firebase-functions");
+const { createHash } = require("node:crypto");
 
 initializeApp();
 
@@ -67,7 +67,7 @@ exports.processFcmTrigger = onDocumentCreated(
     }
 
     const data = snap.data();
-    const { title, body, topics, articleUrl, sent, route } = data;
+    const { title, body, topics, articleUrl, sent, route, id: notificationId } = data;
 
     // Guard — skip if already processed (e.g. function retry)
     if (sent === true) {
@@ -75,9 +75,34 @@ exports.processFcmTrigger = onDocumentCreated(
       return;
     }
 
+    if (!event.params.triggerId.startsWith("approval_")) {
+      logger.warn(`Trigger ${event.params.triggerId} was not created by admin approval — skipping`);
+      await snap.ref.update({
+        sent: true,
+        sentAt: new Date(),
+        skippedReason: "admin_approval_required",
+      });
+      return;
+    }
+
     if (!topics || topics.length === 0) {
       logger.warn("No topics in trigger document — skipping FCM send");
       await snap.ref.update({ sent: true, skippedReason: "no_topics" });
+      return;
+    }
+
+    if (process.env.FUNCTIONS_EMULATOR === "true") {
+      logger.info(`Trigger ${event.params.triggerId} created in emulator — skipping FCM send`);
+      try {
+        await snap.ref.update({
+          sent: true,
+          sentAt: new Date(),
+          skippedReason: "functions_emulator",
+        });
+      } catch (error) {
+        if (error?.code !== 5) throw error;
+        logger.info(`Trigger ${event.params.triggerId} was removed before emulator acknowledgement`);
+      }
       return;
     }
 
@@ -95,6 +120,7 @@ exports.processFcmTrigger = onDocumentCreated(
         data: {
           route: route ?? "/(tabs)/notifications",
           url: articleUrl ?? "",
+          notificationId: notificationId ?? "",
           click_action: "FLUTTER_NOTIFICATION_CLICK",
         },
         android: {
@@ -136,32 +162,40 @@ exports.processFcmTrigger = onDocumentCreated(
 // ADMIN NOTIFICATION MANAGEMENT (Two-Stage Pipeline)
 // ─────────────────────────────────────────────────────────────────────────────
 
-/**
- * Verify admin role from custom claims
- * In development (emulator), allows any authenticated user or bypasses if no auth context
- */
-async function verifyAdmin(uid) {
-  // Production: require valid UID
+function callablePayload(request) {
+  return request?.data && typeof request.data === "object" ? request.data : {};
+}
+
+function requireAdmin(request) {
+  const uid = request.auth?.uid;
   if (!uid) {
-    logger.warn(`Admin verification: No UID provided`);
-    return false;
+    throw new https.HttpsError("unauthenticated", "User must be authenticated");
   }
-  
-  try {
-    const user = await getAuth().getUser(uid);
-    const isAdmin = user.customClaims?.admin === true;
-    
-    if (!isAdmin) {
-      logger.warn(`Admin verification failed for ${uid}: user does not have admin claim`);
-      return false;
-    }
-    
-    logger.info(`✅ Admin verified for ${uid}`);
-    return true;
-  } catch (err) {
-    logger.error(`Admin verification error for ${uid}:`, err);
-    return false;
+  if (request.auth?.token?.admin !== true) {
+    throw new https.HttpsError("permission-denied", "Admin access required");
   }
+  return uid;
+}
+
+function cleanRequiredText(value, field, maxLength) {
+  if (typeof value !== "string" || !value.trim()) {
+    throw new https.HttpsError("invalid-argument", `${field} is required`);
+  }
+  const cleaned = value.trim();
+  if (cleaned.length > maxLength) {
+    throw new https.HttpsError("invalid-argument", `${field} must be ${maxLength} characters or fewer`);
+  }
+  return cleaned;
+}
+
+function cleanOptionalText(value, field, maxLength) {
+  if (value === undefined) return undefined;
+  return cleanRequiredText(value, field, maxLength);
+}
+
+function rethrowCallableError(err, fallback) {
+  if (err instanceof https.HttpsError) throw err;
+  throw new https.HttpsError("internal", err?.message || fallback);
 }
 
 /**
@@ -170,115 +204,92 @@ async function verifyAdmin(uid) {
  * Request: { notificationId, editedTitle?, editedBody? }
  * Returns: { success, message, notificationId }
  */
-exports.approveNotification = https.onCall({ cors: true }, async (data, context) => {
-  logger.info(`📥 [approveNotification] Called`);
-  logger.info(`📥 Raw data keys: ${Object.keys(data || {}).join(', ')}`);
-  
-  // The httpsCallable wraps user data in a nested 'data' field
-  // data structure: { rawRequest, auth, data: { userFields... }, acceptsStreaming }
-  let userPayload = data?.data || data;
-  
-  if (userPayload && typeof userPayload === 'object') {
-    const userKeys = Object.keys(userPayload);
-    logger.info(`📥 User payload keys: ${userKeys.join(', ')}`);
-  }
-  
-  // For development/emulator with live auth, context.auth might be null
-  const uid = context.auth?.uid;
-  if (!uid) {
-    throw new https.HttpsError("unauthenticated", "User must be authenticated");
-  }
-  
-  logger.info(`🔐 UID: ${uid}`);
-  
-  // Admin check - requires admin custom claim
-  const isAdmin = await verifyAdmin(uid);
-  if (!isAdmin) {
-    throw new https.HttpsError("permission-denied", "Admin access required");
-  }
-
-  // Extract fields from userPayload
-  const notificationId = userPayload?.notificationId;
-  const editedTitle = userPayload?.editedTitle;
-  const editedBody = userPayload?.editedBody;
-  
-  logger.info(`✅ Extracted: notificationId=${notificationId}`);
-  
-  if (!notificationId) {
-    throw new https.HttpsError("invalid-argument", "notificationId is required but was not found in request data");
-  }
+exports.approveNotification = https.onCall({ cors: true }, async (request) => {
+  const uid = await requireAdmin(request);
+  const payload = callablePayload(request);
+  const notificationId = cleanRequiredText(payload.notificationId, "notificationId", 160);
+  const editedTitle = cleanOptionalText(payload.editedTitle, "title", 100);
+  const editedBody = cleanOptionalText(payload.editedBody, "body", 500);
 
   const db = getFirestore();
 
   try {
-    // Get draft notification
     const draftRef = db.collection("notifications_draft").doc(notificationId);
-    const draftSnap = await draftRef.get();
+    const publishedRef = db.collection("notifications").doc(notificationId);
 
-    if (!draftSnap.exists) {
-      throw new https.HttpsError("not-found", "Draft notification not found");
-    }
+    const result = await db.runTransaction(async (transaction) => {
+      const [draftSnap, publishedSnap] = await Promise.all([
+        transaction.get(draftRef),
+        transaction.get(publishedRef),
+      ]);
 
-    const draftData = draftSnap.data();
+      if (!draftSnap.exists) {
+        if (publishedSnap.exists) return { alreadyPublished: true };
+        throw new https.HttpsError("not-found", "Draft notification not found");
+      }
 
-    // Build published notification (with optional edits)
-    const publishedData = {
-      ...draftData,
-      title: editedTitle || draftData.title,
-      body: editedBody || draftData.body,
-      status: "published",
-      approvedAt: new Date().toISOString(),
-      approvedBy: uid,
-    };
-
-    // Save to published collection
-    await db.collection("notifications").doc(notificationId).set(publishedData);
-
-    // Create FCM trigger for this notification
-    if (publishedData.url) {
-      const triggerId = notificationId.substring(0, 12);
+      const draftData = draftSnap.data();
+      const title = editedTitle ?? cleanRequiredText(draftData.title, "title", 100);
+      const body = editedBody ?? cleanRequiredText(draftData.body, "body", 500);
+      const category = cleanRequiredText(draftData.category, "category", 80);
+      const approvalGeneration = Number.isInteger(draftData.approvalGeneration)
+        ? draftData.approvalGeneration
+        : 1;
+      const approvedAt = new Date().toISOString();
+      const triggerRef = db.collection("fcm_triggers")
+        .doc(`approval_${notificationId}_${approvalGeneration}`);
+      const reviewRef = db.collection("notification_reviews")
+        .doc(`approved_${notificationId}_${approvalGeneration}`);
+      const publishedData = {
+        ...draftData,
+        id: notificationId,
+        title,
+        body,
+        category,
+        status: "published",
+        read: false,
+        approvalGeneration,
+        approvedAt,
+        approvedBy: uid,
+      };
       const topics = ["au_migration"];
-
       if (publishedData.state && publishedData.state !== "FED") {
         topics.push(`state_${publishedData.state}`);
       }
 
-      const trigger = {
-        title: publishedData.title,
-        body: publishedData.body,
+      transaction.set(publishedRef, publishedData);
+      transaction.set(triggerRef, {
+        title,
+        body,
         topics,
-        articleUrl: publishedData.url,
-        route: routeForCategory(publishedData.category),
+        articleUrl: publishedData.url || publishedData.sourceUrl || "",
+        route: routeForCategory(category),
         createdAt: new Date(),
         sent: false,
-      };
-
-      await db.collection("fcm_triggers").doc(triggerId).set(trigger);
-    }
-
-    // Record in audit trail
-    await db.collection("notification_reviews").add({
-      notificationId,
-      action: "approved",
-      approver: uid,
-      timestamp: new Date().toISOString(),
-      editedTitle: editedTitle || null,
-      editedBody: editedBody || null,
+      });
+      transaction.set(reviewRef, {
+        notificationId,
+        action: "approved",
+        approver: uid,
+        timestamp: approvedAt,
+        editedTitle: editedTitle ?? null,
+        editedBody: editedBody ?? null,
+      });
+      transaction.delete(draftRef);
+      return { alreadyPublished: false };
     });
-
-    // Delete from draft
-    await draftRef.delete();
-
-    logger.info(`✓ Approved notification: ${notificationId}`);
 
     return {
       success: true,
-      message: "Notification published successfully",
+      message: result.alreadyPublished
+        ? "Notification was already published"
+        : "Notification published successfully",
       notificationId,
+      alreadyPublished: result.alreadyPublished,
     };
   } catch (err) {
     logger.error(`Error approving notification ${notificationId}:`, err);
-    throw new https.HttpsError("internal", err.message || "Approval failed");
+    rethrowCallableError(err, "Approval failed");
   }
 });
 
@@ -288,56 +299,33 @@ exports.approveNotification = https.onCall({ cors: true }, async (data, context)
  * Request: { notificationId, reason }
  * Returns: { success, message }
  */
-exports.rejectNotification = https.onCall({ cors: true }, async (data, context) => {
-  const uid = context.auth?.uid;
-  if (!uid) {
-    throw new https.HttpsError("unauthenticated", "User must be authenticated");
-  }
-  
-  logger.info(`📥 rejectNotification called with uid=${uid}`);
-  
-  // The httpsCallable wraps user data in a nested 'data' field
-  let userPayload = data?.data || data;
-  
-  if (userPayload && typeof userPayload === 'object') {
-    const userKeys = Object.keys(userPayload);
-    logger.info(`📥 User payload keys: ${userKeys.join(', ')}`);
-  }
-  
-  // Admin check - requires admin custom claim
-  const isAdmin = await verifyAdmin(uid);
-  if (!isAdmin) {
-    throw new https.HttpsError("permission-denied", "Admin access required");
-  }
-
-  const { notificationId, reason } = userPayload;
-  if (!notificationId) {
-    throw new https.HttpsError("invalid-argument", "notificationId required");
-  }
+exports.rejectNotification = https.onCall({ cors: true }, async (request) => {
+  const uid = await requireAdmin(request);
+  const payload = callablePayload(request);
+  const notificationId = cleanRequiredText(payload.notificationId, "notificationId", 160);
+  const reason = payload.reason === undefined
+    ? "No reason provided"
+    : cleanRequiredText(payload.reason, "reason", 500);
 
   const db = getFirestore();
 
   try {
     const draftRef = db.collection("notifications_draft").doc(notificationId);
-    const draftSnap = await draftRef.get();
-
-    if (!draftSnap.exists) {
-      throw new https.HttpsError("not-found", "Draft notification not found");
-    }
-
-    // Record rejection in audit trail
-    await db.collection("notification_reviews").add({
-      notificationId,
-      action: "rejected",
-      rejector: context.auth.uid,
-      timestamp: new Date().toISOString(),
-      rejectionReason: reason || "No reason provided",
+    const reviewRef = db.collection("notification_reviews").doc(`rejected_${notificationId}`);
+    await db.runTransaction(async (transaction) => {
+      const draftSnap = await transaction.get(draftRef);
+      if (!draftSnap.exists) {
+        throw new https.HttpsError("not-found", "Draft notification not found");
+      }
+      transaction.set(reviewRef, {
+        notificationId,
+        action: "rejected",
+        rejector: uid,
+        timestamp: new Date().toISOString(),
+        rejectionReason: reason,
+      });
+      transaction.delete(draftRef);
     });
-
-    // Delete from draft
-    await draftRef.delete();
-
-    logger.info(`✓ Rejected notification: ${notificationId} | Reason: ${reason}`);
 
     return {
       success: true,
@@ -346,7 +334,154 @@ exports.rejectNotification = https.onCall({ cors: true }, async (data, context) 
     };
   } catch (err) {
     logger.error(`Error rejecting notification ${notificationId}:`, err);
-    throw new https.HttpsError("internal", err.message || "Rejection failed");
+    rethrowCallableError(err, "Rejection failed");
+  }
+});
+
+/**
+ * archiveNotification - Remove a published notification from the public feed
+ * while preserving the notification and an audit record.
+ *
+ * Request: { notificationId, reason? }
+ * Returns: { success, message, notificationId, alreadyArchived }
+ */
+exports.archiveNotification = https.onCall({ cors: true }, async (request) => {
+  const uid = await requireAdmin(request);
+  const payload = callablePayload(request);
+  const notificationId = cleanRequiredText(payload.notificationId, "notificationId", 160);
+  const reason = payload.reason === undefined
+    ? "Archived by administrator"
+    : cleanRequiredText(payload.reason, "reason", 500);
+
+  const db = getFirestore();
+
+  try {
+    const publishedRef = db.collection("notifications").doc(notificationId);
+    const archivedRef = db.collection("notifications_archived").doc(notificationId);
+    const reviewRef = db.collection("notification_reviews").doc(`archived_${notificationId}`);
+    const result = await db.runTransaction(async (transaction) => {
+      const [publishedSnap, archivedSnap] = await Promise.all([
+        transaction.get(publishedRef),
+        transaction.get(archivedRef),
+      ]);
+      if (!publishedSnap.exists) {
+        if (archivedSnap.exists) return { alreadyArchived: true };
+        throw new https.HttpsError("not-found", "Published notification not found");
+      }
+
+      const publishedData = publishedSnap.data();
+      if (publishedData.status && publishedData.status !== "published" && publishedData.status !== "archived") {
+        throw new https.HttpsError("failed-precondition", "Notification is not published");
+      }
+
+      const archivedAt = new Date().toISOString();
+      transaction.set(archivedRef, {
+        ...publishedData,
+        id: notificationId,
+        status: "archived",
+        archivedAt,
+        archivedBy: uid,
+        archiveReason: reason,
+      });
+      transaction.set(reviewRef, {
+        notificationId,
+        action: "archived",
+        archiver: uid,
+        timestamp: archivedAt,
+        archiveReason: reason,
+      });
+      transaction.delete(publishedRef);
+      return { alreadyArchived: false };
+    });
+
+    return {
+      success: true,
+      message: result.alreadyArchived
+        ? "Notification was already archived"
+        : "Notification archived successfully",
+      notificationId,
+      alreadyArchived: result.alreadyArchived,
+    };
+  } catch (err) {
+    logger.error(`Error archiving notification ${notificationId}:`, err);
+    rethrowCallableError(err, "Archive failed");
+  }
+});
+
+/**
+ * restoreArchivedNotification - Move an archived notification back to drafts.
+ *
+ * Request: { notificationId }
+ * Returns: { success, message, notificationId, alreadyRestored }
+ */
+exports.restoreArchivedNotification = https.onCall({ cors: true }, async (request) => {
+  const uid = await requireAdmin(request);
+  const payload = callablePayload(request);
+  const notificationId = cleanRequiredText(payload.notificationId, "notificationId", 160);
+
+  const db = getFirestore();
+
+  try {
+    const archivedRef = db.collection("notifications_archived").doc(notificationId);
+    const draftRef = db.collection("notifications_draft").doc(notificationId);
+    const reviewRef = db.collection("notification_reviews").doc();
+    const result = await db.runTransaction(async (transaction) => {
+      const [archivedSnap, draftSnap] = await Promise.all([
+        transaction.get(archivedRef),
+        transaction.get(draftRef),
+      ]);
+      if (!archivedSnap.exists) {
+        if (draftSnap.exists) return { alreadyRestored: true };
+        throw new https.HttpsError("not-found", "Archived notification not found");
+      }
+      if (draftSnap.exists) {
+        throw new https.HttpsError("already-exists", "A draft with this ID already exists");
+      }
+
+      const archivedData = archivedSnap.data();
+      const {
+        approvedAt,
+        approvedBy,
+        archivedAt,
+        archivedBy,
+        archiveReason,
+        read,
+        ...draftBase
+      } = archivedData;
+      const restoredAt = new Date().toISOString();
+      transaction.set(draftRef, {
+        ...draftBase,
+        id: notificationId,
+        status: "draft",
+        approvalGeneration: Number.isInteger(archivedData.approvalGeneration)
+          ? archivedData.approvalGeneration + 1
+          : 2,
+        restoredAt,
+        restoredBy: uid,
+        updatedAt: restoredAt,
+        updatedBy: uid,
+      });
+      transaction.set(reviewRef, {
+        notificationId,
+        action: "restored",
+        restorer: uid,
+        timestamp: restoredAt,
+      });
+      transaction.delete(archivedRef);
+      return { alreadyRestored: false };
+    });
+
+    return {
+      success: true,
+      message: result.alreadyRestored
+        ? "Notification was already restored"
+        : "Notification restored to drafts",
+      notificationId,
+      alreadyRestored: result.alreadyRestored,
+    };
+  } catch (err) {
+    logger.error(`Error restoring notification ${notificationId}:`, err);
+    rethrowCallableError(err, "Restore failed");
   }
 });
 
@@ -356,34 +491,15 @@ exports.rejectNotification = https.onCall({ cors: true }, async (data, context) 
  * Request: { notificationId, title?, body?, category? }
  * Returns: { success, message, notification }
  */
-exports.editDraftNotification = https.onCall({ cors: true }, async (data, context) => {
-  const uid = context.auth?.uid;
-  if (!uid) {
-    throw new https.HttpsError("unauthenticated", "User must be authenticated");
-  }
-  
-  logger.info(`📥 [editDraftNotification] Called`);
-  logger.info(`📥 Raw data keys: ${Object.keys(data || {}).join(', ')}`);
-  
-  // The httpsCallable wraps user data in a nested 'data' field
-  let userPayload = data?.data || data;
-  
-  if (userPayload && typeof userPayload === 'object') {
-    const userKeys = Object.keys(userPayload);
-    logger.info(`📥 User payload keys: ${userKeys.join(', ')}`);
-  }
-  
-  // Admin check - requires admin custom claim
-  const isAdmin = await verifyAdmin(uid);
-  if (!isAdmin) {
-    throw new https.HttpsError("permission-denied", "Admin access required");
-  }
-
-  const { notificationId, title, body, category } = userPayload;
-  logger.info(`✅ Extracted: notificationId=${notificationId}`);
-  
-  if (!notificationId) {
-    throw new https.HttpsError("invalid-argument", "notificationId is required but was not found in request data");
+exports.editDraftNotification = https.onCall({ cors: true }, async (request) => {
+  const uid = await requireAdmin(request);
+  const payload = callablePayload(request);
+  const notificationId = cleanRequiredText(payload.notificationId, "notificationId", 160);
+  const title = cleanOptionalText(payload.title, "title", 100);
+  const body = cleanOptionalText(payload.body, "body", 500);
+  const category = cleanOptionalText(payload.category, "category", 80);
+  if (title === undefined && body === undefined && category === undefined) {
+    throw new https.HttpsError("invalid-argument", "At least one editable field is required");
   }
 
   const db = getFirestore();
@@ -398,7 +514,7 @@ exports.editDraftNotification = https.onCall({ cors: true }, async (data, contex
 
     const updates = {
       updatedAt: new Date().toISOString(),
-      updatedBy: context.auth.uid,
+      updatedBy: uid,
     };
 
     if (title !== undefined) updates.title = title;
@@ -416,7 +532,7 @@ exports.editDraftNotification = https.onCall({ cors: true }, async (data, contex
     };
   } catch (err) {
     logger.error(`Error editing draft ${notificationId}:`, err);
-    throw new https.HttpsError("internal", err.message || "Edit failed");
+    rethrowCallableError(err, "Edit failed");
   }
 });
 
@@ -425,18 +541,61 @@ exports.editDraftNotification = https.onCall({ cors: true }, async (data, contex
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
+ * Bridges the currently scheduled Python scraper's news archive into the
+ * approval queue. The deterministic ID matches state_news_scraper.py.
+ */
+exports.onNewsArticleCreated = onDocumentCreated(
+  {
+    document: "news/{articleId}",
+    region: "us-central1",
+  },
+  async (event) => {
+    const article = event.data?.data();
+    if (!article) return;
+
+    const state = String(article.state || "FED").toUpperCase();
+    const articleId = event.params.articleId;
+    const notificationId = `scraper-${state.toLowerCase()}-${articleId}`;
+    const createdAt = new Date().toISOString();
+    const sourceUrl = typeof article.url === "string" ? article.url.trim() : "";
+    const draftRef = getFirestore().collection("notifications_draft").doc(notificationId);
+    const created = await getFirestore().runTransaction(async (transaction) => {
+      const existing = await transaction.get(draftRef);
+      if (existing.exists) return false;
+      transaction.create(draftRef, {
+        id: notificationId,
+        title: cleanRequiredText(article.title, "title", 100),
+        body: cleanRequiredText(article.summary || "New migration news available", "body", 500),
+        category: "News",
+        source: article.source || "scraper",
+        sourceUrl,
+        url: sourceUrl,
+        state,
+        status: "draft",
+        articleDate: article.publishedAt || createdAt,
+        createdAt,
+        timestamp: createdAt,
+        createdBy: "scraper_automation",
+        sourceFingerprint: articleId,
+      });
+      return true;
+    });
+
+    logger.info(`[News Archive] ${created ? "Created" : "Reused"} approval draft ${notificationId}`);
+  },
+);
+
+/**
  * onScraperUpdate - Triggers when scraper metadata updates
  * 
- * Automatically creates notifications for new migration news articles found by the scraper
- * and sends them via FCM to subscribed users.
+ * Creates approval drafts for new migration news articles found by the scraper.
  * 
  * Firestore Path: _scraper_meta/{state}
  * 
  * Flow:
  * 1. Detects new articles from scraper
- * 2. Creates notification in notifications collection
- * 3. Creates FCM trigger for delivery
- * 4. Sends FCM message to State topic
+ * 2. Creates a deterministic document in notifications_draft
+ * 3. Waits for an administrator to approve or reject it
  */
 const { onDocumentWritten } = require("firebase-functions/v2/firestore");
 
@@ -467,22 +626,9 @@ exports.onScraperUpdate = onDocumentWritten(
         return { status: "no_data", state };
       }
 
-      // Extract article information
+      // Reprocess today's articles safely; deterministic IDs make retries no-ops.
       const newArticles = data.articles || [];
-      const beforeData = snap.before?.data?.() || {};
-      const lastArticleCount = (beforeData.articles?.length) || 0;
-      
-      if (newArticles.length === lastArticleCount) {
-        logger.info(
-          `ℹ️ [Scraper Update] No new articles for state ${state} ` +
-          `(still ${newArticles.length})`
-        );
-        return { status: "no_new_articles", state, count: newArticles.length };
-      }
-
-      // Get recent articles (assume scraper adds newest first)
-      const newCount = Math.max(0, newArticles.length - lastArticleCount);
-      let recentArticles = newArticles.slice(0, newCount);
+      let recentArticles = newArticles;
       
       // Filter for today's articles and visa-related content
       const today = new Date().toDateString();
@@ -509,75 +655,56 @@ exports.onScraperUpdate = onDocumentWritten(
       
       logger.info(
         `🔍 [Scraper Update] Found ${recentArticles.length} new visa-related articles for ${state} (from today)`,
-        { state, totalNew: newCount, filteredCount: recentArticles.length }
+        { state, totalArticles: newArticles.length, filteredCount: recentArticles.length }
       );
 
       const db = getFirestore();
-      const messaging = getMessaging();
-      const notifications = [];
+      const drafts = [];
       const errors = [];
 
-      // Create notifications for each new article
+      // Create one stable draft per source article. Approval is the only publish path.
       for (const article of recentArticles) {
         try {
-          const notificationId = `scraper-${state}-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-          
-          // Ensure we have a valid link - use the article link or fall back to None
           const articleLink = (article.link && article.link.trim()) ? article.link.trim() : null;
+          const fingerprint = createHash("sha256")
+            .update(`${state}|${articleLink || article.title || "untitled"}|${article.date || "undated"}`)
+            .digest("hex")
+            .slice(0, 24);
+          const notificationId = `scraper-${String(state).toLowerCase()}-${fingerprint}`;
+          const draftRef = db.collection("notifications_draft").doc(notificationId);
+          const createdAt = new Date().toISOString();
 
-          const notification = {
+          const draft = {
+            id: notificationId,
             title: article.title || `New ${state} Migration Update`,
             body: article.summary || article.description || "New migration news available",
-            category: "migration_news",
+            category: "News",
             source: article.source || "scraper",
-            sourceUrl: articleLink || "", // Will be empty if no link available
-            url: articleLink || `https://swift-shore-238707.web.app/notifications`, // Fallback to Notifications page
-            state: state,
-            status: "published",
-            articleDate: article.date || new Date().toISOString(),
-            createdAt: new Date(),
-            publishedAt: new Date(),
+            sourceUrl: articleLink || "",
+            url: articleLink || "",
+            state,
+            status: "draft",
+            articleDate: article.date || createdAt,
+            createdAt,
+            timestamp: createdAt,
             createdBy: "scraper_automation",
-            hasValidSourceUrl: !!articleLink, // Flag to indicate if link is real
+            hasValidSourceUrl: !!articleLink,
+            sourceFingerprint: fingerprint,
           };
 
-          // Write to notifications collection (published directly)
-          await db.collection("notifications").doc(notificationId).set(notification);
-          logger.info(
-            `✅ [Scraper Update] Created notification: ${notificationId}`,
-            { title: notification.title }
-          );
-
-          // Create FCM trigger document
-          const fcmTriggerId = `fcm-${notificationId}`;
-          const topics = [
-            `state_${state}`,
-            "au_migration",
-          ];
-
-          await db.collection("fcm_triggers").doc(fcmTriggerId).set({
-            notificationId,
-            title: notification.title,
-            body: notification.body,
-            topics,
-            url: notification.url,
-            route: "/(tabs)/notifications",
-            sent: false,
-            sentAt: null,
-            createdAt: new Date(),
-            error: null,
+          const created = await db.runTransaction(async (transaction) => {
+            const existing = await transaction.get(draftRef);
+            if (existing.exists) return false;
+            transaction.create(draftRef, draft);
+            return true;
           });
 
-          logger.info(
-            `📨 [Scraper Update] Created FCM trigger for topics: ${topics.join(", ")}`,
-            { fcmTriggerId }
-          );
-
-          notifications.push({
-            notificationId,
-            fcmTriggerId,
-            title: notification.title,
-          });
+          if (created) {
+            drafts.push({ notificationId, title: draft.title });
+            logger.info(`[Scraper Update] Created approval draft: ${notificationId}`);
+          } else {
+            logger.info(`[Scraper Update] Draft already exists: ${notificationId}`);
+          }
 
         } catch (articleError) {
           logger.error(
@@ -588,56 +715,11 @@ exports.onScraperUpdate = onDocumentWritten(
         }
       }
 
-      // Send FCM messages for each notification
-      for (const notif of notifications) {
-        try {
-          const response = await messaging.send({
-            notification: {
-              title: notif.title,
-              body: "📰 New migration update available",
-            },
-            data: {
-              route: "/(tabs)/notifications",
-              notificationId: notif.notificationId,
-              url: "app://notifications",
-            },
-            topic: `state_${state}`,
-          });
-
-          // Mark FCM trigger as sent
-          await db.collection("fcm_triggers").doc(notif.fcmTriggerId).update({
-            sent: true,
-            sentAt: new Date(),
-            route: "/(tabs)/notifications",
-          });
-
-          logger.info(
-            `✅ [Scraper Update] FCM sent to state_${state}`,
-            { messageId: response, notificationId: notif.notificationId }
-          );
-
-        } catch (fcmError) {
-          logger.error(
-            `❌ [Scraper Update] FCM send failed for ${notif.notificationId}`,
-            { error: fcmError }
-          );
-
-          // Log error to FCM trigger
-          await db.collection("fcm_triggers").doc(notif.fcmTriggerId).update({
-            sent: false,
-            error: fcmError.message,
-            sentAt: new Date(),
-          });
-          
-          errors.push(fcmError.message);
-        }
-      }
-
       logger.info(
         `🎉 [Scraper Update] Complete for ${state}`,
         { 
           state,
-          notificationsCreated: notifications.length,
+          draftsCreated: drafts.length,
           errors: errors.length > 0 ? errors : null,
           timestamp: new Date().toISOString(),
         }
@@ -646,8 +728,8 @@ exports.onScraperUpdate = onDocumentWritten(
       return {
         status: "success",
         state,
-        notificationsCreated: notifications.length,
-        notifications,
+        draftsCreated: drafts.length,
+        drafts,
         errors: errors.length > 0 ? errors : null,
       };
 
@@ -903,3 +985,76 @@ exports.ariaChat = onRequest(
   }
 );
 
+
+// ── updateVisaFees ────────────────────────────────────────────────────────────
+// Called from the admin dashboard when an admin updates visa fees.
+// 1. Validates the payload
+// 2. Stores fees in Firestore (visa_fees collection) as source of truth
+// 3. Regenerates visa-fees.json on Firebase Hosting via bucket write
+// 4. Logs the update in fee_update_history
+// ─────────────────────────────────────────────────────────────────────────────
+const { getStorage } = require("firebase-admin/storage");
+
+exports.updateVisaFees = https.onCall({ cors: true }, async (request) => {
+  // Auth check
+  if (!request.auth) throw new Error("Unauthenticated");
+  const token = request.auth.token;
+  if (!token.admin) throw new Error("Admin access required");
+
+  const { fees, snapshotDate } = request.data;
+  if (!Array.isArray(fees) || fees.length === 0) {
+    throw new Error("fees must be a non-empty array");
+  }
+
+  // Validate each entry
+  for (const entry of fees) {
+    if (!entry.subclass || typeof entry.subclass !== "string") {
+      throw new Error(`Invalid entry: missing subclass`);
+    }
+    if (!entry.fee || typeof entry.fee !== "string") {
+      throw new Error(`Invalid entry for subclass ${entry.subclass}: missing fee`);
+    }
+  }
+
+  const db = getFirestore();
+  const now = new Date().toISOString();
+  const date = snapshotDate || now.slice(0, 10);
+
+  // 1. Write each fee to Firestore (visa_fees/{subclass})
+  const batch = db.batch();
+  for (const entry of fees) {
+    const ref = db.collection("visa_fees").doc(entry.subclass);
+    batch.set(ref, {
+      subclass: entry.subclass,
+      fee: entry.fee,
+      note: entry.note || null,
+      updatedAt: now,
+      updatedBy: request.auth.uid,
+    });
+  }
+  await batch.commit();
+
+  // 2. Write visa-fees.json to Firebase Hosting bucket
+  const snapshot = { snapshotDate: date, items: fees };
+  const bucket = getStorage().bucket();
+  const file = bucket.file("visa-fees.json");
+  await file.save(JSON.stringify(snapshot, null, 2), {
+    contentType: "application/json",
+    metadata: {
+      cacheControl: "public, max-age=3600, stale-while-revalidate=86400",
+    },
+  });
+  // Make the file publicly readable
+  await file.makePublic();
+
+  // 3. Log the update
+  await db.collection("fee_update_history").add({
+    updatedAt: now,
+    updatedBy: request.auth.uid,
+    snapshotDate: date,
+    count: fees.length,
+  });
+
+  logger.info(`[updateVisaFees] ${fees.length} fees updated by ${request.auth.uid}`);
+  return { success: true, count: fees.length, snapshotDate: date };
+});
