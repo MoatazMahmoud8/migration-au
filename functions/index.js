@@ -198,6 +198,197 @@ function rethrowCallableError(err, fallback) {
   throw new https.HttpsError("internal", err?.message || fallback);
 }
 
+function optionalTrimmedText(value, maxLength) {
+  if (typeof value !== "string") return undefined;
+  const cleaned = value.trim();
+  if (!cleaned) return undefined;
+  if (cleaned.length > maxLength) {
+    throw new https.HttpsError("invalid-argument", `Value must be ${maxLength} characters or fewer`);
+  }
+  return cleaned;
+}
+
+function getContentChangeDraftId(changeId, changeData) {
+  if (typeof changeData?.notificationDraftId === "string" && changeData.notificationDraftId.trim()) {
+    return changeData.notificationDraftId.trim();
+  }
+  const fingerprint = createHash("sha256")
+    .update(`${changeData?.sourceId || changeData?.source || "unknown"}|${changeData?.title || changeId}|${changeData?.sourceUrl || ""}`)
+    .digest("hex")
+    .slice(0, 24);
+  return `automation-${fingerprint}`;
+}
+
+function buildNotificationDraftFromContentChange(changeId, changeData, draftId, approvedAt, uid) {
+  const sourceUrl = optionalTrimmedText(changeData?.sourceUrl, 2000) || "";
+  const draft = {
+    id: draftId,
+    title: cleanRequiredText(changeData?.title, "title", 100),
+    body: cleanRequiredText(changeData?.body || changeData?.summary || "Migration update detected for review.", "body", 500),
+    category: cleanRequiredText(changeData?.category || changeData?.contentType || "Update", "category", 80),
+    source: optionalTrimmedText(changeData?.sourceId || changeData?.source, 160) || "scraper_automation",
+    requestedTopic: optionalTrimmedText(changeData?.requestedTopic, 160) || "au_migration",
+    sourceUrl,
+    url: sourceUrl,
+    status: "draft",
+    createdAt: changeData?.createdAt || approvedAt,
+    timestamp: changeData?.createdAt || approvedAt,
+    createdBy: "content_change_approval",
+    contentChangeId: changeId,
+    contentApprovedAt: approvedAt,
+    contentApprovedBy: uid,
+    contentChangeStatus: "approved",
+  };
+  const state = optionalTrimmedText(changeData?.state, 32);
+  if (state) {
+    draft.state = state;
+  }
+  return draft;
+}
+
+function buildContentChangeHistory(action, changeId, changeData, reviewedAt, reviewedBy, extras = {}) {
+  return {
+    changeId,
+    action,
+    status: action === "approved" ? "approved" : "rejected",
+    contentType: changeData?.contentType || "unknown",
+    title: changeData?.title || "",
+    summary: changeData?.summary || "",
+    sourceUrl: changeData?.sourceUrl || "",
+    category: changeData?.category || "",
+    currentValue: changeData?.currentValue || null,
+    detectedValue: changeData?.detectedValue || null,
+    createdAt: changeData?.createdAt || null,
+    reviewedAt,
+    reviewedBy,
+    ...extras,
+  };
+}
+
+function extractVisaFeeSubclass(changeData) {
+  const subclass = optionalTrimmedText(changeData?.subclass, 32);
+  if (subclass) return subclass;
+  const sourceId = optionalTrimmedText(changeData?.sourceId, 160);
+  const sourceMatch = sourceId?.match(/visa_fee_(\d+)/i);
+  if (sourceMatch) return sourceMatch[1];
+  const title = optionalTrimmedText(changeData?.title, 160);
+  const titleMatch = title?.match(/\bSC\s+(\d+)\b/i);
+  return titleMatch ? titleMatch[1] : undefined;
+}
+
+function normalizeFeeMatch(match) {
+  return match
+    .replace(/\s+/g, " ")
+    .replace(/^AUD\s*(?!\$)/i, "AUD $")
+    .replace(/^AUD\s+\$/i, "AUD $")
+    .replace(/^(\$)/, "AUD $")
+    .trim();
+}
+
+function extractVisaFeeValue(rawValue) {
+  if (typeof rawValue !== "string") return undefined;
+  const compact = rawValue.replace(/\s+/g, " ").trim();
+  if (!compact) return undefined;
+  if (/no charge/i.test(compact)) return "No charge";
+
+  const audMatches = compact.match(/AUD\s*\$?\s*\d[\d,]*(?:\.\d{2})?(?:\s*[–-]\s*\$?\d[\d,]*(?:\.\d{2})?)?(?:\s*\([^)]*\))?/gi);
+  if (audMatches?.length) {
+    return [...new Set(audMatches.map(normalizeFeeMatch))].join(" / ");
+  }
+
+  const dollarMatches = compact.match(/\$\s*\d[\d,]*(?:\.\d{2})?(?:\s*[–-]\s*\$?\d[\d,]*(?:\.\d{2})?)?(?:\s*\([^)]*\))?/g);
+  if (dollarMatches?.length) {
+    return [...new Set(dollarMatches.map(normalizeFeeMatch))].join(" / ");
+  }
+
+  return undefined;
+}
+
+function buildVisaFeeEntriesFromChange(changeId, changeData) {
+  if (Array.isArray(changeData?.fees) && changeData.fees.length > 0) {
+    return changeData.fees.map((entry, index) => ({
+      subclass: cleanRequiredText(entry?.subclass, `fees[${index}].subclass`, 32),
+      fee: cleanRequiredText(entry?.fee, `fees[${index}].fee`, 120),
+      note: optionalTrimmedText(entry?.note, 500),
+    }));
+  }
+
+  const subclass = extractVisaFeeSubclass(changeData);
+  const fee = cleanRequiredText(
+    changeData?.detectedFee ||
+      extractVisaFeeValue(changeData?.detectedValue) ||
+      extractVisaFeeValue(changeData?.summary) ||
+      extractVisaFeeValue(changeData?.body) ||
+      extractVisaFeeValue(changeData?.title),
+    "detected fee",
+    120
+  );
+
+  if (!subclass) {
+    throw new https.HttpsError("failed-precondition", `Visa fee change ${changeId} is missing a visa subclass`);
+  }
+
+  return [{
+    subclass,
+    fee,
+    note: optionalTrimmedText(changeData?.summary, 500),
+  }];
+}
+
+const { getStorage } = require("firebase-admin/storage");
+
+async function persistVisaFees(db, uid, fees, snapshotDate, extraHistory = {}) {
+  if (!Array.isArray(fees) || fees.length === 0) {
+    throw new https.HttpsError("invalid-argument", "fees must be a non-empty array");
+  }
+
+  for (const entry of fees) {
+    cleanRequiredText(entry?.subclass, "subclass", 32);
+    cleanRequiredText(entry?.fee, "fee", 120);
+    if (entry?.note !== undefined) {
+      cleanRequiredText(entry.note, "note", 500);
+    }
+  }
+
+  const now = new Date().toISOString();
+  const date = snapshotDate || now.slice(0, 10);
+  const batch = db.batch();
+
+  for (const entry of fees) {
+    const ref = db.collection("visa_fees").doc(entry.subclass);
+    batch.set(ref, {
+      subclass: entry.subclass,
+      fee: entry.fee,
+      note: entry.note || null,
+      updatedAt: now,
+      updatedBy: uid,
+    });
+  }
+  await batch.commit();
+
+  const snapshot = { snapshotDate: date, items: fees };
+  const bucket = getStorage().bucket();
+  const file = bucket.file("visa-fees.json");
+  await file.save(JSON.stringify(snapshot, null, 2), {
+    contentType: "application/json",
+    metadata: {
+      cacheControl: "public, max-age=3600, stale-while-revalidate=86400",
+    },
+  });
+  await file.makePublic();
+
+  await db.collection("fee_update_history").add({
+    updatedAt: now,
+    updatedBy: uid,
+    snapshotDate: date,
+    count: fees.length,
+    ...extraHistory,
+  });
+
+  logger.info(`[updateVisaFees] ${fees.length} fees updated by ${uid}`);
+  return { success: true, count: fees.length, snapshotDate: date };
+}
+
 /**
  * approveNotification - Move notification from draft to published and send FCM
  * 
@@ -229,6 +420,23 @@ exports.approveNotification = https.onCall({ cors: true }, async (request) => {
       }
 
       const draftData = draftSnap.data();
+      if (draftData.contentChangeId) {
+        const contentChangeRef = db.collection("pending_content_changes").doc(draftData.contentChangeId);
+        const contentChangeSnap = await transaction.get(contentChangeRef);
+        if (!contentChangeSnap.exists) {
+          throw new https.HttpsError(
+            "failed-precondition",
+            "This notification is linked to a content change that has not been approved yet"
+          );
+        }
+        const contentChangeStatus = contentChangeSnap.data()?.status;
+        if (contentChangeStatus !== "approved") {
+          throw new https.HttpsError(
+            "failed-precondition",
+            "Approve the linked content change before publishing this notification"
+          );
+        }
+      }
       const title = editedTitle ?? cleanRequiredText(draftData.title, "title", 100);
       const body = editedBody ?? cleanRequiredText(draftData.body, "body", 500);
       const category = cleanRequiredText(draftData.category, "category", 80);
@@ -290,6 +498,218 @@ exports.approveNotification = https.onCall({ cors: true }, async (request) => {
   } catch (err) {
     logger.error(`Error approving notification ${notificationId}:`, err);
     rethrowCallableError(err, "Approval failed");
+  }
+});
+
+/**
+ * approveContentChange - Approve a detected scraper content change.
+ *
+ * Request: { changeId, notes? }
+ * Returns: { success, message, changeId, draftCreated }
+ */
+exports.approveContentChange = https.onCall({ cors: true }, async (request) => {
+  const uid = requireAdmin(request);
+  const payload = callablePayload(request);
+  const changeId = cleanRequiredText(payload.changeId, "changeId", 160);
+  const notes = payload.notes === undefined
+    ? undefined
+    : cleanRequiredText(payload.notes, "notes", 500);
+
+  const db = getFirestore();
+  const changeRef = db.collection("pending_content_changes").doc(changeId);
+
+  try {
+    const initialSnap = await changeRef.get();
+    if (!initialSnap.exists) {
+      throw new https.HttpsError("not-found", "Content change not found");
+    }
+
+    const initialData = initialSnap.data();
+    if (initialData.status === "approved") {
+      return {
+        success: true,
+        message: "Content change was already approved",
+        changeId,
+        draftCreated: false,
+        alreadyApproved: true,
+      };
+    }
+    if (initialData.status === "rejected") {
+      throw new https.HttpsError("failed-precondition", "Content change has already been rejected");
+    }
+
+    const reviewedAt = new Date().toISOString();
+    let appliedFeesCount = 0;
+    if (initialData.contentType === "visa_fees") {
+      const fees = buildVisaFeeEntriesFromChange(changeId, initialData);
+      await persistVisaFees(
+        db,
+        uid,
+        fees,
+        reviewedAt.slice(0, 10),
+        { source: "content_change_approval", contentChangeId: changeId }
+      );
+      appliedFeesCount = fees.length;
+    }
+
+    const historyRef = db.collection("content_change_history").doc();
+    const result = await db.runTransaction(async (transaction) => {
+      const freshSnap = await transaction.get(changeRef);
+      if (!freshSnap.exists) {
+        throw new https.HttpsError("not-found", "Content change not found");
+      }
+
+      const changeData = freshSnap.data();
+      if (changeData.status === "approved") {
+        return { alreadyApproved: true, draftCreated: false, draftId: null, contentType: changeData.contentType };
+      }
+      if (changeData.status === "rejected") {
+        throw new https.HttpsError("failed-precondition", "Content change has already been rejected");
+      }
+
+      const updatePayload = {
+        status: "approved",
+        reviewedAt,
+        reviewedBy: uid,
+        notes: notes || null,
+      };
+      transaction.update(changeRef, updatePayload);
+
+      let draftCreated = false;
+      let draftId = null;
+      if (changeData.contentType !== "visa_fees") {
+        draftId = getContentChangeDraftId(changeId, changeData);
+        const draftRef = db.collection("notifications_draft").doc(draftId);
+        const draftSnap = await transaction.get(draftRef);
+        if (draftSnap.exists) {
+          transaction.set(draftRef, {
+            contentChangeId: changeId,
+            contentApprovedAt: reviewedAt,
+            contentApprovedBy: uid,
+            contentChangeStatus: "approved",
+          }, { merge: true });
+        } else {
+          transaction.set(
+            draftRef,
+            buildNotificationDraftFromContentChange(changeId, changeData, draftId, reviewedAt, uid)
+          );
+          draftCreated = true;
+        }
+      }
+
+      transaction.set(
+        historyRef,
+        buildContentChangeHistory("approved", changeId, changeData, reviewedAt, uid, {
+          notes: notes || null,
+          notificationDraftId: draftId,
+          notificationDraftCreated: draftCreated,
+          appliedFeesCount,
+        })
+      );
+
+      return {
+        alreadyApproved: false,
+        draftCreated,
+        draftId,
+        contentType: changeData.contentType,
+      };
+    });
+
+    return {
+      success: true,
+      message: result.alreadyApproved
+        ? "Content change was already approved"
+        : result.contentType === "visa_fees"
+          ? "Content change approved and visa fees updated"
+          : result.draftCreated
+            ? "Content change approved and notification draft created"
+            : "Content change approved",
+      changeId,
+      draftCreated: result.draftCreated,
+      draftId: result.draftId,
+      alreadyApproved: result.alreadyApproved,
+      appliedFeesCount,
+    };
+  } catch (err) {
+    logger.error(`Error approving content change ${changeId}:`, err);
+    rethrowCallableError(err, "Content change approval failed");
+  }
+});
+
+/**
+ * rejectContentChange - Reject a detected scraper content change.
+ *
+ * Request: { changeId, reason? }
+ * Returns: { success, message, changeId, draftRemoved }
+ */
+exports.rejectContentChange = https.onCall({ cors: true }, async (request) => {
+  const uid = requireAdmin(request);
+  const payload = callablePayload(request);
+  const changeId = cleanRequiredText(payload.changeId, "changeId", 160);
+  const reason = payload.reason === undefined
+    ? "Rejected by administrator"
+    : cleanRequiredText(payload.reason, "reason", 500);
+
+  const db = getFirestore();
+  const changeRef = db.collection("pending_content_changes").doc(changeId);
+  const historyRef = db.collection("content_change_history").doc();
+
+  try {
+    const result = await db.runTransaction(async (transaction) => {
+      const changeSnap = await transaction.get(changeRef);
+      if (!changeSnap.exists) {
+        throw new https.HttpsError("not-found", "Content change not found");
+      }
+
+      const changeData = changeSnap.data();
+      if (changeData.status === "rejected") {
+        return { alreadyRejected: true, draftRemoved: false };
+      }
+      if (changeData.status === "approved") {
+        throw new https.HttpsError("failed-precondition", "Approved content changes cannot be rejected");
+      }
+
+      const reviewedAt = new Date().toISOString();
+      transaction.update(changeRef, {
+        status: "rejected",
+        reviewedAt,
+        reviewedBy: uid,
+        reason,
+      });
+
+      let draftRemoved = false;
+      const draftId = getContentChangeDraftId(changeId, changeData);
+      const draftRef = db.collection("notifications_draft").doc(draftId);
+      const draftSnap = await transaction.get(draftRef);
+      if (draftSnap.exists) {
+        transaction.delete(draftRef);
+        draftRemoved = true;
+      }
+
+      transaction.set(
+        historyRef,
+        buildContentChangeHistory("rejected", changeId, changeData, reviewedAt, uid, {
+          reason,
+          notificationDraftId: draftId,
+          notificationDraftRemoved: draftRemoved,
+        })
+      );
+
+      return { alreadyRejected: false, draftRemoved };
+    });
+
+    return {
+      success: true,
+      message: result.alreadyRejected
+        ? "Content change was already rejected"
+        : "Content change rejected",
+      changeId,
+      draftRemoved: result.draftRemoved,
+      alreadyRejected: result.alreadyRejected,
+    };
+  } catch (err) {
+    logger.error(`Error rejecting content change ${changeId}:`, err);
+    rethrowCallableError(err, "Content change rejection failed");
   }
 });
 
@@ -986,72 +1406,10 @@ exports.ariaChat = onRequest(
 );
 
 
-// ── updateVisaFees ────────────────────────────────────────────────────────────
-// Called from the admin dashboard when an admin updates visa fees.
-// 1. Validates the payload
-// 2. Stores fees in Firestore (visa_fees collection) as source of truth
-// 3. Regenerates visa-fees.json on Firebase Hosting via bucket write
-// 4. Logs the update in fee_update_history
-// ─────────────────────────────────────────────────────────────────────────────
-const { getStorage } = require("firebase-admin/storage");
-
 exports.updateVisaFees = https.onCall({ cors: true }, async (request) => {
   const uid = requireAdmin(request);
-
-  const { fees, snapshotDate } = request.data;
-  if (!Array.isArray(fees) || fees.length === 0) {
-    throw new https.HttpsError("invalid-argument", "fees must be a non-empty array");
-  }
-
-  // Validate each entry
-  for (const entry of fees) {
-    if (!entry.subclass || typeof entry.subclass !== "string") {
-      throw new Error(`Invalid entry: missing subclass`);
-    }
-    if (!entry.fee || typeof entry.fee !== "string") {
-      throw new Error(`Invalid entry for subclass ${entry.subclass}: missing fee`);
-    }
-  }
-
+  const payload = callablePayload(request);
+  const { fees, snapshotDate } = payload;
   const db = getFirestore();
-  const now = new Date().toISOString();
-  const date = snapshotDate || now.slice(0, 10);
-
-  // 1. Write each fee to Firestore (visa_fees/{subclass})
-  const batch = db.batch();
-  for (const entry of fees) {
-    const ref = db.collection("visa_fees").doc(entry.subclass);
-    batch.set(ref, {
-      subclass: entry.subclass,
-      fee: entry.fee,
-      note: entry.note || null,
-      updatedAt: now,
-      updatedBy: request.auth.uid,
-    });
-  }
-  await batch.commit();
-
-  // 2. Write visa-fees.json to Firebase Hosting bucket
-  const snapshot = { snapshotDate: date, items: fees };
-  const bucket = getStorage().bucket();
-  const file = bucket.file("visa-fees.json");
-  await file.save(JSON.stringify(snapshot, null, 2), {
-    contentType: "application/json",
-    metadata: {
-      cacheControl: "public, max-age=3600, stale-while-revalidate=86400",
-    },
-  });
-  // Make the file publicly readable
-  await file.makePublic();
-
-  // 3. Log the update
-  await db.collection("fee_update_history").add({
-    updatedAt: now,
-    updatedBy: uid,
-    snapshotDate: date,
-    count: fees.length,
-  });
-
-  logger.info(`[updateVisaFees] ${fees.length} fees updated by ${uid}`);
-  return { success: true, count: fees.length, snapshotDate: date };
+  return persistVisaFees(db, uid, fees, snapshotDate, { source: "admin_dashboard" });
 });
