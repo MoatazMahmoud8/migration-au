@@ -1413,3 +1413,159 @@ exports.updateVisaFees = https.onCall({ cors: true }, async (request) => {
   const db = getFirestore();
   return persistVisaFees(db, uid, fees, snapshotDate, { source: "admin_dashboard" });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCHEDULED NOTIFICATIONS
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Schedule a notification for future delivery
+ */
+exports.scheduleNotification = https.onCall({ cors: true }, async (request) => {
+  const auth = request.auth;
+  if (!auth?.token?.admin) {
+    throw new https.HttpsError("permission-denied", "Admin privileges required");
+  }
+
+  const { notificationId, scheduledFor } = request.data || {};
+  
+  if (!notificationId || typeof notificationId !== "string") {
+    throw new https.HttpsError("invalid-argument", "notificationId is required");
+  }
+  
+  if (!scheduledFor || typeof scheduledFor !== "string") {
+    throw new https.HttpsError("invalid-argument", "scheduledFor date is required");
+  }
+
+  const scheduledDate = new Date(scheduledFor);
+  if (isNaN(scheduledDate.getTime())) {
+    throw new https.HttpsError("invalid-argument", "Invalid scheduledFor date format");
+  }
+
+  if (scheduledDate <= new Date()) {
+    throw new https.HttpsError("invalid-argument", "Scheduled time must be in the future");
+  }
+
+  const db = getFirestore();
+  const draftRef = db.collection("notifications_draft").doc(notificationId);
+  const draftSnap = await draftRef.get();
+
+  if (!draftSnap.exists) {
+    throw new https.HttpsError("not-found", "Draft notification not found");
+  }
+
+  await draftRef.update({
+    status: "scheduled",
+    scheduledFor: scheduledDate.toISOString(),
+    scheduledBy: auth.uid,
+    scheduledAt: new Date().toISOString(),
+  });
+
+  logger.info(`Notification ${notificationId} scheduled for ${scheduledFor} by ${auth.uid}`);
+
+  return {
+    success: true,
+    message: `Notification scheduled for ${scheduledDate.toLocaleString()}`,
+    notificationId,
+    scheduledFor: scheduledDate.toISOString(),
+  };
+});
+
+/**
+ * Process scheduled notifications - runs every 5 minutes via Cloud Scheduler
+ * This checks for notifications with scheduledFor <= now and processes them
+ */
+const { onSchedule } = require("firebase-functions/v2/scheduler");
+
+exports.processScheduledNotifications = onSchedule(
+  {
+    schedule: "every 5 minutes",
+    region: "us-central1",
+    timeZone: "Australia/Sydney",
+  },
+  async () => {
+    const db = getFirestore();
+    const now = new Date();
+
+    logger.info(`[scheduler] Checking for scheduled notifications at ${now.toISOString()}`);
+
+    // Find all scheduled notifications that are due
+    const dueNotifications = await db
+      .collection("notifications_draft")
+      .where("status", "==", "scheduled")
+      .where("scheduledFor", "<=", now.toISOString())
+      .limit(10)  // Process max 10 per run to avoid timeouts
+      .get();
+
+    if (dueNotifications.empty) {
+      logger.info("[scheduler] No scheduled notifications due");
+      return;
+    }
+
+    logger.info(`[scheduler] Found ${dueNotifications.size} notifications to send`);
+
+    const batch = db.batch();
+    const messaging = getMessaging();
+
+    for (const doc of dueNotifications.docs) {
+      const draft = doc.data();
+      const notificationId = doc.id;
+
+      try {
+        // Create the published notification
+        const publishedRef = db.collection("notifications").doc(notificationId);
+        const timestamp = new Date().toISOString();
+
+        batch.set(publishedRef, {
+          id: notificationId,
+          title: draft.title,
+          body: draft.body,
+          category: draft.category || "Update",
+          topic: draft.requestedTopic || "au_migration",
+          url: draft.url || draft.sourceUrl || "",
+          timestamp,
+          source: draft.source || "scraper_automation",
+          status: "published",
+          approvedAt: timestamp,
+          approvedBy: draft.scheduledBy || "scheduler",
+          scheduledFor: draft.scheduledFor,
+          wasScheduled: true,
+        });
+
+        // Create FCM trigger for the notification
+        const triggerId = `scheduled_${notificationId}`;
+        const triggerRef = db.collection("fcm_triggers").doc(triggerId);
+        batch.set(triggerRef, {
+          id: notificationId,
+          title: draft.title,
+          body: draft.body,
+          category: draft.category || "Update",
+          topics: [draft.requestedTopic || "au_migration"],
+          articleUrl: draft.url || draft.sourceUrl || "",
+          createdAt: new Date(),
+          sent: false,
+        });
+
+        // Delete the draft
+        batch.delete(doc.ref);
+
+        // Record in audit log
+        const auditRef = db.collection("notifications_reviews").doc();
+        batch.set(auditRef, {
+          notificationId,
+          action: "scheduled_publish",
+          timestamp,
+          scheduledFor: draft.scheduledFor,
+          scheduledBy: draft.scheduledBy,
+        });
+
+        logger.info(`[scheduler] Queued notification ${notificationId} for publishing`);
+      } catch (err) {
+        logger.error(`[scheduler] Failed to process ${notificationId}:`, err);
+      }
+    }
+
+    await batch.commit();
+    logger.info(`[scheduler] Batch committed, ${dueNotifications.size} notifications processed`);
+  }
+);
