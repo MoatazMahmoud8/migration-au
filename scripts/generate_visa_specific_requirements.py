@@ -143,6 +143,26 @@ VISA_LABEL = {
 }
 
 
+def unverified(visa, state, source_url):
+    """State list could not be scraped/verified (blocked, 404, or page had
+    no parseable data). We deliberately do NOT claim 'sponsored' (would be
+    a false positive -- the old bug) or 'not_sponsored' (would be a false
+    negative -- just as misleading). This status tells the UI to show a
+    neutral "check the official site" indicator instead of a wrong
+    green/red one."""
+    return {
+        'visa': VISA_LABEL[visa],
+        'status': 'unverified',
+        'onOfficialList': None,
+        'reason': f"{state}'s official occupation list could not be verified from source (page blocked, moved, or not machine-readable).",
+        'sourceUrl': source_url,
+        'notes': [
+            f"We could not confirm whether this occupation is on {state}'s current SC {visa} nomination list.",
+            "Please check the official state government source before assuming eligibility either way.",
+        ],
+    }
+
+
 def not_sponsored(visa, state, reason, source_url):
     msg = (
         "This occupation is NOT on the federal Combined Skilled Occupation List (CSOL) — SC 482 cannot be sponsored."
@@ -265,6 +285,7 @@ def sponsored(visa, anzsco, occ_name, cfg, state, source_url, scraped):
 print(f"\nGenerating for {len(all_occupations)} occupations × {len(STATES)} states × {len(VISA_TYPES)} visas …")
 
 sponsored_count = not_sponsored_count = no_salary_count = 0
+unverified_count = [0]  # list so the nested loop closure can mutate it
 
 output = {
     'snapshotDate': datetime.now().strftime('%Y-%m-%d'),
@@ -278,7 +299,7 @@ output = {
             '482': 'SC 482 Skills in Demand (Temporary, employer-sponsored)',
         },
         'states': STATES,
-        'entry_status_values': ['sponsored', 'not_sponsored'],
+        'entry_status_values': ['sponsored', 'not_sponsored', 'unverified'],
     },
     'requirements': {},
 }
@@ -295,7 +316,13 @@ for anzsco, occ in all_occupations.items():
         scraped = info.get('scraped', False)
         per_visa = {}
         for visa in VISA_TYPES:
-            if is_on_list(anzsco, state, visa):
+            # SC 482 relies solely on the federal CSOL (no state-specific
+            # list), so it's never "unverified" -- only 190/491 depend on
+            # a scraped state list.
+            if visa != '482' and not scraped:
+                per_visa[visa] = unverified(visa, state, src)
+                unverified_count[0] += 1
+            elif is_on_list(anzsco, state, visa):
                 per_visa[visa] = sponsored(visa, anzsco, name, cfg, state, src, scraped)
                 sponsored_count += 1
             else:
@@ -309,10 +336,11 @@ for anzsco, occ in all_occupations.items():
                 not_sponsored_count += 1
         output['requirements'][anzsco][state] = per_visa
 
-total = sponsored_count + not_sponsored_count
+total = sponsored_count + not_sponsored_count + unverified_count[0]
 print(f"\nGenerated {total} combinations:")
 print(f"  Sponsored:      {sponsored_count:>6}  ({sponsored_count*100//total}%)")
 print(f"  Not sponsored:  {not_sponsored_count:>6}  ({not_sponsored_count*100//total}%)")
+print(f"  Unverified:     {unverified_count[0]:>6}  ({unverified_count[0]*100//total}%)")
 print(f"  Occupations w/o salary data: {no_salary_count}/{len(all_occupations)} ({no_salary_count*100//len(all_occupations)}%)")
 
 out_path = PUBLIC / 'state-occupation-requirements.json'
