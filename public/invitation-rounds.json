@@ -2,7 +2,7 @@
   "lastUpdated": "2026-06-04",
   "sourceUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
   "previousRoundsUrl": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/previous-rounds",
-  "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by state governments independently \u2014 no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Department of Home Affairs.",
+  "note": "SC 190 and SC 491 (State/Territory Nominated) are managed by states independently — no departmental invitation rounds apply. SC 189 and SC 491 (Family Sponsored) rounds are issued by the Dept of Home Affairs.",
   "currentRound": {
     "date": "2026-06-04",
     "sc189": {
@@ -10,54 +10,225 @@
       "tieBreak": "2026-04"
     },
     "sc491Family": {
-      "total": 400,
-      "tieBreak": "2026-04"
+      "total": 0,
+      "tieBreak": null
     },
     "source": "dha"
   },
+  "migrationProgramPlanning": [
+    {
+      "financialYear": "2025-26",
+      "total": 185000,
+      "skilled": 132200,
+      "family": 52500,
+      "specialEligibility": 300,
+      "skilledIndependent": 16900,
+      "regional": 33000,
+      "employerSponsored": 44000,
+      "stateTerritoryNominated": 33000,
+      "talentInnovation": 5300,
+      "onshore": 0,
+      "offshore": 0,
+      "sourceUrl": "https://immi.homeaffairs.gov.au/what-we-do/migration-program-planning-levels",
+      "announcedAt": "2025-05-13"
+    },
+    {
+      "financialYear": "2026-27",
+      "total": 185000,
+      "skilled": 132240,
+      "family": 52460,
+      "specialEligibility": 300,
+      "skilledIndependent": 21090,
+      "regional": 14110,
+      "employerSponsored": 58040,
+      "stateTerritoryNominated": 35500,
+      "talentInnovation": 3500,
+      "onshore": 129590,
+      "offshore": 55110,
+      "sourceUrl": "https://immi.homeaffairs.gov.au/what-we-do/migration-program-planning-levels",
+      "announcedAt": "2026-05-12"
+    }
+  ],
   "stateNominations": {
-    "period": "2026-27 (Jul 2025 \u2013 Apr 2026)",
+    "period": "2025-26 program year",
+    "reportingPeriod": "1 July 2025 – 31 May 2026",
+    "metric": "nominations-issued",
     "sc190": {
-      "NSW": 604,
-      "VIC": 1894,
-      "QLD": 741,
-      "WA": 1254,
-      "SA": 911,
-      "TAS": 988,
-      "ACT": 2237,
-      "NT": 1443
+      "ACT": 715,
+      "NSW": 2082,
+      "NT": 755,
+      "QLD": 1602,
+      "SA": 1164,
+      "TAS": 1152,
+      "VIC": 2649,
+      "WA": 1742
     },
     "sc491": {
-      "NSW": 653,
-      "VIC": 1049,
-      "QLD": 438,
-      "WA": 630,
-      "SA": 594,
-      "TAS": 367,
-      "ACT": 656,
-      "NT": 1067
+      "ACT": 745,
+      "NSW": 1424,
+      "NT": 532,
+      "QLD": 694,
+      "SA": 796,
+      "TAS": 501,
+      "VIC": 694,
+      "WA": 1400
     }
   },
+  "stateAllocations": [
+    {
+      "financial_year": "2025-26",
+      "state_code": "NSW",
+      "subclass": "190",
+      "total_quota": 2100,
+      "issued_count": 2082,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "NSW",
+      "subclass": "491",
+      "total_quota": 1500,
+      "issued_count": 1424,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "VIC",
+      "subclass": "190",
+      "total_quota": 2700,
+      "issued_count": 2649,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "VIC",
+      "subclass": "491",
+      "total_quota": 700,
+      "issued_count": 694,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "QLD",
+      "subclass": "190",
+      "total_quota": 1850,
+      "issued_count": 1602,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "QLD",
+      "subclass": "491",
+      "total_quota": 750,
+      "issued_count": 694,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "WA",
+      "subclass": "190",
+      "total_quota": 2000,
+      "issued_count": 1742,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "WA",
+      "subclass": "491",
+      "total_quota": 1400,
+      "issued_count": 1400,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "SA",
+      "subclass": "190",
+      "total_quota": 1350,
+      "issued_count": 1164,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "SA",
+      "subclass": "491",
+      "total_quota": 900,
+      "issued_count": 796,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "TAS",
+      "subclass": "190",
+      "total_quota": 1200,
+      "issued_count": 1152,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "TAS",
+      "subclass": "491",
+      "total_quota": 650,
+      "issued_count": 501,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "ACT",
+      "subclass": "190",
+      "total_quota": 800,
+      "issued_count": 715,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "ACT",
+      "subclass": "491",
+      "total_quota": 800,
+      "issued_count": 745,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "NT",
+      "subclass": "190",
+      "total_quota": 850,
+      "issued_count": 755,
+      "last_updated": "2026-06-23"
+    },
+    {
+      "financial_year": "2025-26",
+      "state_code": "NT",
+      "subclass": "491",
+      "total_quota": 800,
+      "issued_count": 532,
+      "last_updated": "2026-06-23"
+    }
+  ],
   "occupationScores": [
     {
       "name": "Actuary",
-      "sc189": 85,
+      "sc189": 90,
       "sc491Family": null
     },
     {
       "name": "Agricultural Consultant",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Agricultural Scientist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Airconditioning and Mechanical Services Plumber",
       "sc189": 65,
-      "sc491Family": 70
+      "sc491Family": null
+    },
+    {
+      "name": "Airconditioning and Refrigeration Mechanic",
+      "sc189": 80,
+      "sc491Family": null
     },
     {
       "name": "Architect",
@@ -65,82 +236,62 @@
       "sc491Family": null
     },
     {
-      "name": "Artistic Director",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
       "name": "Arts Administrator or Manager",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Audiologist",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Automotive Electrician",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Barrister",
-      "sc189": 90,
-      "sc491Family": null
-    },
-    {
-      "name": "Biochemist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Biotechnologist",
-      "sc189": 85,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Boat Builder and Repairer",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Botanist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Bricklayer",
       "sc189": 65,
-      "sc491Family": 70
+      "sc491Family": null
     },
     {
       "name": "Cabinetmaker",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Cardiologist",
       "sc189": 80,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Carpenter",
       "sc189": 65,
-      "sc491Family": 65
+      "sc491Family": null
     },
     {
       "name": "Carpenter and Joiner",
       "sc189": 65,
-      "sc491Family": 95
-    },
-    {
-      "name": "Cartographer",
-      "sc189": 90,
       "sc491Family": null
     },
     {
-      "name": "Chemical Engineer",
+      "name": "Cartographer",
       "sc189": 85,
       "sc491Family": null
     },
@@ -151,91 +302,86 @@
     },
     {
       "name": "Child Care Centre Manager",
-      "sc189": 75,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Chiropractor",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Civil Engineering Draftsperson",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Civil Engineering Technician",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Clinical Psychologist",
-      "sc189": 80,
+      "sc189": 75,
       "sc491Family": null
     },
     {
       "name": "Construction Project Manager",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Dermatologist",
-      "sc189": 100,
-      "sc491Family": null
-    },
-    {
-      "name": "Diagnostic and Interventional Radiologist",
       "sc189": 80,
       "sc491Family": null
     },
     {
-      "name": "Drainer",
-      "sc189": 70,
+      "name": "Dancer or Choreographer",
+      "sc189": 80,
       "sc491Family": null
     },
     {
-      "name": "Early Childhood (Pre-primary School) Teacher",
+      "name": "Dermatologist",
       "sc189": 85,
-      "sc491Family": 90
+      "sc491Family": null
+    },
+    {
+      "name": "Diagnostic and Interventional Radiologist",
+      "sc189": 85,
+      "sc491Family": null
+    },
+    {
+      "name": "Drainer",
+      "sc189": 65,
+      "sc491Family": null
     },
     {
       "name": "Economist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Electrical Engineering Draftsperson",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Electrical Engineering Technician",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Electrician (General)",
       "sc189": 65,
-      "sc491Family": 65
+      "sc491Family": null
     },
     {
       "name": "Electrician (Special Class)",
-      "sc189": 70,
+      "sc189": 65,
       "sc491Family": null
     },
     {
       "name": "Electronic Equipment Trades Worker",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Electronic Instrument Trades Worker (General)",
-      "sc189": 95,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Electronic Instrument Trades Worker (Special Class)",
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
+      "name": "Electronics Engineer",
       "sc189": 95,
       "sc491Family": null
     },
@@ -245,38 +391,48 @@
       "sc491Family": null
     },
     {
+      "name": "Endocrinologist",
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
       "name": "Engineering Manager",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Environmental Consultant",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Environmental Manager",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Environmental Research Scientist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Environmental Scientists nec",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Fibrous Plasterer",
       "sc189": 65,
-      "sc491Family": 65
+      "sc491Family": null
     },
     {
       "name": "Fitter (General)",
-      "sc189": 85,
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
+      "name": "Fitter and Turner",
+      "sc189": 80,
       "sc491Family": null
     },
     {
@@ -285,23 +441,33 @@
       "sc491Family": null
     },
     {
+      "name": "Footballer",
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
       "name": "Forester",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Gasfitter",
-      "sc189": 65,
-      "sc491Family": 80
+      "sc189": 70,
+      "sc491Family": null
+    },
+    {
+      "name": "Gastroenterologist",
+      "sc189": 85,
+      "sc491Family": null
     },
     {
       "name": "General Practitioner",
       "sc189": 75,
-      "sc491Family": 85
+      "sc491Family": null
     },
     {
       "name": "Geophysicist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
@@ -311,7 +477,7 @@
     },
     {
       "name": "Hydrogeologist",
-      "sc189": 90,
+      "sc189": 80,
       "sc491Family": null
     },
     {
@@ -326,7 +492,7 @@
     },
     {
       "name": "Land Economist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
@@ -336,106 +502,106 @@
     },
     {
       "name": "Life Scientist (General)",
-      "sc189": 85,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Life Scientists nec",
-      "sc189": 85,
+      "sc189": 95,
+      "sc491Family": null
+    },
+    {
+      "name": "Lift mechanic",
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Management Consultant",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Marine Biologist",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Materials Engineer",
-      "sc189": 85,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Medical Diagnostic Radiographer",
-      "sc189": 75,
-      "sc491Family": 85
-    },
-    {
-      "name": "Medical Laboratory Scientist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
-      "name": "Medical Oncologist",
+      "name": "Medical Laboratory Scientist",
       "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Medical Practitioners nec",
       "sc189": 75,
-      "sc491Family": 90
+      "sc491Family": null
     },
     {
       "name": "Medical Radiation Therapist",
-      "sc189": 75,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Metal Fabricator",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Metal Machinist (First Class)",
-      "sc189": 95,
+      "sc189": 85,
       "sc491Family": null
     },
     {
       "name": "Metallurgist",
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
+      "name": "Meteorologist",
       "sc189": 85,
       "sc491Family": null
     },
     {
       "name": "Microbiologist",
-      "sc189": 85,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Midwife",
       "sc189": 75,
-      "sc491Family": 75
-    },
-    {
-      "name": "Mining Engineer (excluding Petroleum)",
-      "sc189": 85,
       "sc491Family": null
     },
     {
-      "name": "Motorcycle Mechanic",
-      "sc189": 85,
+      "name": "Mining Engineer (excluding Petroleum)",
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Multimedia Specialist",
-      "sc189": 90,
+      "sc189": 95,
+      "sc491Family": null
+    },
+    {
+      "name": "Music Director",
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Musician (Instrumental)",
-      "sc189": 90,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Natural and Physical Science Professionals nec",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
-      "name": "Neurologist",
+      "name": "Nuclear Medicine Technologist",
       "sc189": 80,
       "sc491Family": null
     },
@@ -446,13 +612,13 @@
     },
     {
       "name": "Obstetrician and Gynaecologist",
-      "sc189": 75,
+      "sc189": 85,
       "sc491Family": null
     },
     {
       "name": "Occupational Therapist",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Ophthalmologist",
@@ -461,8 +627,8 @@
     },
     {
       "name": "Optometrist",
-      "sc189": 75,
-      "sc491Family": 85
+      "sc189": 80,
+      "sc491Family": null
     },
     {
       "name": "Organisational Psychologist",
@@ -475,13 +641,18 @@
       "sc491Family": null
     },
     {
+      "name": "Orthotist or Prosthetist",
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
       "name": "Osteopath",
-      "sc189": 100,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Other Spatial Scientist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
@@ -490,34 +661,29 @@
       "sc491Family": null
     },
     {
-      "name": "Painting Trades Worker",
-      "sc189": 70,
-      "sc491Family": 70
-    },
-    {
-      "name": "Pathologist",
-      "sc189": 75,
+      "name": "Panelbeater",
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Petroleum Engineer",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Physicist",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Physiotherapist",
       "sc189": 75,
-      "sc491Family": 75
+      "sc491Family": null
     },
     {
       "name": "Plumber (General)",
       "sc189": 65,
-      "sc491Family": 70
+      "sc491Family": null
     },
     {
       "name": "Podiatrist",
@@ -526,12 +692,12 @@
     },
     {
       "name": "Primary Health Organisation Manager",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Psychiatrist",
-      "sc189": 75,
+      "sc189": 80,
       "sc491Family": null
     },
     {
@@ -540,114 +706,119 @@
       "sc491Family": null
     },
     {
-      "name": "Radiation Oncologist",
-      "sc189": null,
-      "sc491Family": 85
-    },
-    {
       "name": "Registered Nurse (Aged Care)",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Child and Family Health)",
-      "sc189": 75,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Registered Nurse (Community Health)",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Critical Care and Emergency)",
       "sc189": 75,
-      "sc491Family": 75
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Developmental Disability)",
       "sc189": 80,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Disability and Rehabilitation)",
-      "sc189": 75,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Registered Nurse (Medical Practice)",
       "sc189": 75,
-      "sc491Family": 75
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Medical)",
       "sc189": 75,
-      "sc491Family": 75
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Mental Health)",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Paediatrics)",
-      "sc189": 75,
-      "sc491Family": 75
+      "sc189": 80,
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Perioperative)",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Registered Nurse (Surgical)",
       "sc189": 75,
-      "sc491Family": 80
+      "sc491Family": null
     },
     {
       "name": "Registered Nurses nec",
       "sc189": 75,
-      "sc491Family": 75
+      "sc491Family": null
     },
     {
       "name": "Roof Plumber",
-      "sc189": 70,
+      "sc189": 65,
       "sc491Family": null
     },
     {
       "name": "Secondary School Teacher",
       "sc189": 75,
-      "sc491Family": 85
+      "sc491Family": null
+    },
+    {
+      "name": "Sheetmetal Trades Worker",
+      "sc189": 80,
+      "sc491Family": null
+    },
+    {
+      "name": "Shipwright",
+      "sc189": 80,
+      "sc491Family": null
     },
     {
       "name": "Social Worker",
       "sc189": 75,
-      "sc491Family": 85
+      "sc491Family": null
     },
     {
       "name": "Solicitor",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Solid Plasterer",
       "sc189": 65,
-      "sc491Family": 65
+      "sc491Family": null
     },
     {
       "name": "Sonographer",
-      "sc189": 75,
+      "sc189": 85,
       "sc491Family": null
     },
     {
       "name": "Special Education Teachers nec",
-      "sc189": 75,
+      "sc189": 85,
       "sc491Family": null
     },
     {
       "name": "Special Needs Teacher",
       "sc189": 75,
-      "sc491Family": 90
+      "sc491Family": null
     },
     {
       "name": "Specialist Physician (General Medicine)",
@@ -656,17 +827,17 @@
     },
     {
       "name": "Specialist Physicians nec",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Speech Pathologist",
       "sc189": 75,
-      "sc491Family": 85
+      "sc491Family": null
     },
     {
       "name": "Statistician",
-      "sc189": 85,
+      "sc189": 90,
       "sc491Family": null
     },
     {
@@ -676,86 +847,61 @@
     },
     {
       "name": "Surgeon (General)",
-      "sc189": 80,
+      "sc189": 85,
       "sc491Family": null
     },
     {
       "name": "Surveyor",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Telecommunications Engineer",
-      "sc189": 90,
-      "sc491Family": null
-    },
-    {
-      "name": "Telecommunications Field Engineer",
-      "sc189": 90,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Telecommunications Network Engineer",
-      "sc189": 90,
-      "sc491Family": null
-    },
-    {
-      "name": "Telecommunications Network Planner",
-      "sc189": 90,
-      "sc491Family": null
-    },
-    {
-      "name": "Telecommunications Technical Officer or Technologist",
-      "sc189": 90,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Tennis Coach",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Thoracic Medicine Specialist",
-      "sc189": 80,
+      "sc189": 95,
       "sc491Family": null
     },
     {
       "name": "Urologist",
-      "sc189": 80,
+      "sc189": 100,
       "sc491Family": null
     },
     {
       "name": "Valuer",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Vascular Surgeon",
-      "sc189": 75,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Veterinarian",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Wall and Floor Tiler",
       "sc189": 65,
-      "sc491Family": 75
+      "sc491Family": null
     },
     {
       "name": "Welder (First Class)",
-      "sc189": 85,
+      "sc189": 80,
       "sc491Family": null
     },
     {
       "name": "Welfare Centre Manager",
-      "sc189": 85,
-      "sc491Family": null
-    },
-    {
-      "name": "Zoologist",
       "sc189": 85,
       "sc491Family": null
     }
@@ -763,30 +909,36 @@
   "rounds": [
     {
       "date": "2026-06-04",
+      "label": "4 June 2026",
       "sc189Total": 10000,
       "sc189TieBreak": "2026-04",
-      "sc491FamilyTotal": 400,
-      "sc491FamilyTieBreak": "2026-04",
+      "sc491FamilyTotal": 0,
+      "sc491FamilyTieBreak": null,
       "occupationScores": [
         {
           "name": "Actuary",
-          "sc189": 85,
+          "sc189": 90,
           "sc491Family": null
         },
         {
           "name": "Agricultural Consultant",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Agricultural Scientist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Airconditioning and Mechanical Services Plumber",
           "sc189": 65,
-          "sc491Family": 70
+          "sc491Family": null
+        },
+        {
+          "name": "Airconditioning and Refrigeration Mechanic",
+          "sc189": 80,
+          "sc491Family": null
         },
         {
           "name": "Architect",
@@ -794,82 +946,62 @@
           "sc491Family": null
         },
         {
-          "name": "Artistic Director",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
           "name": "Arts Administrator or Manager",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Audiologist",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Automotive Electrician",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Barrister",
-          "sc189": 90,
-          "sc491Family": null
-        },
-        {
-          "name": "Biochemist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Biotechnologist",
-          "sc189": 85,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Boat Builder and Repairer",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
-          "name": "Botanist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Bricklayer",
           "sc189": 65,
-          "sc491Family": 70
+          "sc491Family": null
         },
         {
           "name": "Cabinetmaker",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Cardiologist",
           "sc189": 80,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Carpenter",
           "sc189": 65,
-          "sc491Family": 65
+          "sc491Family": null
         },
         {
           "name": "Carpenter and Joiner",
           "sc189": 65,
-          "sc491Family": 95
-        },
-        {
-          "name": "Cartographer",
-          "sc189": 90,
           "sc491Family": null
         },
         {
-          "name": "Chemical Engineer",
+          "name": "Cartographer",
           "sc189": 85,
           "sc491Family": null
         },
@@ -880,91 +1012,86 @@
         },
         {
           "name": "Child Care Centre Manager",
-          "sc189": 75,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Chiropractor",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
-          "name": "Civil Engineering Draftsperson",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
-          "name": "Civil Engineering Technician",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Clinical Psychologist",
-          "sc189": 80,
+          "sc189": 75,
           "sc491Family": null
         },
         {
           "name": "Construction Project Manager",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
-          "name": "Dermatologist",
-          "sc189": 100,
-          "sc491Family": null
-        },
-        {
-          "name": "Diagnostic and Interventional Radiologist",
           "sc189": 80,
           "sc491Family": null
         },
         {
-          "name": "Drainer",
-          "sc189": 70,
+          "name": "Dancer or Choreographer",
+          "sc189": 80,
           "sc491Family": null
         },
         {
-          "name": "Early Childhood (Pre-primary School) Teacher",
+          "name": "Dermatologist",
           "sc189": 85,
-          "sc491Family": 90
+          "sc491Family": null
+        },
+        {
+          "name": "Diagnostic and Interventional Radiologist",
+          "sc189": 85,
+          "sc491Family": null
+        },
+        {
+          "name": "Drainer",
+          "sc189": 65,
+          "sc491Family": null
         },
         {
           "name": "Economist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Electrical Engineering Draftsperson",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Electrical Engineering Technician",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Electrician (General)",
           "sc189": 65,
-          "sc491Family": 65
+          "sc491Family": null
         },
         {
           "name": "Electrician (Special Class)",
-          "sc189": 70,
+          "sc189": 65,
           "sc491Family": null
         },
         {
           "name": "Electronic Equipment Trades Worker",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Electronic Instrument Trades Worker (General)",
-          "sc189": 95,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Electronic Instrument Trades Worker (Special Class)",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Electronics Engineer",
           "sc189": 95,
           "sc491Family": null
         },
@@ -974,38 +1101,48 @@
           "sc491Family": null
         },
         {
+          "name": "Endocrinologist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
           "name": "Engineering Manager",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Environmental Consultant",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Environmental Manager",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Environmental Research Scientist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Environmental Scientists nec",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Fibrous Plasterer",
           "sc189": 65,
-          "sc491Family": 65
+          "sc491Family": null
         },
         {
           "name": "Fitter (General)",
-          "sc189": 85,
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Fitter and Turner",
+          "sc189": 80,
           "sc491Family": null
         },
         {
@@ -1014,23 +1151,33 @@
           "sc491Family": null
         },
         {
+          "name": "Footballer",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
           "name": "Forester",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Gasfitter",
-          "sc189": 65,
-          "sc491Family": 80
+          "sc189": 70,
+          "sc491Family": null
+        },
+        {
+          "name": "Gastroenterologist",
+          "sc189": 85,
+          "sc491Family": null
         },
         {
           "name": "General Practitioner",
           "sc189": 75,
-          "sc491Family": 85
+          "sc491Family": null
         },
         {
           "name": "Geophysicist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
@@ -1040,7 +1187,7 @@
         },
         {
           "name": "Hydrogeologist",
-          "sc189": 90,
+          "sc189": 80,
           "sc491Family": null
         },
         {
@@ -1055,7 +1202,7 @@
         },
         {
           "name": "Land Economist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
@@ -1065,106 +1212,106 @@
         },
         {
           "name": "Life Scientist (General)",
-          "sc189": 85,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Life Scientists nec",
-          "sc189": 85,
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Lift mechanic",
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Management Consultant",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Marine Biologist",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
-          "name": "Materials Engineer",
-          "sc189": 85,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Medical Diagnostic Radiographer",
-          "sc189": 75,
-          "sc491Family": 85
-        },
-        {
-          "name": "Medical Laboratory Scientist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
-          "name": "Medical Oncologist",
+          "name": "Medical Laboratory Scientist",
           "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Medical Practitioners nec",
           "sc189": 75,
-          "sc491Family": 90
+          "sc491Family": null
         },
         {
           "name": "Medical Radiation Therapist",
-          "sc189": 75,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Metal Fabricator",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Metal Machinist (First Class)",
-          "sc189": 95,
+          "sc189": 85,
           "sc491Family": null
         },
         {
           "name": "Metallurgist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Meteorologist",
           "sc189": 85,
           "sc491Family": null
         },
         {
           "name": "Microbiologist",
-          "sc189": 85,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Midwife",
           "sc189": 75,
-          "sc491Family": 75
-        },
-        {
-          "name": "Mining Engineer (excluding Petroleum)",
-          "sc189": 85,
           "sc491Family": null
         },
         {
-          "name": "Motorcycle Mechanic",
-          "sc189": 85,
+          "name": "Mining Engineer (excluding Petroleum)",
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Multimedia Specialist",
-          "sc189": 90,
+          "sc189": 95,
+          "sc491Family": null
+        },
+        {
+          "name": "Music Director",
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Musician (Instrumental)",
-          "sc189": 90,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Natural and Physical Science Professionals nec",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
-          "name": "Neurologist",
+          "name": "Nuclear Medicine Technologist",
           "sc189": 80,
           "sc491Family": null
         },
@@ -1175,13 +1322,13 @@
         },
         {
           "name": "Obstetrician and Gynaecologist",
-          "sc189": 75,
+          "sc189": 85,
           "sc491Family": null
         },
         {
           "name": "Occupational Therapist",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Ophthalmologist",
@@ -1190,8 +1337,8 @@
         },
         {
           "name": "Optometrist",
-          "sc189": 75,
-          "sc491Family": 85
+          "sc189": 80,
+          "sc491Family": null
         },
         {
           "name": "Organisational Psychologist",
@@ -1204,13 +1351,18 @@
           "sc491Family": null
         },
         {
+          "name": "Orthotist or Prosthetist",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
           "name": "Osteopath",
-          "sc189": 100,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Other Spatial Scientist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
@@ -1219,34 +1371,29 @@
           "sc491Family": null
         },
         {
-          "name": "Painting Trades Worker",
-          "sc189": 70,
-          "sc491Family": 70
-        },
-        {
-          "name": "Pathologist",
-          "sc189": 75,
+          "name": "Panelbeater",
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Petroleum Engineer",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Physicist",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Physiotherapist",
           "sc189": 75,
-          "sc491Family": 75
+          "sc491Family": null
         },
         {
           "name": "Plumber (General)",
           "sc189": 65,
-          "sc491Family": 70
+          "sc491Family": null
         },
         {
           "name": "Podiatrist",
@@ -1255,12 +1402,12 @@
         },
         {
           "name": "Primary Health Organisation Manager",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Psychiatrist",
-          "sc189": 75,
+          "sc189": 80,
           "sc491Family": null
         },
         {
@@ -1269,114 +1416,119 @@
           "sc491Family": null
         },
         {
-          "name": "Radiation Oncologist",
-          "sc189": null,
-          "sc491Family": 85
-        },
-        {
           "name": "Registered Nurse (Aged Care)",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Child and Family Health)",
-          "sc189": 75,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Registered Nurse (Community Health)",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Critical Care and Emergency)",
           "sc189": 75,
-          "sc491Family": 75
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Developmental Disability)",
           "sc189": 80,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Disability and Rehabilitation)",
-          "sc189": 75,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Registered Nurse (Medical Practice)",
           "sc189": 75,
-          "sc491Family": 75
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Medical)",
           "sc189": 75,
-          "sc491Family": 75
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Mental Health)",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Paediatrics)",
-          "sc189": 75,
-          "sc491Family": 75
+          "sc189": 80,
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Perioperative)",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Registered Nurse (Surgical)",
           "sc189": 75,
-          "sc491Family": 80
+          "sc491Family": null
         },
         {
           "name": "Registered Nurses nec",
           "sc189": 75,
-          "sc491Family": 75
+          "sc491Family": null
         },
         {
           "name": "Roof Plumber",
-          "sc189": 70,
+          "sc189": 65,
           "sc491Family": null
         },
         {
           "name": "Secondary School Teacher",
           "sc189": 75,
-          "sc491Family": 85
+          "sc491Family": null
+        },
+        {
+          "name": "Sheetmetal Trades Worker",
+          "sc189": 80,
+          "sc491Family": null
+        },
+        {
+          "name": "Shipwright",
+          "sc189": 80,
+          "sc491Family": null
         },
         {
           "name": "Social Worker",
           "sc189": 75,
-          "sc491Family": 85
+          "sc491Family": null
         },
         {
           "name": "Solicitor",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Solid Plasterer",
           "sc189": 65,
-          "sc491Family": 65
+          "sc491Family": null
         },
         {
           "name": "Sonographer",
-          "sc189": 75,
+          "sc189": 85,
           "sc491Family": null
         },
         {
           "name": "Special Education Teachers nec",
-          "sc189": 75,
+          "sc189": 85,
           "sc491Family": null
         },
         {
           "name": "Special Needs Teacher",
           "sc189": 75,
-          "sc491Family": 90
+          "sc491Family": null
         },
         {
           "name": "Specialist Physician (General Medicine)",
@@ -1385,17 +1537,17 @@
         },
         {
           "name": "Specialist Physicians nec",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Speech Pathologist",
           "sc189": 75,
-          "sc491Family": 85
+          "sc491Family": null
         },
         {
           "name": "Statistician",
-          "sc189": 85,
+          "sc189": 90,
           "sc491Family": null
         },
         {
@@ -1405,98 +1557,65 @@
         },
         {
           "name": "Surgeon (General)",
-          "sc189": 80,
+          "sc189": 85,
           "sc491Family": null
         },
         {
           "name": "Surveyor",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Telecommunications Engineer",
-          "sc189": 90,
-          "sc491Family": null
-        },
-        {
-          "name": "Telecommunications Field Engineer",
-          "sc189": 90,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Telecommunications Network Engineer",
-          "sc189": 90,
-          "sc491Family": null
-        },
-        {
-          "name": "Telecommunications Network Planner",
-          "sc189": 90,
-          "sc491Family": null
-        },
-        {
-          "name": "Telecommunications Technical Officer or Technologist",
-          "sc189": 90,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Tennis Coach",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Thoracic Medicine Specialist",
-          "sc189": 80,
+          "sc189": 95,
           "sc491Family": null
         },
         {
           "name": "Urologist",
-          "sc189": 80,
+          "sc189": 100,
           "sc491Family": null
         },
         {
           "name": "Valuer",
-          "sc189": 85,
-          "sc491Family": null
-        },
-        {
-          "name": "Vascular Surgeon",
-          "sc189": 75,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Veterinarian",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Wall and Floor Tiler",
           "sc189": 65,
-          "sc491Family": 75
+          "sc491Family": null
         },
         {
           "name": "Welder (First Class)",
-          "sc189": 85,
+          "sc189": 80,
           "sc491Family": null
         },
         {
           "name": "Welfare Centre Manager",
           "sc189": 85,
           "sc491Family": null
-        },
-        {
-          "name": "Zoologist",
-          "sc189": 85,
-          "sc491Family": null
         }
       ]
-    },
-    {
-      "date": "2026-05-28",
-      "label": "28 May 2026",
-      "sc189Total": 3500,
-      "sc189TieBreak": "2026-05",
-      "sc491FamilyTotal": 400,
-      "sc491FamilyTieBreak": "2026-04"
     },
     {
       "date": "2025-11-13",
@@ -5722,10 +5841,5 @@
       ]
     }
   ],
-  "scrapedAt": "2026-07-13T16:46:54.864173+00:00",
-  "nextRound": {
-    "subclass": "189",
-    "date": "2026-06-04",
-    "raw": "Next invitation Round for Subclass 189 is on 4 June 2026"
-  }
+  "scrapedAt": "2026-10-04T12:34:34.201998+00:00"
 }

@@ -1,56 +1,49 @@
 {
-  "generatedAt": "2026-07-13T16:46:54.901731+00:00",
-  "date": "2026-07-13",
-  "currentRound": {
-    "date": "2026-06-04",
-    "sc189Total": 10000,
-    "sc189TieBreak": "2026-04",
-    "sc491FamilyTotal": 0,
-    "sc491FamilyTieBreak": null,
-    "source": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds",
-    "fetchedAt": "2026-07-13T16:46:52.633794+00:00"
-  },
+  "generatedAt": "2026-10-04T12:34:34.214604+00:00",
+  "date": "2026-10-04",
+  "currentRound": null,
   "nextRound": null,
   "communityFeed": {
     "source": "smartvisaguide.com",
     "dailyReportDate": null,
     "recentGrants": [
-      "491 granted today 15/12/2025 - Invitation for nomination 29/01/2026 -...→",
-      "190 Grant today Applied on 4 March 2026 RN nec Onshore TAS→",
-      "189 grant! 90 points Invited: August ‘25 Documents Submitted: 1st Oct ‘25...→",
-      "190 GRANTED! Occupation - CHEF DOL: March 2025 s56 request: May 29,...→",
-      "190 Granted - 10 July 2026 Lodged - 25/11/2025 S56 on 08/07/2026 : for...→",
-      "190 Granted - 10 July 2026 Lodged - 5 March 2026 Enrolled Nurse Tasmania...→"
+      "189 Granted 🎉 01 October 2026 Invitation received: 04 June 2026 Lodged 19...→",
+      "190 grant today,...→",
+      "189 Grant today Nurse - Registered NEC Lodged 17/6/26 Invited 4/6/26 85...→",
+      "190 grant nsw motor mechanic 85 point including State, single Pre-invite 29...→",
+      "189 grant- veterinarian 85 pts 4 June 2026 invited 12 June applied 29...→",
+      "190 grant today for Electronics Engineering. Was...→",
+      "189 Granted Onshore 80 pts 13 Nov round 2025 (RN AGED CARE) Lodged 2 nd Dec...→"
     ]
   },
   "visaSummary": [
     {
       "code": "189",
-      "cost": "AUD $4,885",
+      "cost": "AUD $6,140",
       "processingCutoffLabel": null,
       "stayDuration": null
     },
     {
       "code": "190",
-      "cost": "AUD $4,885",
-      "processingCutoffLabel": "February 2025",
+      "cost": "AUD $6,140",
+      "processingCutoffLabel": null,
       "stayDuration": null
     },
     {
       "code": "491",
-      "cost": "AUD $4,910",
-      "processingCutoffLabel": "January 2025",
+      "cost": "AUD $6,140",
+      "processingCutoffLabel": null,
       "stayDuration": null
     },
     {
       "code": "482",
-      "cost": "AUD $3,210",
+      "cost": "AUD $4,015",
       "processingCutoffLabel": null,
       "stayDuration": null
     }
   ],
   "verification": {
-    "dhaReachable": true,
+    "dhaReachable": false,
     "smartVisaGuideReachable": true,
     "datesAgree": false
   }

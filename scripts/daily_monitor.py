@@ -33,6 +33,11 @@ from typing import Any
 import requests
 from bs4 import BeautifulSoup
 
+try:
+    from rounds_parser import parse_current_round
+except ModuleNotFoundError:
+    from scripts.rounds_parser import parse_current_round
+
 # ─── Config ───────────────────────────────────────────────────────────────────
 
 ROOT = Path(__file__).parent.parent
@@ -47,14 +52,22 @@ DHA_VISA_PAGES = {
     "482": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
 }
 
-# Fallback static costs (per DHA 1 July 2025 fee schedule).
+# Fallback static costs (per DHA standard 2026 fee schedule).
 # Used only when the live page doesn't expose the cost in an obvious place.
+# NOTE: keep in sync with expo-app/utils/dailyUpdates.ts DEFAULT_VISA_META --
+# a prior stale snapshot here (2025 prices) was silently overriding the
+# app's already-corrected bundled fallback via buildVisaMetaMap()'s merge.
 FALLBACK_COSTS = {
-    "189": "AUD $4,885",
-    "190": "AUD $4,885",
-    "491": "AUD $4,910",
-    "482": "AUD $3,210",  # SID short-term stream base
+    "189": "AUD $6,140",
+    "190": "AUD $6,140",
+    "491": "AUD $6,140",
+    "482": "AUD $4,015",  # Skills in Demand (TSS) base
 }
+
+# Dependent application charges (not scraped per-visa; same across all GSM/TSS
+# streams per DHA's standard fee schedule).
+DEPENDENT_COST_ADDITIONAL_ADULT = "AUD $3,070"
+DEPENDENT_COST_CHILD = "AUD $1,535"
 
 HEADERS = {
     "User-Agent": (
@@ -148,47 +161,14 @@ def fetch_dha_round() -> dict[str, Any] | None:
     raw = fetch(DHA_ROUNDS_URL)
     if not raw:
         return None
-    # Unescape JSON-embedded HTML so BS4 can see it
-    html = unescape_embedded_html(raw)
-    soup = BeautifulSoup(html, "html.parser")
-
-    # Find the "Invitations issued on …" heading
-    round_date = None
-    sc189_total = sc491_family_total = None
-    sc189_tb = sc491_family_tb = None
-
-    for h in soup.find_all(["h2", "h3", "h4"]):
-        t = h.get_text(" ", strip=True)
-        if t.lower().startswith("invitations issued on"):
-            d = parse_date_iso(t)
-            if d:
-                round_date = d
-                break
-
-    # Walk every table — the summary table has rows with "189" + "Independent"
-    for tbl in soup.find_all("table"):
-        for row in tbl.find_all("tr"):
-            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
-            if len(cells) < 3:
-                continue
-            joined = " ".join(cells).lower()
-            if "189" in cells[0] and "independent" in joined:
-                sc189_total = sc189_total or parse_int(cells[1])
-                sc189_tb = sc189_tb or parse_tiebreak(cells[2])
-            elif "491" in cells[0] and "family" in joined:
-                sc491_family_total = sc491_family_total or parse_int(cells[1])
-                sc491_family_tb = sc491_family_tb or parse_tiebreak(cells[2])
-
-    if not round_date and not sc189_total:
-        log.warning("DHA rounds: no data parsed")
+    try:
+        outcome = parse_current_round(raw)
+    except ValueError as error:
+        log.error("DHA rounds validation failed: %s", error)
         return None
 
     return {
-        "date": round_date,
-        "sc189Total": sc189_total or 0,
-        "sc189TieBreak": sc189_tb,
-        "sc491FamilyTotal": sc491_family_total or 0,
-        "sc491FamilyTieBreak": sc491_family_tb,
+        **outcome,
         "source": DHA_ROUNDS_URL,
         "fetchedAt": datetime.now(timezone.utc).isoformat(),
     }
@@ -208,12 +188,17 @@ def fetch_visa_details(code: str, url: str) -> dict[str, Any]:
     text = text.replace("\xa0", " ")
     html_norm = html.replace("\xa0", " ")
 
-    # Cost: 'AUD4,885' / 'AUD 4,910.00' / 'From AUD4,885.00' / 'AUD$4,910'
-    m = re.search(r"AUD\s*\$?\s*([\d]{1,3}(?:,\d{3})+(?:\.\d{2})?)", html_norm)
-    if m:
-        out["cost"] = f"AUD ${m.group(1)}"
-        out["costSource"] = "live"
-    elif code in FALLBACK_COSTS:
+    # Cost: NOTE — we intentionally do NOT scrape the primary application
+    # charge from free text anymore. A generic "AUD $n,nnn" regex previously
+    # matched whichever dollar figure appeared *first* in the page body,
+    # which on DHA visa pages is very often the "second instalment charge
+    # for family members" or another non-primary fee, not the base charge
+    # (confirmed: SC 190's page matches "second instalment ... AUD4,885"
+    # before the real base charge, silently reintroducing a stale/wrong
+    # 2025 price). DHA's base application charge is rendered by a dynamic
+    # fee-estimator widget, not plain HTML, so it can't be reliably scraped
+    # here. Always use the verified static schedule instead.
+    if code in FALLBACK_COSTS:
         out["cost"] = FALLBACK_COSTS[code]
         out["costSource"] = "fallback"
 
@@ -329,22 +314,6 @@ def update_invitation_rounds(dha: dict | None, svg: dict) -> None:
         current["lastUpdated"] = dha["date"]
         current["sourceUrl"] = DHA_ROUNDS_URL
 
-        # Preserve existing 491 data when the scraper returns 0
-        # (DHA page may not show 491 table, so 0 usually means parse failure)
-        existing_cr = current.get("currentRound", {})
-        existing_491_total = (
-            existing_cr.get("sc491FamilyTotal")
-            or (existing_cr.get("sc491Family") or {}).get("total")
-            or 0
-        )
-        existing_491_tb = (
-            existing_cr.get("sc491FamilyTieBreak")
-            or (existing_cr.get("sc491Family") or {}).get("tieBreak")
-        )
-
-        sc491_total = dha["sc491FamilyTotal"] or existing_491_total
-        sc491_tb = dha["sc491FamilyTieBreak"] or existing_491_tb
-
         current["currentRound"] = {
             "date": dha["date"],
             "sc189": {
@@ -352,22 +321,26 @@ def update_invitation_rounds(dha: dict | None, svg: dict) -> None:
                 "tieBreak": dha["sc189TieBreak"],
             },
             "sc491Family": {
-                "total": sc491_total,
-                "tieBreak": sc491_tb,
+                "total": dha["sc491FamilyTotal"],
+                "tieBreak": dha["sc491FamilyTieBreak"],
             },
             "source": "dha",
         }
-        # Insert into rounds[] if not already present
+        # Upsert so corrected values replace stale data for an existing round.
         rounds = current.setdefault("rounds", [])
-        existing_dates = {r.get("date") for r in rounds}
-        if dha["date"] not in existing_dates:
-            rounds.insert(0, {
-                "date": dha["date"],
-                "sc189Total": dha["sc189Total"],
-                "sc189TieBreak": dha["sc189TieBreak"],
-                "sc491FamilyTotal": sc491_total,
-                "sc491FamilyTieBreak": sc491_tb,
-            })
+        round_update = {
+            "date": dha["date"],
+            "sc189Total": dha["sc189Total"],
+            "sc189TieBreak": dha["sc189TieBreak"],
+            "sc491FamilyTotal": dha["sc491FamilyTotal"],
+            "sc491FamilyTieBreak": dha["sc491FamilyTieBreak"],
+        }
+        for index, existing_round in enumerate(rounds):
+            if existing_round.get("date") == dha["date"]:
+                rounds[index] = {**existing_round, **round_update}
+                break
+        else:
+            rounds.insert(0, round_update)
 
     if svg.get("nextRound"):
         current["nextRound"] = svg["nextRound"]

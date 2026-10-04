@@ -1,5 +1,7 @@
 {
-  "lastRun": "2026-07-13T16:46:54.902405+00:00",
-  "success": true,
-  "errors": []
+  "lastRun": "2026-10-04T12:34:34.215137+00:00",
+  "success": false,
+  "errors": [
+    "DHA invitation rounds unreachable / parse failed"
+  ]
 }
