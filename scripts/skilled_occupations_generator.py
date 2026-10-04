@@ -1,39 +1,14 @@
 #!/usr/bin/env python3
 """
-skilled_occupations_generator.py
-================================
-Merges existing data sources to produce public/skilled-occupations.json.
+Generate public/skilled-occupations.json from the official federal combined list
+plus best-effort state nomination lists.
 
 Inputs (all in public/):
-  - all-anzsco-occupations.json    (878 items — full ANZSCO code list)
-  - official-occupation-lists.json (CSOL federal list + state nomination lists)
-
-Output:
-  - public/skilled-occupations.json
-
-Schema (must match app's utils/remoteSchema.ts validateOccupationsSnapshot):
-{
-  "snapshotDate": "YYYY-MM-DD",
-  "items": [
-    {
-      "anzsco": "261312",
-      "name": "Developer Programmer",
-      "group": "ICT Professionals",
-      "lists": ["CSOL", "MLTSSL"],
-      "visas": ["189", "190", "491"],
-      "assessingAuthority": "ACS",
-      "states": {
-        "NSW": ["190", "491"],
-        "VIC": ["190"]
-      }
-    }
-  ]
-}
-
-Exit codes:
-  0 — success
-  1 — error
+  - all-anzsco-occupations.json    (full ABS 2022 master list)
+  - official-occupation-lists.json (federal combined list + state nomination lists)
 """
+
+from __future__ import annotations
 
 import json
 import logging
@@ -55,7 +30,6 @@ ANZSCO_FILE = PUBLIC / "all-anzsco-occupations.json"
 OFFICIAL_LISTS_FILE = PUBLIC / "official-occupation-lists.json"
 OUTPUT = PUBLIC / "skilled-occupations.json"
 
-# ANZSCO group codes → readable major group names
 ANZSCO_GROUPS = {
     "1": "Managers",
     "2": "Professionals",
@@ -67,19 +41,22 @@ ANZSCO_GROUPS = {
     "8": "Labourers",
 }
 
-# Known assessing authorities by common ANZSCO prefixes/codes
-# This is a simplified mapping — the full list is on DHA's site
 ASSESSING_AUTHORITIES = {
+    "411411": "ANMAC",
     "1331": "VETASSESS", "1332": "VETASSESS",
     "2211": "CA ANZ / CPA Australia", "2212": "CA ANZ / CPA Australia",
     "2231": "IPA", "2232": "IPA",
     "2241": "VETASSESS", "2245": "VETASSESS",
     "2247": "VETASSESS",
-    "2311": "Engineers Australia", "2312": "Engineers Australia",
-    "2313": "Engineers Australia", "2321": "Engineers Australia",
-    "2322": "Engineers Australia", "2323": "Engineers Australia",
-    "2324": "Engineers Australia", "2325": "Engineers Australia",
-    "2326": "Engineers Australia", "2332": "Engineers Australia",
+    # 231 Air and Marine Transport Professionals — not engineering; VETASSESS Group B.
+    "2311": "VETASSESS", "2312": "VETASSESS",
+    # 232 Architects, Designers, Planners and Surveyors — NOT Engineers Australia.
+    # (Was previously bucketed with 233 Engineering Professionals below, which wrongly
+    # routed e.g. 232411 Graphic Designer to Engineers Australia instead of VETASSESS.)
+    "2321": "VETASSESS", "2322": "VETASSESS", "2323": "VETASSESS",
+    "2324": "VETASSESS", "2325": "VETASSESS", "2326": "VETASSESS",
+    # 233 Engineering Professionals — the real Engineers Australia unit groups.
+    "2331": "Engineers Australia", "2332": "Engineers Australia",
     "2333": "Engineers Australia", "2334": "Engineers Australia",
     "2335": "Engineers Australia", "2336": "Engineers Australia",
     "2339": "Engineers Australia",
@@ -99,39 +76,40 @@ ASSESSING_AUTHORITIES = {
     "2534": "Medical Board",
     "2535": "Medical Board",
     "2539": "Medical Board",
-    "2541": "VETASSESS",
-    "2544": "VETASSESS",
+    "2541": "ANMAC",
+    "2544": "ANMAC",
     "2611": "ACS", "2612": "ACS", "2613": "ACS",
     "2621": "ACS", "2631": "ACS", "2632": "ACS",
-    "2633": "ACS",
     "2711": "SLAA", "2712": "SLAA", "2713": "SLAA",
-    "3": "TRA",  # Default for trades
+    "3": "TRA",
 }
 
-# Visas eligible for CSOL occupations
-CSOL_VISAS = ["189", "190", "491", "482", "494", "186"]
-STATE_VISAS = ["190", "491"]
+OCCUPATION_OVERRIDES = {
+    "251511": {"authority": "APharmC"},
+    "251512": {"authority": "VETASSESS"},
+    "251513": {"authority": "APharmC"},
+    "263311": {"authority": "Engineers Australia"},
+    "263312": {"authority": "Engineers Australia"},
+}
 
 ALLOWED_STATES = {"NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"}
 
 
 def get_group_name(anzsco: str) -> str:
-    """Derive a readable group name from the ANZSCO code."""
-    if len(anzsco) >= 1:
-        major = ANZSCO_GROUPS.get(anzsco[0], "Various")
-        return major
+    if anzsco:
+        return ANZSCO_GROUPS.get(anzsco[0], "Various")
     return "Various"
 
 
 def get_assessing_authority(anzsco: str) -> str | None:
-    """Look up the assessing authority for an ANZSCO code."""
-    # Try full 4-digit unit group first
+    auth = ASSESSING_AUTHORITIES.get(anzsco)
+    if auth:
+        return auth
     if len(anzsco) >= 4:
         auth = ASSESSING_AUTHORITIES.get(anzsco[:4])
         if auth:
             return auth
-    # Try 1-digit major group (trades default to TRA)
-    if len(anzsco) >= 1:
+    if anzsco:
         auth = ASSESSING_AUTHORITIES.get(anzsco[0])
         if auth:
             return auth
@@ -142,7 +120,6 @@ def main() -> int:
     today = date.today().isoformat()
     now = datetime.now(timezone.utc).isoformat()
 
-    # Load inputs
     if not ANZSCO_FILE.exists():
         log.error("Missing %s", ANZSCO_FILE)
         return 1
@@ -156,67 +133,72 @@ def main() -> int:
     all_items = anzsco_data.get("items", [])
     log.info("Loaded %d ANZSCO occupations", len(all_items))
 
-    # Build federal CSOL set
-    federal = official_data.get("federal", {})
-    csol_codes: set[str] = set(federal.get("CSOL_anzscos", []))
-    log.info("Federal CSOL: %d ANZSCO codes", len(csol_codes))
-
-    # Build state nomination maps: state → set of ANZSCO codes (across all visa types)
-    states_data = official_data.get("states", {})
-    state_190: dict[str, set[str]] = {}
-    state_491: dict[str, set[str]] = {}
-    for state_code, state_info in states_data.items():
-        if state_code not in ALLOWED_STATES:
-            continue
-        codes_190 = set(state_info.get("190", []))
-        codes_491 = set(state_info.get("491", []))
-        if codes_190:
-            state_190[state_code] = codes_190
-        if codes_491:
-            state_491[state_code] = codes_491
-        log.info("  %s: 190=%d, 491=%d", state_code, len(codes_190), len(codes_491))
-
-    # Generate skilled-occupations items
-    # Only include occupations that appear on at least one list (federal CSOL or any state)
-    all_state_codes: set[str] = set()
-    for codes in state_190.values():
-        all_state_codes.update(codes)
-    for codes in state_491.values():
-        all_state_codes.update(codes)
-
-    eligible_codes = csol_codes | all_state_codes
-    log.info("Total eligible occupations (on any list): %d", len(eligible_codes))
-
-    # Build name lookup from all-anzsco
     name_lookup: dict[str, dict] = {}
     for item in all_items:
         code = str(item.get("anzsco", "")).strip()
         if code:
             name_lookup[code] = item
 
-    # Generate output items
+    federal_occupations = official_data.get("federal", {}).get("occupations", [])
+    federal_by_code: dict[str, dict] = {}
+    ignored_non_master = 0
+    for item in federal_occupations:
+        code = str(item.get("anzsco", "")).strip()
+        if not code:
+            continue
+        if code not in name_lookup:
+            ignored_non_master += 1
+            continue
+        entry = federal_by_code.setdefault(code, {
+            "lists": set(),
+            "visas": set(),
+            "assessingAuthority": None,
+            "name": item.get("name") or name_lookup[code].get("name") or f"ANZSCO {code}",
+        })
+        entry["lists"].update(item.get("lists", []))
+        entry["visas"].update(str(v) for v in item.get("visas", []))
+        if item.get("assessingAuthority"):
+            entry["assessingAuthority"] = item["assessingAuthority"]
+
+    log.info("Federal combined occupations matched to ABS 2022 master: %d", len(federal_by_code))
+    if ignored_non_master:
+        log.info("Ignored %d federal entries not present in ABS 2022 master", ignored_non_master)
+
+    states_data = official_data.get("states", {})
+    state_190: dict[str, set[str]] = {}
+    state_491: dict[str, set[str]] = {}
+    for state_code, state_info in states_data.items():
+        if state_code not in ALLOWED_STATES:
+            continue
+        codes_190 = {code for code in state_info.get("190", []) if code in name_lookup}
+        codes_491 = {code for code in state_info.get("491", []) if code in name_lookup}
+        if codes_190:
+            state_190[state_code] = codes_190
+        if codes_491:
+            state_491[state_code] = codes_491
+        log.info("  %s: 190=%d, 491=%d", state_code, len(codes_190), len(codes_491))
+
+    all_state_codes: set[str] = set()
+    for codes in state_190.values():
+        all_state_codes.update(codes)
+    for codes in state_491.values():
+        all_state_codes.update(codes)
+
+    eligible_codes = set(federal_by_code) | all_state_codes
+    log.info("Total eligible occupations (federal or any state): %d", len(eligible_codes))
+
     items: list[dict] = []
     for code in sorted(eligible_codes):
         info = name_lookup.get(code, {})
-        name = info.get("name", f"ANZSCO {code}")
-        group = info.get("group", "")
-        if not group or group == "Various":
-            group = get_group_name(code)
+        federal = federal_by_code.get(code, {})
+        override = OCCUPATION_OVERRIDES.get(code)
 
-        # Determine which lists this occupation is on
-        lists: list[str] = []
-        if code in csol_codes:
-            lists.append("CSOL")
+        name = federal.get("name") or info.get("name") or f"ANZSCO {code}"
+        group = info.get("group") or get_group_name(code)
 
-        # Determine eligible visas
-        visas: list[str] = []
-        if code in csol_codes:
-            visas = list(CSOL_VISAS)
-        else:
-            # State-only nominations get 190/491
-            visas = list(STATE_VISAS)
+        lists = sorted(set(federal.get("lists", set())))
+        visas = sorted(set(federal.get("visas", set())))
 
-        # Determine state availability
         states: dict[str, list[str]] = {}
         for state_code in sorted(ALLOWED_STATES):
             state_visas: list[str] = []
@@ -226,9 +208,14 @@ def main() -> int:
                 state_visas.append("491")
             if state_visas:
                 states[state_code] = state_visas
+                visas = sorted(set(visas) | set(state_visas))
 
-        # Assessing authority
-        authority = info.get("assessingAuthority") or get_assessing_authority(code)
+        authority = (
+            (override or {}).get("authority")
+            or federal.get("assessingAuthority")
+            or info.get("assessingAuthority")
+            or get_assessing_authority(code)
+        )
 
         item: dict = {
             "anzsco": code,
@@ -246,11 +233,10 @@ def main() -> int:
 
     log.info("Generated %d skilled occupation items", len(items))
 
-    # Write output
     output = {
         "snapshotDate": today,
         "lastUpdated": now,
-        "source": "Federal skilled occupation lists + state nomination programs",
+        "source": "Department of Home Affairs combined list + state nomination programs",
         "items": items,
     }
 
