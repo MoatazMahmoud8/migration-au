@@ -1,133 +1,223 @@
 #!/usr/bin/env python3
 """
-Fetch all ANZSCO occupations from Jobs and Skills Australia with full details
+Fetch the full ANZSCO 2022 occupation hierarchy from the official ABS workbook.
+
+This replaces the earlier Jobs and Skills Australia sitemap approximation, which
+only yielded a subset of occupations and caused the app/database to miss many
+official ANZSCO six-digit codes.
 """
+
+from __future__ import annotations
 
 import json
 import re
-import requests
+import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import zipfile
+from datetime import datetime, timezone
+from io import BytesIO
 from pathlib import Path
-from urllib.parse import urljoin
 
-SITEMAP_URL = "https://www.jobsandskills.gov.au/sitemap-default.xml"
-BASE_URL = "https://www.jobsandskills.gov.au"
+ABS_STRUCTURE_URL = (
+    "https://www.abs.gov.au/statistics/classifications/"
+    "anzsco-australian-and-new-zealand-standard-classification-occupations/2022/"
+    "anzsco%202022%20structure%20062023.xlsx"
+)
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36",
+    "Accept": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,*/*",
 }
 
-def extract_occupation_info(url: str) -> dict | None:
-    """Fetch occupation name from JSA page"""
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=10)
-        if resp.status_code != 200:
-            return None
-        
-        # Extract ANZSCO code
-        code_match = re.search(r'/occupations/(\d+)-', url)
-        if not code_match:
-            return None
-        
-        anzsco = code_match.group(1)
-        
-        # Extract occupation name from title or h1
-        title_match = re.search(r'<title[^>]*>([^<]+)</title>', resp.text)
-        h1_match = re.search(r'<h1[^>]*>([^<]+)</h1>', resp.text)
-        
-        name = None
-        if h1_match:
-            name = h1_match.group(1).strip()
-        elif title_match:
-            name = title_match.group(1).split('|')[0].strip()
-        
-        if name:
-            return {
-                "anzsco": anzsco,
-                "name": name,
-                "url": url,
-            }
-    except Exception as e:
-        print(f"  ⚠️  Error fetching {url}: {e}")
-    
-    return None
+ROOT = Path(__file__).resolve().parent.parent
+OUTPUT_FILE = ROOT / "public" / "all-anzsco-occupations.json"
 
-def main():
-    print("=== Full ANZSCO Scraper (with occupations names) ===\n")
-    
-    # Fetch sitemap
+NS_MAIN = {"x": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+NS_REL = {"r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships"}
+NS_PKG_REL = {"pr": "http://schemas.openxmlformats.org/package/2006/relationships"}
+
+
+def fetch_workbook() -> bytes:
+    req = urllib.request.Request(ABS_STRUCTURE_URL, headers=HEADERS)
+    with urllib.request.urlopen(req, timeout=60) as response:
+        return response.read()
+
+
+def column_index(cell_ref: str) -> int:
+    letters = "".join(ch for ch in cell_ref if ch.isalpha())
+    value = 0
+    for ch in letters:
+        value = value * 26 + (ord(ch.upper()) - 64)
+    return value - 1
+
+
+def parse_shared_strings(zf: zipfile.ZipFile) -> list[str]:
     try:
-        resp = requests.get(SITEMAP_URL, headers=HEADERS, timeout=15)
-        resp.raise_for_status()
-    except Exception as e:
-        print(f"❌ Error fetching sitemap: {e}")
-        return
-    
-    # Parse XML
-    try:
-        root = ET.fromstring(resp.content)
-        namespace = {'ns': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
-        urls = [elem.text for elem in root.findall('.//ns:loc', namespace)]
-        print(f"📍 Found {len(urls)} URLs in sitemap")
-    except Exception as e:
-        print(f"❌ Error parsing sitemap: {e}")
-        return
-    
-    # Filter occupation URLs (only 6-digit codes for specific occupations)
-    occupation_urls = [u for u in urls if re.search(r'/occupations/\d{6}-', u)]
-    print(f"🎯 Found {len(occupation_urls)} 6-digit occupation URLs\n")
-    
-    # Fetch occupation details in parallel
-    occupations_dict = {}
-    print("⏳ Fetching occupation names (this may take a few minutes)...\n")
-    
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        futures = {executor.submit(extract_occupation_info, url): url for url in occupation_urls}
-        completed = 0
-        
-        for future in as_completed(futures):
-            completed += 1
-            if completed % 50 == 0:
-                print(f"  Progress: {completed}/{len(occupation_urls)}")
-            
-            result = future.result()
-            if result:
-                code = result['anzsco']
-                if code not in occupations_dict or len(result['name']) > len(occupations_dict[code]['name']):
-                    occupations_dict[code] = result
-    
-    # Convert to sorted list
-    occupations = [
-        {
-            "anzsco": code,
-            "name": occupations_dict[code].get('name', f'Occupation {code}'),
+        root = ET.fromstring(zf.read("xl/sharedStrings.xml"))
+    except KeyError:
+        return []
+
+    values: list[str] = []
+    for si in root.findall("x:si", NS_MAIN):
+        parts = []
+        for text_node in si.findall(".//x:t", NS_MAIN):
+            parts.append(text_node.text or "")
+        values.append("".join(parts))
+    return values
+
+
+def workbook_sheet_paths(zf: zipfile.ZipFile) -> dict[str, str]:
+    workbook = ET.fromstring(zf.read("xl/workbook.xml"))
+    rels = ET.fromstring(zf.read("xl/_rels/workbook.xml.rels"))
+    rel_map = {
+        rel.attrib["Id"]: rel.attrib["Target"]
+        for rel in rels.findall("pr:Relationship", NS_PKG_REL)
+    }
+
+    mapping: dict[str, str] = {}
+    for sheet in workbook.findall("x:sheets/x:sheet", NS_MAIN):
+        name = sheet.attrib["name"]
+        rel_id = sheet.attrib[f"{{{NS_REL['r']}}}id"]
+        target = rel_map[rel_id]
+        mapping[name] = target if target.startswith("xl/") else f"xl/{target}"
+    return mapping
+
+
+def cell_value(cell: ET.Element, shared_strings: list[str]) -> str:
+    cell_type = cell.attrib.get("t")
+    if cell_type == "inlineStr":
+        text = cell.find("x:is/x:t", NS_MAIN)
+        return text.text.strip() if text is not None and text.text else ""
+
+    raw = cell.findtext("x:v", default="", namespaces=NS_MAIN)
+    if raw == "":
+        return ""
+
+    if cell_type == "s":
+        return shared_strings[int(raw)]
+    return raw.strip()
+
+
+def read_sheet_rows(zf: zipfile.ZipFile, sheet_path: str, shared_strings: list[str]) -> list[list[str]]:
+    root = ET.fromstring(zf.read(sheet_path))
+    rows: list[list[str]] = []
+    for row in root.findall(".//x:sheetData/x:row", NS_MAIN):
+        values: list[str] = []
+        for cell in row.findall("x:c", NS_MAIN):
+            idx = column_index(cell.attrib.get("r", "A1"))
+            while len(values) <= idx:
+                values.append("")
+            values[idx] = cell_value(cell, shared_strings)
+        rows.append(values)
+    return rows
+
+
+def parse_table_five(rows: list[list[str]]) -> dict[str, object]:
+    occupations: list[dict[str, object]] = []
+    seen_codes: set[str] = set()
+    major_groups: dict[str, str] = {}
+    sub_major_groups: dict[str, str] = {}
+    minor_groups: dict[str, str] = {}
+    unit_groups: dict[str, str] = {}
+
+    current_major = ""
+    current_sub_major = ""
+    current_minor = ""
+    current_unit = ""
+
+    for row in rows:
+        major_code = row[0].strip() if len(row) > 0 else ""
+        major_title = row[1].strip() if len(row) > 1 else ""
+        sub_major_code = row[1].strip() if len(row) > 1 else ""
+        sub_major_title = row[2].strip() if len(row) > 2 else ""
+        minor_code = row[2].strip() if len(row) > 2 else ""
+        minor_title = row[3].strip() if len(row) > 3 else ""
+        unit_code = row[3].strip() if len(row) > 3 else ""
+        unit_title = row[4].strip() if len(row) > 4 else ""
+        occupation_code = row[4].strip() if len(row) > 4 else ""
+        occupation_title = row[5].strip() if len(row) > 5 else ""
+        skill_level = row[6].strip() if len(row) > 6 else ""
+
+        if re.fullmatch(r"[1-8]", major_code) and major_title:
+            current_major = major_code
+            major_groups[current_major] = major_title
+
+        if re.fullmatch(r"\d{2}", sub_major_code) and sub_major_title:
+            current_sub_major = sub_major_code
+            sub_major_groups[current_sub_major] = sub_major_title
+
+        if re.fullmatch(r"\d{3}", minor_code) and minor_title:
+            current_minor = minor_code
+            minor_groups[current_minor] = minor_title
+
+        if re.fullmatch(r"\d{4}", unit_code) and unit_title:
+            current_unit = unit_code
+            unit_groups[current_unit] = unit_title
+
+        if not re.fullmatch(r"\d{6}", occupation_code) or not occupation_title:
+            continue
+        if occupation_code in seen_codes:
+            continue
+
+        occupations.append({
+            "anzsco": occupation_code,
+            "name": occupation_title,
             "lists": [],
             "visas": [],
             "assessingAuthority": None,
-            "group": "Various",
-        }
-        for code in sorted(occupations_dict.keys())
-    ]
-    
-    # Export
+            "group": major_groups.get(current_major, "Various"),
+            "majorGroup": f"{current_major} {major_groups[current_major]}" if current_major in major_groups else None,
+            "subMajorGroup": f"{current_sub_major} {sub_major_groups[current_sub_major]}" if current_sub_major in sub_major_groups else None,
+            "minorGroup": f"{current_minor} {minor_groups[current_minor]}" if current_minor in minor_groups else None,
+            "unitGroup": f"{current_unit} {unit_groups[current_unit]}" if current_unit in unit_groups else None,
+            "skillLevel": skill_level or None,
+        })
+        seen_codes.add(occupation_code)
+
+    return {
+        "occupations": occupations,
+        "counts": {
+            "majorGroups": len(major_groups),
+            "subMajorGroups": len(sub_major_groups),
+            "minorGroups": len(minor_groups),
+            "unitGroups": len(unit_groups),
+            "occupations": len(occupations),
+        },
+    }
+
+
+def main() -> int:
+    print("=== Fetch Full ANZSCO from ABS ===\n")
+    workbook_bytes = fetch_workbook()
+    with zipfile.ZipFile(BytesIO(workbook_bytes)) as zf:
+        shared_strings = parse_shared_strings(zf)
+        sheet_paths = workbook_sheet_paths(zf)
+        rows = read_sheet_rows(zf, sheet_paths["Table 5"], shared_strings)
+
+    parsed = parse_table_five(rows)
+    occupations = parsed["occupations"]
+    counts = parsed["counts"]
+    now = datetime.now(timezone.utc)
+
     output = {
-        "snapshotDate": datetime.now().isoformat().split('T')[0],
-        "lastUpdated": datetime.now().isoformat(),
+        "snapshotDate": now.strftime("%Y-%m-%d"),
+        "lastUpdated": now.isoformat(),
+        "source": ABS_STRUCTURE_URL,
+        "counts": counts,
         "items": occupations,
     }
-    
-    output_file = Path(__file__).parent.parent / "public" / "all-anzsco-occupations.json"
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_file, 'w') as f:
-        json.dump(output, f, indent=2)
-    
-    print(f"\n✅ Done!")
-    print(f"   Total occupations: {len(occupations)}")
-    print(f"   File size: {output_file.stat().st_size / 1024:.1f} KB")
-    print(f"   Saved to: {output_file}")
+
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    OUTPUT_FILE.write_text(json.dumps(output, indent=2))
+
+    print("✅ Done!")
+    print(f"   Major Groups:     {counts['majorGroups']}")
+    print(f"   Sub-Major Groups: {counts['subMajorGroups']}")
+    print(f"   Minor Groups:     {counts['minorGroups']}")
+    print(f"   Unit Groups:      {counts['unitGroups']}")
+    print(f"   Occupations:      {counts['occupations']}")
+    print(f"   Saved to:         {OUTPUT_FILE}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
