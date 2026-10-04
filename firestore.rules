@@ -6,6 +6,12 @@ service cloud.firestore {
       return request.auth != null && request.auth.token.admin == true;
     }
 
+    // Occupations & live state matrix — public read, admin write
+    match /occupations/{docId} {
+      allow read, list: if true;
+      allow write: if isAdmin();
+    }
+
     // News articles — public read/list, only Cloud Functions / Admin SDK can write
     match /news/{docId} {
       allow read, list: if true;
@@ -97,9 +103,12 @@ service cloud.firestore {
     }
 
 
-    // Migration news items — media articles curated by admin, visible in app
+    // Migration news items — media articles curated by admin, visible in app.
+    // App only ever queries status == 'approved' (utils/newsFeed.ts), so
+    // public readers are restricted to approved items; admins see everything
+    // (including pending/rejected) for the curation UI.
     match /news_items/{docId} {
-      allow read, list: if true;              // app shows approved items
+      allow read, list: if isAdmin() || resource.data.status == 'approved';
       allow create, update, delete: if isAdmin();
     }
 
@@ -140,8 +149,7 @@ service cloud.firestore {
 
     // Aria chat cache — only Cloud Functions
     match /aria_cache/{docId} {
-      allow read: if false;
-      allow write: if false;
+      allow read, write: if false;
     }
 
     // Admin intel (competitor site changes) — admin only
