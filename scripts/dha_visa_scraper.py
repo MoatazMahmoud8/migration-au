@@ -329,6 +329,19 @@ def diff_snapshots(
 # Build final JSON
 # ---------------------------------------------------------------------------
 
+# Visas DHA's listing-index page misclassifies as "active" (its heading/URL
+# heuristics only catch links literally under "/repealed-visas/", which
+# doesn't apply to every closed subclass -- e.g. SC 489's own page is still
+# served at its original URL even though the Skilled Regional (Provisional)
+# visa stopped accepting new applications in Nov 2019, replaced by SC 491).
+# These are known-factual closures, overridden here regardless of what the
+# live page scrape returns.
+MANUAL_STATUS_OVERRIDES = {
+    "489": "repealed",  # Skilled Regional (Provisional) -- closed Nov 2019, replaced by 491
+    "887": "repealed",  # Skilled Regional -- closed Nov 2019, replaced by 191
+}
+
+
 def build_snapshot(
     records: list[VisaRecord],
     existing: Optional[dict],
@@ -340,11 +353,12 @@ def build_snapshot(
     visa_list = []
     for r in records:
         old = old_by_code.get(r.code, {})
+        status = MANUAL_STATUS_OVERRIDES.get(r.code, r.status)
         visa_list.append({
             "code":       r.code,
             "name":       r.name,
             "category":   r.category,
-            "status":     r.status,
+            "status":     status,
             "url":        r.url,
             "first_seen": old.get("first_seen", r.first_seen) or today,
             "last_seen":  today,

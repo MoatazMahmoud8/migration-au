@@ -50,6 +50,8 @@ DHA_VISA_PAGES = {
     "190": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-nominated-190",
     "491": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-work-regional-provisional-491",
     "482": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skills-in-demand-visa-subclass-482",
+    "186": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/employer-nomination-scheme-186",
+    "494": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/skilled-employer-sponsored-regional-494",
 }
 
 # Fallback static costs (per DHA standard 2026 fee schedule).
@@ -58,9 +60,11 @@ DHA_VISA_PAGES = {
 # a prior stale snapshot here (2025 prices) was silently overriding the
 # app's already-corrected bundled fallback via buildVisaMetaMap()'s merge.
 FALLBACK_COSTS = {
-    "189": "AUD $6,140",
+    "189": "AUD $6,135",  # Skilled Independent -- distinct base charge from 190/491/186/494
     "190": "AUD $6,140",
     "491": "AUD $6,140",
+    "494": "AUD $6,140",
+    "186": "AUD $6,140",  # Employer Nomination Scheme (permanent) -- same base charge as 190/491/494
     "482": "AUD $4,015",  # Skills in Demand (TSS) base
 }
 

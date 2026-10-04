@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T12:34:34.214604+00:00",
+  "generatedAt": "2026-10-04T13:46:07.106895+00:00",
   "date": "2026-10-04",
   "currentRound": null,
   "nextRound": null,
@@ -19,7 +19,7 @@
   "visaSummary": [
     {
       "code": "189",
-      "cost": "AUD $6,140",
+      "cost": "AUD $6,135",
       "processingCutoffLabel": null,
       "stayDuration": null
     },
@@ -38,6 +38,18 @@
     {
       "code": "482",
       "cost": "AUD $4,015",
+      "processingCutoffLabel": null,
+      "stayDuration": null
+    },
+    {
+      "code": "186",
+      "cost": "AUD $6,140",
+      "processingCutoffLabel": null,
+      "stayDuration": null
+    },
+    {
+      "code": "494",
+      "cost": "AUD $6,140",
       "processingCutoffLabel": null,
       "stayDuration": null
     }
