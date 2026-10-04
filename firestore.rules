@@ -173,9 +173,20 @@ service cloud.firestore {
       allow read, write: if true;
     }
 
-    // Watchlists — user-specific
-    match /watchlists/{docId} {
-      allow read, write: if request.auth != null;
+    // Watchlists — user-specific. Keyed by the Firebase Auth anonymous uid
+    // (see expo-app/utils/firebaseAuth.ts), not the RevenueCat id -- this is
+    // what lets us check request.auth.uid == userId here. Before this,
+    // `request.auth` was always null (the app never called
+    // signInAnonymously()), so ALL watchlist reads/writes were being
+    // silently rejected -- and the items subcollection (the actual
+    // watchlist entries) had no rule at all, so it was unconditionally
+    // denied regardless of auth state.
+    match /watchlists/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+
+      match /items/{itemId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
     }
   }
 }
