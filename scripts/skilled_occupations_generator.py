@@ -94,6 +94,13 @@ OCCUPATION_OVERRIDES = {
 
 ALLOWED_STATES = {"NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"}
 
+# Repealed/obsolete visa subclasses that still show up in upstream source
+# data (e.g. official-occupation-lists.json) but no longer exist as valid
+# pathways. SC 489 (Skilled Regional (Provisional)) closed in Nov 2019 and
+# was replaced by SC 491 -- 481 of 685 occupations still carried it before
+# this filter. SC 887 is 489's/495's permanent follow-on, also repealed.
+BANNED_VISAS = {"489", "887"}
+
 
 def get_group_name(anzsco: str) -> str:
     if anzsco:
@@ -156,7 +163,7 @@ def main() -> int:
             "name": item.get("name") or name_lookup[code].get("name") or f"ANZSCO {code}",
         })
         entry["lists"].update(item.get("lists", []))
-        entry["visas"].update(str(v) for v in item.get("visas", []))
+        entry["visas"].update(str(v) for v in item.get("visas", []) if str(v) not in BANNED_VISAS)
         if item.get("assessingAuthority"):
             entry["assessingAuthority"] = item["assessingAuthority"]
 
