@@ -90,6 +90,66 @@ service cloud.firestore {
       allow write: if false; // Only backend
     }
 
+    // Scraper heartbeat (last run time/status) — admin dashboard only
+    match /system_health/{docId} {
+      allow read, list: if isAdmin();
+      allow write: if false; // Only backend
+    }
+
+
+    // Migration news items — media articles curated by admin, visible in app
+    match /news_items/{docId} {
+      allow read, list: if true;              // app shows approved items
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Content change history — audit trail of approvals/rejections, admin only
+    match /content_change_history/{docId} {
+      allow read, list: if isAdmin();
+      allow write: if false;                   // Only Cloud Functions write
+    }
+
+    // App data (manifest, flags, health) — public read for mobile; admin writes
+    match /app_data/{docId} {
+      allow read, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // Admin growth drafts (growth agent output) — admin only
+    match /admin_growth_drafts/{docId} {
+      allow read, list, update, delete: if isAdmin();
+      allow create: if false;                  // Only Cloud Functions write
+    }
+
+    // Admin feedback (used by growth agent) — admin read
+    match /admin_feedback/{docId} {
+      allow read, list: if isAdmin();
+      allow write: if false;
+    }
+
+    // Occupation overrides — admin only (used by publishOccupationsDatabase)
+    match /occupation_overrides/{docId} {
+      allow read, list, create, update, delete: if isAdmin();
+    }
+
+    // Publish history — audit trail of DB publishes, admin only
+    match /publish_history/{docId} {
+      allow read, list: if isAdmin();
+      allow write: if false;
+    }
+
+    // Aria chat cache — only Cloud Functions
+    match /aria_cache/{docId} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    // Admin intel (competitor site changes) — admin only
+    match /admin_intel/{docId} {
+      allow read, list, update: if isAdmin();
+      allow write: if false;
+    }
+
     match /admin_users/{userId} {
       allow read: if isAdmin() && request.auth.uid == userId;
       allow write: if false;
