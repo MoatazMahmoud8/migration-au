@@ -4,7 +4,7 @@ state_news_scraper.py
 =====================
 Scrapes Australian state migration news pages and updates Firebase Firestore.
 
-Designed to run via GitHub Actions on a daily schedule.
+Designed to run via GitHub Actions every three hours.
 
 Supported sources:
   - Victoria (Skills Victoria)
@@ -292,37 +292,89 @@ def write_to_firestore(
 
 
 # ---------------------------------------------------------------------------
-# Send FCM topic notifications via Firestore trigger
-# (alternatively: use Firebase Admin SDK directly)
+# Admin approval queue
 # ---------------------------------------------------------------------------
 
-def trigger_fcm_notifications(
+def build_notification_draft(article: NewsArticle) -> tuple[str, dict]:
+    """Build a deterministic approval draft for a newly archived article."""
+    draft_id = f"scraper-{article.state.lower()}-{article.doc_id}"
+    created_at = datetime.now(timezone.utc)
+    return draft_id, {
+        "id": draft_id,
+        "title": article.title[:100],
+        "body": article.summary[:500] or "New migration news available",
+        "category": "News",
+        "source": article.source,
+        "sourceUrl": article.url,
+        "url": article.url,
+        "state": article.state,
+        "status": "draft",
+        "articleDate": article.published_at,
+        "createdAt": created_at.isoformat(),
+        "timestamp": created_at.isoformat(),
+        "createdBy": "scraper_automation",
+        "sourceFingerprint": article.doc_id,
+    }
+
+
+def write_notification_drafts(
     db: firestore.Client,
     articles: list[NewsArticle],
 ) -> None:
-    """
-    Write FCM trigger documents to 'fcm_triggers' collection.
-    A Firebase Cloud Function watches this collection and sends FCM messages.
-    This decouples the scraper from FCM and avoids needing the Admin SDK here.
-    """
-    triggers = db.collection("fcm_triggers")
+    """Write new articles to the admin queue without publishing or sending FCM."""
+    drafts = db.collection("notifications_draft")
 
     for article in articles:
-        topics = [f"State_{article.state}"]
-        for anzsco in article.occupations:
-            topics.append(f"Occupation_{anzsco}")
+        draft_id, draft_data = build_notification_draft(article)
 
-        trigger_data = {
-            "title": f"New update: {article.state}",
-            "body": article.title[:100],
-            "topics": topics,
-            "articleUrl": article.url,
-            "createdAt": datetime.now(timezone.utc),
-            "sent": False,
-        }
+        if DRY_RUN:
+            logger.info(f"[DRY RUN] Would queue draft: {article.title[:60]}")
+        else:
+            drafts.document(draft_id).set(draft_data)
+            logger.info(f"Queued for admin approval: [{article.state}] {article.title[:60]}")
 
-        if not DRY_RUN:
-            triggers.add(trigger_data)
+
+
+# ---------------------------------------------------------------------------
+# Admin dashboard heartbeat
+# ---------------------------------------------------------------------------
+
+def write_scraper_heartbeat(
+    db: Optional[firestore.Client],
+    *,
+    status: str,
+    items_found: int = 0,
+    items_published: int = 0,
+    duplicates_skipped: int = 0,
+    error_message: Optional[str] = None,
+    summary: Optional[str] = None,
+) -> None:
+    """
+    Update system_health/scraper_status so the admin dashboard's
+    ScraperStatusPill reflects the real outcome of this run instead of
+    going stale. Best-effort — never let a heartbeat failure fail the run.
+    """
+    if db is None or DRY_RUN:
+        logger.info("[heartbeat] Skipped (no Firestore client or DRY_RUN)")
+        return
+    try:
+        db.collection("system_health").document("scraper_status").set(
+            {
+                "last_run_at": datetime.now(timezone.utc),
+                "status": status,
+                "items_found": items_found,
+                "items_published": items_published,
+                "duplicates_skipped": duplicates_skipped,
+                "sources_checked": [source.name for source in SOURCES],
+                "error_message": error_message,
+                "summary": summary
+                or f"{items_published} new, {duplicates_skipped} duplicates skipped",
+            },
+            merge=True,
+        )
+        logger.info("[heartbeat] system_health/scraper_status updated")
+    except Exception as e:  # noqa: BLE001 - best-effort, never fatal
+        logger.warning(f"[heartbeat] Failed to update scraper_status: {e}")
 
 
 # ---------------------------------------------------------------------------
@@ -340,6 +392,9 @@ def main() -> int:
         logger.info("Firestore client initialized")
     except Exception as e:
         logger.error(f"Failed to initialize Firestore: {e}")
+        write_scraper_heartbeat(
+            None, status="error", error_message=f"Firestore init failed: {e}"
+        )
         return 1
 
     # Scrape all sources
@@ -352,15 +407,25 @@ def main() -> int:
 
     if not all_articles:
         logger.warning("No articles found. Exiting.")
+        write_scraper_heartbeat(
+            db, status="ok", items_found=0, summary="No articles found this run"
+        )
         return 0
 
     # Write to Firestore — returns only the newly written articles
     written, skipped = write_to_firestore(db, all_articles)
     logger.info(f"Firestore: {len(written)} written, {skipped} skipped (already exist)")
 
-    # Trigger FCM only for articles that were NEW (not already in Firestore)
-    new_articles = written
-    trigger_fcm_notifications(db, new_articles)
+    # Newly archived articles wait for explicit admin approval before FCM delivery.
+    write_notification_drafts(db, written)
+
+    write_scraper_heartbeat(
+        db,
+        status="ok",
+        items_found=len(all_articles),
+        items_published=len(written),
+        duplicates_skipped=skipped,
+    )
 
     logger.info("=== Scraper complete ===")
     return 0
