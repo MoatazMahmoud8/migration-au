@@ -2,8 +2,8 @@ name: Run State News Scraper
 
 on:
   schedule:
-    # Runs every 3 hours (matches app notification scraper cadence)
-    - cron: '0 */3 * * *'
+    # Runs three times during Australian working hours (weekdays)
+    - cron: '0 23,2,5 * * 1-5'
   workflow_dispatch:
     # Allow manual trigger from GitHub Actions UI
 
@@ -37,6 +37,16 @@ jobs:
         run: pip install -r scripts/requirements.txt
 
       # -----------------------------------------------------------------------
+      # 3b. Install Playwright's headless Chromium browser binary.
+      # Required by state_news_scraper.py (Migration SA, JS-rendered) and
+      # rounds_scraper.py (SkillSelect invitation rounds) -- both were silently
+      # failing with "BrowserType.launch: Executable doesn't exist" because
+      # this step was missing.
+      # -----------------------------------------------------------------------
+      - name: Install Playwright browsers
+        run: python -m playwright install chromium --with-deps
+
+      # -----------------------------------------------------------------------
       # 4. Write Firebase service account key from secret
       #    (Store the entire JSON as the secret FIREBASE_SERVICE_ACCOUNT_JSON)
       # -----------------------------------------------------------------------
@@ -52,7 +62,9 @@ jobs:
         env:
           FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
           FIREBASE_PROJECT_ID: swift-shore-238707
-        run: python scripts/state_news_scraper.py
+        run: |
+          python -m unittest tests/test_state_news_approval.py
+          python scripts/state_news_scraper.py
 
       # -----------------------------------------------------------------------
       # 6. Run the state occupation requirements scraper
@@ -69,14 +81,18 @@ jobs:
       # Outputs repo/public/invitation-rounds.json for Firebase Hosting
       # -----------------------------------------------------------------------
       - name: Run SkillSelect rounds scraper
-        run: python scripts/rounds_scraper.py
+        run: |
+          python -m unittest tests/test_rounds_parser.py
+          python scripts/rounds_scraper.py
 
       # -----------------------------------------------------------------------
       # 7c. Run the processing times scraper
       # Outputs public/processing-times.json (DHA global processing times)
       # -----------------------------------------------------------------------
       - name: Run processing times scraper
-        run: python scripts/processing_times_scraper.py
+        run: |
+          python scripts/processing_times_scraper.py
+          python -m unittest tests/test_processing_times_contract.py
 
       # -----------------------------------------------------------------------
       # 7d. Generate skilled-occupations.json
@@ -91,6 +107,10 @@ jobs:
       # -----------------------------------------------------------------------
       - name: Run daily monitor
         run: python scripts/daily_monitor.py
+
+      # Block deployment if generated invitation totals differ from Home Affairs.
+      - name: Validate SkillSelect round data
+        run: python scripts/validate_rounds_data.py
 
       # -----------------------------------------------------------------------
       # 8. Deploy updated JSON files to Firebase Hosting

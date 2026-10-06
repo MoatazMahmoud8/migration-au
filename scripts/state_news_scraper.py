@@ -74,41 +74,34 @@ class ScraperSource:
     link_selector: str          # within article container (href)
     date_selector: str          # within article container
     base_url: str = ""          # prepend to relative hrefs
+    use_playwright: bool = False  # render with headless Chromium (JS-driven pages)
 
 
+# NOTE (2026-10-06): Skills Victoria and Migration NSW's old news/article pages
+# have both been retired by their respective sites (VIC: business.vic.gov.au's
+# migration section 404s entirely now -- the site was restructured and no
+# equivalent article-based news page could be located; NSW: the "topics/
+# skilled-migration-to-nsw" page 404s too, and its closest replacement
+# (nsw-skills-lists) is a static reference page with no dated articles, not a
+# news feed). Both were silently returning 0 articles on every run for weeks.
+# Removed rather than left broken; re-add once a real replacement URL with
+# dated article cards is found for each state.
 SOURCES: list[ScraperSource] = [
-    ScraperSource(
-        name="Skills Victoria",
-        state_code="VIC",
-        url="https://business.vic.gov.au/business-information/skilled-migration-victoria",
-        article_selector="article, .news-item, .article-card",
-        title_selector="h2, h3, .title",
-        summary_selector="p, .summary, .description",
-        link_selector="a",
-        date_selector="time, .date, .published",
-        base_url="https://business.vic.gov.au",
-    ),
-    ScraperSource(
-        name="Migration NSW",
-        state_code="NSW",
-        url="https://www.nsw.gov.au/topics/skilled-migration-to-nsw",
-        article_selector=".nsw-card, article, .content-block",
-        title_selector="h3, h2, .nsw-card__title",
-        summary_selector="p, .nsw-card__copy",
-        link_selector="a",
-        date_selector="time, .date",
-        base_url="https://www.nsw.gov.au",
-    ),
     ScraperSource(
         name="Migration SA",
         state_code="SA",
         url="https://migration.sa.gov.au/news",
-        article_selector=".news-article, article, .views-row",
-        title_selector="h2, h3, .field-title",
-        summary_selector="p, .field-body",
-        link_selector="a",
-        date_selector="time, .date-display-single",
+        # SA's news list is rendered client-side (no article HTML in the raw
+        # response), so this source requires Playwright. Verified card shape:
+        # <div class="col-span-full ... pb-site ..."><span>date</span>
+        #   <h3 class="t-subheading">title</h3><a href="...">Read More</a></div>
+        article_selector="div.col-span-full.pb-site",
+        title_selector="h3.t-subheading, h3",
+        summary_selector="p",
+        link_selector="a[href]",
+        date_selector="span",
         base_url="https://migration.sa.gov.au",
+        use_playwright=True,
     ),
 ]
 
@@ -174,18 +167,53 @@ def parse_date(date_text: str) -> datetime:
         return datetime.now(timezone.utc)
 
 
+def fetch_rendered_html(url: str) -> Optional[str]:
+    """Fetch a page's fully-rendered (post-JS) HTML using headless Chromium.
+
+    Needed for sources whose news lists are populated client-side, where a
+    plain `requests.get` only returns the empty app shell.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.error("Playwright not installed. Run: pip install playwright && playwright install chromium")
+        return None
+
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            try:
+                page = browser.new_page(user_agent=(
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+                ))
+                page.goto(url, timeout=30000, wait_until="networkidle")
+                return page.content()
+            finally:
+                browser.close()
+    except Exception as e:
+        logger.warning(f"Playwright render failed for {url}: {e}")
+        return None
+
+
 def scrape_source(source: ScraperSource) -> list[NewsArticle]:
     """Scrape a single source and return a list of NewsArticle objects."""
     logger.info(f"Scraping {source.name} ({source.state_code})...")
 
-    try:
-        response = requests.get(source.url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
-        response.raise_for_status()
-    except requests.RequestException as e:
-        logger.warning(f"Failed to fetch {source.url}: {e}")
-        return []
+    if source.use_playwright:
+        html = fetch_rendered_html(source.url)
+        if html is None:
+            return []
+    else:
+        try:
+            response = requests.get(source.url, headers=HEADERS, timeout=REQUEST_TIMEOUT)
+            response.raise_for_status()
+        except requests.RequestException as e:
+            logger.warning(f"Failed to fetch {source.url}: {e}")
+            return []
+        html = response.text
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    soup = BeautifulSoup(html, "html.parser")
     containers = soup.select(source.article_selector)
 
     if not containers:
@@ -193,7 +221,8 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
         return []
 
     articles = []
-    for container in containers[:10]:  # limit to 10 most recent per source
+    seen_urls: set[str] = set()
+    for container in containers:  # de-duped below; cap applied after dedup
         try:
             # Title
             title_el = container.select_one(source.title_selector)
@@ -210,8 +239,12 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
             href = link_el.get("href", "") if link_el else ""
             if href and href.startswith("/"):
                 href = source.base_url + href
-            if not href:
-                href = source.url
+            if not href or not href.startswith("http"):
+                # Malformed / relative query-string link (e.g. a filter
+                # chip like "?category=other-news") rather than a real
+                # article URL — skip this card instead of letting it
+                # collapse into a duplicate of the source's own homepage.
+                continue
 
             # Date
             date_el = container.select_one(source.date_selector)
@@ -224,6 +257,10 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
             combined_text = f"{title} {summary}"
             occupations = extract_anzsco_codes(combined_text)
 
+            if href in seen_urls:
+                continue  # duplicate card (e.g. responsive mobile/desktop markup)
+            seen_urls.add(href)
+
             article = NewsArticle(
                 title=title,
                 summary=summary[:500],  # cap summary length
@@ -234,6 +271,8 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
                 occupations=occupations,
             )
             articles.append(article)
+            if len(articles) >= 10:  # limit to 10 most recent per source
+                break
 
         except Exception as e:
             logger.warning(f"Error parsing article from {source.name}: {e}")
