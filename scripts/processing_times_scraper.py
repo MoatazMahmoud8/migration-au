@@ -350,6 +350,50 @@ def load_existing() -> dict:
     return {"snapshotDate": "", "items": []}
 
 
+def normalize_items(items: list[dict]) -> list[dict]:
+    """Group legacy subclass/stream rows into the v2 streams schema."""
+    grouped: dict[str, dict] = {}
+    for raw in items:
+        subclass = str(raw.get("subclass", "")).strip()
+        if not subclass:
+            continue
+
+        streams = raw.get("streams")
+        if not isinstance(streams, list):
+            p50 = raw.get("p50")
+            p90 = raw.get("p90")
+            if not isinstance(p50, str) or not p50.strip() or not isinstance(p90, str) or not p90.strip():
+                continue
+            streams = [{"name": raw.get("stream"), "p50": p50, "p90": p90}]
+
+        if subclass not in grouped:
+            item = {
+                key: value
+                for key, value in raw.items()
+                if key not in {"p50", "p90", "stream", "streams"}
+            }
+            item["streams"] = []
+            grouped[subclass] = item
+
+        existing_streams = grouped[subclass]["streams"]
+        for stream in streams:
+            if not isinstance(stream, dict):
+                continue
+            p50 = stream.get("p50")
+            p90 = stream.get("p90")
+            if not isinstance(p50, str) or not p50.strip() or not isinstance(p90, str) or not p90.strip():
+                continue
+            normalized = {"p50": p50.strip(), "p90": p90.strip()}
+            name = stream.get("name")
+            if isinstance(name, str) and name.strip():
+                normalized["name"] = name.strip()
+            stream_key = normalized.get("name", "")
+            if not any(existing.get("name", "") == stream_key for existing in existing_streams):
+                existing_streams.append(normalized)
+
+    return [item for item in grouped.values() if item["streams"]]
+
+
 def get_seed_data() -> list[dict]:
     """
     Return seed processing times from known good data.
@@ -459,7 +503,9 @@ def main() -> int:
         if existing.get("items") and existing.get("snapshotDate", "") >= "2026-01-01":
             log.info("Using existing data (%d items from %s) as live scrape failed.",
                      len(existing["items"]), existing["snapshotDate"])
+            existing["schemaVersion"] = 2
             existing["snapshotDate"] = today
+            existing["items"] = normalize_items(existing["items"])
             fixed = apply_verified_urls(existing["items"])
             log.info("Applied %d verified URLs to existing data.", fixed)
             OUTPUT.write_text(
@@ -471,12 +517,15 @@ def main() -> int:
         log.info("No existing data or too stale — using seed data.")
         items = get_seed_data()
 
+    items = normalize_items(items)
+
     # Ensure every entry links to the correct, DHA-verified URL.
     fixed = apply_verified_urls(items)
     log.info("Applied %d verified URLs from visa-types.json.", fixed)
 
     # Build output
     output = {
+        "schemaVersion": 2,
         "snapshotDate": today,
         "items": items,
     }

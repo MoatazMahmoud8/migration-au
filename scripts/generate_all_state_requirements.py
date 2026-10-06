@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate comprehensive state-occupation-requirements for all 878 ANZSCO occupations.
+Generate comprehensive state-occupation-requirements for all 1,076 ANZSCO occupations.
 
 Features:
 - State requirements for all 8 Australian states (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)

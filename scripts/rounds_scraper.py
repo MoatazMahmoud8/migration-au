@@ -24,6 +24,11 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup
 
+try:
+    from rounds_parser import parse_current_round, unescape_embedded_html
+except ModuleNotFoundError:
+    from scripts.rounds_parser import parse_current_round, unescape_embedded_html
+
 # ─── Config ───────────────────────────────────────────────────────────────────
 
 CURRENT_URL   = "https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds"
@@ -60,8 +65,7 @@ def fetch_url(url: str) -> str | None:
         
         if result.returncode == 0:
             html = result.stdout
-            # Check if the page has actual content (tables) or is JS-rendered shell
-            if '<table' in html.lower():
+            if '<table' in unescape_embedded_html(html).lower():
                 return html
             log.info("curl returned no table content — trying Playwright for JS rendering")
     except Exception as e:
@@ -174,71 +178,19 @@ def fetch_current_round() -> dict | None:
     # Add a small delay to appear human-like
     time.sleep(0.5)
 
-    soup = BeautifulSoup(html, "html.parser")
-
-    # ── Find "Current round" section ──────────────────────────────────────────
-    # Look for a heading containing "Current round"
-    current_section = None
-    for tag in soup.find_all(["h2", "h3", "h4"]):
-        if "current round" in tag.get_text(strip=True).lower():
-            current_section = tag
-            break
-
-    if not current_section:
-        log.error("Could not locate 'Current round' section on the page.")
+    try:
+        outcome = parse_current_round(html)
+    except ValueError as error:
+        log.error("Current round validation failed: %s", error)
         return None
 
-    # ── Extract round date ────────────────────────────────────────────────────
-    round_date = None
-    # Walk siblings after current_section heading
-    for sibling in current_section.find_next_siblings():
-        heading_text = sibling.get_text(" ", strip=True)
-        if "invitations issued on" in heading_text.lower():
-            round_date = parse_round_date(heading_text)
-            if round_date:
-                log.info("Round date: %s", round_date)
-                break
-        # Also check sub-headings
-        for tag in sibling.find_all(["h3", "h4", "h5", "strong"]):
-            t = tag.get_text(" ", strip=True)
-            if "invitations issued on" in t.lower():
-                round_date = parse_round_date(t)
-                if round_date:
-                    break
-        if round_date:
-            break
+    soup = BeautifulSoup(unescape_embedded_html(html), "html.parser")
 
-    if not round_date:
-        log.warning("Could not parse round date; will use today.")
-        round_date = date.today().isoformat()
-
-    # ── Extract total invitations (summary table) ─────────────────────────────
-    sc189_total = None
-    sc491_family_total = None
-    sc189_tiebreak = None
-    sc491_family_tiebreak = None
-
-    # Find tables after "current round"
-    for tbl in current_section.find_all_next("table"):
-        rows = tbl.find_all("tr")
-        for row in rows:
-            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
-            if not cells:
-                continue
-            row_text = " ".join(cells).lower()
-            # Summary row: SC 189 total invitations + tie break
-            if "189" in cells[0] and "independent" in row_text:
-                if len(cells) >= 3:
-                    sc189_total = parse_total_invitations(cells[1])
-                    sc189_tiebreak = parse_tiebreak(cells[2])
-            elif "491" in cells[0] and "family" in row_text:
-                if len(cells) >= 3:
-                    sc491_family_total = parse_total_invitations(cells[1])
-                    sc491_family_tiebreak = parse_tiebreak(cells[2])
-
-        # Once we have both totals, stop looking
-        if sc189_total and sc491_family_total is not None:
-            break
+    round_date = outcome["date"]
+    sc189_total = outcome["sc189Total"]
+    sc491_family_total = outcome["sc491FamilyTotal"]
+    sc189_tiebreak = outcome["sc189TieBreak"]
+    sc491_family_tiebreak = outcome["sc491FamilyTieBreak"]
 
     log.info("SC 189: %s invitations, tie break %s", sc189_total, sc189_tiebreak)
     log.info("SC 491 Family: %s invitations, tie break %s", sc491_family_total, sc491_family_tiebreak)
@@ -246,7 +198,7 @@ def fetch_current_round() -> dict | None:
     # ── Extract per-occupation scores ─────────────────────────────────────────
     occupation_scores: list[dict] = []
     # Find "Invitations issued by occupation" table
-    for tbl in current_section.find_all_next("table"):
+    for tbl in soup.find_all("table"):
         rows = tbl.find_all("tr")
         if len(rows) < 5:
             continue  # too small
@@ -293,9 +245,10 @@ def fetch_current_round() -> dict | None:
 def fetch_state_nominations() -> dict | None:
     """
     Parses the state nomination totals from the current-round page.
-    Returns {'period': str, 'sc190': {STATE: n}, 'sc491': {STATE: n}}
+    These are cumulative EOIs nominated, not annual allocation quotas.
     """
-    STATE_COLS = ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"]
+    # Home Affairs table column order: ACT, NSW, NT, QLD, SA, TAS, VIC, WA.
+    STATE_COLS = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
 
     log.info("Parsing state nomination totals…")
     html = fetch_url(CURRENT_URL)
@@ -305,10 +258,11 @@ def fetch_state_nominations() -> dict | None:
     # Add a small delay to appear human-like
     time.sleep(0.5)
 
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(unescape_embedded_html(html), "html.parser")
     sc190: dict[str, int] = {}
     sc491: dict[str, int] = {}
     period = ""
+    reporting_period = ""
 
     for tbl in soup.find_all("table"):
         rows = tbl.find_all("tr")
@@ -325,16 +279,33 @@ def fetch_state_nominations() -> dict | None:
                 sc491 = dict(zip(STATE_COLS, nums))
 
     if sc190 or sc491:
-        # Derive the program year from what's on the page (best effort)
-        m = re.search(r"(\d{4}[-–]\d{2,4})", soup.get_text())
+        page_text = soup.get_text(" ", strip=True)
+        # Scope the program-year match to the State and Territory nominations section.
+        state_text = page_text.split("State and Territory nominations", 1)[-1]
+        m = re.search(r"(\d{4}[-–]\d{2,4})\s+program year", state_text, re.I)
         if m:
-            period = m.group(1)
+            period = f"{m.group(1)} program year"
         else:
             y = date.today().year
-            period = f"{y}-{str(y + 1)[-2:]}"
+            start_year = y if date.today().month >= 7 else y - 1
+            period = f"{start_year}-{str(start_year + 1)[-2:]} program year"
+
+        date_match = re.search(
+            r"from\s+(\d{1,2}\s+July\s+\d{4})\s+to\s+(\d{1,2}\s+\w+\s+\d{4})",
+            state_text,
+            re.I,
+        )
+        if date_match:
+            reporting_period = f"{date_match.group(1)} – {date_match.group(2)}"
         log.info("State SC 190: %s", sc190)
         log.info("State SC 491: %s", sc491)
-        return {"period": period, "sc190": sc190, "sc491": sc491}
+        return {
+            "period": period,
+            "reportingPeriod": reporting_period,
+            "metric": "nominations-issued",
+            "sc190": sc190,
+            "sc491": sc491,
+        }
 
     return None
 
@@ -352,7 +323,7 @@ def fetch_previous_rounds_list() -> list[dict]:
     # Add a small delay to appear human-like
     time.sleep(0.5)
 
-    soup = BeautifulSoup(html, "html.parser")
+    soup = BeautifulSoup(unescape_embedded_html(html), "html.parser")
     rounds = []
     for tag in soup.find_all(["h2", "h3", "h4"]):
         text = tag.get_text(" ", strip=True)
@@ -391,20 +362,8 @@ def main() -> int:
     # Fetch current round
     current = fetch_current_round()
     if current is None:
-        log.warning("Could not parse current round data. Using existing data as fallback.")
-        current = (existing.get("currentRound") or {})
-        if not current:
-            log.error("No existing data available. Aborting.")
-            return 1
-        # Add occupationScores and other fields for fallback
-        current = {
-            "round_date": current.get("date", date.today().isoformat()),
-            "sc189Total": current.get("sc189Total", 0),
-            "sc189TieBreak": current.get("sc189TieBreak"),
-            "sc491FamilyTotal": current.get("sc491FamilyTotal", 0),
-            "sc491FamilyTieBreak": current.get("sc491FamilyTieBreak"),
-            "occupationScores": existing.get("occupationScores", []),
-        }
+        log.error("Could not verify current round data. Existing JSON was not modified.")
+        return 1
 
     new_round_date = current["round_date"]
     existing_round_date = (existing.get("currentRound") or {}).get("date", "")
@@ -414,14 +373,11 @@ def main() -> int:
     # Determine if this is actually a new round
     is_new_round = new_round_date > existing_round_date
 
-    if not is_new_round and existing.get("occupationScores"):
-        log.info("No new round detected. Updating lastUpdated only.")
-        existing["lastUpdated"] = today
-        with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-            json.dump(existing, f, indent=2, ensure_ascii=False)
-        return 0
-
-    log.info("New round detected (%s). Updating full dataset…", new_round_date)
+    log.info(
+        "%s round %s. Refreshing verified values.",
+        "New" if is_new_round else "Existing",
+        new_round_date,
+    )
 
     # Fetch state nominations
     state_noms = fetch_state_nominations()
@@ -462,15 +418,6 @@ def main() -> int:
             round_history.append(existing_entry)
             seen_dates.add(d)
 
-    # Also pull in any rounds listed on DHA's previous-rounds page that we
-    # don't already have (date + label only — no occupation scores available
-    # from that page, but they'll be filled in by a future scrape run).
-    prev_rounds = fetch_previous_rounds_list()
-    for pr in prev_rounds:
-        if pr["date"] not in seen_dates:
-            round_history.append({"date": pr["date"], "label": pr["label"]})
-            seen_dates.add(pr["date"])
-
     # Sort history newest-first
     round_history.sort(key=lambda x: x["date"], reverse=True)
 
@@ -498,7 +445,9 @@ def main() -> int:
             "sc491FamilyTotal": current["sc491FamilyTotal"],
             "sc491FamilyTieBreak": current["sc491FamilyTieBreak"],
         },
+        "migrationProgramPlanning": existing.get("migrationProgramPlanning", []),
         "stateNominations": sn,
+        "stateAllocations": existing.get("stateAllocations", []),
         "occupationScores": occupation_scores,
         "rounds": round_history,
     }
@@ -508,7 +457,7 @@ def main() -> int:
 
     log.info("✅ invitation-rounds.json updated → %s (%d occupations, %d rounds)",
              OUTPUT_PATH, len(occupation_scores), len(round_history))
-    return 2
+    return 0
 
 
 def _iso_to_label(iso: str) -> str:
