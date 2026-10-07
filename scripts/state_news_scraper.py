@@ -62,6 +62,12 @@ HEADERS = {
 
 REQUEST_TIMEOUT = 20  # seconds
 
+# How far back an article's published date may be before we consider it too
+# stale to be surfaced as "new" migration news, even if it's among the first
+# N cards on a source's page (older backlog content can rank ahead of recent
+# items when a page mixes standalone articles with category-filter cards).
+MAX_ARTICLE_AGE_DAYS = 120
+
 
 @dataclass
 class ScraperSource:
@@ -272,6 +278,17 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
             if href in seen_urls:
                 continue  # duplicate card (e.g. responsive mobile/desktop markup)
             seen_urls.add(href)
+
+            # Recency cutoff: news sources mix genuinely recent updates with
+            # much older backlog cards further down the page. Capping at the
+            # first 10 cards isn't enough on its own -- if enough of those
+            # cards get skipped above (malformed links etc.) the cutoff can
+            # reach a year-old item. Hard-exclude anything older than
+            # MAX_ARTICLE_AGE_DAYS so stale backlog content never surfaces as
+            # "new", regardless of how many cards were skipped before it.
+            age_days = (datetime.now(timezone.utc) - published_at).days
+            if age_days > MAX_ARTICLE_AGE_DAYS:
+                continue
 
             article = NewsArticle(
                 title=title,
