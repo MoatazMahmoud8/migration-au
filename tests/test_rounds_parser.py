@@ -32,11 +32,17 @@ class CurrentRoundParserTests(unittest.TestCase):
         self.assertEqual(result["sc491FamilyTotal"], 0)
         self.assertIsNone(result["sc491FamilyTieBreak"])
 
-    def test_rejects_summary_and_monthly_mismatch(self):
+    def test_prefers_summary_total_over_stale_monthly_total(self):
+        # Home Affairs sometimes hasn't updated the program-year monthly
+        # breakdown table yet for the latest round (e.g. it can still show 0
+        # for the current month) even though the round's own authoritative
+        # "Total EOIs Invited" summary table already has the real figure.
+        # That publishing lag must not be treated as a fatal mismatch -- the
+        # summary total should win.
         mismatched = HTML.replace("<td>10,000</td><td>10,000</td></tr>", "<td>10,000</td><td>9,999</td></tr>")
 
-        with self.assertRaisesRegex(ValueError, "does not match"):
-            parse_current_round(mismatched)
+        result = parse_current_round(mismatched)
+        self.assertEqual(result["sc189Total"], 10_000)
 
 
 if __name__ == "__main__":

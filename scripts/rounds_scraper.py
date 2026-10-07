@@ -156,8 +156,20 @@ def parse_tiebreak(text: str) -> str | None:
 
 
 def parse_total_invitations(text: str) -> int | None:
-    """Extract integer from '10,000' or '10000'."""
-    t = re.sub(r"[^\d]", "", text.strip())
+    """Extract integer from '10,000' or '10000'.
+
+    Home Affairs privacy-suppresses small per-state counts as '<5' rather
+    than publishing an exact figure. Stripping non-digits from that text
+    used to silently turn '<5' into the literal integer 5 -- fabricating an
+    exact count that's guaranteed to be wrong (the true value is anywhere
+    from 0-4). Treat suppressed cells as 0 instead: it's still an
+    approximation, but unlike 5 it's always within the real range and never
+    overstates a state's nomination count.
+    """
+    stripped = text.strip()
+    if stripped.startswith("<"):
+        return 0
+    t = re.sub(r"[^\d]", "", stripped)
     return int(t) if t else None
 
 # ─── Scraper ──────────────────────────────────────────────────────────────────

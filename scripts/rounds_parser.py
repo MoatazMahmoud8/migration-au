@@ -107,13 +107,21 @@ def parse_current_round(raw_html: str) -> dict:
     for subclass in ("189", "491"):
         summary_total = summary_totals.get(subclass)
         monthly_total = monthly_totals.get(subclass)
-        if summary_total is not None and monthly_total is not None and summary_total != monthly_total:
-            raise ValueError(
-                f"SC {subclass} summary total {summary_total} does not match "
-                f"the {round_month.title()} program-year total {monthly_total}"
-            )
-        total = summary_total if summary_total is not None else monthly_total
-        if total is None:
+        # The per-round "Total EOIs Invited" summary table is the
+        # authoritative figure for this round (it's published together with
+        # the round's tie-break date). The separate program-year monthly
+        # breakdown table is a supplementary view that Home Affairs
+        # sometimes hasn't updated yet for the latest round -- e.g. it can
+        # still show 0 for the current month while the summary table already
+        # has the real total. Prefer the summary total whenever it's present
+        # rather than treating that publishing lag as a fatal mismatch; only
+        # fall back to the monthly total (and only trust it) when the
+        # summary table doesn't have this subclass at all.
+        if summary_total is not None:
+            total = summary_total
+        elif monthly_total is not None:
+            total = monthly_total
+        else:
             raise ValueError(f"SC {subclass} invitation total could not be verified")
         resolved[subclass] = total
 
