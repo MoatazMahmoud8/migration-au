@@ -237,13 +237,25 @@ def scrape_source(source: ScraperSource) -> list[NewsArticle]:
             # Link
             link_el = container.select_one(source.link_selector)
             href = link_el.get("href", "") if link_el else ""
-            if href and href.startswith("/"):
+            if href.startswith("?"):
+                # Category-filter chip (e.g. "?category=invitations-issued")
+                # rather than a standalone article page -- these are still
+                # genuine, individually-dated news items (monthly invitation
+                # round summaries etc.), they just render inline under a
+                # filtered view of the news index instead of their own URL.
+                # Anchor a title slug onto the filtered index URL so each
+                # card still gets a distinct, clickable, article-like URL
+                # instead of being silently dropped (which previously caused
+                # recent high-value items to be skipped entirely, pushing
+                # stale year-old filler into the "latest 10" instead).
+                slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-")
+                href = f"{source.url}{href}#{slug}"
+            elif href.startswith("/"):
                 href = source.base_url + href
             if not href or not href.startswith("http"):
-                # Malformed / relative query-string link (e.g. a filter
-                # chip like "?category=other-news") rather than a real
-                # article URL — skip this card instead of letting it
-                # collapse into a duplicate of the source's own homepage.
+                # Still-malformed / unresolvable link — skip this card
+                # instead of letting it collapse into a duplicate of the
+                # source's own homepage.
                 continue
 
             # Date
