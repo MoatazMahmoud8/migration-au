@@ -2,8 +2,7 @@ name: Run State News Scraper
 
 on:
   schedule:
-    # Runs three times during Australian working hours (weekdays)
-    - cron: '0 23,2,5 * * 1-5'
+    - cron: '0 */3 * * *'  # every 3 hours, every day (weekday-only + 3x/day left an 18h overnight and ~72h weekend gap, during which the dashboard's 8h staleness threshold always flipped to "Idle / Needs Check")
   workflow_dispatch:
     # Allow manual trigger from GitHub Actions UI
 
