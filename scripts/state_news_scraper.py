@@ -465,11 +465,18 @@ def main() -> int:
         )
         return 1
 
-    # Scrape all sources
+    # Scrape all sources. Each source is isolated in its own try/except so a
+    # single broken/timed-out URL (dead link, selector change, network
+    # outage) cannot abort the entire run -- the remaining sources still
+    # scrape and their articles still reach Firestore.
     all_articles: list[NewsArticle] = []
     for source in SOURCES:
-        articles = scrape_source(source)
-        all_articles.extend(articles)
+        try:
+            articles = scrape_source(source)
+            all_articles.extend(articles)
+        except Exception as e:
+            logger.error(f"Source '{source.name}' failed unexpectedly, skipping: {e}")
+            continue
 
     logger.info(f"Total articles scraped: {len(all_articles)}")
 

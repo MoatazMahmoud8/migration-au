@@ -9,7 +9,11 @@ on:
 jobs:
   scrape:
     name: Scrape Migration News → Firestore
-    runs-on: ubuntu-latest
+    # Pinned (not ubuntu-latest): GitHub moved ubuntu-latest to 26.04, which
+    # Playwright 1.52.0 does not support ("does not support chromium on
+    # ubuntu26.04-x64"), causing every scheduled run to fail at browser
+    # install. ubuntu-24.04 is a supported, stable Playwright target.
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
 
     steps:
