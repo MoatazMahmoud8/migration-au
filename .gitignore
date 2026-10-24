@@ -41,3 +41,23 @@ firebase-service-account.json
 
 # macOS
 .DS_Store
+
+# Node
+node_modules/
+functions/node_modules/
+
+# Gradle build cache (local-machine state, never portable across machines)
+android/.gradle/
+android/build/
+android/app/build/
+
+# Logs
+*.log
+.monitor-logs/
+firestore-debug.log
+
+# Local scraper cache
+scripts/.cache/
+
+# Firebase local cache
+.firebase/
