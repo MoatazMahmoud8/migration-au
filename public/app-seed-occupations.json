@@ -1,5 +1,5 @@
 {
-  "snapshotDate": "2026-06-12",
+  "snapshotDate": "2026-09-17",
   "source": "Extracted from expo-app/constants/skilledOccupations.ts SKILLED_OCCUPATIONS",
   "count": 422,
   "items": [
@@ -1230,17 +1230,16 @@
       "name": "Retail Pharmacist",
       "lists": [
         "CSOL",
-        "MLTSSL"
+        "STSOL"
       ],
       "visas": [
-        "189",
         "190",
         "491",
         "482",
-        "186",
-        "485"
+        "494",
+        "186"
       ],
-      "assessingAuthority": "APC",
+      "assessingAuthority": "APharmC",
       "group": "Professionals"
     },
     {
@@ -3967,17 +3966,16 @@
       "name": "Hospital Pharmacist",
       "lists": [
         "CSOL",
-        "MLTSSL"
+        "STSOL"
       ],
       "visas": [
-        "189",
         "190",
         "491",
         "482",
-        "186",
-        "485"
+        "494",
+        "186"
       ],
-      "assessingAuthority": "APC",
+      "assessingAuthority": "APharmC",
       "group": "Professionals"
     },
     {
@@ -3985,17 +3983,16 @@
       "name": "Industrial Pharmacist",
       "lists": [
         "CSOL",
-        "MLTSSL"
+        "STSOL"
       ],
       "visas": [
-        "189",
         "190",
         "491",
         "482",
-        "186",
-        "485"
+        "494",
+        "186"
       ],
-      "assessingAuthority": "APC",
+      "assessingAuthority": "VETASSESS",
       "group": "Professionals"
     },
     {

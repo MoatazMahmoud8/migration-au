@@ -1,28 +1,31 @@
 #!/usr/bin/env python3
 """
 End-to-End Notification Flow Test
-Tests the complete notification pipeline: draft → approval → FCM trigger → sent
-Uses Application Default Credentials (gcloud login)
+Tests the complete notification pipeline against the local Firestore emulator.
+The script refuses to run against production.
 """
 
 import os
 import sys
 import time
 from datetime import datetime, timezone
+from google.auth.credentials import AnonymousCredentials
 from google.cloud import firestore
-import google.auth
 
 def main():
     print("🧪 End-to-End Notification Flow Test\n")
+
+    emulator_host = os.getenv("FIRESTORE_EMULATOR_HOST")
+    if not emulator_host:
+        print("❌ Refusing to run: FIRESTORE_EMULATOR_HOST is not set.")
+        return 1
     
     try:
-        # Use Application Default Credentials
-        credentials, project_id = google.auth.default()
-        print(f"✅ Using Application Default Credentials")
-        print(f"   Project: {project_id or 'swift-shore-238707'}\n")
-        
-        db = firestore.Client(project="swift-shore-238707", credentials=credentials)
-        print("✅ Firestore client initialized\n")
+        db = firestore.Client(
+            project="demo-notification-test",
+            credentials=AnonymousCredentials(),
+        )
+        print(f"✅ Firestore emulator client initialized at {emulator_host}\n")
     except Exception as e:
         print(f"❌ Failed to initialize Firestore: {e}")
         return 1
