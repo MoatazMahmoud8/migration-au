@@ -563,6 +563,7 @@ exports.approveNotification = https.onCall({ cors: true }, async (request) => {
 
       transaction.set(publishedRef, publishedData);
       transaction.set(triggerRef, {
+        id: notificationId,
         title,
         body,
         topics,
