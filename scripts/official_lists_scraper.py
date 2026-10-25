@@ -20,8 +20,11 @@ Output: public/official-occupation-lists.json with structure:
 """
 from __future__ import annotations
 
+import base64
+import hashlib
 import html
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -30,6 +33,13 @@ from typing import Dict, List, Set
 
 import requests
 from bs4 import BeautifulSoup
+
+try:
+    from google.cloud import firestore
+    from google.oauth2 import service_account
+except ImportError:  # pragma: no cover — Firestore deps optional for local dry-runs
+    firestore = None
+    service_account = None
 
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 HEADERS = {"User-Agent": UA, "Accept-Language": "en-AU,en;q=0.9"}
@@ -257,10 +267,148 @@ def scrape_state(state_code: str, all_anzscos: Dict[str, str], federal_anzscos: 
     }
 
 
+def build_firestore_client():
+    """Build Firestore client from base64-encoded service account JSON
+    (same CI pattern as scripts/state_news_scraper.py). Returns None if
+    credentials aren't configured — diffing/notification steps are skipped
+    gracefully so local/manual runs without secrets still work."""
+    if firestore is None:
+        return None
+    encoded = os.environ.get("FIREBASE_SERVICE_ACCOUNT_JSON")
+    if not encoded:
+        return None
+    try:
+        decoded = base64.b64decode(encoded).decode("utf-8")
+        service_account_info = json.loads(decoded)
+        credentials = service_account.Credentials.from_service_account_info(
+            service_account_info,
+            scopes=["https://www.googleapis.com/auth/cloud-platform"],
+        )
+        return firestore.Client(
+            project=service_account_info["project_id"],
+            credentials=credentials,
+        )
+    except Exception as e:
+        print(f"  ! Firestore client init failed: {e}", file=sys.stderr)
+        return None
+
+
+def diff_federal_occupations(previous: dict | None, current: dict) -> dict:
+    """Compare two federal occupation snapshots and report ANZSCO codes that
+    were added to or removed from each list (CSOL/MLTSSL/STSOL/ROL).
+
+    This is the authoritative, code-level diff that the old anzsco.py
+    page-hash check could never produce (it only knew "the page changed",
+    never *what* changed) — this is what actually lets us tell a user
+    "Journalist (212413) was added to CSOL" instead of nothing at all.
+    """
+    changes = {"added": [], "removed": []}
+    if not previous:
+        return changes
+
+    prev_by_code = {o["anzsco"]: o for o in previous.get("occupations", [])}
+    curr_by_code = {o["anzsco"]: o for o in current.get("occupations", [])}
+
+    for code, occ in curr_by_code.items():
+        prev_occ = prev_by_code.get(code)
+        prev_lists = set(prev_occ["lists"]) if prev_occ else set()
+        curr_lists = set(occ["lists"])
+        newly_added = curr_lists - prev_lists
+        if newly_added:
+            changes["added"].append({**occ, "lists": sorted(newly_added)})
+
+    for code, occ in prev_by_code.items():
+        curr_occ = curr_by_code.get(code)
+        curr_lists = set(curr_occ["lists"]) if curr_occ else set()
+        prev_lists = set(occ["lists"])
+        newly_removed = prev_lists - curr_lists
+        if newly_removed:
+            changes["removed"].append({**occ, "lists": sorted(newly_removed)})
+
+    return changes
+
+
+def queue_occupation_change_drafts(db, changes: dict) -> int:
+    """Queue one notifications_draft per occupation-list change so an admin
+    reviews/approves it through the existing approval → FCM push pipeline
+    (same collection/shape onNewsArticleCreated and onScraperUpdate use)."""
+    if db is None:
+        return 0
+
+    created_at = datetime.now(timezone.utc).isoformat()
+    queued = 0
+
+    for occ in changes.get("added", []):
+        lists_str = ", ".join(occ["lists"])
+        draft_id = f"occlist-add-{occ['anzsco']}-{'-'.join(occ['lists']).lower()}"
+        draft_ref = db.collection("notifications_draft").document(draft_id)
+        if draft_ref.get().exists:
+            continue
+        draft_ref.set({
+            "id": draft_id,
+            "title": f"📋 {occ['name']} ({occ['anzsco']}) added to {lists_str}",
+            "body": (
+                f"{occ['name']} (ANZSCO {occ['anzsco']}) is now on the "
+                f"{lists_str}. Assessing authority: {occ.get('assessingAuthority') or 'TBC'}."
+            ),
+            "category": "ANZSCO Occupation List",
+            "source": "official_lists_scraper",
+            "sourceUrl": SOURCES["federal_combined"],
+            "url": SOURCES["federal_combined"],
+            "status": "draft",
+            "createdAt": created_at,
+            "timestamp": created_at,
+            "createdBy": "scraper_automation",
+            "anzsco": occ["anzsco"],
+        })
+        queued += 1
+
+    for occ in changes.get("removed", []):
+        lists_str = ", ".join(occ["lists"])
+        draft_id = f"occlist-remove-{occ['anzsco']}-{'-'.join(occ['lists']).lower()}"
+        draft_ref = db.collection("notifications_draft").document(draft_id)
+        if draft_ref.get().exists:
+            continue
+        draft_ref.set({
+            "id": draft_id,
+            "title": f"⚠️ {occ['name']} ({occ['anzsco']}) removed from {lists_str}",
+            "body": (
+                f"{occ['name']} (ANZSCO {occ['anzsco']}) is no longer on the "
+                f"{lists_str}. Pending nominations/visa applications are not "
+                f"retroactively affected — see official source for details."
+            ),
+            "category": "ANZSCO Occupation List",
+            "source": "official_lists_scraper",
+            "sourceUrl": SOURCES["federal_combined"],
+            "url": SOURCES["federal_combined"],
+            "status": "draft",
+            "createdAt": created_at,
+            "timestamp": created_at,
+            "createdBy": "scraper_automation",
+            "anzsco": occ["anzsco"],
+        })
+        queued += 1
+
+    return queued
+
+
 def main():
     print(f"[official_lists_scraper] {datetime.now().isoformat()}")
     all_anzscos = load_all_anzscos()
     print(f"  Loaded {len(all_anzscos)} ANZSCO codes from master")
+
+    # Load the previous snapshot BEFORE overwriting so we can diff federal
+    # occupation-list membership (additions/removals) against what was live
+    # last run. Without this, occupation list changes are silently lost —
+    # there was previously no code-level change detection at all, only a
+    # generic "the webpage's text changed" hash check with no way to say
+    # what actually changed.
+    previous_output = None
+    if OUT.exists():
+        try:
+            previous_output = json.loads(OUT.read_text())
+        except Exception as e:
+            print(f"  ! Could not parse previous snapshot for diffing: {e}", file=sys.stderr)
 
     print("[1/9] Federal combined list …")
     federal = parse_federal_occupation_rows(all_anzscos)
@@ -298,6 +446,27 @@ def main():
     PUBLIC.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(output, indent=2))
     print(f"\n✓ Wrote {OUT} ({OUT.stat().st_size / 1024:.1f} KB)")
+
+    # ── Diff against previous run + queue admin-review drafts ────────────
+    changes = diff_federal_occupations(previous_output, federal)
+    added, removed = changes["added"], changes["removed"]
+    if not previous_output:
+        print("\n[diff] No previous snapshot found - skipping diff on first run.")
+    elif not added and not removed:
+        print("\n[diff] No federal occupation-list changes detected.")
+    else:
+        print(f"\n[diff] {len(added)} addition(s), {len(removed)} removal(s) detected:")
+        for occ in added:
+            print(f"  + {occ['name']} ({occ['anzsco']}) → {', '.join(occ['lists'])}")
+        for occ in removed:
+            print(f"  - {occ['name']} ({occ['anzsco']}) ← {', '.join(occ['lists'])}")
+
+        db = build_firestore_client()
+        if db is None:
+            print("  ! No Firestore credentials configured — changes detected but NOT queued for review.")
+        else:
+            queued = queue_occupation_change_drafts(db, changes)
+            print(f"  ✓ Queued {queued} notification draft(s) for admin review (notifications_draft).")
 
 
 if __name__ == "__main__":

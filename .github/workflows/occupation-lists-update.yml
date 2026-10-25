@@ -1,0 +1,56 @@
+name: Official Occupation Lists Scraper -> Diff -> Notify
+
+# Runs the REAL per-occupation CSOL/MLTSSL/STSOL/ROL scraper
+# (scripts/official_lists_scraper.py), which calls the government
+# GetSkillOccupation API directly - unlike backend/scrapers/anzsco.py
+# (a separate, older script that only hashes a static description page and
+# cannot detect which occupations actually changed).
+#
+# On every run this script now also diffs the fresh data against the
+# previously committed public/official-occupation-lists.json snapshot and
+# queues a notifications_draft doc (pending admin approval) for every
+# occupation added to or removed from a federal list - closing the gap
+# where occupation-list changes (e.g. ANZSCO reclassifications) previously
+# went completely undetected and unnotified.
+
+on:
+  schedule:
+    # Weekly, Monday 02:00 UTC (12:00 AEST / 13:00 AEDT)
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  scrape-diff-notify:
+    name: Scrape occupation lists, diff, queue admin review drafts
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 google-cloud-firestore google-auth
+
+      - name: Run official lists scraper (scrape + diff + queue drafts)
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: python3 scripts/official_lists_scraper.py
+
+      - name: Commit refreshed snapshot if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- public/official-occupation-lists.json; then
+            echo "No changes to public/official-occupation-lists.json"
+          else
+            git add public/official-occupation-lists.json
+            git commit -m "chore(data): auto-update official-occupation-lists.json [$(date -u +%Y-%m-%d)]"
+            git push
+          fi
