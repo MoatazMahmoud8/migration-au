@@ -19,6 +19,9 @@ on:
     - cron: '0 2 * * 1'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   scrape-diff-notify:
     name: Scrape occupation lists, diff, queue admin review drafts

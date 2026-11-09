@@ -12,6 +12,9 @@ on:
         required: false
         default: 'false'
 
+permissions:
+  contents: write
+
 jobs:
   scrape-and-deploy:
     name: Scrape DHA → Update visa-types.json → Deploy
