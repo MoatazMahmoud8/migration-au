@@ -55,5 +55,6 @@ jobs:
           else
             git add public/official-occupation-lists.json
             git commit -m "chore(data): auto-update official-occupation-lists.json [$(date -u +%Y-%m-%d)]"
+            git pull --rebase origin main
             git push
           fi

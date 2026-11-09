@@ -96,6 +96,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore(data): auto-update visa-types.json from DHA [$(date -u +%Y-%m-%d)]"
+            git pull --rebase origin main
             git push
           fi
 
@@ -124,11 +125,11 @@ jobs:
         if: steps.scrape.outputs.exit_code == '2' || github.event.inputs.force_deploy == 'true'
         env:
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
-          FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
         run: |
           # Write credentials to a temp file
           echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > /tmp/service_account.json
           export GOOGLE_APPLICATION_CREDENTIALS=/tmp/service_account.json
+          FIREBASE_PROJECT_ID=$(python3 -c "import json;print(json.load(open('/tmp/service_account.json'))['project_id'])")
           firebase deploy --only hosting \
             --project "$FIREBASE_PROJECT_ID" \
             --non-interactive
