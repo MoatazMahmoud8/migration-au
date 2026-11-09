@@ -127,7 +127,7 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
         run: |
           # Write credentials to a temp file
-          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > /tmp/service_account.json
+          echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" | base64 -d > /tmp/service_account.json
           export GOOGLE_APPLICATION_CREDENTIALS=/tmp/service_account.json
           FIREBASE_PROJECT_ID=$(python3 -c "import json;print(json.load(open('/tmp/service_account.json'))['project_id'])")
           firebase deploy --only hosting \
