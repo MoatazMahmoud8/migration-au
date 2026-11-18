@@ -57,9 +57,14 @@ def _subclass(row_text: str) -> str | None:
 def parse_current_round(raw_html: str) -> dict:
     soup = BeautifulSoup(unescape_embedded_html(raw_html), "html.parser")
 
+    # The "Invitations issued on <date>" line used to always be wrapped in a
+    # heading tag (h2-h5), but Home Affairs redesigned this page with a
+    # tabbed layout and the line is now a plain text node inside a <div>
+    # (no heading tag at all). Searching raw text nodes instead of specific
+    # tags keeps this working regardless of which element happens to wrap it.
     round_date = None
-    for heading in soup.find_all(["h2", "h3", "h4", "h5"]):
-        text = heading.get_text(" ", strip=True)
+    for text_node in soup.find_all(string=re.compile(r"invitations issued on", re.IGNORECASE)):
+        text = text_node.strip()
         if text.lower().startswith("invitations issued on"):
             round_date = _parse_date(text)
             if round_date:
