@@ -32,9 +32,8 @@ Exit codes:
 
 import json
 import logging
-import re
 import sys
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 
 logging.basicConfig(
@@ -48,8 +47,6 @@ ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
 OUTPUT = PUBLIC / "processing-times.json"
 VISA_TYPES_FILE = PUBLIC / "visa-types.json"
-
-DHA_URL = "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-processing-times/global-visa-processing-times"
 
 # Fallback landing page used only when a subclass has no verified URL.
 VISA_LISTING_URL = "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing"
@@ -206,136 +203,104 @@ DEFAULT_META = {"category": "Skilled", "icon": "document-outline", "color": "#60
                 "url": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-processing-times/global-visa-processing-times"}
 
 
-def fetch_with_playwright() -> str | None:
-    """Render the DHA processing times page with Playwright."""
-    try:
-        from playwright.sync_api import sync_playwright
-    except ImportError:
-        log.error("Playwright not installed. Run: pip install playwright && playwright install chromium")
+# DHA's own processing-times page is a client-rendered SPA with no <table>
+# markup in the DOM — it fetches its data from this public, unauthenticated
+# API at runtime. Calling it directly is far more reliable than rendering the
+# page and scraping tables that don't exist (which silently failed on every
+# run and caused this script to repeatedly re-publish stale fallback data).
+GPT_API_URL = "https://immi.homeaffairs.gov.au/_layouts/15/api/GPT.aspx/GetVisaGlobalProcessingTime"
+
+# Display names for each monitored subclass (DHA's GPT API only returns
+# stream names + percentiles, not the visa's display name).
+VISA_NAMES = {
+    "189": "Skilled Independent",
+    "190": "Skilled Nominated",
+    "491": "Skilled Work Regional (Provisional)",
+    "887": "Skilled Regional (Residence)",
+    "191": "Permanent Residence (Skilled Regional)",
+    "482": "Skills in Demand (Temporary)",
+    "494": "Skilled Employer Sponsored Regional",
+    "186": "Employer Nomination Scheme",
+    "485": "Temporary Graduate",
+    "500": "Student Visa",
+    "590": "Student Guardian",
+    "600": "Visitor",
+    "601": "Electronic Travel Authority",
+    "651": "eVisitor",
+    "820": "Partner (Onshore Temporary)",
+    "309": "Partner (Offshore Temporary)",
+    "143": "Contributory Parent",
+    "103": "Parent",
+    "101": "Child",
+    "417": "Working Holiday",
+    "462": "Work and Holiday",
+    "407": "Training",
+}
+
+
+def _normalize_gpt_duration(text: str | None) -> str | None:
+    """Return a cleaned duration string, or None for DHA's placeholder text."""
+    if not text or not isinstance(text, str):
         return None
-
-    try:
-        with sync_playwright() as p:
-            browser = p.chromium.launch(headless=True)
-            page = browser.new_page(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-            )
-            log.info("Loading DHA processing times page…")
-            page.goto(DHA_URL, wait_until="networkidle", timeout=60000)
-            # Wait for the processing time tables to render
-            try:
-                page.wait_for_selector("table", timeout=20000)
-                log.info("Tables detected on page")
-            except Exception:
-                log.warning("No tables appeared within 20s — page structure may have changed")
-            html = page.content()
-            browser.close()
-            return html
-    except Exception as e:
-        log.error("Playwright failed: %s", e)
-        return None
-
-
-def parse_time_text(text: str) -> str:
-    """Normalize processing time text like '9 months' or '< 1 month'."""
     t = text.strip()
-    t = re.sub(r'\s+', ' ', t)
-    # Remove leading/trailing non-alphanumeric except < >
-    t = re.sub(r'^[^<\da-zA-Z]+|[^a-zA-Z\d]+$', '', t)
-    if not t:
-        return "N/A"
+    if not t or "not available" in t.lower():
+        return None
     return t
 
 
-def parse_processing_times_page(html: str) -> list[dict]:
-    """Parse the rendered DHA processing times page into structured items."""
-    from bs4 import BeautifulSoup
+def fetch_live_processing_times() -> list[dict]:
+    """
+    Query DHA's official GPT.aspx API — the same endpoint the processing-times
+    page itself calls client-side — for every monitored subclass. Returns
+    structured v2-schema items (with "streams"), skipping subclasses for which
+    DHA publishes no percentile data at all (e.g. 103/143 parent visas).
+    """
+    import requests
 
-    soup = BeautifulSoup(html, "html.parser")
     items: list[dict] = []
-    seen: set[str] = set()
+    headers = {"Content-Type": "application/json; charset=UTF-8", "Accept": "application/json"}
 
-    # The DHA page has tables with columns: Visa subclass | Stream | 50% | 90%
-    # or sometimes: Visa subclass and stream | 50% | 90%
-    for table in soup.find_all("table"):
-        rows = table.find_all("tr")
-        if len(rows) < 2:
+    for subclass in VISA_META:
+        try:
+            payload = {"gptRequest": [{"VisaSubclassCode": subclass, "StreamCode": ""}]}
+            resp = requests.post(GPT_API_URL, data=json.dumps(payload), headers=headers, timeout=20)
+            resp.raise_for_status()
+            body = resp.json().get("d", {})
+            if not body.get("success"):
+                log.warning("GPT API reported failure for SC %s", subclass)
+                continue
+            records = body.get("data") or []
+        except Exception as e:
+            log.warning("GPT API request failed for SC %s: %s", subclass, e)
             continue
 
-        # Try to identify column indices from header
-        header_row = rows[0]
-        headers = [c.get_text(" ", strip=True).lower() for c in header_row.find_all(["th", "td"])]
+        streams = []
+        for record in records:
+            p50 = _normalize_gpt_duration(record.get("Percent50"))
+            p90 = _normalize_gpt_duration(record.get("Percent90"))
+            if not p50 or not p90:
+                continue
+            stream = {"p50": p50, "p90": p90}
+            stream_name = record.get("StreamText")
+            if isinstance(stream_name, str) and stream_name.strip():
+                stream["name"] = stream_name.strip()
+            streams.append(stream)
 
-        # Look for processing time indicators in headers
-        has_percent = any("%" in h or "percentile" in h for h in headers)
-        has_time = any("time" in h or "process" in h for h in headers)
-        if not has_percent and not has_time and "visa" not in " ".join(headers):
+        if not streams:
+            log.info("SC %s: no usable processing time data published by DHA.", subclass)
             continue
 
-        log.info("Found processing times table with %d rows, headers: %s", len(rows), headers)
-
-        for row in rows[1:]:
-            cells = [c.get_text(" ", strip=True) for c in row.find_all(["th", "td"])]
-            if len(cells) < 3:
-                continue
-
-            # Extract subclass number
-            subclass = None
-            name = ""
-            stream = None
-            p50 = ""
-            p90 = ""
-
-            # First cell usually has "Subclass NNN - Name" or just the visa name
-            first = cells[0]
-            sc_match = re.search(r'(?:subclass\s+)?(\d{3})', first, re.I)
-            if sc_match:
-                subclass = sc_match.group(1)
-                # Name is the rest after the number
-                name = re.sub(r'(?:subclass\s+)?\d{3}\s*[-–—:]*\s*', '', first, flags=re.I).strip()
-            else:
-                # Might be a stream row under a previous visa heading
-                continue
-
-            # Handle different column layouts
-            if len(cells) >= 4:
-                # Visa | Stream | 50% | 90%
-                stream = cells[1].strip() if cells[1].strip() and not re.match(r'^\d', cells[1]) else None
-                p50_idx = 2 if stream else 1
-                p50 = parse_time_text(cells[p50_idx])
-                p90 = parse_time_text(cells[p50_idx + 1]) if len(cells) > p50_idx + 1 else ""
-            elif len(cells) == 3:
-                # Visa | 50% | 90%
-                p50 = parse_time_text(cells[1])
-                p90 = parse_time_text(cells[2])
-
-            if not subclass or not p50:
-                continue
-
-            # Deduplicate — use subclass+stream as key
-            key = f"{subclass}|{stream or ''}"
-            if key in seen:
-                continue
-            seen.add(key)
-
-            # Get metadata
-            meta = VISA_META.get(subclass, DEFAULT_META)
-
-            item = {
-                "subclass": subclass,
-                "name": name or meta.get("name", f"Subclass {subclass}"),
-                "category": meta["category"],
-                "p50": p50,
-                "p90": p90 or p50,
-                "icon": meta["icon"],
-                "color": meta["color"],
-                "url": meta["url"],
-            }
-            if stream:
-                item["stream"] = stream
-
-            items.append(item)
-            log.info("  SC %s %s: p50=%s, p90=%s", subclass, stream or "", p50, p90)
+        meta = VISA_META.get(subclass, DEFAULT_META)
+        items.append({
+            "subclass": subclass,
+            "name": VISA_NAMES.get(subclass, f"Subclass {subclass}"),
+            "category": meta["category"],
+            "streams": streams,
+            "icon": meta["icon"],
+            "color": meta["color"],
+            "url": meta["url"],
+        })
+        log.info("SC %s: %d stream(s) fetched live from DHA", subclass, len(streams))
 
     return items
 
@@ -487,35 +452,37 @@ def main() -> int:
                 fixed += 1
         return fixed
 
-    # Try Playwright scraping first
-    items: list[dict] = []
-    html = fetch_with_playwright()
-    if html:
-        items = parse_processing_times_page(html)
-        if items:
-            log.info("Successfully scraped %d processing time entries from DHA.", len(items))
-        else:
-            log.warning("Playwright rendered page but no table data extracted — using seed data.")
+    # Fetch live data from DHA's GPT API for every monitored subclass.
+    try:
+        items = fetch_live_processing_times()
+    except Exception as e:
+        log.error("Live GPT API fetch failed entirely: %s", e)
+        items = []
+
+    if items:
+        log.info("Successfully fetched %d processing time entries live from DHA.", len(items))
+
+    # Some subclasses (e.g. 103/143 parent visas) have no published percentile
+    # data at all — fall back to existing/seed data for those only, rather
+    # than discarding the live data we DID get for everything else.
+    live_subclasses = {item["subclass"] for item in items}
+    missing = [sc for sc in VISA_META if sc not in live_subclasses]
+    if missing:
+        log.info("No live data for SC %s — using existing/seed fallback for these only.",
+                  ", ".join(missing))
+        existing_by_sc = {
+            str(i.get("subclass")): i
+            for i in normalize_items(load_existing().get("items", []))
+        }
+        seed_by_sc = {str(i.get("subclass")): i for i in normalize_items(get_seed_data())}
+        for sc in missing:
+            fallback_item = existing_by_sc.get(sc) or seed_by_sc.get(sc)
+            if fallback_item:
+                items.append(fallback_item)
 
     if not items:
-        # Fallback: use existing data if recent, otherwise use seed
-        existing = load_existing()
-        if existing.get("items") and existing.get("snapshotDate", "") >= "2026-01-01":
-            log.info("Using existing data (%d items from %s) as live scrape failed.",
-                     len(existing["items"]), existing["snapshotDate"])
-            existing["schemaVersion"] = 2
-            existing["snapshotDate"] = today
-            existing["items"] = normalize_items(existing["items"])
-            fixed = apply_verified_urls(existing["items"])
-            log.info("Applied %d verified URLs to existing data.", fixed)
-            OUTPUT.write_text(
-                json.dumps(existing, indent=2, ensure_ascii=False) + "\n",
-                encoding="utf-8",
-            )
-            return 0
-
-        log.info("No existing data or too stale — using seed data.")
-        items = get_seed_data()
+        log.error("No processing time data available at all (live + fallback) — aborting.")
+        return 1
 
     items = normalize_items(items)
 
