@@ -1,6 +1,6 @@
 {
-  "snapshotDate": "2026-11-16",
-  "generatedAt": "2026-11-16T02:15:23.478144+00:00",
+  "snapshotDate": "2026-11-23",
+  "generatedAt": "2026-11-23T02:15:04.351655+00:00",
   "sources": {
     "federal_combined": "https://immi.homeaffairs.gov.au/visas/working-in-australia/skill-occupation-list",
     "federal_combined_api": "https://immi.homeaffairs.gov.au/_layouts/15/api/Data.aspx/GetSkillOccupation",
